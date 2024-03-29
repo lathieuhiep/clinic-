@@ -23,6 +23,7 @@ function clinic_multiple_widget_init(): void {
 	clinic_widget_registration( esc_html__('Sidebar Footer Column 2', 'clinic'), 'sidebar-footer-column-2' );
 	clinic_widget_registration( esc_html__('Sidebar Footer Column 3', 'clinic'), 'sidebar-footer-column-3' );
 	clinic_widget_registration( esc_html__('Sidebar Footer Column 4', 'clinic'), 'sidebar-footer-column-4' );
+	clinic_widget_registration( esc_html__('Sidebar Footer Full Width', 'clinic'), 'sidebar-footer-full-width' );
 }
 
 add_action('widgets_init', 'clinic_multiple_widget_init');

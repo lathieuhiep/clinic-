@@ -331,6 +331,7 @@ if ( class_exists( 'CSF' ) ) {
 		'title' => esc_html__( 'Footer', 'clinic' ),
 	) );
 
+	//
 	// footer columns
     CSF::createSection( $clinic_prefix, array(
         'parent' => 'opt_footer_section',
@@ -496,6 +497,20 @@ if ( class_exists( 'CSF' ) ) {
             ),
         )
     ) );
+
+	// map
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_footer_section',
+		'title'  => esc_html__( 'Map', 'clinic' ),
+		'fields' => array(
+			array(
+				'id'       => 'opt_footer_map',
+				'type'     => 'code_editor',
+				'title'    => esc_html__( 'Code Map', 'clinic' ),
+				'sanitize' => false,
+			),
+		)
+	) );
 
 	// add javascript
 	CSF::createSection( $clinic_prefix, array(

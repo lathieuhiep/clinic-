@@ -1,10 +1,12 @@
 .global-footer {
-  padding: 2rem 0 4rem;
-  background-color: rgb(173, 28, 33, 0.9);
-  background-image: url("../images/bk-footer.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  &__warp {
+    padding: 2rem 0 4rem;
+    background-color: rgb(173, 28, 33, 0.9);
+    background-image: url("../images/bk-footer.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
   &__column {
     margin-top: 2.6rem;
@@ -25,6 +27,27 @@
       font-family: var(--font-fm-quaternary);
       text-transform: uppercase;
       border-bottom: 1px solid var(--color-white);
+    }
+
+    &.widget_nav_menu {
+      ul {
+        padding-left: 2rem;
+        list-style: inherit;
+
+        li {
+          font-weight: 700;
+        }
+      }
+    }
+
+    &.consulting-doctor-widget {
+      .warp {
+        margin: 0 auto;
+        max-width: 32rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
   }
 }

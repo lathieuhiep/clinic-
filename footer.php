@@ -16,7 +16,7 @@ if ( $opt_back_to_top == '1' ) :
 endif;
 
 if ( !is_404() ) :
-    get_template_part('components/inc','contact-us');
+    $code_map = clinic_get_option('opt_footer_map');
 ?>
     <footer class="global-footer">
         <div class="global-footer__warp">
@@ -26,6 +26,12 @@ if ( !is_404() ) :
             get_template_part( 'components/footer/inc','column' );
             ?>
         </div>
+
+        <?php if ( $code_map ): ?>
+            <div class="global-footer__sidebar-full">
+	            <?php echo $code_map; ?>
+            </div>
+        <?php endif; ?>
     </footer>
 <?php
 	get_template_part('components/header/inc','menu-mobile');
