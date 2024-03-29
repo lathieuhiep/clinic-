@@ -102,19 +102,17 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 'options' => [
                     'style-1' => esc_html__('Kiểu 1', 'clinic'),
                     'style-2' => esc_html__('Kiểu 2', 'clinic'),
-                    'style-3' => esc_html__('Kiểu 3', 'clinic'),
                 ],
             ]
         );
 
 		$this->add_control(
-			'image',
+			'gallery',
 			[
-				'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
+				'label' => esc_html__( 'Thêm ảnh', 'textdomain' ),
+				'type' => Controls_Manager::GALLERY,
+				'show_label' => false,
+				'default' => [],
 			]
 		);
 
@@ -122,9 +120,12 @@ class Clinic_Elementor_About_Us extends Widget_Base
 			'heading',
 			[
 				'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
-				'type'        => Controls_Manager::TEXTAREA,
+				'type'        => Controls_Manager::WYSIWYG,
 				'default'     => esc_html__( 'Heading', 'clinic' ),
-				'label_block' => true
+				'label_block' => true,
+				'condition' => [
+					'style_layout' => 'style-2',
+				]
 			]
 		);
 
@@ -137,7 +138,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                     'url' => Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
-                    'style_layout!' => 'style-1',
+                    'style_layout' => 'style-2',
                 ]
             ]
         );
@@ -224,39 +225,33 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
-
-        $medical_appointment_form = clinic_get_opt_medical_appointment();
-		?>
+    ?>
 		<div class="element-about-us">
 			<div class="element-about-us__warp <?php echo esc_attr( $settings['style_layout'] ); ?>">
-                <div class="item item-left">
-	                <div class="thumbnail-box">
-                        <?php echo wp_get_attachment_image( $settings['image']['id'], 'full' ); ?>
+                <div class="item item-thumbnail">
+                    <div class="grid">
+	                    <?php foreach ( $settings['gallery'] as $image ) : ?>
+                            <div class="grid-item">
+			                    <?php echo wp_get_attachment_image( $image['id'], 'large' ); ?>
+                            </div>
+	                    <?php endforeach; ?>
                     </div>
                 </div>
 
-                <div class="item item-right">
-                    <h3 class="heading">
-                        <?php echo nl2br( $settings['heading'] ); ?>
-                    </h3>
+                <div class="item item-content">
+                    <?php if ( $settings['style_layout'] == 'style-2' && $settings['heading_image'] ) : ?>
+                        <h3 class="heading">
+		                    <?php echo nl2br( $settings['heading'] ); ?>
+                        </h3>
 
-                    <?php if ( $settings['style_layout'] != 'style-1' && $settings['heading_image'] ) : ?>
-                    <div class="heading-image-line">
-                        <?php echo wp_get_attachment_image( $settings['heading_image']['id'], 'full' ); ?>
-                    </div>
+                        <div class="heading-image-line">
+                            <?php echo wp_get_attachment_image( $settings['heading_image']['id'], 'full' ); ?>
+                        </div>
                     <?php endif; ?>
 
                     <div class="desc text-justify">
 	                    <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
-
-                    <?php if ( $settings['style_layout'] == 'style-1' && $medical_appointment_form ) : ?>
-                        <div class="action-box">
-                            <a class="btn-booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
-                            </a>
-                        </div>
-                    <?php endif; ?>
                 </div>
 			</div>
 		</div>

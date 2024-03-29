@@ -44,12 +44,12 @@ $headings-color: $heading-color;
 $headings-font-family: $heading-font-family;
 $headings-margin-bottom: 1.2rem;
 $headings-font-weight: 700;
-$headings-line-height: 1.4 !default;
+$headings-line-height: $headings-line-height !default;
 
 // Paragraphs
 //
 // Style p element.
-$paragraph-margin-bottom: 1.2rem;
+$paragraph-margin-bottom: .6rem;
 
 // Navs
 // scss-docs-start nav-variables

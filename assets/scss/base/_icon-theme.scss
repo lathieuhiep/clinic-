@@ -24,6 +24,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-chat:before {
+  content: "\e916";
+}
+.icon-phone-light:before {
+  content: "\e915";
+}
 .icon-globe:before {
   content: "\e914";
 }

@@ -25,7 +25,7 @@ $hotline = clinic_get_opt_hotline();
             <div class="info">
                 <div class="item">
                     <div class="item__icon">
-                        <i class="icon-phone-circle"></i>
+                        <i class="icon-phone-light"></i>
                     </div>
 
                     <div class="item__content">

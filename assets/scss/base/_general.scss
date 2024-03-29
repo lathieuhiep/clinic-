@@ -17,6 +17,7 @@
   --font-size-h5: #{$h5-font-size};
   --font-size-h6: #{$h6-font-size};
 
+  --font-fm-secondary: #{$secondary-font-family};
   --font-fm-tertiary: #{$tertiary-font-family};
   --font-fm-quaternary: #{$quaternary-font-family};
 
@@ -86,6 +87,12 @@ blockquote {
 pre {
   white-space: pre-wrap;
   margin-bottom: 30px;
+}
+
+.elementor-widget-container {
+  .elementor-heading-title {
+    line-height: $headings-line-height;
+  }
 }
 
 .sticky-footer {
