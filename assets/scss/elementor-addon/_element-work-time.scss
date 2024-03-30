@@ -1,0 +1,107 @@
+.element-work-time {
+  &__warp {
+    align-items: center;
+
+    @media (min-width: 1200px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14.8rem;
+    }
+
+    @media (min-width: 576px) and (max-width: 1199px) {
+      display: grid;
+      grid-gap: 8rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item {
+      position: relative;
+      flex: 0 0 auto;
+      font-family: var(--body-font-family);
+
+      @media (min-width: 576px) {
+        padding: 3rem 0;
+      }
+
+      ~ .item {
+        @media (max-width: 575px) {
+          margin-top: 3rem;
+        }
+
+        &:before {
+          @media (min-width: 1200px) {
+            left: -7.4rem;
+          }
+
+          @media (min-width: 576px) and (max-width: 1199px) {
+            left: -4rem;
+          }
+
+          @media (min-width: 576px) {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: .4rem;
+            background-color: var(--color-white);
+          }
+        }
+      }
+
+      &__box {
+        display: grid;
+        grid-gap: 2rem;
+        align-items: center;
+
+        @media (min-width: 576px) {
+          grid-template-columns: max-content 1fr;
+        }
+
+        @media (max-width: 575px) {
+          grid-template-columns: 8rem 1fr;
+        }
+
+        .content {
+          .sub-title {
+            line-height: 1.2;
+
+            @media (min-width: 992px) {
+              font-size: 5rem;
+            }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+              font-size: 3rem;
+            }
+
+            @media (max-width: 767px) {
+              font-size: 2.2rem;
+            }
+          }
+
+          .title {
+            font-family: var(--body-font-family);
+            color: var(--color-cadmium-yellow);
+            font-size: 2.5rem;
+
+            @media (max-width: 991px) {
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+
+      &__desc {
+        margin-top: 1rem;
+
+        @media (min-width: 992px) {
+          font-size: 2rem;
+        }
+
+        @media (max-width: 991px) {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}

@@ -121,10 +121,6 @@
             })
         }
 
-        function syncPosition(el) {
-
-        }
-
         function syncPosition2(el) {
             if (syncedSecondary) {
                 const number = el.item.index;
@@ -136,6 +132,20 @@
     // element space slider
     const elementSpaceSlider = ($scope, $) => {
         const slider = $scope.find('.element-space-slider__warp')
+        const options = slider.data('owl-options')
+
+        if (slider.length) {
+            slider.each(function () {
+                const thisSlider = $(this)
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+            })
+        }
+    }
+
+    // element chat with us
+    const elementChatWithUs = ($scope, $) => {
+        const slider = $scope.find('.element-chat-with-us__warp')
         const options = slider.data('owl-options')
 
         if (slider.length) {
@@ -159,5 +169,8 @@
 
         /* Element space slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-space-slider.default', elementSpaceSlider);
+
+        /* Element chat with us */
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-chat-with-us.default', elementChatWithUs);
     });
 })(jQuery);

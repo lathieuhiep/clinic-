@@ -107,6 +107,19 @@ if ( class_exists( 'CSF' ) ) {
 		)
 	) );
 
+	// Slider
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_general_section',
+		'title'  => esc_html__( 'Slider', 'clinic' ),
+		'fields' => array(
+			array(
+				'id'    => 'opt_general_slider',
+				'type'  => 'gallery',
+				'title' => esc_html__( 'Slider', 'clinic' ),
+			),
+		)
+	) );
+
 	// Contact
 	CSF::createSection( $clinic_prefix, array(
 		'parent' => 'opt_general_section',
@@ -142,6 +155,28 @@ if ( class_exists( 'CSF' ) ) {
 			),
 
 			array(
+				'id'      => 'opt_general_medical_appointment_form',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Form hẹn khám', 'clinic' ),
+				'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
+				'options' => clinic_get_form_cf7(),
+			),
+		)
+	) );
+
+    // Chat
+	CSF::createSection( $clinic_prefix, array(
+		'parent' => 'opt_general_section',
+		'title'  => esc_html__( 'Chat', 'clinic' ),
+		'fields' => array(
+			array(
+				'id'      => 'opt_general_chat_messenger',
+				'type'    => 'text',
+				'title'   => esc_html__( 'Link messenger', 'clinic' ),
+				'default' => '',
+			),
+
+			array(
 				'id'      => 'opt_general_chat_doctor',
 				'type'    => 'text',
 				'title'   => esc_html__( 'Gặp bác sĩ', 'clinic' ),
@@ -149,30 +184,29 @@ if ( class_exists( 'CSF' ) ) {
 			),
 
 			array(
-				'id'      => 'opt_general_medical_appointment_form',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Form hẹn khám', 'clinic' ),
-				'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
-				'options' => clinic_get_form_cf7(),
-			),
-
-            array(
-                'id'      => 'opt_general_chat_messenger',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Link messenger', 'clinic' ),
-                'default' => '',
-            ),
-
-			array(
 				'id'     => 'opt_general_chat_zalo',
 				'type'   => 'fieldset',
 				'title'  => esc_html__('ZaLo', 'clinic'),
 				'fields' => array(
+					// select zalo
+					array(
+						'id'      => 'select_zalo',
+						'type'    => 'select',
+						'title'   => esc_html__( 'Kiểu liên hệ', 'clinic' ),
+						'options' => array(
+							'phone_qr' => esc_html__('Số điện thoại + QR code', 'clinic'),
+							'link' =>  esc_html__('Link Zalo', 'clinic'),
+						),
+						'default' => 'phone_qr'
+					),
+
+					// phone + qrcode
 					array(
 						'id'    => 'phone',
 						'type'  => 'text',
 						'title' => esc_html__( 'Số điện thoại', 'clinic' ),
 						'default' => '0345801115',
+						'dependency' => array( 'select_zalo', '==', 'phone_qr' )
 					),
 
 					array(
@@ -180,25 +214,22 @@ if ( class_exists( 'CSF' ) ) {
 						'type'  => 'text',
 						'title' => esc_html__( 'Mã QR', 'clinic' ),
 						'default' => '1673ul1owhehs',
-						'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/'
+						'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/',
+						'dependency' => array( 'select_zalo', '==', 'phone_qr' )
+					),
+
+					// link
+					array(
+						'id'    => 'link',
+						'type'  => 'text',
+						'title' => esc_html__( 'Link', 'clinic' ),
+						'default' => 'https://zalo.me/4019565536704794124',
+						'dependency' => array( 'select_zalo', '==', 'link' )
 					),
 				),
 			),
 		)
 	) );
-
-    // Slider
-    CSF::createSection( $clinic_prefix, array(
-        'parent' => 'opt_general_section',
-        'title'  => esc_html__( 'Slider', 'clinic' ),
-        'fields' => array(
-            array(
-                'id'    => 'opt_general_slider',
-                'type'  => 'gallery',
-                'title' => esc_html__( 'Slider', 'clinic' ),
-            ),
-        )
-    ) );
 
 	// Popup
 	CSF::createSection( $clinic_prefix, array(

@@ -46,8 +46,6 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 				'options' => [
 					'style-1' => esc_html__('Kiểu 1 (Có ảnh)', 'clinic'),
 					'style-2' => esc_html__('Kiểu 2', 'clinic'),
-                    'style-3' => esc_html__('Kiểu 3', 'clinic'),
-                    'style-4' => esc_html__('Kiểu 4', 'clinic'),
 				],
 			]
 		);
@@ -73,9 +71,6 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 				'type'        => Controls_Manager::TEXTAREA,
 				'default'     => esc_html__( 'Tiêu đề', 'clinic' ),
 				'label_block' => true,
-                'condition' => [
-                    'style_layout!' => 'style-3',
-                ]
 			]
 		);
 
@@ -86,9 +81,6 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
                 'type'        => Controls_Manager::TEXTAREA,
                 'default'     => esc_html__( 'Tiêu đề phụ', 'clinic' ),
                 'label_block' => true,
-                'condition' => [
-                    'style_layout' => 'style-4',
-                ]
             ]
         );
 
@@ -103,26 +95,11 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 			]
 		);
 
-        $this->add_control(
-            'note',
-            [
-                'label'       => esc_html__( 'Lưu ý', 'clinic' ),
-                'type'        => Controls_Manager::TEXTAREA,
-                'default'     => esc_html__( 'Lưu ý', 'clinic' ),
-                'label_block' => true,
-                'condition' => [
-                    'style_layout' => 'style-4',
-                ]
-            ]
-        );
-
 		$this->end_controls_section();
 	}
 
-	protected function render() {
+	protected function render(): void {
 		$settings = $this->get_settings_for_display();
-
-		if ( ! empty( $settings['contact_form_list'] ) ) :
     ?>
         <div class="element-contact-form-7 <?php echo esc_attr( $settings['style_layout'] ); ?>">
             <?php if ( $settings['style_layout'] == 'style-1' && $settings['image'] ) : ?>
@@ -134,30 +111,25 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
             <?php endif; ?>
 
             <div class="item item-form">
-                <?php if ( $settings['style_layout'] != 'style-3' && $settings['heading'] ) : ?>
+                <?php if ( $settings['heading'] ) : ?>
                     <h3 class="heading text-center">
                         <?php echo nl2br( $settings['heading'] ); ?>
                     </h3>
                 <?php endif; ?>
 
-                <?php if ( $settings['style_layout'] == 'style-4' && $settings['sub_heading'] ) : ?>
+                <?php if ( $settings['sub_heading'] ) : ?>
                     <p class="sub-heading">
                         <?php echo nl2br( $settings['sub_heading'] ); ?>
                     </p>
                 <?php endif; ?>
 
-
-                <?php echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' ); ?>
-
-                <?php if ( $settings['style_layout'] == 'style-4' && $settings['note'] ) : ?>
-                    <p class="note">
-                        <?php echo nl2br( $settings['note'] ); ?>
-                    </p>
-                <?php endif; ?>
+                <?php
+                if ( ! empty( $settings['contact_form_list'] ) ) :
+	                echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' );
+                endif;
+                ?>
             </div>
         </div>
     <?php
-		endif;
 	}
-
 }

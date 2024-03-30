@@ -120,13 +120,13 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                         </div>
 
                         <div class="item__body">
+                            <p class="position text-uppercase f-family-heading fw-bold">
+		                        <?php echo esc_html( $position ) . ' '; ?>
+                            </p>
+
                             <h3 class="title text-uppercase">
                                 <?php the_title(); ?>
                             </h3>
-
-                            <p class="position f-family-heading fw-bold">
-                                <?php echo esc_html( $position ) . ' '; ?>
-                            </p>
 
                             <div class="content">
                                 <?php the_content(); ?>
