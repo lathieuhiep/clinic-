@@ -33,6 +33,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/chat-with-us.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/timeline.php' );
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/company-info.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-content-list.php' );
@@ -60,6 +61,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
 	$widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
 	$widgets_manager->register( new \Clinic_Elementor_Chat_With_Us() );
+	$widgets_manager->register( new \Clinic_Elementor_Timeline() );
 
 //    $widgets_manager->register( new \Clinic_Elementor_Company_Info() );
 //    $widgets_manager->register( new \Clinic_Elementor_Image_Box_Content_List() );

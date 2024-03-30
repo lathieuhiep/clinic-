@@ -1,0 +1,125 @@
+.element-timeline {
+  &__warp {
+    .item {
+      position: relative;
+      display: grid;
+      grid-gap: 2.4rem 3.4rem;
+
+      &:after {
+        position: absolute;
+        bottom: -7.5rem;
+        left: 0;
+        right: 0;
+        height: 6.1rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      ~ .item {
+        margin-top: 9.7rem;
+      }
+
+      &__thumbnail {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        @media (max-width: 767px) {
+          order: 2;
+        }
+      }
+
+      &:nth-child(2n+1) {
+        &:after {
+          content: "";
+          background-image: url("../images/timeline-1.png");
+        }
+      }
+
+      &:nth-child(2n+2) {
+        &:after {
+          content: "";
+          background-image: url("../images/timeline-2.png");
+        }
+      }
+
+      &:nth-child(even) {
+        @media (min-width: 768px) {
+          .item__thumbnail {
+            order: 2;
+          }
+
+          .item__content {
+            order: 1;
+          }
+        }
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+
+      &__content {
+        position: relative;
+        border: .2rem solid #D7A444;
+
+        @media (min-width: 992px) {
+          padding: 5.6rem 3.6rem;
+        }
+
+        @media (max-width: 991px) {
+          padding: 3rem 2.4rem;
+        }
+
+        .line {
+          position: absolute;
+          @include box(14rem, 10.8rem);
+          border-color: #D7A444;
+          border-style: solid;
+          border-radius: .5rem;
+
+          &.top {
+            top: -5px;
+            left: -5px;
+            border-width: .3rem 0 0 .3rem;
+          }
+
+          &.bottom {
+            right: -5px;
+            bottom: -5px;
+            border-width: 0 .3rem .3rem 0;
+          }
+        }
+
+        .year {
+          margin-bottom: 2.5rem;
+          color: var(--theme-tertiary-color);
+          font-family: var(--font-fm-secondary);
+
+          @media (min-width: 992px) {
+            font-size: 5rem;
+          }
+        }
+
+        .desc {
+          position: relative;
+        }
+
+        .logo {
+          position: absolute;
+          right: 1rem;
+          bottom: .8rem;
+        }
+      }
+    }
+  }
+}

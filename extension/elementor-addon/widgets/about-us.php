@@ -120,7 +120,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 			'heading',
 			[
 				'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
-				'type'        => Controls_Manager::WYSIWYG,
+				'type'        => Controls_Manager::TEXT,
 				'default'     => esc_html__( 'Heading', 'clinic' ),
 				'label_block' => true,
 				'condition' => [
@@ -149,6 +149,60 @@ class Clinic_Elementor_About_Us extends Widget_Base
 				'label'     =>  esc_html__( 'Nội dung', 'clinic' ),
 				'type'      =>  Controls_Manager::WYSIWYG,
 				'default'   =>  esc_html__( 'Default description', 'clinic' ),
+			]
+		);
+
+		$this->end_controls_section();
+
+        // info
+		$this->start_controls_section(
+			'content_section',
+			[
+				'label' => esc_html__( 'Thông tin', 'clinic' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'style_layout' => 'style-2',
+				]
+			]
+		);
+
+		$this->add_control(
+			'company',
+			[
+				'label'       => esc_html__( 'Tên công ty', 'clinic' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( 'Trung tâm YHCT y hòa đường', 'clinic' ),
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'phone',
+			[
+				'label'       => esc_html__( 'Điện thoại', 'clinic' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => '0345.801.115',
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'time',
+			[
+				'label'       => esc_html__( 'Thời gian làm', 'clinic' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( '7h30-20h (Tất cả các ngày trong tuần)', 'clinic' ),
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'address',
+			[
+				'label'       => esc_html__( 'Địa chỉ', 'clinic' ),
+				'type'        => Controls_Manager::TEXT,
+				'default'     => esc_html__( '115 Yên Lãng, Thịnh Quang, Đống Đa, Hà Nộ', 'clinic' ),
+				'label_block' => true,
 			]
 		);
 
@@ -252,6 +306,40 @@ class Clinic_Elementor_About_Us extends Widget_Base
                     <div class="desc text-justify">
 	                    <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
+
+                    <?php if ( $settings['style_layout'] == 'style-2' ) : ?>
+                        <div class="info">
+                            <h3 class="company">
+                                <?php echo esc_html( $settings['company'] ); ?>
+                            </h3>
+
+                            <div class="star">
+                                <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/vote-star.png' ) ) ?>" alt="">
+                            </div>
+
+                            <div class="group">
+                                <p class="txt">
+                                    <span><?php esc_html_e( 'Hotline', 'clinic' ); ?>:</span>
+
+                                    <a href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $settings['phone'] ) ); ?>">
+                                        <?php echo esc_html( $settings['phone'] ); ?>
+                                    </a>
+                                </p>
+
+                                <p class="txt">
+                                    <span><?php esc_html_e( 'Thời gian thăm khám', 'clinic' ); ?>:</span>
+
+                                    <span><?php echo esc_html( $settings['time'] ); ?></span>
+                                </p>
+
+                                <p class="txt">
+                                    <span><?php esc_html_e( 'Địa chỉ', 'clinic' ); ?>:</span>
+
+                                    <span><?php echo esc_html( $settings['address'] ); ?></span>
+                                </p>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
 			</div>
 		</div>
