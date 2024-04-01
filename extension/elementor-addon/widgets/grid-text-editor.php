@@ -141,7 +141,7 @@ class Clinic_Elementor_Grid_Text_Editor extends Widget_Base
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => esc_html__( 'Style', 'textdomain' ),
+				'label' => esc_html__( 'Style', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);

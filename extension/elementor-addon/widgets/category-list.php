@@ -132,7 +132,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
 		$this->add_responsive_control(
 			'min_height',
 			[
-				'label' => esc_html__( 'Chiều cao tối thiểu', 'smartcity' ),
+				'label' => esc_html__( 'Chiều cao tối thiểu', 'clinic' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [

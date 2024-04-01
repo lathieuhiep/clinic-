@@ -46,6 +46,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 				'options' => [
 					'style-1' => esc_html__('Kiểu 1 (Có ảnh)', 'clinic'),
 					'style-2' => esc_html__('Kiểu 2', 'clinic'),
+					'style-3' => esc_html__('Kiểu 3', 'clinic'),
 				],
 			]
 		);
@@ -95,6 +96,19 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'note',
+			[
+				'label'       => esc_html__( 'Lưu ý', 'clinic' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'default'     => esc_html__( 'Lưu ý', 'clinic' ),
+				'label_block' => true,
+				'condition' => [
+					'style_layout' => 'style-3',
+				]
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -128,6 +142,12 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 	                echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' );
                 endif;
                 ?>
+
+	            <?php if ( $settings['style_layout'] == 'style-3' && $settings['note'] ) : ?>
+                    <p class="note">
+			            <?php echo nl2br( $settings['note'] ); ?>
+                    </p>
+	            <?php endif; ?>
             </div>
         </div>
     <?php

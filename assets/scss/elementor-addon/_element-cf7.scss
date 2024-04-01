@@ -203,43 +203,13 @@
   }
 
   &.style-3 {
-    .wpcf7-form {
-      max-width: 61.7rem;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 10.3rem;
-
-      p {
-        margin: 0;
-
-        + p {
-          .wpcf7-form-control {
-            border-left-width: 0;
-          }
-        }
-      }
-
-      .wpcf7-form-control {
-        display: block;
-        width: 100%;
-        min-height: 5.8rem;
-        border: .2rem solid var(--heading-color);
-
-        &:not(.wpcf7-submit) {
-          border-radius: 5rem 0 0 5rem;
-        }
-      }
-
-      .wpcf7-submit {
-        border-radius: 0 5rem 5rem 0;
-        background: var(--heading-color);
-      }
-    }
-  }
-
-  &.style-4 {
+    border-radius: 1rem;
     box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
     background-color: #ffffff;
+    background-image: url("../images/bk-form-contact.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: cover;
 
     .heading {
       margin: 0;
@@ -247,6 +217,7 @@
       font-size: 2.5rem;
       color: var(--color-sunset-orange);
       text-transform: uppercase;
+      font-family: var(--body-font-family);
       border-bottom: .4rem solid #DC9631;
     }
 
@@ -262,7 +233,13 @@
     }
 
     .wpcf7-form {
-      padding: 0 3rem;
+      @media (min-width: 768px) {
+        padding: 0 3rem;
+      }
+
+      @media (max-width: 767px) {
+        padding: 0 2rem;
+      }
 
       .wpcf7-form-control-wrap {
         input, textarea {
@@ -273,22 +250,34 @@
         }
 
         input {
-          min-height: 6.4rem;
+          @media (min-width: 768px) {
+            min-height: 6.4rem;
+          }
         }
 
         textarea {
-          height: 6.4rem;
+          @media (min-width: 768px) {
+            height: 6.4rem;
+          }
         }
       }
 
       .wpcf7-submit {
         width: 100%;
-        min-height: 7.7rem;
-        font-size: 2.5rem;
+
         font-weight: 700;
         color: #000000;
         border-radius: 1rem;
         background-image: linear-gradient(90deg, #FDC731, #D99132);
+
+        @media (min-width: 768px) {
+          min-height: 7.7rem;
+          font-size: 2.5rem;
+        }
+
+        @media (max-width: 767px) {
+          font-size: 2rem;
+        }
       }
     }
 

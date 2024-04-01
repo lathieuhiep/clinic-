@@ -131,7 +131,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
         $this->start_controls_section(
             'list_style_section',
             [
-                'label' => esc_html__( 'Danh sách', 'smartcity' ),
+                'label' => esc_html__( 'Danh sách', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -139,7 +139,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
         $this->add_control(
             'list_padding',
             [
-                'label' => esc_html__( 'Padding', 'textdomain' ),
+                'label' => esc_html__( 'Padding', 'clinic' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                 'default' => [
@@ -176,7 +176,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
         $this->add_control(
             'list_border_radius',
             [
-                'label' => esc_html__( 'Border radius', 'textdomain' ),
+                'label' => esc_html__( 'Border radius', 'clinic' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                 'default' => [
@@ -199,7 +199,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
         $this->start_controls_section(
             'number_style_section',
             [
-                'label' => esc_html__( 'Number', 'smartcity' ),
+                'label' => esc_html__( 'Number', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -207,7 +207,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
         $this->add_control(
             'number_color',
             [
-                'label'     =>  esc_html__( 'Màu sắc', 'smartcity' ),
+                'label'     =>  esc_html__( 'Màu sắc', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
                     '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .number' => 'color: {{VALUE}}',
@@ -219,7 +219,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'number_typography',
-                'label' => esc_html__( 'Typography', 'smartcity' ),
+                'label' => esc_html__( 'Typography', 'clinic' ),
                 'selector' => '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .number',
             ]
         );
@@ -227,7 +227,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
         $this->add_control(
             'number_background_color',
             [
-                'label'     =>  esc_html__( 'Màu nền', 'smartcity' ),
+                'label'     =>  esc_html__( 'Màu nền', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
                     '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .number' => 'background-color: {{VALUE}}',
@@ -241,7 +241,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
         $this->start_controls_section(
             'title_style_section',
             [
-                'label' => esc_html__( 'Tiêu đề', 'smartcity' ),
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -249,7 +249,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label'     =>  esc_html__( 'Màu sắc', 'smartcity' ),
+                'label'     =>  esc_html__( 'Màu sắc', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
                     '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .title' => 'color: {{VALUE}}',
@@ -261,7 +261,7 @@ class Clinic_Elementor_Compare_Appointments extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => esc_html__( 'Typography', 'smartcity' ),
+                'label' => esc_html__( 'Typography', 'clinic' ),
                 'selector' => '{{WRAPPER}} .element-compare-appointments__warp .list-box .item .title',
             ]
         );

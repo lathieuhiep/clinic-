@@ -1,0 +1,48 @@
+.element-banner-text {
+  display: grid;
+  grid-row-gap: 2.4rem;
+  font-size: 1.8rem;
+
+  @media (min-width: 992px) {
+    grid-column-gap: 5rem;
+  }
+
+  @media (max-width: 991px) {
+    grid-column-gap: 2.4rem;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info {
+    position: relative;
+    padding-left: 1.4rem;
+    padding-bottom: 1.7rem;
+
+    &:before {
+      position: absolute;
+      content: "";
+      top: 3.3rem;
+      right: 2.1rem;
+      bottom: 0;
+      left: 0;
+      background-color: #F2C295;
+    }
+
+    &__warp {
+      position: relative;
+      padding: 2.4rem 3.2rem;
+      background-color: var(--theme-tertiary-color);
+
+      .heading {
+        font-size: 1.8rem;
+        color: var(--color-cadmium-yellow);
+      }
+
+      .content {
+        color: var(--color-white);
+      }
+    }
+  }
+}

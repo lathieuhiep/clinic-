@@ -1,7 +1,6 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
@@ -160,21 +159,19 @@ class Clinic_Elementor_Instruct extends Widget_Base
         <div class="element-instruct">
             <div class="element-instruct__warp">
                 <?php foreach ( $settings['list'] as $item ) : ?>
-                    <div class="item text-center elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <div class="item__thumbnail">
-                            <div class="box d-flex align-items-center justify-content-center">
+                    <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <div class="item__top">
+                            <div class="thumbnail d-flex align-items-center justify-content-center">
                                 <?php echo wp_get_attachment_image( $item['list_image']['id'], 'full' ); ?>
                             </div>
+
+                            <h3 class="title text-uppercase">
+		                        <?php echo esc_html( $item['list_title'] ); ?>
+                            </h3>
                         </div>
 
-                        <div class="item__content">
-                            <h3 class="title f-family-body fw-900 text-uppercase">
-                                <?php echo esc_html( $item['list_title'] ); ?>
-                            </h3>
-
-                            <div class="desc">
-                                <?php echo wpautop( $item['list_content'] ); ?>
-                            </div>
+                        <div class="item__content text-justify">
+	                        <?php echo wpautop( $item['list_content'] ); ?>
                         </div>
                     </div>
                 <?php endforeach; ?>

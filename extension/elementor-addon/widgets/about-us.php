@@ -109,7 +109,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->add_control(
 			'gallery',
 			[
-				'label' => esc_html__( 'Thêm ảnh', 'textdomain' ),
+				'label' => esc_html__( 'Thêm ảnh', 'clinic' ),
 				'type' => Controls_Manager::GALLERY,
 				'show_label' => false,
 				'default' => [],

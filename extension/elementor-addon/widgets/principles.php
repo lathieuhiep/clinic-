@@ -98,7 +98,7 @@ class Clinic_Elementor_Principles extends Widget_Base
 		$this->add_control(
 			'image',
 			[
-				'label' => esc_html__( 'Chọn ảnh', 'textdomain' ),
+				'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
