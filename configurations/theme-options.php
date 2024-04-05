@@ -182,11 +182,25 @@ if ( class_exists( 'CSF' ) ) {
 				'type'   => 'fieldset',
 				'title'  => esc_html__('ZaLo', 'clinic'),
 				'fields' => array(
+					// select columns
+					array(
+						'id'      => 'select_zalo',
+						'type'    => 'select',
+						'title'   => esc_html__( 'Kiểu liên hệ', 'clinic' ),
+						'options' => array(
+							'phone_qr' => esc_html__('Số điện thoại + QR code', 'clinic'),
+							'link' =>  esc_html__('Link Zalo', 'clinic'),
+						),
+						'default' => 'phone_qr'
+					),
+
+					// phone + qrcode
 					array(
 						'id'    => 'phone',
 						'type'  => 'text',
 						'title' => esc_html__( 'Số điện thoại', 'clinic' ),
 						'default' => '0827750966',
+						'dependency' => array( 'select_zalo', '==', 'phone_qr' )
 					),
 
 					array(
@@ -194,7 +208,17 @@ if ( class_exists( 'CSF' ) ) {
 						'type'  => 'text',
 						'title' => esc_html__( 'Mã QR', 'clinic' ),
 						'default' => '19hirfvi9y5ep',
-						'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/'
+						'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/',
+						'dependency' => array( 'select_zalo', '==', 'phone_qr' )
+					),
+
+					// link
+					array(
+						'id'    => 'link',
+						'type'  => 'text',
+						'title' => esc_html__( 'Link', 'clinic' ),
+						'default' => 'https://zalo.me/4019565536704794124',
+						'dependency' => array( 'select_zalo', '==', 'link' )
 					),
 				),
 			),
