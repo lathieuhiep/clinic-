@@ -244,7 +244,7 @@ function clinic_get_form_cf7(): array {
 	return $options;
 }
 
-function clinic_preg_replace_ony_number($string): string|null
+function clinic_preg_replace_ony_number($string)
 {
     $number = '';
 

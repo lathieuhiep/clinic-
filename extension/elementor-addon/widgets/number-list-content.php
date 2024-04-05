@@ -186,7 +186,7 @@ class Clinic_Elementor_Number_List_Content extends Widget_Base
 		<?php
 	}
 
-    protected function addZeroBeforeNumber(int $number): int|string {
+    protected function addZeroBeforeNumber(int $number) {
 	    if ( $number < 10 ) {
             return '0' . $number;
 	    }

@@ -1,7 +1,7 @@
 <?php
 // short code title has icon
 add_shortcode('title_has_icon' , 'clinic_title_has_icon');
-function clinic_title_has_icon($args): false|string {
+function clinic_title_has_icon($args) {
 	ob_start();
 	?>
 	<div class="title-has-icon">
@@ -19,7 +19,7 @@ function clinic_title_has_icon($args): false|string {
 
 // short code contact us
 add_shortcode('single_contact_us' , 'clinic_shortcode_contactus');
-function clinic_shortcode_contactus(): false|string {
+function clinic_shortcode_contactus() {
 	ob_start();
 
 	get_template_part( 'components/inc','single-contact-us', array(
@@ -30,3 +30,5 @@ function clinic_shortcode_contactus(): false|string {
 	ob_end_clean();
 	return $content;
 }
+
+// short code

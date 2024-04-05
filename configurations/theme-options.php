@@ -165,6 +165,35 @@ if ( class_exists( 'CSF' ) ) {
 		)
 	) );
 
+    // chat with us
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Chat với chúng tôi', 'clinic' ),
+        'fields' => array(
+            array(
+                'id'     => 'opt_general_chat_zalo',
+                'type'   => 'fieldset',
+                'title'  => esc_html__('ZaLo', 'clinic'),
+                'fields' => array(
+                    array(
+                        'id'    => 'phone',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Số điện thoại', 'clinic' ),
+                        'default' => '0888888115',
+                    ),
+
+                    array(
+                        'id'    => 'qr_code',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Mã QR', 'clinic' ),
+                        'default' => 'i44981jfbz1g',
+                        'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/'
+                    ),
+                ),
+            ),
+        )
+    ) );
+
 	//
 	// Create a section menu
 	CSF::createSection( $clinic_prefix, array(

@@ -26,6 +26,9 @@
 
         // handle dropdown category widget
         handleAddCategoryImageContentPost()
+
+        // handle zalo click
+        handleZaLoClick()
     })
 
     // loading
@@ -142,6 +145,41 @@
 
             // insert before image cate
             $(`<div class="image-cate-box text-center mb-4"><img src="${urlImageCate}" alt=""></div>`).insertBefore(".title-has-icon:first");
+        }
+    }
+
+    // handle check mobile device
+    const isMobileDevice = () => {
+        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    }
+
+    // handle click zalo
+    const handleZaLoClick = () => {
+        const chatWithUsZalo = $('.chat-with-us__zalo')
+
+        if ( chatWithUsZalo.length ) {
+            chatWithUsZalo.on('click', function (e) {
+                e.preventDefault()
+
+                let link;
+                const phone = $(this).data('phone')
+                const qrCode = $(this).data('qr-code')
+
+                if ( isMobileDevice() ) {
+                    if (navigator.userAgent.includes('Android')) {
+                        // android
+                        link = `https://zaloapp.com/qr/p/${qrCode}`;
+                    } else {
+                        // ios
+                        link = `zalo://qr/p/${qrCode}`;
+                    }
+                } else {
+                    // pc
+                    link = `zalo://conversation?phone=${phone}`
+                }
+
+                window.open(link, '_parent');
+            })
         }
     }
 

@@ -1,17 +1,23 @@
 <?php
 $call_phone = clinic_get_opt_hotline();
+$chat_zalo = clinic_get_opt_chat_zalo();
 ?>
 
-<div class="chat-with-us d-lg-none">
+<div class="chat-with-us">
     <?php if ( $call_phone ) : ?>
         <a class="chat-with-us__link chat-with-us__phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($call_phone)); ?>">
-            <svg class="icon alo-circle-anim" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.35888 0.205162L3.24417 0.0281045C3.85929 -0.0949189 4.4834 0.193694 4.78804 0.742052L6.29826 3.46046C6.61104 4.02346 6.5127 4.72559 6.05729 5.181L5.04056 6.19773C4.5726 6.66625 4.48374 7.39321 4.82549 7.9604C5.399 8.91392 6.0666 9.77154 6.8283 10.5332C7.59001 11.2949 8.44701 11.9619 9.39933 12.5342C9.9666 12.8745 10.6926 12.7852 11.1606 12.3177L12.1773 11.301C12.6327 10.8456 13.3348 10.7473 13.8978 11.06L16.6162 12.5703C17.1646 12.8749 17.4532 13.499 17.3302 14.1141L17.1531 14.9994C17.0685 15.4222 16.7992 15.785 16.4184 15.9872C12.8454 17.8917 8.9682 16.7531 4.78668 12.5716C0.605155 8.3901 -0.533362 4.51287 1.37113 0.93995C1.5733 0.559101 1.93609 0.289794 2.35888 0.205162Z" fill="#04916F"/>
-            </svg>
+            <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/gif/phone-icon.gif' ) ) ?>" alt="support">
         </a>
 	<?php endif; ?>
-</div>
 
-<div class="chat-link-box">
-
+    <?php
+    if ( $chat_zalo ) :
+        $zalo_phone = $chat_zalo['phone'];
+        $zalo_qr_code = $chat_zalo['qr_code'];
+    ?>
+        <a class="link chat-with-us__zalo" href="#" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
+            <img alt="svgImg"
+                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA0OCA0OCI+CjxwYXRoIGZpbGw9IiMyOTYyZmYiIGQ9Ik0xNSwzNlY2LjgyN2wtMS4yMTEtMC44MTFDOC42NCw4LjA4Myw1LDEzLjExMiw1LDE5djEwYzAsNy43MzIsNi4yNjgsMTQsMTQsMTRoMTAJYzQuNzIyLDAsOC44ODMtMi4zNDgsMTEuNDE3LTUuOTMxVjM2SDE1eiI+PC9wYXRoPjxwYXRoIGZpbGw9IiNlZWUiIGQ9Ik0yOSw1SDE5Yy0xLjg0NSwwLTMuNjAxLDAuMzY2LTUuMjE0LDEuMDE0QzEwLjQ1Myw5LjI1LDgsMTQuNTI4LDgsMTkJYzAsNi43NzEsMC45MzYsMTAuNzM1LDMuNzEyLDE0LjYwN2MwLjIxNiwwLjMwMSwwLjM1NywwLjY1MywwLjM3NiwxLjAyMmMwLjA0MywwLjgzNS0wLjEyOSwyLjM2NS0xLjYzNCwzLjc0MgljLTAuMTYyLDAuMTQ4LTAuMDU5LDAuNDE5LDAuMTYsMC40MjhjMC45NDIsMC4wNDEsMi44NDMtMC4wMTQsNC43OTctMC44NzdjMC41NTctMC4yNDYsMS4xOTEtMC4yMDMsMS43MjksMC4wODMJQzIwLjQ1MywzOS43NjQsMjQuMzMzLDQwLDI4LDQwYzQuNjc2LDAsOS4zMzktMS4wNCwxMi40MTctMi45MTZDNDIuMDM4LDM0Ljc5OSw0MywzMi4wMTQsNDMsMjlWMTlDNDMsMTEuMjY4LDM2LjczMiw1LDI5LDV6Ij48L3BhdGg+PHBhdGggZmlsbD0iIzI5NjJmZiIgZD0iTTM2Ljc1LDI3QzM0LjY4MywyNywzMywyNS4zMTcsMzMsMjMuMjVzMS42ODMtMy43NSwzLjc1LTMuNzVzMy43NSwxLjY4MywzLjc1LDMuNzUJUzM4LjgxNywyNywzNi43NSwyN3ogTTM2Ljc1LDIxYy0xLjI0LDAtMi4yNSwxLjAxLTIuMjUsMi4yNXMxLjAxLDIuMjUsMi4yNSwyLjI1UzM5LDI0LjQ5LDM5LDIzLjI1UzM3Ljk5LDIxLDM2Ljc1LDIxeiI+PC9wYXRoPjxwYXRoIGZpbGw9IiMyOTYyZmYiIGQ9Ik0zMS41LDI3aC0xYy0wLjI3NiwwLTAuNS0wLjIyNC0wLjUtMC41VjE4aDEuNVYyN3oiPjwvcGF0aD48cGF0aCBmaWxsPSIjMjk2MmZmIiBkPSJNMjcsMTkuNzV2MC41MTljLTAuNjI5LTAuNDc2LTEuNDAzLTAuNzY5LTIuMjUtMC43NjljLTIuMDY3LDAtMy43NSwxLjY4My0zLjc1LDMuNzUJUzIyLjY4MywyNywyNC43NSwyN2MwLjg0NywwLDEuNjIxLTAuMjkzLDIuMjUtMC43NjlWMjYuNWMwLDAuMjc2LDAuMjI0LDAuNSwwLjUsMC41aDF2LTcuMjVIMjd6IE0yNC43NSwyNS41CWMtMS4yNCwwLTIuMjUtMS4wMS0yLjI1LTIuMjVTMjMuNTEsMjEsMjQuNzUsMjFTMjcsMjIuMDEsMjcsMjMuMjVTMjUuOTksMjUuNSwyNC43NSwyNS41eiI+PC9wYXRoPjxwYXRoIGZpbGw9IiMyOTYyZmYiIGQ9Ik0yMS4yNSwxOGgtOHYxLjVoNS4zMjFMMTMsMjZoMC4wMjZjLTAuMTYzLDAuMjExLTAuMjc2LDAuNDYzLTAuMjc2LDAuNzVWMjdoNy41CWMwLjI3NiwwLDAuNS0wLjIyNCwwLjUtMC41di0xaC01LjMyMUwyMSwxOWgtMC4wMjZjMC4xNjMtMC4yMTEsMC4yNzYtMC40NjMsMC4yNzYtMC43NVYxOHoiPjwvcGF0aD4KPC9zdmc+"/>
+        </a>
+    <?php endif; ?>
 </div>

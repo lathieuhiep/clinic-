@@ -131,6 +131,7 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 
 		$medical_appointment_form = clinic_get_opt_medical_appointment();
 		$link_chat = clinic_get_opt_link_chat_doctor();
+        $chat_zalo = clinic_get_opt_chat_zalo();
     ?>
 		<div class="element-schedule-consultation">
             <div class="element-schedule-consultation__warp">
@@ -141,10 +142,12 @@ class Clinic_Elementor_Image_Btn_Schedule_Consultation extends Widget_Base
 	            <?php
                 endif;
 
-                if ( $settings['image_button_consultation']['id'] && $link_chat ) :
+                if ( $chat_zalo ) :
+                    $zalo_phone = $chat_zalo['phone'];
+                    $zalo_qr_code = $chat_zalo['qr_code'];
                 ?>
-                    <a class="item" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-	                    <?php echo wp_get_attachment_image( $settings['image_button_consultation']['id'], 'large' ); ?>
+                    <a class="item chat-with-us__zalo" href="#" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
+                        <?php echo wp_get_attachment_image( $settings['image_button_consultation']['id'], 'large' ); ?>
                     </a>
                 <?php endif; ?>
             </div>
