@@ -64,117 +64,6 @@ if ( class_exists( 'CSF' ) ) {
 				'library' => 'image',
 				'url'     => false
 			),
-
-			// show loading
-			array(
-				'id'         => 'opt_general_loading',
-				'type'       => 'switcher',
-				'title'      => esc_html__( 'Chờ tải trang', 'clinic' ),
-				'text_on'    => esc_html__( 'Có', 'clinic' ),
-				'text_off'   => esc_html__( 'Không', 'clinic' ),
-				'text_width' => 80,
-				'default'    => false
-			),
-
-			array(
-				'id'         => 'opt_general_image_loading',
-				'type'       => 'media',
-				'title'      => esc_html__( 'Image Loading', 'clinic' ),
-				'subtitle'   => esc_html__( 'Use file .git', 'clinic' ) . ' <a href="https://loading.io/" target="_blank">loading.io</a>',
-				'dependency' => array( 'opt_general_loading', '==', 'true' ),
-				'url'        => false
-			),
-
-			// show back to top
-			array(
-				'id'         => 'opt_general_back_to_top',
-				'type'       => 'switcher',
-				'title'      => esc_html__( 'Quay về đầu trang', 'clinic' ),
-				'text_on'    => esc_html__( 'Có', 'clinic' ),
-				'text_off'   => esc_html__( 'Không', 'clinic' ),
-				'text_width' => 80,
-				'default'    => true
-			),
-		)
-	) );
-
-	// Contact
-	CSF::createSection( $clinic_prefix, array(
-		'parent' => 'opt_general_section',
-		'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
-		'fields' => array(
-            array(
-                'id'      => 'opt_general_address',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Địa chỉ', 'clinic' ),
-                'default' => esc_html__( '180 Trần phú - Phước Ninh', 'clinic' )
-            ),
-
-			array(
-				'id'      => 'opt_general_working_time',
-				'type'    => 'text',
-				'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
-				'default' => '7:30 - 20:00'
-			),
-
-			array(
-				'id'      => 'opt_general_hotline',
-				'type'    => 'text',
-				'title'   => esc_html__( 'Hotline', 'clinic' ),
-				'default' => '0888.888.115'
-			),
-
-			array(
-				'id'      => 'opt_general_cf',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Form liên hệ', 'clinic' ),
-				'desc'    => esc_html__( 'Hiển thị ở header trên mobile', 'clinic' ),
-				'options' => clinic_get_form_cf7(),
-			),
-
-			array(
-				'id'      => 'opt_general_chat_doctor',
-				'type'    => 'text',
-				'title'   => esc_html__( 'Gặp bác sĩ', 'clinic' ),
-				'default' => '#',
-			),
-
-			array(
-				'id'      => 'opt_general_medical_appointment_form',
-				'type'    => 'select',
-				'title'   => esc_html__( 'Form hẹn khám', 'clinic' ),
-				'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
-				'options' => clinic_get_form_cf7(),
-			),
-
-            array(
-                'id'      => 'opt_general_chat_messenger',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Link messenger', 'clinic' ),
-                'default' => '',
-            ),
-
-			array(
-				'id'     => 'opt_general_chat_zalo',
-				'type'   => 'fieldset',
-				'title'  => esc_html__('ZaLo', 'clinic'),
-				'fields' => array(
-					array(
-						'id'    => 'phone',
-						'type'  => 'text',
-						'title' => esc_html__( 'Số điện thoại', 'clinic' ),
-						'default' => '0888888115',
-					),
-
-					array(
-						'id'    => 'qr_code',
-						'type'  => 'text',
-						'title' => esc_html__( 'Mã QR', 'clinic' ),
-						'default' => 'i44981jfbz1g',
-						'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/'
-					),
-				),
-			),
 		)
 	) );
 
@@ -191,35 +80,109 @@ if ( class_exists( 'CSF' ) ) {
         )
     ) );
 
-	// Popup
+	// Contact
 	CSF::createSection( $clinic_prefix, array(
 		'parent' => 'opt_general_section',
-		'title'  => esc_html__( 'Popup liên hệ', 'clinic' ),
+		'title'  => esc_html__( 'Giờ làm - Liên hệ', 'clinic' ),
 		'fields' => array(
+            array(
+                'id'      => 'opt_general_address',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Địa chỉ', 'clinic' ),
+                'default' => esc_html__( '180 Đ. Trần phú, Phước Ninh, Hải Châu, Đà Nẵng', 'clinic' )
+            ),
+
 			array(
-				'id'       => 'opt_general_popup_show',
-				'type'     => 'switcher',
-				'title'    => esc_html__('Hiện thị popup liên hệ', 'clinic'),
-				'text_on'  => esc_html__('Hiện', 'clinic'),
-				'text_off' => esc_html__('Ẩn', 'clinic'),
+				'id'      => 'opt_general_hotline',
+				'type'    => 'text',
+				'title'   => esc_html__( 'Hotline', 'clinic' ),
+				'default' => '037.6767.167'
 			),
 
 			array(
-				'id'      => 'opt_general_popup_cf',
+				'id'      => 'opt_general_cf',
 				'type'    => 'select',
 				'title'   => esc_html__( 'Form liên hệ', 'clinic' ),
+				'desc'    => esc_html__( 'Hiển thị ở header trên mobile', 'clinic' ),
 				'options' => clinic_get_form_cf7(),
 			),
 
 			array(
-				'id'      => 'opt_general_popup_time',
-				'type'    => 'number',
-				'title'   => esc_html__('Hiện thị sau', 'clinic'),
-				'default' => 5000,
+				'id'      => 'opt_general_medical_appointment_form',
+				'type'    => 'select',
+				'title'   => esc_html__( 'Form hẹn khám', 'clinic' ),
+				'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
+				'options' => clinic_get_form_cf7(),
 			),
-
 		)
 	) );
+
+    // Chat
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Chat', 'clinic' ),
+        'fields' => array(
+            array(
+                'id'      => 'opt_general_chat_messenger',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Link messenger', 'clinic' ),
+                'default' => '',
+            ),
+
+            array(
+                'id'      => 'opt_general_chat_doctor',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Gặp bác sĩ', 'clinic' ),
+                'default' => '#',
+            ),
+
+            array(
+                'id'     => 'opt_general_chat_zalo',
+                'type'   => 'fieldset',
+                'title'  => esc_html__('ZaLo', 'clinic'),
+                'fields' => array(
+                    // select zalo
+                    array(
+                        'id'      => 'select_zalo',
+                        'type'    => 'select',
+                        'title'   => esc_html__( 'Kiểu liên hệ', 'clinic' ),
+                        'options' => array(
+                            'phone_qr' => esc_html__('Số điện thoại + QR code', 'clinic'),
+                            'link' =>  esc_html__('Link Zalo', 'clinic'),
+                        ),
+                        'default' => 'phone_qr'
+                    ),
+
+                    // phone + qrcode
+                    array(
+                        'id'    => 'phone',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Số điện thoại', 'clinic' ),
+                        'default' => '037.6767.167',
+                        'dependency' => array( 'select_zalo', '==', 'phone_qr' )
+                    ),
+
+                    array(
+                        'id'    => 'qr_code',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Mã QR', 'clinic' ),
+                        'default' => '1673ul1owhehs',
+                        'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/',
+                        'dependency' => array( 'select_zalo', '==', 'phone_qr' )
+                    ),
+
+                    // link
+                    array(
+                        'id'    => 'link',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Link', 'clinic' ),
+                        'default' => 'https://zalo.me/4019565536704794124',
+                        'dependency' => array( 'select_zalo', '==', 'link' )
+                    ),
+                ),
+            ),
+        )
+    ) );
 
 	//
 	// Create a section menu
@@ -374,6 +337,15 @@ if ( class_exists( 'CSF' ) ) {
                         'min'        => 1,
                         'max'        => 12,
                     ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
                 ),
                 'dependency' => array( 'opt_footer_columns', '!=', '0' )
             ),
@@ -406,6 +378,15 @@ if ( class_exists( 'CSF' ) ) {
                         'id'         => 'lg',
                         'type'       => 'slider',
                         'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
                         'default'    => 3,
                         'min'        => 1,
                         'max'        => 12,
@@ -446,6 +427,15 @@ if ( class_exists( 'CSF' ) ) {
                         'min'        => 1,
                         'max'        => 12,
                     ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
                 ),
                 'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2' )
             ),
@@ -478,6 +468,15 @@ if ( class_exists( 'CSF' ) ) {
                         'id'         => 'lg',
                         'type'       => 'slider',
                         'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
                         'default'    => 3,
                         'min'        => 1,
                         'max'        => 12,

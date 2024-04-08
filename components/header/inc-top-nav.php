@@ -1,7 +1,6 @@
 <?php
 $logo = clinic_get_option( 'opt_general_logo' );
 $address = clinic_get_opt_general_address();
-$working_time = clinic_get_option('opt_general_working_time');
 $hotline = clinic_get_opt_hotline();
 ?>
 
@@ -34,18 +33,6 @@ $hotline = clinic_get_opt_hotline();
                         <a class="phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
                             <?php echo esc_html( $hotline ); ?>
                         </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item__icon">
-                        <i class="icon-clock"></i>
-                    </div>
-
-                    <div class="item__content">
-                        <p><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
-
-                        <strong><?php echo esc_html( $working_time ); ?></strong>
                     </div>
                 </div>
 

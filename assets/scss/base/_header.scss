@@ -1,3 +1,11 @@
+.admin-bar {
+  .active-sticky-nav {
+    @media (min-width: 992px) {
+      top: 32px;
+    }
+  }
+}
+
 .global-header {
   background-color: var(--color-white);
 
@@ -117,34 +125,19 @@
 
 .navbar-main {
   position: relative;
-  height: 6.8rem;
-  background-color: var(--clinic-theme-secondary-color);
+  height: 8rem;
+  background-image: url("../images/background-header-main.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   > div {
     height: inherit;
   }
 
-  .grid-layout {
-    display: grid;
-
-    @media (min-width: 1200px) {
-      grid-gap: 3.4rem;
-      grid-template-columns: 1fr 36.9rem;
-    }
-
-    @media (min-width: 992px) and (max-width: 1199px) {
-      grid-gap: 2.4rem;
-      grid-template-columns: 1fr 30rem;
-    }
-  }
-
   .primary-menu {
     position: relative;
     height: inherit;
-
-    @media (min-width: 1200px) {
-      padding-left: 5rem;
-    }
 
     > ul {
       > li {
@@ -196,11 +189,15 @@
         a {
           text-shadow: none;
           display: block;
-          font-family: var(--heading-font-family);
+          font-family: var(--secondary-font-family);
 
           &:hover {
             background-color: transparent;
             color: var(--color-cadmium-yellow);
+          }
+
+          @media (min-width: 992px) and (max-width: 1200px) {
+            padding: 0 .6rem;
           }
         }
 
@@ -233,17 +230,8 @@
             }
           }
         }
-      }
-    }
 
-    .sub-menu-toggle {
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    @media (min-width: 992px) and (max-width: 1400px) {
-      ul {
-        li {
+        @media (min-width: 992px) and (max-width: 1400px) {
           &:nth-last-child(1),
           &:nth-last-child(2) {
             .sub-menu {
@@ -269,14 +257,9 @@
       }
     }
 
-    @media (min-width: 992px) and (max-width: 1200px) {
-      ul {
-        li {
-          a {
-            padding: 0 7px;
-          }
-        }
-      }
+    .sub-menu-toggle {
+      font-size: 14px;
+      cursor: pointer;
     }
 
     @media (min-width: 992px) {
@@ -421,49 +404,31 @@
       }
     }
   }
+}
 
-  .search-box {
-    .search-form {
-      position: relative;
-      width: 100%;
-      height: 4.7rem;
-      display: flex;
+#mega-menu-wrap-primary {
+  height: inherit;
 
-      .search-field {
-        padding: 0 5rem 0 2.5rem;
-        width: 100%;
-        height: 100%;
-        flex: 1;
-        font-size: 1.8rem;
-        color: #9E9E9E;
-        border: 0;
-        border-radius: 5rem;
-        background-color: #ffffff;
+  #mega-menu-primary {
+    height: inherit;
+
+    > li {
+      &.mega-menu-item {
+        position: relative;
+        height: inherit;
+        display: inline-flex;
+        align-items: center;
       }
 
-      .search-submit {
-        padding: 0;
-        position: absolute;
-        top: 0;
-        right: 2.5rem;
-        bottom: 0;
-        width: 2rem;
-        border-radius: 0;
-        background: transparent;
-
-        &:before {
-          position: absolute;
-          content: "\e913";
-          top: 50%;
-          left: 50%;
-          color: #4c505b;
-          font-size: 2rem;
-          font-family: "icomoon", serif;
-          transform: translate(-50%, -50%);
+      &.mega-menu-megamenu {
+        &.mega-menu-item {
+          position: static;
         }
 
-        .search-reader-text {
-          font-size: 0;
+        > ul {
+          &.mega-sub-menu {
+            top: 100%;
+          }
         }
       }
     }
@@ -549,10 +514,6 @@
       }
     }
   }
-}
-
-.offcanvas-menu-mobile {
-  z-index: 9999999;
 }
 
 .alo-circle-anim {
@@ -659,165 +620,6 @@
   }
 }
 
-#mega-menu-wrap-primary {
-  #mega-menu-primary {
-    > li {
-      &.mega-menu-item {
-        &:not(:last-child) {
-          @media (min-width: 1200px) {
-            margin-right: 6rem;
-          }
-
-          @media (min-width: 992px) and (max-width: 1199px) {
-            margin-right: 3rem;
-          }
-        }
-      }
-
-      &.mega-menu-megamenu > {
-        ul {
-          &.mega-sub-menu {
-            li {
-              &.mega-menu-column {
-                > ul.mega-sub-menu {
-                  > li {
-                    &.mega-menu-item {
-                      li {
-                        &.mega-menu-item {
-                          > a {
-                            &.mega-menu-link {
-                              font-weight: 500;
-                            }
-
-                            &:hover {
-                              font-weight: 500 !important;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    li {
-      &.mega-menu-item {
-        &.home-icon {
-          a {
-            &.mega-menu-link {
-              &:before {
-                content: "\e906";
-                float: left;
-                font-family: $font-icon;
-                font-size: 2rem;
-                margin-right: .5rem;
-                transform: translateY(-2px);
-              }
-            }
-          }
-        }
-      }
-
-      &.mega-menu-megamenu {
-        > ul {
-          &.mega-sub-menu {
-            @media (min-width: 992px) {
-              display: flex;
-              flex-wrap: wrap;
-            }
-
-            > li {
-              &.mega-menu-row {
-                .mega-menu-column {
-                  ~ .mega-menu-column {
-                    border-left: 1px solid #CDCCCC;
-                  }
-
-                  > ul {
-                    &.mega-sub-menu {
-                      > li {
-                        &.mega-menu-item {
-                          ~ .mega-menu-item {
-                            position: relative;
-                            margin-top: 1.6rem;
-                            padding-top: 1.6rem;
-
-                            &:before {
-                              display: block;
-                              position: absolute;
-                              content: "";
-                              left: 1.5rem;
-                              right: 1.5rem;
-                              top: 0;
-                              height: 1px;
-                              background-color: #CDCCCC;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-
-              &.mega-menu-item {
-                &.mega-menu-columns-4-of-12 {
-                  @media (min-width: 992px) {
-                    &:nth-child(3n+2),
-                    &:nth-child(3n+3) {
-                      border-left: 1px solid #CDCCCC;
-                    }
-
-                    &:nth-child(n+4) {
-                      > a {
-                        &.mega-menu-link {
-                          margin-top: .8rem;
-                          padding-top: 1.6rem;
-                          border-top: 1px solid #CDCCCC;
-                        }
-                      }
-                    }
-                  }
-                }
-
-                li {
-                  &.mega-menu-item {
-                    > a {
-                      &.mega-menu-link {
-                        position: relative;
-                        font-weight: 500;
-
-                        &:before {
-                          position: absolute;
-                          content: "";
-                          top: 50%;
-                          left: 0;
-                          @include square(.5rem, 50%);
-                          background-color: var(--color-salem);
-                          transform: translateY(-50%);
-                        }
-
-                        &:hover {
-                          font-weight: 500;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 .offcanvas-menu-mobile {
   background-color: #000000;
   z-index: 9999999999;
@@ -911,14 +713,6 @@
           }
         }
       }
-    }
-  }
-}
-
-@media (min-width: 992px) {
-  .admin-bar {
-    .active-sticky-nav {
-      top: 32px;
     }
   }
 }
