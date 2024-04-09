@@ -1,0 +1,48 @@
+.element-slider {
+  .owl-carousel {
+    .owl-nav {
+      margin: 0;
+
+      button {
+        position: absolute;
+        top: 50%;
+        margin: 0;
+        transform: translateY(-50%);
+
+        &.owl-prev {
+          left: 1.6rem;
+        }
+
+        &.owl-next {
+          right: 1.6rem;
+        }
+
+        i {
+          font-size: 2.2rem;
+        }
+      }
+    }
+
+    .owl-dots {
+      position: absolute;
+      margin: 0;
+      left: 0;
+      right: 0;
+      bottom: 1.6rem;
+
+      .owl-dot {
+        span {
+          @include square(1rem);
+          background-color: #222222;
+        }
+
+        &.active,
+        &:hover {
+          span {
+            background-color: var(--color-cadmium-yellow);
+          }
+        }
+      }
+    }
+  }
+}

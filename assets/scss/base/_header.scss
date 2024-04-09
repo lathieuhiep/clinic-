@@ -20,53 +20,60 @@
 
     .grid-layout {
       display: grid;
+      grid-column-gap: 2rem;
+      align-items: center;
 
       @media (min-width: 1200px) {
-        grid-column-gap: 6rem;
-        grid-template-columns: 37.6rem 1fr;
+        grid-template-columns: 48rem 1fr;
       }
 
       @media (min-width: 992px) and (max-width: 1199px) {
-        grid-column-gap: 3rem;
-        grid-template-columns: 30rem 1fr;
+        grid-template-columns: 36rem 1fr;
       }
     }
 
     .info {
       display: flex;
-      gap: 1.2rem;
-      align-items: center;
-      justify-content: space-between;
+      gap: 1.6rem;
+      justify-content: flex-end;
 
       p {
         margin: 0;
       }
 
       .item {
-        font-family: var(--heading-font-family);
+        padding: 1.2rem;
         text-align: initial;
+        color: var(--color-white);
         display: grid;
-        grid-column-gap: 1rem;
+        grid-column-gap: 1.2rem;
         grid-template-columns: 4rem 1fr;
         align-items: center;
-
-        @media (min-width: 1200px) {
-          font-size: 1.4rem;
-        }
-
-        @media (min-width: 992px) and (max-width: 1199px) {
-          font-size: 1.3rem;
-        }
+        flex: 0 0 28rem;
+        border-radius: 1rem;
+        background-color: var(--color-salem);
 
         &__content {
-          strong, .phone {
-            color: var(--theme-quaternary-color);
+          font-family: var(--secondary-font-family);
+
+          .title {
+            font-size: 1.8rem;
+          }
+
+          .phone {
+            color: var(--color-cadmium-yellow);
 
             @media (min-width: 1200px) {
-              font-size: 1.8rem;
+              font-size: 2.6rem;
             }
 
-            @media (min-width: 992px) and (max-width: 1199px) {
+            @media (min-width: 992px)and (max-width: 1199px) {
+              font-size: 2.2rem;
+            }
+          }
+
+          .desc {
+            @media (min-width: 992px)and (max-width: 1199px) {
               font-size: 1.5rem;
             }
           }
@@ -74,7 +81,7 @@
 
         i {
           font-size: 4rem;
-          color: var(--clinic-theme-secondary-color);
+          color: var(--color-white);
         }
       }
     }
@@ -103,13 +110,15 @@
 
       .wpcf7-form-control {
         padding: .8rem 1.2rem;
-        font-size: 1.2rem;
+        min-height: 4rem;
+        font-size: 1.5rem;
         color: rgba(0, 0, 0, 0.30);
+        border-radius: .5rem;
         background-color: #E6E6E6;
 
         &.wpcf7-submit {
           min-width: 8rem;
-          font-size: 1.2rem;
+          font-size: 1.5rem;
           font-weight: 500;
           color: var(--color-white);
           background-color: #FE5B58;
@@ -418,6 +427,10 @@
         height: inherit;
         display: inline-flex;
         align-items: center;
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+          margin-right: 2.4rem;
+        }
       }
 
       &.mega-menu-megamenu {
@@ -447,7 +460,7 @@
     padding-right: 2rem;
     display: grid;
     grid-gap: 1.2rem;
-    grid-template-columns: 5.7rem 1fr 3.8rem;
+    grid-template-columns: 5.7rem 1fr max-content;
     align-items: center;
 
     .hamburger {
@@ -465,6 +478,11 @@
       padding: .3rem 0;
       position: relative;
       height: 100%;
+
+      &__image {
+        max-width: 40rem;
+        margin: 0 auto;
+      }
 
       > a {
         height: inherit;

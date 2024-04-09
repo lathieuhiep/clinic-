@@ -1,6 +1,3 @@
-<?php
-
-?>
 <nav class="navbar-main d-none d-lg-block">
     <div class="container">
         <div id="primary-menu" class="primary-menu">

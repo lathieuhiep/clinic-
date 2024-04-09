@@ -66,7 +66,9 @@ class Clinic_Elementor_Slider extends Widget_Base {
         $gallery_ids = clinic_get_general_slider();
 
 	    $owl_options = [
-		    'items' => 1
+		    'items' => 1,
+            'nav' => true,
+            'autoHeight' => true
 	    ];
     ?>
 

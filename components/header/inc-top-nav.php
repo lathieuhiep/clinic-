@@ -11,7 +11,7 @@ $hotline = clinic_get_opt_hotline();
                 <a class="d-block" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
                     <?php
                     if ( ! empty( $logo['id'] ) ) :
-                        echo wp_get_attachment_image( $logo['id'], 'full' );
+                        echo wp_get_attachment_image( $logo['id'], 'large' );
                     else :
                         ?>
 
@@ -28,7 +28,7 @@ $hotline = clinic_get_opt_hotline();
                     </div>
 
                     <div class="item__content">
-                        <p><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
+                        <p class="title text-uppercase"><?php esc_html_e('Điện thoại tư vấn', 'clinic'); ?></p>
 
                         <a class="phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
                             <?php echo esc_html( $hotline ); ?>
@@ -38,15 +38,11 @@ $hotline = clinic_get_opt_hotline();
 
                 <div class="item">
                     <div class="item__icon">
-                        <i class="icon-location"></i>
+                        <i class="icon-location-dot"></i>
                     </div>
 
                     <div class="item__content">
-                        <?php if ( !empty( $address ) ) : ?>
-                            <p><?php esc_html_e('Địa chỉ', 'clinic'); ?></p>
-
-                            <strong class="text-uppercase"><?php echo esc_html( $address ); ?></strong>
-                        <?php endif; ?>
+                        <p class="desc text-uppercase"><?php echo esc_html( $address ); ?></p>
                     </div>
                 </div>
             </div>

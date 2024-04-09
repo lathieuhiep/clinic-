@@ -76,6 +76,7 @@ if ( class_exists( 'CSF' ) ) {
                 'id'    => 'opt_general_slider',
                 'type'  => 'gallery',
                 'title' => esc_html__( 'Slider', 'clinic' ),
+                'desc'    => esc_html__( 'Hiển thị khi addon slider (mục My Them) trong elementor', 'clinic' ),
             ),
         )
     ) );
@@ -217,6 +218,13 @@ if ( class_exists( 'CSF' ) ) {
 		'title'       => esc_html__( 'Category', 'clinic' ),
 		'description' => esc_html__( 'Use for archive, index, page search', 'clinic' ),
 		'fields'      => array(
+            //slider
+            array(
+                'id'    => 'opt_post_cat_slider',
+                'type'  => 'gallery',
+                'title' => esc_html__( 'Slider', 'clinic' ),
+            ),
+
 			// Sidebar
 			array(
 				'id'      => 'opt_post_cat_sidebar_position',

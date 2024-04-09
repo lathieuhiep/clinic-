@@ -1,0 +1,66 @@
+.element-about-us {
+  &__warp {
+    display: grid;
+    grid-gap: 2.4rem;
+    align-items: center;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: 50.7rem 1fr;
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px){
+      grid-template-columns: 40rem 1fr;
+    }
+
+    .item {
+      &__heading {
+        font-size: 2.4rem;
+      }
+
+      &__sub-heading {
+        color: #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (min-width: 1200px) {
+          font-size: 3.5rem;
+        }
+
+        @media (max-width: 1199px) {
+          font-size: 2.8rem;
+        }
+
+        span {
+          display: inline-block;
+
+
+          &.line {
+            height: .1rem;
+            background-color: var(--clinic-theme-secondary-color);
+
+            @media (min-width: 768px) {
+              flex: 0 0 6rem;
+            }
+
+            @media (max-width: 767px) {
+              flex: 0 0 3rem;
+            }
+          }
+
+          &.text {
+            text-align: center;
+
+            @media (min-width: 1200px) {
+              margin: 0 3rem;
+            }
+
+            @media (max-width: 1199px) {
+              margin: 0 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
