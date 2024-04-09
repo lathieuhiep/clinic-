@@ -110,36 +110,81 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 					while ( $query->have_posts() ) :
 						$query->the_post();
 
-						$avatar = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_avatar_id', true);
 						$position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
 						$specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
+						$treatment_of = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_treatment_of', true);
 
-						$avatars[] = $avatar;
-						?>
+						$avatars[] = [
+                            'title' => get_the_title(),
+                            'idImg' => get_post_thumbnail_id()
+                        ];
+                    ?>
 
                         <div class="item">
                             <div class="item__thumbnail">
 								<?php the_post_thumbnail('large'); ?>
+
+                                <h3 class="position text-center">
+                                    <?php echo esc_html( $position ); ?>
+                                </h3>
                             </div>
 
                             <div class="item__body">
-                                <h3 class="title text-uppercase text-center">
-									<?php echo esc_html( $position ) . ' '; the_title(); ?>
-                                </h3>
-
-                                <p class="position text-uppercase text-center">
-									<?php echo esc_html( $specialist ); ?>
-                                </p>
-
                                 <div class="content">
-									<?php the_content(); ?>
+                                    <div class="content__item">
+                                        <div class="top">
+                                            <div class="top__img">
+                                                <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/introducing.png' ) ) ?>" alt="" width="28" height="30"/>
+                                            </div>
+
+                                            <h5 class="top__title">
+                                                <?php esc_html_e('Giới thiệu', 'clinic'); ?>
+                                            </h5>
+                                        </div>
+
+                                        <div class="desc">
+                                            <?php the_content(); ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="content__item">
+                                        <div class="top">
+                                            <div class="top__img">
+                                                <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/specialist.png' ) ) ?>" alt="" width="28" height="30"/>
+                                            </div>
+
+                                            <h5 class="top__title">
+                                                <?php esc_html_e('Chuyên khoa', 'clinic'); ?>
+                                            </h5>
+                                        </div>
+
+                                        <div class="desc">
+                                            <?php echo esc_html( $specialist ); ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="content__item">
+                                        <div class="top">
+                                            <div class="top__img">
+                                                <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/treatment-of.png' ) ) ?>" alt="" width="28" height="30"/>
+                                            </div>
+
+                                            <h5 class="top__title">
+                                                <?php esc_html_e('Khám và điều trị các bệnh', 'clinic'); ?>
+                                            </h5>
+                                        </div>
+
+                                        <div class="desc">
+                                            <?php echo esc_html( $treatment_of ); ?>
+                                        </div>
+                                    </div>
                                 </div>
 
 								<?php if ( $medical_appointment_form ) : ?>
                                     <div class="action-box">
-                                        <a class="action-box__booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                            <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
-                                        </a>
+                                        <button type="button" class="btn action-box__booking" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                                            <?php esc_html_e('Đặt lịch khám với bác sĩ', 'clinic'); ?>
+                                        </button>
                                     </div>
 								<?php endif; ?>
                             </div>
@@ -156,7 +201,13 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                         <div class="element-doctor-avatar__slider owl-carousel owl-theme">
 							<?php foreach ($avatars as $avatar) : ?>
                                 <div class="item">
-									<?php echo wp_get_attachment_image( $avatar, 'full' ); ?>
+                                    <div class="item__thumbnail">
+                                        <?php echo wp_get_attachment_image( $avatar['idImg'], 'full' ); ?>
+                                    </div>
+
+                                    <h4 class="title text-center">
+                                        <?php echo esc_html( $avatar['title'] ); ?>
+                                    </h4>
                                 </div>
 							<?php endforeach; ?>
                         </div>

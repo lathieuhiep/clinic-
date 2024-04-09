@@ -1,104 +1,64 @@
 .element-doctor-slider {
   &__warp {
     .item {
-      position: relative;
+      display: grid;
 
       @media (min-width: 1200px) {
-        padding: 7.5rem 0;
+        grid-gap: 5rem;
+        grid-template-columns: 34.5rem 1fr;
       }
 
-      @media (min-width: 992px) and (max-width: 1199px) {
-        padding: 5rem 0;
-        display: grid;
-        grid-gap: 2.4rem;
-        grid-template-columns: 30rem 1fr;
-      }
-
-      &__thumbnail {
-        @media (min-width: 1200px) {
-          width: 50.3rem;
-        }
-
-        @media (min-width: 1200px) {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          z-index: 1;
-          transform: translateY(-50%);
-        }
-
-        @media (max-width: 991px) {
-          max-width: 36.6rem;
-          margin: 0 auto 2rem;
-        }
+      @media (max-width: (1199px)) {
+        grid-gap: 2rem;
       }
 
       &__body {
-        @media (min-width: 1200px) {
-          position: relative;
-          margin: 0 .5rem 0 auto;
-          padding: 2.5rem 8rem 4rem 14.7rem;
-          max-width: 81.1rem;
-          border-radius: 14.25rem;
-          background-color: var(--color-white);
-          box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-        }
-
-        .title {
-          margin-bottom: 1rem;
-          color: #0AA389;
-          font-size: 2.4rem;
-          line-height: 1.1;
-          font-family: $body-font-family;
-        }
-
-        .position {
-          font-size: 2rem;
-          font-weight: 500;
-          color: #FF8621;
-          line-height: 1.1;
-        }
-
         .content {
-          font-size: 1.5rem;
+          &__item {
+            &:not(:last-child) {
+              margin-bottom: 2rem;
+            }
 
-          ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
+            img {
+              width: auto;
+            }
 
-            li {
-              position: relative;
-              padding-left: 5rem;
+            .top {
+              margin-bottom: 1.6rem;
+              display: grid;
+              grid-gap: 2rem;
+              grid-template-columns: 2.8rem 1fr;
+              align-items: center;
 
-              ~ li {
-                margin-top: 1.6rem;
+              &__title {
+                margin: 0;
+                font-size: 2.8rem;
+                font-weight: 400;
               }
+            }
 
-              &:before {
-                position: absolute;
-                content: url("../images/icon-check-list.png");
-                top: -3px;
-                left: 0;
-              }
+            .desc {
+              padding-left: 1rem;
+              border-left: .2rem solid var(--clinic-theme-secondary-color);
             }
           }
         }
 
         .action-box {
-          @media (min-width: 1200px) {
-            position: absolute;
-            right: 7rem;
-            bottom: -3.6rem;
-          }
+          margin-top: 3rem;
+          text-align: center;
 
-          @media (max-width: 1199px) {
-            margin-top: 1.6rem;
-            text-align: center;
-          }
+          .btn {
+            padding: 1.4rem 3rem;
+            color: var(--color-white);
+            font-size: 1.8rem;
+            border-radius: 3rem;
+            background-color: var(--clinic-theme-secondary-color);
+            @include transition();
 
-          a {
-            display: inline-block;
+            &:hover {
+              background-color: var(--color-salem);
+            }
           }
         }
       }
@@ -107,34 +67,6 @@
 }
 
 .element-doctor-avatar {
-  width: 45rem;
-  margin: 0 auto;
-
-  @media (max-width: 991px) {
-    display: none;
-  }
-
-  .item {
-    width: 10rem;
-    height: 10rem;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 1rem;
-    background-image: url("../images/bk-avatar.png");
-    background-position: center;
-    background-size: 100%;
-    cursor: pointer;
-    @include transition();
-
-    img {
-      margin: 0 auto;
-      width: auto;
-      height: 9.3rem;
-      object-fit: contain;
-      transform: translateY(5px);
-    }
-  }
-
   .owl-stage-outer {
     padding: 1rem 0;
   }

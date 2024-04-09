@@ -6,30 +6,9 @@ function clinic_meta_boxes_doctor(): void {
 		'title' => esc_html__('Thông tin bổ sung', 'clinic'),
 		'object_types' => array('clinic_doctor'),
 		'context' => 'normal',
-		'priority' => 'low',
+		'priority' => 'high',
 		'show_names' => true,
 	));
-
-	$cmb->add_field( array(
-		'name'    => esc_html__('Ảnh đại diện', 'clinic'),
-		'id'      => 'clinic_cmb_doctor_avatar',
-		'type'    => 'file',
-		// Optional:
-		'options' => array(
-			'url' => false,
-		),
-		'text'    => array(
-			'add_upload_file_text' => 'Chọn ảnh'
-		),
-		'query_args' => array(
-			 'type' => array(
-				 'image/jpg',
-			     'image/jpeg',
-			     'image/png',
-			 )
-		),
-		'preview_size' => 'medium',
-	) );
 
 	$cmb->add_field( array(
 		'id'   => 'clinic_cmb_doctor_position',
@@ -39,7 +18,19 @@ function clinic_meta_boxes_doctor(): void {
 
 	$cmb->add_field( array(
 		'id'   => 'clinic_cmb_doctor_specialist',
-		'type' => 'text',
-		'name' => esc_html__( 'Chuyên khoa', 'clinic' )
+		'type' => 'textarea',
+		'name' => esc_html__( 'Chuyên khoa', 'clinic' ),
+        'attributes' => array(
+            'rows' => 6
+        ),
+	) );
+
+	$cmb->add_field( array(
+		'id'   => 'clinic_cmb_doctor_treatment_of',
+		'type' => 'textarea',
+		'name' => esc_html__( 'Khám và điều trị các bệnh', 'clinic' ),
+        'attributes' => array(
+            'rows' => 6
+        ),
 	) );
 }
