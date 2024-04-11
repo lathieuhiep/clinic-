@@ -1,28 +1,36 @@
 .element-post-grid {
   &__warp {
     display: grid;
-    grid-gap: 2.7rem 3rem;
+    grid-gap: 2.4rem;
 
     @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 576px) and (max-width: 991px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
     .item {
-      display: grid;
-      grid-gap: 2rem;
+      border: .1rem solid #DDDDDD;
 
-      @media (min-width: 576px) {
-        grid-template-columns: 27.5rem 1fr;
+      &__thumbnail {
+        img {
+          object-fit: cover;
+        }
       }
 
       &__box {
+        padding: 1.6rem;
+
         .title {
           margin-bottom: .9rem;
           font-size: 1.6rem;
-          font-weight: 500;
           line-height: 2.2rem;
-          font-family: var(--body-font-family);
-          text-transform: uppercase;
+
+          a {
+            color: var(--heading-color);
+          }
         }
 
         .content {

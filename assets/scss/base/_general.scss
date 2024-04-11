@@ -402,6 +402,14 @@ pre {
       right: 0;
       width: 27%;
     }
-
   }
+}
+
+@keyframes zoom-in-out {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.zoom-in-out {
+  animation: zoom-in-out 1.6s infinite alternate;
 }

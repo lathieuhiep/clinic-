@@ -209,7 +209,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 		?>
 
         <div class="element-testimonial-slider">
-            <div class="element-testimonial-slider__warp owl-carousel owl-theme">
+            <div class="element-testimonial-slider__warp custom-equal-height-owl owl-carousel owl-theme">
 				<?php
 				foreach ( $settings['list'] as $item ) :
 					$imageId = $item['list_image']['id'];

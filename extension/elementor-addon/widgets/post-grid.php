@@ -50,7 +50,7 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 			[
 				'label' => esc_html__('Number of Posts', 'clinic'),
 				'type' => Controls_Manager::NUMBER,
-				'default' => 6,
+				'default' => 3,
 				'min' => 1,
 				'max' => 100,
 				'step' => 1,
@@ -131,6 +131,96 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 
 		$this->end_controls_section();
 
+        // image style
+        $this->start_controls_section(
+            'image_style_section',
+            [
+                'label' => esc_html__( 'Ảnh', 'smartcity' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'image_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'smartcity' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'text-start'  =>  [
+                        'title' =>  esc_html__( 'Left', 'smartcity' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'text-center' => [
+                        'title' =>  esc_html__( 'Center', 'smartcity' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'text-end' => [
+                        'title' =>  esc_html__( 'Right', 'smartcity' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'text-center',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_width',
+            [
+                'label' => esc_html__( 'Chiều rộng ảnh', 'smartcity' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-post-grid__warp .item__thumbnail img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_height',
+            [
+                'label' => esc_html__( 'Chiều cao ảnh', 'smartcity' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-post-grid__warp .item__thumbnail img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
 		// Style title
 		$this->start_controls_section(
 			'style_title',
@@ -207,7 +297,6 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 		);
 
 		$this->end_controls_section();
-
 	}
 
 	protected function render(): void {
@@ -230,58 +319,55 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 		$query = new WP_Query($args);
 
 		if ($query->have_posts()) :
+    ?>
 
-			?>
+        <div class="element-post-grid">
+            <div class="element-post-grid__warp">
+                <?php while ($query->have_posts()): $query->the_post(); ?>
 
-            <div class="element-post-grid">
-                <div class="element-post-grid__warp">
-					<?php while ($query->have_posts()): $query->the_post(); ?>
-
-                        <div class="item">
-                            <div class="item__thumbnail">
-                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-									<?php
-									if (has_post_thumbnail()) :
-										the_post_thumbnail('large');
-									else:
-										?>
-                                        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>"
-                                             alt="<?php the_title(); ?>"/>
-									<?php endif; ?>
-                                </a>
-                            </div>
-
-                            <div class="item__box">
-                                <h3 class="title">
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-										<?php the_title(); ?>
-                                    </a>
-                                </h3>
-
-								<?php if ($settings['show_excerpt'] == 'show') : ?>
-                                    <div class="content">
-                                        <p>
-											<?php
-											if (has_excerpt()) :
-												echo esc_html(wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '...'));
-											else:
-												echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
-											endif;
-											?>
-                                        </p>
-                                    </div>
-								<?php endif; ?>
-                            </div>
+                    <div class="item">
+                        <div class="item__thumbnail">
+                            <a class="d-block <?php echo esc_attr( $settings['image_align'] ); ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                <?php
+                                if (has_post_thumbnail()) :
+                                    the_post_thumbnail('large');
+                                else:
+                                    ?>
+                                    <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>"
+                                         alt="<?php the_title(); ?>"/>
+                                <?php endif; ?>
+                            </a>
                         </div>
 
-					<?php endwhile;
-					wp_reset_postdata(); ?>
-                </div>
+                        <div class="item__box">
+                            <h3 class="title">
+                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h3>
+
+                            <?php if ($settings['show_excerpt'] == 'show') : ?>
+                                <div class="content">
+                                    <p>
+                                        <?php
+                                        if (has_excerpt()) :
+                                            echo esc_html(wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '...'));
+                                        else:
+                                            echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
+                                        endif;
+                                        ?>
+                                    </p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                <?php endwhile;
+                wp_reset_postdata(); ?>
             </div>
+        </div>
 
-		<?php
-
-		endif;
-	}
-
+    <?php
+        endif;
+    }
 }

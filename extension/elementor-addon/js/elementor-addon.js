@@ -40,10 +40,12 @@
                     margin: 50,
                     responsive:{
                         0:{
-                            items: 1
+                            items: 1,
+                            margin: 12,
                         },
                         576:{
-                            items: 2
+                            items: 2,
+                            margin: 24,
                         },
                         992:{
                             items: 3
