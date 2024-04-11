@@ -1,12 +1,56 @@
 .element-testimonial-slider {
+  &__warp {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .item {
-    .thumbnail {
-      margin-bottom: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    &__desc {
+      position: relative;
+      padding: 2.4rem 1.2rem;
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      border-radius: 3rem;
+      background-color: var(--color-white);
+      flex: 1;
+
+      &:after {
+        position: absolute;
+        content: "";
+        bottom: -66px;
+        left: 35%;
+        border-top: 80px solid var(--color-white);
+        border-right: 42px solid transparent;
+        transform: translateX(-50%) rotate(25deg);
+      }
     }
 
-    .desc {
-      font-size: 1.6rem;
-      text-align: justify;
+    &__warp {
+      padding-top: 6.5rem;
+      display: grid;
+      grid-gap: 2.4rem;
+      grid-template-columns: 9rem 1fr;
+
+      .image {
+        @include square(9rem, 50%);
+        overflow: hidden;
+        border: .3rem solid var(--color-white);
+      }
+
+      .name,
+      .info {
+        margin-bottom: .5rem;
+      }
+
+      .star {
+        i {
+          color: var(--color-cadmium-yellow);
+        }
+      }
     }
   }
 }

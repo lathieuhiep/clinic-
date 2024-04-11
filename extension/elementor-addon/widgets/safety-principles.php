@@ -128,6 +128,15 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 			]
 		);
 
+        $repeater->add_control(
+            'list_content', [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'type' => Controls_Manager::WYSIWYG,
+                'default' => esc_html__( 'List Content' , 'clinic' ),
+                'show_label' => false,
+            ]
+        );
+
 		$this->add_control(
 			'list',
 			[
@@ -186,36 +195,6 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		);
 
 		$this->end_controls_section();
-
-		// style number
-		$this->start_controls_section(
-			'style_number_section',
-			[
-				'label' => esc_html__( 'Số', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'list_number_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-safety-principles__warp .item-group .number' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'list_number_typography',
-				'selector' => '{{WRAPPER}} .element-safety-principles__warp .item-group .number',
-			]
-		);
-
-		$this->end_controls_section();
 	}
 
 	/**
@@ -241,51 +220,40 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
 		?>
         <div class="element-safety-principles">
             <div class="element-safety-principles__warp">
-                <div class="item item-group item-left">
-					<?php
-					if ( $listFirst ) :
-						foreach ( $listFirst as $key => $item):
-							?>
-                            <div class="repeater-item text-end-lg elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                                <h4 class="title">
-									<?php echo esc_html( $item['list_title'] ); ?>
-                                </h4>
-
-                                <strong class="number">
-									<?php echo esc_html( addZeroBeforeNumber($key + 1) ); ?>
-                                </strong>
-                            </div>
-						<?php
-						endforeach;
-					endif;
-					?>
-                </div>
+                <?php $this->itemContent($listFirst, 'item-left') ?>
 
                 <div class="item item-thumbnail">
 					<?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
                 </div>
 
-                <div class="item item-group item-right">
-					<?php
-					if ( $listLast ) :
-						foreach ( $listLast as $key => $item):
-							?>
-                            <div class="repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                                <strong class="number">
-									<?php echo esc_html( addZeroBeforeNumber($key + 1) ); ?>
-                                </strong>
-
-                                <h4 class="title">
-									<?php echo esc_html( $item['list_title'] ); ?>
-                                </h4>
-                            </div>
-						<?php
-						endforeach;
-					endif;
-					?>
-                </div>
+                <?php $this->itemContent($listLast, 'item-right') ?>
             </div>
         </div>
 		<?php
 	}
+
+    protected function itemContent($data, $class): void
+    {
+    ?>
+        <div class="item item-group <?php echo esc_attr($class); ?>">
+            <?php
+            if ( $data ) :
+                foreach ( $data as $item):
+            ?>
+                <div class="repeater-item text-end-lg elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                    <h4 class="title">
+                        <?php echo esc_html( $item['list_title'] ); ?>
+                    </h4>
+
+                    <div class="desc">
+                        <?php echo wpautop( $item['list_content'] ); ?>
+                    </div>
+                </div>
+            <?php
+                endforeach;
+            endif;
+            ?>
+        </div>
+    <?php
+    }
 }

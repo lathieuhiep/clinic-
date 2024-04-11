@@ -171,9 +171,12 @@ class Clinic_Elementor_Commitment extends Widget_Base
 							</div>
 
 							<div class="item__content">
-								<h3 class="title">
-									<?php echo esc_html($item['list_title']) ?>
-								</h3>
+                                <?php if ( $item['list_title'] ) : ?>
+                                    <h3 class="title">
+                                        <?php echo esc_html( $item['list_title'] ) ?>
+                                    </h3>
+                                <?php endif; ?>
+
 
 								<div class="desc">
 									<?php echo wpautop( $item['list_content'] ); ?>

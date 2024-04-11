@@ -83,7 +83,8 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 
 		$owl_options = [
 			'items' => 1,
-			'dots' => false
+			'dots' => false,
+            'autoHeight' => true
 		];
 
 		$limit_post     =   $settings['limit'];

@@ -122,31 +122,16 @@ class Clinic_Elementor_Group_Button_Contact extends Widget_Base
 		$link_chat = clinic_get_opt_link_chat_doctor();
 	?>
 		<div class="element-group-button-contact">
-			<?php if ( $phone ) : ?>
-				<a class="btn-contact" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>">
-					<span class="txt txt-phone text-uppercase"><?php esc_html_e( 'TƯ VẤN MIỄN PHÍ', 'clinic' ); ?></span>
-
-					<span class="phone-number"><?php echo esc_html( $phone ); ?></span>
-				</a>
-			<?php endif; ?>
+            <?php if ( $link_chat ) : ?>
+                <a class="btn-contact" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                    <img src="<?php echo esc_url(get_theme_file_uri('/extension/elementor-addon/images/home_button_bacsituvan.png')) ?>" alt="">
+                </a>
+            <?php endif; ?>
 
 			<?php if ( $medical_appointment_form ) : ?>
-				<button class="btn-contact border-0" type="button" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-					<span class="txt txt-medical-appointment text-uppercase">
-						<i class="icon-chat"></i>
-						<?php esc_html_e( 'TƯ VẤN MIỄN PHÍ', 'clinic' ); ?>
-					</span>
-
-					<span class="txt-note-support text-uppercase"><?php esc_html_e( 'Giải đáp mọi thắc mắc của bạn', 'clinic' ); ?></span>
+				<button class="btn btn-contact border-0 p-0" type="button" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                    <img src="<?php echo esc_url(get_theme_file_uri('/extension/elementor-addon/images/home_button_datlichkham.png')) ?>" alt="">
 				</button>
-			<?php endif; ?>
-
-			<?php if ( $link_chat ) : ?>
-				<a class="btn-contact" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                    <span class="txt txt-chat"><?php esc_html_e( 'TƯ VẤN CHI PHÍ ĐIỀU TRỊ', 'clinic' ); ?></span>
-
-                    <span class="txt-note-chat text-uppercase"><?php esc_html_e( 'Click vào đây gặp bác sĩ', 'clinic' ); ?></span>
-				</a>
 			<?php endif; ?>
 		</div>
 	<?php

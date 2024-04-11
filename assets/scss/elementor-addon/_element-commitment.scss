@@ -2,15 +2,8 @@
   &__warp {
     .item {
       display: grid;
+      grid-gap: 2.4rem;
       grid-template-columns: 5rem 1fr;
-
-      @media (min-width: 767px) {
-        grid-gap: 2.4rem 4.3rem;
-      }
-
-      @media (max-width: 768px) {
-        grid-gap: 2.4rem;
-      }
 
       ~ .item {
         margin-top: 2.4rem;

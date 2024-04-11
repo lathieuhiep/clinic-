@@ -10,6 +10,7 @@ if ( !is_404() ) :
 	get_template_part('components/header/inc','menu-mobile');
 	get_template_part('components/inc','chat-with-us');
 	get_template_part('components/inc','contact-us-mobile');
+	get_template_part('components/inc','modal-medical-appointment');
 endif;
 
 wp_footer();

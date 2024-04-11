@@ -87,6 +87,78 @@ class Clinic_Elementor_Category_List extends Widget_Base
 	 */
 	protected function register_controls(): void
 	{
+        // layout section
+        $this->start_controls_section(
+            'layout_section',
+            [
+                'label' => esc_html__( 'Layout', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'column',
+            [
+                'label' => esc_html__( 'Cột', 'smartcity' ),
+                'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'step' => 1,
+                'default' => 3,
+                'selectors' => [
+                    '{{WRAPPER}} .element-category-list__grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'grid-column-gap',
+            [
+                'label' => esc_html__( 'Grid column gap', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 12,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-category-list__grid' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'grid-row-gap',
+            [
+                'label' => esc_html__( 'Grid row gap', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 12,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-category-list__grid' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // content section
 		$this->start_controls_section(
 			'content_section',
 			[
@@ -106,51 +178,16 @@ class Clinic_Elementor_Category_List extends Widget_Base
 			]
 		);
 
-		$repeater->start_controls_tabs(
-			'style_tabs'
-		);
-
-		$repeater->start_controls_tab(
-			'style_normal_tab',
-			[
-				'label' => esc_html__( 'Normal', 'textdomain' ),
-			]
-		);
-
-		$repeater->add_control(
-			'list_image',
-			[
-				'label' => esc_html__( 'Image', 'clinic' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
-			]
-		);
-
-		$repeater->end_controls_tab();
-
-		$repeater->start_controls_tab(
-			'style_hover_tab',
-			[
-				'label' => esc_html__( 'Hover', 'textdomain' ),
-			]
-		);
-
-		$repeater->add_control(
-			'list_image_hover',
-			[
-				'label' => esc_html__( 'Image', 'clinic' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
-			]
-		);
-
-		$repeater->end_controls_tab();
-
-		$repeater->end_controls_tabs();
+        $repeater->add_control(
+            'list_image',
+            [
+                'label' => esc_html__( 'Image', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
 
 		$repeater->add_control(
 			'list_category',
@@ -182,6 +219,28 @@ class Clinic_Elementor_Category_List extends Widget_Base
 
 		$this->end_controls_section();
 
+        // style box
+        $this->start_controls_section(
+            'box_style',
+            [
+                'label' => esc_html__('Box', 'clinic'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'box_background_color',
+            [
+                'label' => esc_html__('Background Color', 'clinic'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-category-list__grid .item' => 'background-color: {{VALUE}};'
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
 		// style content
 		$this->start_controls_section(
 			'content_style',
@@ -197,7 +256,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
 				'label' => esc_html__('Color', 'clinic'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-specialist__grid .item .item__title' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .element-category-list__grid .item__title' => 'color: {{VALUE}};'
 				],
 			]
 		);
@@ -208,7 +267,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
 				'label' => esc_html__('Color Hover', 'clinic'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-specialist__grid .item:hover .item__title' => 'color: {{VALUE}};'
+					'{{WRAPPER}} .element-category-list__grid .item:hover .item__title' => 'color: {{VALUE}};'
 				],
 			]
 		);
@@ -249,15 +308,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
                                 <a class="item__link" href="<?php echo esc_url( $category_link ); ?>"></a>
 
                                 <div class="item__image">
-									<?php
-									echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large', '', array(
-										'class' => 'image-main'
-									) );
-
-									echo wp_get_attachment_image( $item['list_image_hover']['id'], 'medium_large', '', array(
-										'class' => 'image-change'
-									) );
-									?>
+									<?php echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large' ); ?>
                                 </div>
 
                                 <h4 class="item__title m-0 text-uppercase text-center">

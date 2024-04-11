@@ -114,7 +114,26 @@
                     thisSlider.find(".owl-item").eq(0).addClass("current");
                 }).owlCarousel(owlCarouselElementorOptions({
                     loop: false,
-                    items: 4
+                    dots: false,
+                    nav: true,
+                    responsive:{
+                        0: {
+                            items: 1,
+                            margin: 0
+                        },
+                        480: {
+                            items: 2,
+                            margin: 12
+                        },
+                        576: {
+                            items: 3,
+                            margin: 12
+                        },
+                        768: {
+                            items: 4,
+                            margin: 12
+                        }
+                    }
                 })).on('changed.owl.carousel', function (el) {
                     if (syncedSecondary) {
                         const number = el.item.index;
