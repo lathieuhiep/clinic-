@@ -101,7 +101,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_responsive_control(
 			'column',
 			[
-				'label' => esc_html__( 'Cột', 'smartcity' ),
+				'label' => esc_html__( 'Cột', 'clinic' ),
 				'type' => Controls_Manager::NUMBER,
 				'min' => 1,
 				'step' => 1,
@@ -222,7 +222,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->start_controls_section(
 			'list_style_section',
 			[
-				'label' => esc_html__( 'Danh sách', 'smartcity' ),
+				'label' => esc_html__( 'Danh sách', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -290,7 +290,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->start_controls_section(
 			'image_style_section',
 			[
-				'label' => esc_html__( 'Ảnh', 'smartcity' ),
+				'label' => esc_html__( 'Ảnh', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -298,21 +298,21 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_control(
 			'image_align',
 			[
-				'label'     =>  esc_html__( 'Alignment', 'smartcity' ),
+				'label'     =>  esc_html__( 'Alignment', 'clinic' ),
 				'type'      =>  Controls_Manager::CHOOSE,
 				'options'   =>  [
 					'text-start'  =>  [
-						'title' =>  esc_html__( 'Left', 'smartcity' ),
+						'title' =>  esc_html__( 'Left', 'clinic' ),
 						'icon'  =>  'eicon-text-align-left',
 					],
 
 					'text-center' => [
-						'title' =>  esc_html__( 'Center', 'smartcity' ),
+						'title' =>  esc_html__( 'Center', 'clinic' ),
 						'icon'  =>  'eicon-text-align-center',
 					],
 
 					'text-end' => [
-						'title' =>  esc_html__( 'Right', 'smartcity' ),
+						'title' =>  esc_html__( 'Right', 'clinic' ),
 						'icon'  =>  'eicon-text-align-right',
 					],
 				],
@@ -323,7 +323,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_responsive_control(
 			'image_width',
 			[
-				'label' => esc_html__( 'Chiều rộng ảnh', 'smartcity' ),
+				'label' => esc_html__( 'Chiều rộng ảnh', 'clinic' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -350,7 +350,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_responsive_control(
 			'image_height',
 			[
-				'label' => esc_html__( 'Chiều cao ảnh', 'smartcity' ),
+				'label' => esc_html__( 'Chiều cao ảnh', 'clinic' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
@@ -380,7 +380,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->start_controls_section(
 			'title_style_section',
 			[
-				'label' => esc_html__( 'Tiêu đề', 'smartcity' ),
+				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -408,26 +408,26 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_control(
 			'title_align',
 			[
-				'label'     =>  esc_html__( 'Alignment', 'smartcity' ),
+				'label'     =>  esc_html__( 'Alignment', 'clinic' ),
 				'type'      =>  Controls_Manager::CHOOSE,
 				'options'   =>  [
 					'text-start'  =>  [
-						'title' =>  esc_html__( 'Left', 'smartcity' ),
+						'title' =>  esc_html__( 'Left', 'clinic' ),
 						'icon'  =>  'eicon-text-align-left',
 					],
 
 					'text-center' => [
-						'title' =>  esc_html__( 'Center', 'smartcity' ),
+						'title' =>  esc_html__( 'Center', 'clinic' ),
 						'icon'  =>  'eicon-text-align-center',
 					],
 
 					'text-end' => [
-						'title' =>  esc_html__( 'Right', 'smartcity' ),
+						'title' =>  esc_html__( 'Right', 'clinic' ),
 						'icon'  =>  'eicon-text-align-right',
 					],
 
 					'text-justify' => [
-						'title' =>  esc_html__( 'Justify', 'smartcity' ),
+						'title' =>  esc_html__( 'Justify', 'clinic' ),
 						'icon'  =>  'eicon-text-align-justify',
 					],
 				],
@@ -438,7 +438,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_control(
 			'title_color',
 			[
-				'label'     =>  esc_html__( 'Color', 'smartcity' ),
+				'label'     =>  esc_html__( 'Color', 'clinic' ),
 				'type'      =>  Controls_Manager::COLOR,
 				'selectors' =>  [
 					'{{WRAPPER}} .element-gallery-grid-box__warp .item__title' => 'color: {{VALUE}}',
@@ -450,7 +450,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'label' => esc_html__( 'Typography', 'smartcity' ),
+				'label' => esc_html__( 'Typography', 'clinic' ),
 				'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__title',
 			]
 		);
@@ -461,7 +461,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->start_controls_section(
 			'content_style_section',
 			[
-				'label' => esc_html__( 'Nội dung', 'smartcity' ),
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -489,26 +489,26 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_control(
 			'content_align',
 			[
-				'label'     =>  esc_html__( 'Alignment', 'smartcity' ),
+				'label'     =>  esc_html__( 'Alignment', 'clinic' ),
 				'type'      =>  Controls_Manager::CHOOSE,
 				'options'   =>  [
 					'text-start'  =>  [
-						'title' =>  esc_html__( 'Left', 'smartcity' ),
+						'title' =>  esc_html__( 'Left', 'clinic' ),
 						'icon'  =>  'eicon-text-align-left',
 					],
 
 					'text-center' => [
-						'title' =>  esc_html__( 'Center', 'smartcity' ),
+						'title' =>  esc_html__( 'Center', 'clinic' ),
 						'icon'  =>  'eicon-text-align-center',
 					],
 
 					'text-end' => [
-						'title' =>  esc_html__( 'Right', 'smartcity' ),
+						'title' =>  esc_html__( 'Right', 'clinic' ),
 						'icon'  =>  'eicon-text-align-right',
 					],
 
 					'text-justify' => [
-						'title' =>  esc_html__( 'Justify', 'smartcity' ),
+						'title' =>  esc_html__( 'Justify', 'clinic' ),
 						'icon'  =>  'eicon-text-align-justify',
 					],
 				],
@@ -519,7 +519,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 		$this->add_control(
 			'content_color',
 			[
-				'label'     =>  esc_html__( 'Color', 'smartcity' ),
+				'label'     =>  esc_html__( 'Color', 'clinic' ),
 				'type'      =>  Controls_Manager::COLOR,
 				'selectors' =>  [
 					'{{WRAPPER}} .element-gallery-grid-box__warp .item__content' => 'color: {{VALUE}}',
@@ -531,7 +531,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'content_typography',
-				'label' => esc_html__( 'Typography', 'smartcity' ),
+				'label' => esc_html__( 'Typography', 'clinic' ),
 				'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__content',
 			]
 		);
