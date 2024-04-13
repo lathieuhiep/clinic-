@@ -5,10 +5,7 @@
  */
 
 ( function( $ ) {
-
     "use strict";
-
-    let timer_clear;
 
     $( document ).ready( function () {
         // handle click show submenu on mobile
@@ -22,6 +19,9 @@
 
         // handle click zalo
         handleZaLoClick()
+
+        // handle widget doctor slider
+        handleWidgetDoctorSlider()
     })
 
     /*
@@ -129,6 +129,30 @@
                 }
 
                 window.open(link, '_parent');
+            })
+        }
+    }
+
+    // handle widget doctor slider
+    const handleWidgetDoctorSlider = () => {
+        const doctorSliderWidget = $('.doctor-slider-widget .owl-carousel')
+
+        if ( doctorSliderWidget.length ) {
+            doctorSliderWidget.each(function () {
+                $(this).owlCarousel({
+                    items: 1,
+                    loop: true,
+                    smartSpeed: 800,
+                    autoplaySpeed: 800,
+                    navSpeed: 800,
+                    dotsSpeed: 800,
+                    dragEndSpeed: 800,
+                    navText: ['<i class="icon-angle-left" aria-hidden="true"></i>','<i class="icon-angle-right" aria-hidden="true"></i>'],
+                    autoplay: false,
+                    autoHeight: true,
+                    nav:true,
+                    dots: false
+                })
             })
         }
     }

@@ -35,8 +35,8 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/number-list-content.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-box-content.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
-//  require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-content.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-content-list.php' );
 
@@ -62,6 +62,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Number_List_Content() );
     $widgets_manager->register( new \Clinic_Elementor_List_Box_Content() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Content() );
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Box_Content_List() );
@@ -75,7 +76,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //	$widgets_manager->register( new \Clinic_Elementor_Heading_Between_Line() );
 //	$widgets_manager->register( new \Clinic_Elementor_Equipment() );
 //	$widgets_manager->register( new \Clinic_Elementor_Btn_Medical_Register() );
-//	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
+
 }
 
 // Register scripts

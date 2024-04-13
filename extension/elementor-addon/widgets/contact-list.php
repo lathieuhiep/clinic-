@@ -1,8 +1,6 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Icons_Manager;
-use Elementor\Repeater;
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -22,7 +20,7 @@ class Clinic_Elementor_Contact_List extends Widget_Base
 	 */
 	public function get_name(): string
 	{
-		return 'clinic-contact-us';
+		return 'clinic-contact-list';
 	}
 
 	/**

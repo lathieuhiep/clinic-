@@ -125,9 +125,15 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                             <div class="item__thumbnail">
 								<?php the_post_thumbnail('large'); ?>
 
-                                <h3 class="position text-center">
-                                    <?php echo esc_html( $position ); ?>
-                                </h3>
+                                <div class="info text-center">
+                                    <h3 class="name">
+                                        <?php the_title(); ?>
+                                    </h3>
+
+                                    <h4 class="position m-0">
+                                        <?php echo esc_html( $position ); ?>
+                                    </h4>
+                                </div>
                             </div>
 
                             <div class="item__body">

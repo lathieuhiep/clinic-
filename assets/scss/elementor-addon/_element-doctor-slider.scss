@@ -34,10 +34,16 @@
           }
         }
 
-        .position {
-          margin: 1.6rem 0 0;
-          font-size: 2.2rem;
-          color: #2D67BF;
+        .info {
+          margin-top: 1.6rem;
+          .name {
+            margin-bottom: 0.2rem;
+          }
+
+          .position {
+            color: #2D67BF;
+            font-size: 2rem;
+          }
         }
       }
 

@@ -111,10 +111,7 @@ class clinic_categories_dropdown_widget extends WP_Widget {
 
 			<?php if ( !empty( $child_categories ) ) : ?>
                 <div class="icon-has-child-cate">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8" viewBox="0 0 10 8"
-                         fill="none">
-                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="white"/>
-                    </svg>
+                    <i class="icon icon-sort-down"></i>
                 </div>
 
                 <ul class="children">

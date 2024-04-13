@@ -47,3 +47,16 @@ function clinic_get_general_slider(): array
 
     return $gallery_ids;
 }
+
+// get slider theme option category
+function clinic_get_post_cat_slider(): array
+{
+    $gallery = clinic_get_option('opt_post_cat_slider');
+    $gallery_ids = [];
+
+    if ( !empty( $gallery ) ) {
+        $gallery_ids = explode( ',', $gallery );
+    }
+
+    return $gallery_ids;
+}
