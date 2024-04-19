@@ -5,7 +5,7 @@ $chat_zalo = clinic_get_opt_chat_zalo();
 ?>
 
 <div class="contact-us-mobile d-lg-none">
-    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/chan-trang-namkhoa.gif' ) ) ?>" alt="">
+    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/chan-trang-nam-khoa.gif' ) ) ?>" alt="">
 
 	<?php if ( $link_chat ) : ?>
         <a class="item chat" href="<?php echo esc_url( $link_chat ); ?>" target="_blank"></a>
