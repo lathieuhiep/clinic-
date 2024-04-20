@@ -1,5 +1,6 @@
 <?php
 
+use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -74,6 +75,68 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+        // name style section
+		$this->start_controls_section(
+			'name_style_section',
+			[
+				'label' => esc_html__( 'Tên bác sĩ', 'smartcity' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'name_color',
+			[
+				'label'     =>  esc_html__( 'Màu sắc', 'smartcity' ),
+				'type'      =>  Controls_Manager::COLOR,
+				'selectors' =>  [
+					'{{WRAPPER}} .element-doctor-slider__warp .item__body .title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'name_typography',
+				'label' => esc_html__( 'Typography', 'smartcity' ),
+				'selector' => '{{WRAPPER}} .element-doctor-slider__warp .item__body .title',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// position style section
+		$this->start_controls_section(
+			'position_style_section',
+			[
+				'label' => esc_html__( 'Chức vụ bác sĩ', 'smartcity' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'position_color',
+			[
+				'label'     =>  esc_html__( 'Màu sắc', 'smartcity' ),
+				'type'      =>  Controls_Manager::COLOR,
+				'selectors' =>  [
+					'{{WRAPPER}} .element-doctor-slider__warp .item__body .position' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'position_typography',
+				'label' => esc_html__( 'Typography', 'smartcity' ),
+				'selector' => '{{WRAPPER}} .element-doctor-slider__warp .item__body .position',
+			]
+		);
+
+		$this->end_controls_section();
 	}
 
 	protected function render(): void {
@@ -120,13 +183,13 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                         </div>
 
                         <div class="item__body">
+                            <p class="position f-family-heading fw-bold">
+		                        <?php echo esc_html( $position ) . ' '; ?>
+                            </p>
+
                             <h3 class="title text-uppercase">
                                 <?php the_title(); ?>
                             </h3>
-
-                            <p class="position f-family-heading fw-bold">
-                                <?php echo esc_html( $position ) . ' '; ?>
-                            </p>
 
                             <div class="content">
                                 <?php the_content(); ?>
