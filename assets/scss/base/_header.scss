@@ -18,9 +18,16 @@
       display: grid;
       align-items: center;
 
+      @media (min-width: 1600px) {
+        grid-template-columns: 38rem 1fr auto;
+      }
+
+      @media (min-width: 1400px) and (max-width: 1599px) {
+        grid-template-columns: 26rem 1fr auto;
+      }
+
       @media (min-width: 1400px) {
         grid-gap: 2.4rem;
-        grid-template-columns: 38rem 1fr auto;
       }
 
       @media (min-width: 992px) and (max-width: 1399px) {
