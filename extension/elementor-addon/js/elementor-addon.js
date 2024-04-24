@@ -36,20 +36,7 @@
         if (slider.length) {
             slider.each(function () {
                 const thisSlider = $(this)
-                const options = {
-                    margin: 50,
-                    responsive:{
-                        0:{
-                            items: 1
-                        },
-                        576:{
-                            items: 2
-                        },
-                        992:{
-                            items: 3
-                        }
-                    }
-                }
+                const options = slider.data('owl-options')
 
                 thisSlider.owlCarousel(owlCarouselElementorOptions(options))
             })
