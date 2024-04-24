@@ -106,17 +106,6 @@ class Clinic_Elementor_Category_List extends Widget_Base
 			]
 		);
 
-		$repeater->start_controls_tabs(
-			'style_tabs'
-		);
-
-		$repeater->start_controls_tab(
-			'style_normal_tab',
-			[
-				'label' => esc_html__( 'Normal', 'textdomain' ),
-			]
-		);
-
 		$repeater->add_control(
 			'list_image',
 			[
@@ -127,30 +116,6 @@ class Clinic_Elementor_Category_List extends Widget_Base
 				],
 			]
 		);
-
-		$repeater->end_controls_tab();
-
-		$repeater->start_controls_tab(
-			'style_hover_tab',
-			[
-				'label' => esc_html__( 'Hover', 'textdomain' ),
-			]
-		);
-
-		$repeater->add_control(
-			'list_image_hover',
-			[
-				'label' => esc_html__( 'Image', 'clinic' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
-			]
-		);
-
-		$repeater->end_controls_tab();
-
-		$repeater->end_controls_tabs();
 
 		$repeater->add_control(
 			'list_category',
@@ -249,15 +214,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
                                 <a class="item__link" href="<?php echo esc_url( $category_link ); ?>"></a>
 
                                 <div class="item__image">
-									<?php
-									echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large', '', array(
-										'class' => 'image-main'
-									) );
-
-									echo wp_get_attachment_image( $item['list_image_hover']['id'], 'medium_large', '', array(
-										'class' => 'image-change'
-									) );
-									?>
+									<?php echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large'); ?>
                                 </div>
 
                                 <h4 class="item__title m-0 text-uppercase text-center">

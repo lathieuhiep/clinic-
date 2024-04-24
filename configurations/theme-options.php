@@ -380,6 +380,15 @@ if ( class_exists( 'CSF' ) ) {
                         'min'        => 1,
                         'max'        => 12,
                     ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
                 ),
                 'dependency' => array( 'opt_footer_columns', '!=', '0' )
             ),
@@ -412,6 +421,15 @@ if ( class_exists( 'CSF' ) ) {
                         'id'         => 'lg',
                         'type'       => 'slider',
                         'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
                         'default'    => 3,
                         'min'        => 1,
                         'max'        => 12,
@@ -452,6 +470,15 @@ if ( class_exists( 'CSF' ) ) {
                         'min'        => 1,
                         'max'        => 12,
                     ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
                 ),
                 'dependency' => array( 'opt_footer_columns', 'not-any', '0,1,2' )
             ),
@@ -484,6 +511,15 @@ if ( class_exists( 'CSF' ) ) {
                         'id'         => 'lg',
                         'type'       => 'slider',
                         'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 3,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
                         'default'    => 3,
                         'min'        => 1,
                         'max'        => 12,

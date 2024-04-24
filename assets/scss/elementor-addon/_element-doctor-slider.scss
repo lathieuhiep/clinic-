@@ -1,148 +1,69 @@
 .element-doctor-slider {
   &__warp {
     .item {
-      position: relative;
+      background-color: var(--color-white);
 
-      @media (min-width: 1200px) {
-        padding: 7.5rem 0;
-      }
-
-      @media (min-width: 992px) and (max-width: 1199px) {
-        padding: 5rem 0;
-        display: grid;
-        grid-gap: 2.4rem;
-        grid-template-columns: 30rem 1fr;
+      img {
+        width: auto;
       }
 
       &__thumbnail {
-        @media (min-width: 1200px) {
-          width: 50.3rem;
-        }
+        background-image: url("../images/bk-avatar-doi-ngu-bac-si.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 30rem;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
 
-        @media (min-width: 1200px) {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          z-index: 1;
-          transform: translateY(-50%);
-        }
-
-        @media (max-width: 991px) {
-          max-width: 36.6rem;
-          margin: 0 auto 2rem;
+        img {
+          display: inline-block;
         }
       }
 
       &__body {
-        @media (min-width: 1200px) {
-          position: relative;
-          margin: 0 .5rem 0 auto;
-          padding: 2.5rem 8rem 4rem 14.7rem;
-          max-width: 81.1rem;
-          border-radius: 14.25rem;
-          background-color: var(--color-white);
-          box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-        }
+        padding: 2.6rem;
 
         .title {
-          margin-bottom: 1rem;
-          color: #0AA389;
-          font-size: 2.4rem;
-          line-height: 1.1;
-          font-family: $body-font-family;
+          margin-bottom: .8rem;
+          font-size: 1.8rem;
+          font-family: var(--body-font-family);
         }
 
-        .position {
-          font-size: 2rem;
-          font-weight: 500;
-          color: #FF8621;
-          line-height: 1.1;
+        .meta {
+          margin-bottom: 1rem;
+          line-height: 1.4;
+          font-family: var(--heading-font-family);
         }
 
         .content {
-          font-size: 1.5rem;
-
-          ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-
-            li {
-              position: relative;
-              padding-left: 5rem;
-
-              ~ li {
-                margin-top: 1.6rem;
-              }
-
-              &:before {
-                position: absolute;
-                content: url("../images/icon-check-list.png");
-                top: -3px;
-                left: 0;
-              }
-            }
-          }
+          margin-bottom: 1rem;
         }
 
         .action-box {
-          @media (min-width: 1200px) {
-            position: absolute;
-            right: 7rem;
-            bottom: -3.6rem;
-          }
-
-          @media (max-width: 1199px) {
-            margin-top: 1.6rem;
-            text-align: center;
-          }
+          display: grid;
+          grid-gap: 1rem;
+          grid-template-columns: repeat(2, 1fr);
 
           a {
-            display: inline-block;
+            padding: 1rem;
+            border-radius: .5rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-align: center;
+            color: var(--color-white);
+          }
+
+          &__booking {
+            background-color: #2E8F56;
+          }
+
+          &__chat {
+            background-color: #E6171F;
           }
         }
-      }
-    }
-  }
-}
-
-.element-doctor-avatar {
-  width: 45rem;
-  margin: 0 auto;
-
-  @media (max-width: 991px) {
-    display: none;
-  }
-
-  .item {
-    width: 10rem;
-    height: 10rem;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 1rem;
-    background-image: url("../images/bk-avatar.png");
-    background-position: center;
-    background-size: 100%;
-    cursor: pointer;
-    @include transition();
-
-    img {
-      margin: 0 auto;
-      width: auto;
-      height: 9.3rem;
-      object-fit: contain;
-      transform: translateY(5px);
-    }
-  }
-
-  .owl-stage-outer {
-    padding: 1rem 0;
-  }
-
-  .owl-item {
-    &.current {
-      .item {
-        box-shadow: 0 5px 5px 0 rgba(0,0,0,.5);
       }
     }
   }

@@ -2,11 +2,7 @@
   &__grid {
     display: grid;
 
-    @media (min-width: 992px) {
-      grid-template-columns: repeat(5, 1fr);
-    }
-
-    @media (min-width: 768px) and (max-width: 991px) {
+    @media (min-width: 768px) {
       grid-template-columns: repeat(4, 1fr);
     }
 
@@ -24,46 +20,6 @@
       border: 1px solid #BDD7EB;
       background-color: #F2F8FF;
       @include transition();
-
-      @media (min-width: 992px) {
-        &:nth-child(n+2):not(:nth-child(5n+1)) {
-          border-left: transparent;
-        }
-
-        &:nth-child(n+6) {
-          border-top: transparent;
-        }
-      }
-
-      @media (min-width: 768px) and (max-width: 991px) {
-        &:nth-child(n+2):not(:nth-child(4n+1)) {
-          border-left: transparent;
-        }
-
-        &:nth-child(n+5) {
-          border-top: transparent;
-        }
-      }
-
-      @media (min-width: 576px) and (max-width: 767px) {
-        &:nth-child(n+2):not(:nth-child(3n+1)) {
-          border-left: transparent;
-        }
-
-        &:nth-child(n+4) {
-          border-top: transparent;
-        }
-      }
-
-      @media (max-width: 575px) {
-        &:nth-child(n+2):not(:nth-child(2n+1)) {
-          border-left: transparent;
-        }
-
-        &:nth-child(n+3) {
-          border-top: transparent;
-        }
-      }
 
       &__link {
         position: absolute;
@@ -121,22 +77,8 @@
       }
 
       &:hover {
-        background-color: var(--clinic-theme-secondary-color);
-
-        .item__image {
-          .image-main {
-            opacity: 0;
-            visibility: hidden;
-          }
-
-          .image-change {
-            opacity: 1;
-            visibility: visible;
-          }
-        }
-
         .item__title {
-          color: var(--color-white);
+          color: var(--clinic-theme-secondary-color);
         }
       }
     }
