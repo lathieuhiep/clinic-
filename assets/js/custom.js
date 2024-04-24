@@ -11,13 +11,6 @@
     let timer_clear;
 
     $( document ).ready( function () {
-
-        // handle click back to top
-        $('#back-top').on( 'click', function (e) {
-            e.preventDefault()
-            $('html').scrollTop(0)
-        } )
-
         // handle click show submenu on mobile
         handleClickShowSubmenuOnMobile()
 
@@ -35,27 +28,6 @@
     $( window ).on( "load", function() {
         // handle remove loading page after loaded successfully
         handleRemoveLoadingPage()
-
-        // show popup contact
-        handleShowPopupContact()
-    })
-
-    // scroll event
-    $( window ).scroll( function() {
-        if ( timer_clear ) clearTimeout(timer_clear)
-
-        timer_clear = setTimeout( function() {
-            /* Start scroll back top */
-            const $scrollTop = $(this).scrollTop();
-
-            if ( $scrollTop > 200 ) {
-                $('#back-top').addClass('active_top')
-            } else {
-                $('#back-top').removeClass('active_top')
-            }
-            /* End scroll back top */
-        }, 100 );
-
     })
 
     /*
@@ -174,22 +146,6 @@
 
                 window.open(link, '_parent');
             })
-        }
-    }
-
-    // handle show popup contact
-    const handleShowPopupContact = () => {
-        const popupModalContact = $('#popup-modal-contact')
-
-        if ( popupModalContact.length ) {
-            const time = parseInt( popupModalContact.data('time') ?? 5000  )
-            const modal = new bootstrap.Modal(document.getElementById('popup-modal-contact'), {
-                keyboard: false
-            })
-
-            setTimeout(function () {
-                modal.show(popupModalContact)
-            }, time)
         }
     }
 } )( jQuery );
