@@ -1,6 +1,7 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Utils;
 use Elementor\Widget_Base;
@@ -146,6 +147,42 @@ class Clinic_Elementor_About_Us extends Widget_Base
 			]
 		);
 
+		$this->end_controls_section();
+
+        // contact section
+        $this->start_controls_section(
+            'contact_section',
+            [
+                'label' => esc_html__( 'Liên hệ', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'justify_content_align',
+            [
+                'label'     =>  esc_html__( 'Justify content', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'justify-content-start'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'justify-content-center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'justify-content-end' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'justify-content-start',
+            ]
+        );
+
         $this->add_control(
             'show_contact',
             [
@@ -166,7 +203,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
             ]
         );
 
-		$this->end_controls_section();
+        $this->end_controls_section();
 
 		// style heading
 		$this->start_controls_section(
@@ -346,6 +383,25 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		);
 
 		$this->end_controls_section();
+
+        // image style
+        $this->start_controls_section(
+            'image_style_section',
+            [
+                'label' => esc_html__( 'Ảnh', 'smartcity' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'image_border',
+                'selector' => '{{WRAPPER}} .element-about-us__warp .item.item-thumbnail img',
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
 	/**
@@ -381,8 +437,8 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	                    <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
 
-                    <?php if ( $settings['show_contact'] ) : ?>
-                        <div class="action-box d-flex">
+                    <?php if ( $settings['show_contact'] == 'show' ) : ?>
+                        <div class="action-box d-flex <?php echo esc_attr( $settings['justify_content_align'] ); ?>">
                             <?php if ( $link_chat ) : ?>
                                 <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
                                     <?php esc_html_e('Gặp bác sĩ tư vấn', "clinic"); ?>

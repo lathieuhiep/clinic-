@@ -18,7 +18,7 @@
         font-size: 1.6rem;
 
         a {
-          color: var(--heading-color);
+          color: var(--clinic-theme-secondary-color);
         }
       }
 
@@ -65,7 +65,7 @@
         font-size: 1.6rem;
         font-weight: 700;
         border-radius: 2rem;
-        background: #60AD80;
+        background: var(--clinic-theme-secondary-color);
 
         &:hover {
           color: var(--body-color);

@@ -13,11 +13,12 @@ function clinic_get_version_theme(): string {
 
 // check is blog
 function clinic_is_blog (): bool {
-	return ( is_archive() || is_category() || is_tag() || is_author() || is_home() );
+	return ( is_archive() || is_category() || is_tag() || is_author() || is_home() || is_search() );
 }
 
 // Callback Comment List
-function clinic_comments( $clinic_comment, $clinic_comment_args, $clinic_comment_depth ) {
+function clinic_comments( $clinic_comment, $clinic_comment_args, $clinic_comment_depth ): void
+{
 	if ( $clinic_comment_args['style'] == 'div' ) :
 		$clinic_comment_tag       = 'div';
 		$clinic_comment_add_below = 'comment';

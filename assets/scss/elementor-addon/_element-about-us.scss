@@ -52,5 +52,13 @@
         }
       }
     }
+
+    &.style-2 {
+      .item-thumbnail {
+        @media (min-width: 992px) {
+          order: 2;
+        }
+      }
+    }
   }
 }

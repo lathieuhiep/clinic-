@@ -1,5 +1,6 @@
 <?php
 
+use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -36,19 +37,6 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 		);
 
 		$this->add_control(
-			'style',
-			[
-				'label' => esc_html__('Kiểu', 'clinic'),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'style-1',
-				'options' => [
-					'style-1' => esc_html__('Kiểu 1', 'clinic'),
-					'style-2' => esc_html__('Kiểu 2', 'clinic'),
-				],
-			]
-		);
-
-		$this->add_control(
 			'heading',
 			[
 				'label'       => esc_html__( 'Heading', 'clinic' ),
@@ -70,15 +58,46 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+        // style heading
+        $this->start_controls_section(
+            'style_heading_section',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'heading_color',
+            [
+                'label' => esc_html__( 'Màu', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 .heading' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'heading_typography',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 .heading',
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
-	protected function render() {
+	protected function render(): void
+    {
 		$settings = $this->get_settings_for_display();
 
 		if ( ! empty( $settings['contact_form_list'] ) ) :
 			?>
 
-            <div class="element-contact-form-7 <?php echo esc_attr( $settings['style'] ); ?>">
+            <div class="element-contact-form-7">
                 <?php if ( $settings['heading'] ) : ?>
                     <h3 class="heading text-center">
 		                <?php echo esc_html( $settings['heading'] ); ?>

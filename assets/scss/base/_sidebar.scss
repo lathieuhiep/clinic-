@@ -293,7 +293,7 @@ section {
 
   .widget {
     border-radius: .5rem;
-    border: 1px solid var(--heading-color);
+    border: 1px solid var(--clinic-theme-secondary-color);
     background: #FFF;
     overflow: hidden;
 
@@ -303,7 +303,7 @@ section {
       text-align: center;
       text-transform: uppercase;
       color: var(--color-white);
-      background: linear-gradient(180deg, #208B45 0%, #1FD75E 100%);
+      background: var(--clinic-theme-secondary-color);
     }
 
     > div,
@@ -338,13 +338,13 @@ section {
 
       .widget-warp {
         padding: 0;
-        border: 1px solid #078450;
+        border: 1px solid var(--clinic-theme-secondary-color);
 
         .widget-title {
           padding: 2.4rem 1.6rem 1.4rem;
           color: #FF0000;
           background: #ECECEC;
-          border-bottom: 1px solid #078450;
+          border-bottom: 1px solid var(--clinic-theme-secondary-color);
         }
       }
 
