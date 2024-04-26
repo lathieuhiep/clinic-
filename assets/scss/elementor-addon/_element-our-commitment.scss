@@ -1,0 +1,43 @@
+.element-our-commitment {
+  &__warp {
+    display: grid;
+    grid-gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 479px) and (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item {
+      padding: 2.3rem 1.8rem;
+      border-radius: 1rem;
+      background-color: var(--clinic-tertiary-color);
+
+      &__thumbnail {
+        margin: 0 auto 3.2rem;
+        @include square(15rem, 50%);
+        overflow: hidden;
+        background-color: var(--color-white);
+        @include flex-center();
+      }
+
+      &__title {
+        margin-bottom: 2.1rem;
+        color: var(--clinic-secondary-color);
+        font-size: 1.8rem;
+        font-weight: 900;
+        font-family: var(--body-font-family);
+        letter-spacing: -0.01rem;
+      }
+
+      &__content {
+        font-size: 1.8rem;
+        line-height: 1.5;
+        color: var(--color-white);
+      }
+    }
+  }
+}

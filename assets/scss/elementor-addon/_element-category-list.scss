@@ -1,0 +1,156 @@
+.element-category-list {
+  &__grid {
+    display: grid;
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 575px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item {
+      position: relative;
+      padding: 3rem 1.2rem;
+      border: 1px solid #BDD7EB;
+      background-color: #F2F8FF;
+      @include transition();
+
+      @media (min-width: 992px) {
+        &:nth-child(n+2):not(:nth-child(5n+1)) {
+          border-left: transparent;
+        }
+
+        &:nth-child(n+6) {
+          border-top: transparent;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        &:nth-child(n+2):not(:nth-child(4n+1)) {
+          border-left: transparent;
+        }
+
+        &:nth-child(n+5) {
+          border-top: transparent;
+        }
+      }
+
+      @media (min-width: 576px) and (max-width: 767px) {
+        &:nth-child(n+2):not(:nth-child(3n+1)) {
+          border-left: transparent;
+        }
+
+        &:nth-child(n+4) {
+          border-top: transparent;
+        }
+      }
+      
+      @media (max-width: 575px) {
+        &:nth-child(n+2):not(:nth-child(2n+1)) {
+          border-left: transparent;
+        }
+
+        &:nth-child(n+3) {
+          border-top: transparent;
+        }
+      }
+
+      &__link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+      }
+
+      &__image {
+        position: relative;
+        margin: 0 auto 1.5rem;
+        width: 10rem;
+        height: 8rem;
+        overflow: hidden;
+        @include flex-center-vert();
+
+        @media (max-width: 575px) {
+          width: 7.2rem;
+          height: 6.2rem;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          @include transition();
+
+          &.image-change {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+          }
+        }
+      }
+
+      &__title {
+        font-size: 1.8rem;
+        color: var(--body-color);
+        font-family: var(--heading-font-family);
+        @include transition();
+
+        @media (min-width: 576px) and (max-width: 767px) {
+          font-size: 1.5rem;
+        }
+
+        @media (max-width: 575px) {
+          font-size: 1.4rem;
+        }
+      }
+
+      &:hover {
+        background-color: var(--clinic-tertiary-color);
+
+        .item__image {
+          .image-main {
+            opacity: 0;
+            visibility: hidden;
+          }
+
+          .image-change {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        .item__title {
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}

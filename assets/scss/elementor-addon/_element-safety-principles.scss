@@ -1,0 +1,108 @@
+.element-safety-principles {
+  &__warp {
+    @media (min-width: 1200px) {
+      grid-template-columns: 1fr 50rem 1fr;
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+      grid-template-columns: 1fr 30rem 1fr;
+    }
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-gap: 2.4rem 1.2rem;
+    }
+
+    @media (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .item {
+      ~ .item {
+        @media (max-width: 767px) {
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    .item-thumbnail {
+      @media (min-width: 768px) {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+
+      @media (max-width: 767px) {
+        order: 3;
+      }
+    }
+
+    .item-group {
+      @media (min-width: 768px) {
+        padding-bottom: 2rem;
+      }
+
+      .repeater-item {
+        display: grid;
+        grid-gap: 1rem;
+        align-items: end;
+        line-height: 2.9rem;
+
+        ~ .repeater-item {
+          @media (min-width: 992px) {
+            margin-top: 6.2rem;
+          }
+
+          @media (min-width: 768px) and (max-width: 991px) {
+            margin-top: 3rem;
+          }
+
+          @media (max-width: 767px) {
+            margin-top: 1rem;
+          }
+        }
+      }
+
+      .title {
+        margin: 0;
+        font-size: 1.6rem;
+        color: #000;
+
+        @media (max-width: 767px) {
+          font-weight: 400;
+          order: 1;
+        }
+      }
+
+      .number {
+        font-size: 2.5rem;
+        color: #FCAE19;
+
+        @media (max-width: 767px) {
+          font-size: 1.6rem;
+          transform: translateY(3px);
+        }
+      }
+
+      &.item-left {
+        .repeater-item {
+          @media (min-width: 768px) {
+            grid-template-columns: 1fr auto;
+          }
+
+          @media (max-width: 767px) {
+            grid-template-columns: auto 1fr;
+          }
+        }
+      }
+
+      &.item-right {
+        .repeater-item {
+          grid-template-columns: auto 1fr;
+        }
+      }
+    }
+  }
+}
