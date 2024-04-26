@@ -407,3 +407,37 @@ pre {
     background-position: 200% center;
   }
 }
+
+.contact-us-mobile {
+  padding: 0 1.2rem;
+  position: sticky;
+  bottom: 0;
+  background: #ffffff;
+  z-index: 999;
+
+  img {
+    width: 100%;
+  }
+
+  .item {
+    position: absolute;
+    top: 0;
+    height: 100%;
+
+    &.chat {
+      left: 1.2rem;
+      width: 32%;
+    }
+
+    &.phone {
+      left: calc(32% + 1.2rem);
+      width: 38%;
+    }
+
+    &.zalo {
+      left: calc(32% + 38% + 1.2rem);
+      width: 23%;
+    }
+
+  }
+}
