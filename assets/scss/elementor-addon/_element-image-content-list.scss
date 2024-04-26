@@ -1,0 +1,28 @@
+.element-image-content-list {
+  &__grid {
+    .item {
+      display: grid;
+      grid-gap: 1.5rem;
+      grid-template-columns: 5rem 1fr;
+
+      ~ .item {
+        margin-top: 2rem;
+      }
+
+      &__content {
+        .heading {
+          margin-bottom: .9rem;
+          font-size: 1.8rem;
+          font-weight: 900;
+          color: #0F807F;
+          line-height: 2.1rem;
+        }
+
+        .desc {
+          font-size: 1.7rem;
+          line-height: 2.3rem;
+        }
+      }
+    }
+  }
+}

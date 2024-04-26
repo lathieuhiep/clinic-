@@ -1,0 +1,25 @@
+.element-image-content-grid {
+  &__box {
+    display: grid;
+    grid-gap: 1.5rem 1.1rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 479px) and (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item {
+      padding: 2.4rem 1.5rem 2rem;
+      border-radius: .5rem;
+      background-color: var(--color-white);
+      box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
+
+      &__thumbnail {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

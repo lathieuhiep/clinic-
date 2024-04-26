@@ -1,0 +1,40 @@
+.element-number-list-content {
+  &__grid {
+    .item {
+      display: grid;
+      grid-template-columns: 8rem 1fr;
+      border-radius: .5rem;
+      border: 1px solid #00A651;
+      min-height: 8rem;
+      background-color: var(--color-white);
+
+      ~ .item {
+        margin-top: 1rem;
+      }
+
+      &__number {
+        color: var(--color-white);
+        font-size: 4rem;
+        font-weight: 800;
+        background-color: #00A651;
+      }
+
+      &__content {
+        padding: 2.2rem 1.2rem 1.8rem;
+
+        .title {
+          margin-bottom: .2rem;
+          color: #000;
+          font-size: 1.6rem;
+          line-height: 2.2rem;
+        }
+
+        .desc {
+          color: #000;
+          font-size: 1.6rem;
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+}

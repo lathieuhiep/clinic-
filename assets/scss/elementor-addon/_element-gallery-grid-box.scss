@@ -1,0 +1,54 @@
+.element-gallery-grid-box {
+  &__warp {
+    display: grid;
+
+    @media (min-width: 992px) {
+      grid-gap: 4.2rem 3rem;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      grid-gap: 2.4rem;
+    }
+
+    @media (max-width: 767px) {
+      grid-gap: 1rem;
+    }
+
+    @media (min-width: 576px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 575px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen {
+
+    }
+
+    .item {
+      &__thumbnail {
+        margin-bottom: 1.5rem;
+      }
+
+      &__title {
+        margin-bottom: 0;
+        font-family: var(--font-body);
+
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
+
+        @media (max-width: 767px) {
+          font-size: 1.5rem;
+        }
+      }
+
+      &__sub-title {
+        @media (max-width: 767px) {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}

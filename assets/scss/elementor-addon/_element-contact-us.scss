@@ -1,0 +1,60 @@
+.element-contact-us {
+  &__title {
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
+    font-weight: 900;
+    font-family: var(--font-body);
+  }
+
+  &__list {
+    display: grid;
+    grid-gap: 2.8rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: "";
+        top: .7rem;
+        left: .7rem;
+        width: 100%;
+        height: 100%;
+        border-radius: .5rem;
+        border: 1px solid #ACCFCC;
+      }
+
+      .box {
+        position: relative;
+        padding: 1.2rem;
+        min-height: 16.1rem;
+        @include flex-center();
+        @include flex-column();
+      }
+
+      &__icon {
+        @include square(4.6rem);
+        margin-bottom: 2rem;
+
+        svg {
+          @include square(4.6rem);
+        }
+      }
+
+      &__content {
+        text-align: center;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        line-height: 2rem;
+      }
+    }
+  }
+}

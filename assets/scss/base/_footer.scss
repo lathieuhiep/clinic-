@@ -1,0 +1,122 @@
+.global-footer {
+  section {
+    &.widget {
+      margin-bottom: 2.3rem;
+
+      .textwidget {
+        iframe {
+          min-height: 38rem;
+        }
+      }
+
+      .info-company-widget {
+        color: var(--color-white);
+      }
+
+      .open-hours-widget {
+        @media (min-width: 992px) {
+          padding: 0 3rem;
+        }
+
+        &__warp {
+          border-color: var(--color-white);
+        }
+
+        .item {
+          &__note {
+            color: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+
+  &__column {
+    padding: 4rem 0 2rem;
+    background: linear-gradient(180deg, #1E944B 0%, #137260 100%);
+  }
+}
+
+.contact-us-group {
+  position: sticky;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 999;
+
+  .thumbnail {
+    width: 100%;
+  }
+
+  a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    &.phone {
+      width: 62%;
+      left: 0;
+    }
+
+    &.chat {
+      right: 0;
+      width: 38%;
+    }
+  }
+}
+
+@-webkit-keyframes flicker-animation {
+  0% {
+    color: #F8CD0A;
+  }
+  50% {
+    color: #fff;
+  }
+  100% {
+    color: #F8CD0A;
+  }
+}
+
+@-moz-keyframes flicker-animation {
+  0% {
+    color: #F8CD0A;
+  }
+  50% {
+    color: #fff;
+  }
+  100% {
+    color: #F8CD0A;
+  }
+}
+
+@-o-keyframes flicker-animation {
+  0% {
+    color: #F8CD0A;
+  }
+  50% {
+    color: #fff;
+  }
+  100% {
+    color: #F8CD0A;
+  }
+}
+
+@keyframes flicker-animation {
+  0% {
+    color: #F8CD0A;
+  }
+  50% {
+    color: #fff;
+  }
+  100% {
+    color: #F8CD0A;
+  }
+}
+
+.flicker {
+  -webkit-animation: flicker-animation 700ms infinite;
+  -moz-animation: flicker-animation 700ms infinite;
+  -o-animation: flicker-animation 700ms infinite;
+  animation: flicker-animation 700ms infinite;
+}

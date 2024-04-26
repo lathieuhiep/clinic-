@@ -1,0 +1,67 @@
+/*
+Theme Name: Clinic
+Theme URI: https://uxui.vn/
+Author: DiepLK
+Author URI: https://www.facebook.com/lathieuhiep
+Version: 1.0.0
+Description: Clinic Theme
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, three-columns, four-columns, right-sidebar,  theme-options
+Text Domain: clinic
+*/
+
+/**
+* Table of Contents:
+*
+# General
+# WordPress Core
+# Header
+# Comment Form
+# Page
+# Sidebar
+# Contact Form 7
+# Footer
+* -----------------------------------------------------------------------------
+*/
+
+@import "variables-site/variables";
+
+/**
+# General
+-----------------------------------------------------------------------------*/
+@import "base/general";
+
+/* WordPress Core
+-------------------------------------------------------------- */
+@import "base/wp-core";
+
+/**
+# Header
+-----------------------------------------------------------------------------*/
+@import "base/header";
+
+/**
+# Comment Form
+-----------------------------------------------------------------------------*/
+@import "base/comment-form";
+
+/**
+# Page
+-----------------------------------------------------------------------------*/
+@import "base/page";
+
+/**
+# Sidebar
+-----------------------------------------------------------------------------*/
+@import "base/sidebar";
+
+/**
+# Contact Form 7
+-----------------------------------------------------------------------------*/
+@import "base/cf7";
+
+/**
+# Footer
+-----------------------------------------------------------------------------*/
+@import "base/footer";

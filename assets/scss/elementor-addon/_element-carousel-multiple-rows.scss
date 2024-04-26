@@ -1,0 +1,41 @@
+.element-carousel-multiple-rows {
+  .col-box {
+    .item {
+      display: grid;
+      grid-gap: 3.4rem;
+
+      @media (min-width: 576px) {
+        grid-template-columns: repeat(2, 1fr);
+
+        &:nth-child(odd) {
+          .item__content {
+            order: 2;
+          }
+
+          .item__thumbnail {
+            order: 1;
+          }
+        }
+      }
+
+      ~ .item {
+        margin-top: 5.7rem;
+      }
+
+      &__content {
+        .title {
+          font-size: 2rem;
+          font-family: var(--font-body);
+        }
+      }
+    }
+  }
+
+  .lSSlideOuter {
+    .lSPager {
+      &.lSpg {
+        margin-top: 3rem !important;
+      }
+    }
+  }
+}
