@@ -128,16 +128,6 @@ class Clinic_Elementor_About_Us extends Widget_Base
 			]
 		);
 
-        $this->add_control(
-            'sub_heading',
-            [
-                'label'       => esc_html__( 'Tiêu đề dưới', 'clinic' ),
-                'type'        => Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Tiêu đề dưới', 'clinic' ),
-                'label_block' => true,
-            ]
-        );
-
 		$this->add_control(
 			'desc',
 			[
@@ -183,26 +173,6 @@ class Clinic_Elementor_About_Us extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'show_contact',
-            [
-                'label' => esc_html__('Hiển thị liên hệ', 'clinic'),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'show' => [
-                        'title' => esc_html__('Có', 'clinic'),
-                        'icon' => 'eicon-check',
-                    ],
-
-                    'hide' => [
-                        'title' => esc_html__('Không', 'clinic'),
-                        'icon' => 'eicon-ban',
-                    ]
-                ],
-                'default' => 'show'
-            ]
-        );
-
         $this->end_controls_section();
 
 		// style heading
@@ -240,7 +210,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         'icon'  =>  'eicon-text-align-justify',
                     ],
                 ],
-                'default' => 'text-center',
+                'default' => 'text-start',
             ]
         );
 
@@ -264,65 +234,6 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		);
 
 		$this->end_controls_section();
-
-        // style sub heading
-        $this->start_controls_section(
-            'style_sub_heading_section',
-            [
-                'label' => esc_html__( 'Tiêu đề dưới', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'sub_heading_align',
-            [
-                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
-                'type'      =>  Controls_Manager::CHOOSE,
-                'options'   =>  [
-                    'text-start'  =>  [
-                        'title' =>  esc_html__( 'Left', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-left',
-                    ],
-
-                    'text-center' => [
-                        'title' =>  esc_html__( 'Center', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-center',
-                    ],
-
-                    'text-end' => [
-                        'title' =>  esc_html__( 'Right', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-right',
-                    ],
-                    'text-justify' => [
-                        'title' =>  esc_html__( 'Justify', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-justify',
-                    ],
-                ],
-                'default' => 'text-center',
-            ]
-        );
-
-        $this->add_control(
-            'sub_heading_color',
-            [
-                'label' => esc_html__( 'Màu', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-about-us__warp .item .sub-heading' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'sub_heading_typography',
-                'selector' => '{{WRAPPER}} .element-about-us__warp .item .sub-heading',
-            ]
-        );
-
-        $this->end_controls_section();
 
 		// style desc
 		$this->start_controls_section(
@@ -383,25 +294,6 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		);
 
 		$this->end_controls_section();
-
-        // image style
-        $this->start_controls_section(
-            'image_style_section',
-            [
-                'label' => esc_html__( 'Ảnh', 'smartcity' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'image_border',
-                'selector' => '{{WRAPPER}} .element-about-us__warp .item.item-thumbnail img',
-            ]
-        );
-
-        $this->end_controls_section();
 	}
 
 	/**
@@ -414,9 +306,6 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
-
-        $link_chat = clinic_get_opt_link_chat_doctor();
-        $medical_appointment_form = clinic_get_opt_medical_appointment();
     ?>
 		<div class="element-about-us">
 			<div class="element-about-us__warp <?php echo esc_attr( $settings['style_layout'] ); ?>">
@@ -429,29 +318,9 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         <?php echo esc_html( $settings['heading'] ); ?>
                     </h3>
 
-                    <h4 class="sub-heading <?php echo esc_attr($settings['sub_heading_align']); ?>">
-                        <?php echo esc_html( $settings['sub_heading'] ); ?>
-                    </h4>
-
                     <div class="desc <?php echo esc_attr($settings['desc_align']); ?>">
 	                    <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
-
-                    <?php if ( $settings['show_contact'] == 'show' ) : ?>
-                        <div class="action-box d-flex <?php echo esc_attr( $settings['justify_content_align'] ); ?>">
-                            <?php if ( $link_chat ) : ?>
-                                <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                                    <?php esc_html_e('Gặp bác sĩ tư vấn', "clinic"); ?>
-                                </a>
-                            <?php endif; ?>
-
-                            <?php if ( $medical_appointment_form ) : ?>
-                                <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                    <?php esc_html_e('Đặt lịch hẹn khám', "clinic"); ?>
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
                 </div>
 			</div>
 		</div>

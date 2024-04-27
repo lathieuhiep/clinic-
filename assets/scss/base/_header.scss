@@ -25,10 +25,9 @@
     }
 
     .info {
-      display: flex;
-      gap: 1.2rem;
-      align-items: center;
-      justify-content: space-between;
+      display: grid;
+      grid-gap: 2.4rem;
+      grid-template-columns: repeat(3, auto);
 
       p {
         margin: 0;
@@ -52,7 +51,7 @@
 
         &__content {
           strong, .phone {
-            color: var(--theme-quaternary-color);
+            color: var(--clinic-theme-quaternary-color);
 
             @media (min-width: 1200px) {
               font-size: 1.8rem;
@@ -66,7 +65,15 @@
 
         i {
           font-size: 4rem;
-          color: var(--clinic-theme-secondary-color);
+          color: var(--clinic-theme-fifth-color);
+        }
+
+        &.item-zalo {
+          grid-template-columns: 9.8rem 1fr;
+
+          a {
+            color: var(--clinic-theme-quaternary-color);
+          }
         }
       }
     }
@@ -104,7 +111,8 @@
           font-size: 1.2rem;
           font-weight: 500;
           color: var(--color-white);
-          background-color: #FE5B58;
+          border-radius: .5rem;
+          background-color: var(--clinic-theme-primary-color);
         }
       }
 
@@ -118,7 +126,7 @@
 .navbar-main {
   position: relative;
   height: 6.8rem;
-  background-color: var(--clinic-theme-secondary-color);
+  background-color: var(--clinic-theme-primary-color);
 
   > div {
     height: inherit;
@@ -141,10 +149,6 @@
   .primary-menu {
     position: relative;
     height: inherit;
-
-    @media (min-width: 1200px) {
-      padding-left: 5rem;
-    }
 
     > ul {
       > li {
@@ -471,7 +475,7 @@
 }
 
 .top-nav-mobile {
-  background-color: var(--clinic-theme-tertiary-color);
+  background-color: var(--clinic-theme-primary-color);
 
   .container {
     padding-left: 0;

@@ -1,7 +1,7 @@
 .element-about-us {
   &__warp {
     display: grid;
-    grid-gap: 5rem;
+    grid-gap: 4rem;
 
     @media (min-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
@@ -16,40 +16,16 @@
       }
 
       .heading {
+        margin-bottom: 4.6rem;
         font-size: 3.5rem;
         font-family: var(--body-font-family);
       }
 
-      .sub-heading {
-        font-size: 2.9rem;
-      }
-
-      .action-box {
-        margin-top: 2.4rem;
-        gap: 1.2rem;
-
-        @media (max-width: 991px) {
-          justify-content: center;
-        }
-
-        a {
-          padding: 1.2rem 1.8rem 1rem;
-          display: inline-block;
-          text-align: center;
-          font-size: 1.6rem;
-          font-weight: 700;
-          border-radius: 5rem;
-        }
-
-        &__chat {
-          color: #0F4137;
-          background: linear-gradient(180deg,#FFFF00 0,#FE6F01 100%);
-        }
-
-        &__booking {
-          color: #FFFFFF;
-          background: linear-gradient(180deg,#FF0000 0,#FF7777 100%);
-        }
+      .desc {
+        padding: 4.2rem 4rem;
+        color: var(--color-white);
+        border-radius: 1rem;
+        background-color: #358BC9;
       }
     }
 

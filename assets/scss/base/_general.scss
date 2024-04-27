@@ -7,7 +7,6 @@
   --font-size-body: #{$font-size-body};
   --body-color: #{$body-color};
   --background-body: #{$background-body};
-  --theme-quaternary-color: #{$theme-quaternary-color};
 
   --heading-font-family: #{$heading-font-family};
   --heading-color: #{$heading-color};
@@ -18,8 +17,12 @@
   --font-size-h5: #{$h5-font-size};
   --font-size-h6: #{$h6-font-size};
 
+  --clinic-theme-primary-color: #{$theme-primary-color};
   --clinic-theme-secondary-color: #{$theme-secondary-color};
   --clinic-theme-tertiary-color: #{$theme-tertiary-color};
+  --clinic-theme-quaternary-color: #{$theme-quaternary-color};
+  --clinic-theme-fifth-color: #{$theme-fifth-color};
+
   --color-white: #{$color-white};
   --color-salem: #{$color-salem};
   --color-cadmium-yellow: #{$color-cadmium-yellow};
