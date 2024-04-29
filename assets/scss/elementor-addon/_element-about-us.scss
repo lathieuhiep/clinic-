@@ -20,19 +20,64 @@
         font-size: 3.5rem;
         font-family: var(--body-font-family);
       }
+    }
 
-      .desc {
-        padding: 4.2rem 4rem;
-        color: var(--color-white);
-        border-radius: 1rem;
-        background-color: #358BC9;
+    &.style-1 {
+      .item {
+        .desc {
+          padding: 4.2rem 4rem;
+          color: var(--color-white);
+          border-radius: 1rem;
+          background-color: #358BC9;
+        }
       }
     }
 
     &.style-2 {
-      .item-thumbnail {
-        @media (min-width: 992px) {
-          order: 2;
+      .item {
+        &.item-content {
+          display: flex;
+          flex-direction: column;
+          min-height: 100%;
+        }
+
+        .desc {
+          padding: 8rem 6rem;
+          position: relative;
+          height: 100%;
+          min-height: 22.8rem;
+          @include flex-center-vert();
+          flex: 1;
+
+          &:before,
+          &:after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            left: 0;
+            height: 22.8rem;
+            background-size: 100%;
+            background-repeat: no-repeat;
+          }
+
+          &:before {
+            top: 0;
+            background-image: url("../images/quote-top.png");
+            background-position: top left;
+          }
+
+          &:after {
+            bottom: 0;
+            background-image: url("../images/quote-bottom.png");
+            background-position: bottom left;
+          }
+
+          &__box {
+            min-height: 22.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
         }
       }
     }

@@ -1,6 +1,11 @@
 .element-doctor-slider {
   &__warp {
+    padding: 0 3rem;
+
     .item {
+      padding: 1rem 1.7rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
       background-color: var(--color-white);
 
       img {
@@ -12,6 +17,7 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        border-radius: .5rem;
         height: 30rem;
         overflow: hidden;
         display: flex;
@@ -24,44 +30,71 @@
       }
 
       &__body {
-        padding: 2.6rem;
+        padding-top: 2.5rem;
 
         .title {
-          margin-bottom: .8rem;
+          margin-bottom: 0;
           font-size: 1.8rem;
           font-family: var(--body-font-family);
         }
 
         .meta {
-          margin-bottom: 1rem;
+          margin-bottom: 1.6rem;
           line-height: 1.4;
           font-family: var(--heading-font-family);
         }
 
         .content {
-          margin-bottom: 1rem;
+          margin-bottom: 1.4rem;
+          text-align: justify;
         }
 
         .action-box {
-          display: grid;
-          grid-gap: 1rem;
-          grid-template-columns: repeat(2, 1fr);
+          text-align: center;
 
           a {
             padding: 1rem;
-            border-radius: .5rem;
-            font-size: 1.5rem;
+            border-radius: 5rem;
+            font-size: 1.4rem;
             font-weight: 500;
             text-align: center;
             color: var(--color-white);
+            min-width: 19.5rem;
+            min-height: 3.9rem;
           }
 
           &__booking {
-            background-color: #2E8F56;
+            background: linear-gradient(180deg, #D14040 0%, #951D21 100%);
+
+            &:hover {
+              background: linear-gradient(180deg, var(--clinic-theme-primary-color) 0%, var(--clinic-theme-secondary-color) 100%)
+            }
+          }
+        }
+      }
+    }
+
+    &.owl-carousel {
+      .owl-stage-outer {
+        padding: 1rem 0;
+      }
+
+      .owl-nav {
+        margin: 0;
+
+        button {
+          position: absolute;
+          margin: 0;
+          top: 50%;
+          font-size: 2rem;
+          transform: translateY(-50%);
+
+          &.owl-prev {
+            left: 0;
           }
 
-          &__chat {
-            background-color: #E6171F;
+          &.owl-next {
+            right: 0;
           }
         }
       }

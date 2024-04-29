@@ -3,6 +3,7 @@
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
@@ -283,6 +284,14 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 				],
 			]
 		);
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'list_box_shadow',
+                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item',
+            ]
+        );
 
 		$this->end_controls_section();
 

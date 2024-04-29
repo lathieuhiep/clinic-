@@ -314,12 +314,16 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 </div>
 
                 <div class="item item-content">
-                    <h3 class="heading <?php echo esc_attr($settings['heading_align']); ?>">
-                        <?php echo esc_html( $settings['heading'] ); ?>
-                    </h3>
+                    <?php if ( $settings['heading'] ) : ?>
+                        <h3 class="heading <?php echo esc_attr($settings['heading_align']); ?>">
+                            <?php echo esc_html( $settings['heading'] ); ?>
+                        </h3>
+                    <?php endif; ?>
 
                     <div class="desc <?php echo esc_attr($settings['desc_align']); ?>">
-	                    <?php echo wpautop( $settings['desc'] ); ?>
+                        <div class="desc__box position-relative z-1">
+                            <?php echo wpautop( $settings['desc'] ); ?>
+                        </div>
                     </div>
                 </div>
 			</div>

@@ -1,6 +1,5 @@
 <?php
 
-use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -80,7 +79,6 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 	protected function render(): void {
 		$settings = $this->get_settings_for_display();
 
-        $link_chat = clinic_get_opt_link_chat_doctor();
         $medical_appointment_form = clinic_get_opt_medical_appointment();
 
 		$limit_post     =   $settings['limit'];
@@ -106,7 +104,6 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 					while ( $query->have_posts() ) :
 						$query->the_post();
 
-						$position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
 						$specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
                     ?>
 
@@ -121,10 +118,6 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                                 </h3>
 
                                 <div class="meta text-center">
-                                    <p class="position m-0">
-                                        <?php echo esc_html( $position ) . ' '; ?>
-                                    </p>
-
                                     <p class="specialist m-0">
                                         <?php echo esc_html( $specialist ); ?>
                                     </p>
@@ -139,13 +132,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                                 <div class="action-box">
                                     <?php if ( $medical_appointment_form ) : ?>
                                         <a class="action-box__booking text-uppercase d-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                            <?php esc_html_e('Đặt hẹn', "clinic"); ?>
-                                        </a>
-                                    <?php endif; ?>
-
-                                    <?php if ( $link_chat ) : ?>
-                                        <a class="action-box__chat text-uppercase d-inline-block" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                                            <?php esc_html_e('Tư vấn', "clinic"); ?>
+                                            <?php esc_html_e('Đăng ký khám', "clinic"); ?>
                                         </a>
                                     <?php endif; ?>
                                 </div>

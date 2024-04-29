@@ -3,6 +3,7 @@
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
@@ -12,7 +13,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Circular_Progress extends Widget_Base
+class Clinic_Elementor_Procedure extends Widget_Base
 {
 
     /**
@@ -25,7 +26,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
      */
     public function get_name(): string
     {
-        return 'clinic-circular-progress';
+        return 'clinic-procedure';
     }
 
     /**
@@ -38,7 +39,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
      */
     public function get_title(): string
     {
-        return esc_html__('Thanh tiến độ hình tròn', 'clinic');
+        return esc_html__('Quy trình', 'clinic');
     }
 
     /**
@@ -49,9 +50,9 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
      * @access public
      * @return string Widget icon.
      */
-    public function get_icon(): string
+    public function get_icon()
     {
-        return 'eicon-counter-circle';
+        return 'eicon-gallery-grid';
     }
 
     /**
@@ -64,7 +65,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
      */
     public function get_keywords(): array
     {
-        return ['circular', 'progress' ];
+        return ['image', 'grid', 'gallery', 'list' ];
     }
 
     /**
@@ -107,7 +108,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
                 'step' => 1,
                 'default' => 3,
                 'selectors' => [
-                    '{{WRAPPER}} .element-circular-progress' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .element-procedure__warp' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
                 ],
             ]
         );
@@ -130,7 +131,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
                     'size' => 24,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-circular-progress' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .element-procedure__warp' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -153,7 +154,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
                     'size' => 24,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-circular-progress' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .element-procedure__warp' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -180,34 +181,21 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         );
 
         $repeater->add_control(
-            'list_percent',
-            [
-                'label' => esc_html__( 'Phần trăm', 'textdomain' ),
-                'type' => Controls_Manager::NUMBER,
-                'min' => 0,
-                'max' => 100,
-                'step' => 1,
-                'default' => 50,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_percent_title',
-            [
-                'label' => esc_html__( 'Tiêu đề phần trăm', 'textdomain' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => "70%",
-            ]
-        );
-
-        $repeater->add_control(
-            'list_background_circular', [
-                'label' => esc_html__( 'Màu hình tròn %', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-circular-progress {{CURRENT_ITEM}} .item__circle .progress-circle-fill' => 'stroke: {{VALUE}}',
-                    '{{WRAPPER}} .element-circular-progress {{CURRENT_ITEM}} .item__circle .percent-title' => 'color: {{VALUE}}'
+            'list_image', [
+                'label' => esc_html__( 'Image', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
                 ],
+            ]
+        );
+
+        $repeater->add_control(
+            'list_content', [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'type' => Controls_Manager::WYSIWYG,
+                'default' => esc_html__( 'Nội dung' , 'clinic' ),
+                'show_label' => false,
             ]
         );
 
@@ -230,37 +218,6 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         );
 
         $this->end_controls_section();
-
-        // title style
-        $this->start_controls_section(
-            'title_style_section',
-            [
-                'label' => esc_html__( 'Tiêu đề', 'smartcity' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'title_color',
-            [
-                'label'     =>  esc_html__( 'Color', 'smartcity' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-circular-progress .item__title' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'title_typography',
-                'label' => esc_html__( 'Typography', 'smartcity' ),
-                'selector' => '{{WRAPPER}} .element-circular-progress .item__title',
-            ]
-        );
-
-        $this->end_controls_section();
     }
 
     /**
@@ -273,29 +230,34 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
+        ?>
+        <div class="element-procedure">
+            <div class="element-procedure__warp">
+                <?php foreach ( $settings['list'] as $key => $item ) : ?>
+                    <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <?php if ( $item['list_image'] ) : ?>
+                            <div class="item__thumbnail">
+                                <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+                            </div>
+                        <?php endif; ?>
 
-        if ( empty( $settings['list'] ) ) {
-            return;
-        }
-    ?>
-        <div class="element-circular-progress">
-            <?php foreach ($settings['list'] as $item): ?>
-                <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>" data-progress="<?php echo esc_attr($item['list_percent']); ?>">
-                    <div class="item__circle d-flex align-items-center justify-content-center">
-                        <span class="percent-title"><?php echo esc_html( $item['list_percent_title'] ); ?></span>
+                        <div class="item__body">
+                            <div class="top-box">
+                                <h3 class="title m-0">
+                                    <?php echo esc_html( $item['list_title'] ); ?>
+                                </h3>
 
-                        <svg viewBox="0 0 130 130">
-                            <circle cx="65" cy="65" r="60" class="background-circle"></circle>
-                            <circle cx="65" cy="65" r="60" class="progress-circle-fill"></circle>
-                        </svg>
+                                <span class="stt"><?php echo esc_html( addZeroBeforeNumber($key + 1) ); ?></span>
+                            </div>
+
+                            <div class="content">
+                                <?php echo wpautop( $item['list_content'] ); ?>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="item__title">
-                        <?php echo esc_html( $item['list_title'] ); ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    <?php
+        <?php
     }
 }
