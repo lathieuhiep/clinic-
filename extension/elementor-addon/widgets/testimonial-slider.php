@@ -98,7 +98,69 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
         $this->end_controls_section();
 
-        // tab style description
+        // style name
+        $this->start_controls_section(
+            'name_style',
+            [
+                'label' => esc_html__( 'Tên', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'name_color',
+            [
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-testimonial-slider .item .name' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'name_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-testimonial-slider .item .name',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // style info
+        $this->start_controls_section(
+            'info_style',
+            [
+                'label' => esc_html__( 'Thông tin', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'info_color',
+            [
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-testimonial-slider .item .info' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'info_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-testimonial-slider .item .info',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // style description
         $this->start_controls_section(
             'style_description',
             [
@@ -144,11 +206,11 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                 ],
                 '576' => [
                     'items' => 2,
-                    'margin' => 24,
+                    'margin' => 22,
                 ],
                 '992' => [
                     'items' => 3,
-                    'margin' => 34,
+                    'margin' => 22,
                 ]
             ]
         ];
@@ -162,28 +224,30 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                     ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <div class="top-box">
+                            <div class="thumbnail">
+                                <?php
+                                if ( $imageId ) :
+                                    echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
+                                else:
+                                    ?>
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="profile">
+                                <h4 class="name">
+                                    <?php echo esc_html( $item['list_title'] ); ?>
+                                </h4>
+
+                                <p class="info">
+                                    <?php echo wp_kses_post( $item['list_info'] ) ?>
+                                </p>
+                            </div>
+                        </div>
+
                         <div class="desc text-justify">
                             <?php echo wp_kses_post( $item['list_description'] ) ?>
-                        </div>
-
-                        <div class="thumbnail">
-                            <?php
-                            if ( $imageId ) :
-                                echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
-                            else:
-                                ?>
-                                <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
-                            <?php endif; ?>
-                        </div>
-
-                        <div class="profile text-center">
-                            <h4 class="name">
-                                <?php echo esc_html( $item['list_title'] ); ?>
-                            </h4>
-
-                            <p class="info">
-                                <?php echo wp_kses_post( $item['list_info'] ) ?>
-                            </p>
                         </div>
                     </div>
 

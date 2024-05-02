@@ -103,6 +103,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 'options' => [
                     'style-1' => esc_html__('Kiểu 1', 'clinic'),
                     'style-2' => esc_html__('Kiểu 2', 'clinic'),
+                    'style-3' => esc_html__('Kiểu 3', 'clinic'),
                 ],
             ]
         );

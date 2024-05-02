@@ -14,16 +14,17 @@
       }
 
       &__body {
-        padding: 1.2rem;
+        padding: 1.2rem 1.2rem 2rem;
 
         .top-box {
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
           display: grid;
           grid-gap: 1.2rem;
           grid-template-columns: 1fr auto;
           align-items: center;
 
           .title {
+            padding-bottom: 1rem;
             position: relative;
             color: #FFF400;
             font-size: 2rem;
@@ -35,7 +36,7 @@
               content: "";
               bottom: 0;
               left: 0;
-              width: 45%;
+              width: 48%;
               height: .2rem;
               background-color: var(--color-white);
             }
@@ -43,6 +44,7 @@
 
           .stt {
             font-size: 5rem;
+            line-height: 1;
             color: rgba(255,255,255,0.5);
           }
         }

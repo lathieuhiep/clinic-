@@ -50,7 +50,7 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 			[
 				'label' => esc_html__('Number of Posts', 'clinic'),
 				'type' => Controls_Manager::NUMBER,
-				'default' => 6,
+				'default' => 3,
 				'min' => 1,
 				'max' => 100,
 				'step' => 1,
@@ -78,7 +78,7 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 			[
 				'label' => esc_html__('Order', 'clinic'),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'ASC',
+				'default' => 'DESC',
 				'options' => [
 					'ASC' => esc_html__('Ascending', 'clinic'),
 					'DESC' => esc_html__('Descending', 'clinic'),
@@ -271,6 +271,18 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
                                         </p>
                                     </div>
 								<?php endif; ?>
+
+                                <div class="action-box">
+                                    <a class="link" href="<?php the_permalink(); ?>">
+                                        <span><?php esc_html_e('Xem thêm' , 'clinic'); ?></span>
+
+                                        <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24.75 16.5L11 16.5" stroke="#135CAA" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M29.8927 16.2856L24.5866 13.102C24.0534 12.782 23.375 13.1661 23.375 13.788V19.212C23.375 19.8339 24.0534 20.218 24.5866 19.898L29.8927 16.7144C30.0545 16.6173 30.0545 16.3827 29.8927 16.2856Z" fill="#135CAA"/>
+                                        </svg>
+
+                                    </a>
+                                </div>
                             </div>
                         </div>
 

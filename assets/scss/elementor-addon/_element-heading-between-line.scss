@@ -1,12 +1,12 @@
 .element-heading-between-line {
   &__grid {
     display: grid;
-    grid-gap: 2rem;
+    grid-gap: 1rem;
     align-items: center;
     justify-content: center;
 
     @media (min-width: 992px) {
-      grid-template-columns: 10rem minmax(max-content, auto) 10rem;
+      grid-template-columns: 1.2rem minmax(max-content, auto) 1.2rem;
     }
 
     @media (max-width: 992px) {
@@ -21,7 +21,7 @@
     .heading {
       margin: 0;
       text-align: center;
-      line-height: 3rem;
+      line-height: 1.1;
     }
   }
 }

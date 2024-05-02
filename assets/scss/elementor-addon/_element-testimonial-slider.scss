@@ -1,31 +1,43 @@
 .element-testimonial-slider {
   .item {
     margin: 0 .2rem 0;
+    padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
+    border: .1rem solid var(--clinic-theme-primary-color);
+    border-radius: 1rem;
+    background-color: var(--color-white);
     @include transition();
 
-    .thumbnail {
-      margin: -3.5rem auto 2.1rem;
-      @include square(9rem, 50%);
-      border: .3rem solid var(--color-cadmium-green);
+    .top-box {
+      position: relative;
+      margin-bottom: 3rem;
+      display: grid;
+      grid-gap: 2rem;
+      grid-template-columns: 8rem 1fr;
+      align-items: center;
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      &:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        bottom: 0;
+        width: calc(100% - 10rem);
+        height: .1rem;
+        background-color: var(--clinic-theme-primary-color);
       }
     }
 
-    .desc {
-      padding: 3.4rem 3.9rem 4rem;
-      font-size: 1.6rem;
-      text-align: justify;
-      background-color: #fff;
-      border-radius: 2rem;
-      box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-      flex: 1;
-      @include transition();
+    .thumbnail {
+      @include square(8rem, 50%);
+      border: .1rem solid var(--clinic-theme-primary-color);
+      background-color: var(--color-white);
+      @include flex-center();
+
+      img {
+        @include square(6.8rem, 50%);
+        object-fit: cover;
+      }
     }
 
     .name {
@@ -38,8 +50,11 @@
 
     .info {
       font-weight: 700;
+      font-family: var(--heading-font-family);
       color: var(--color-salem);
       @include transition();
     }
+
+    .desc {}
   }
 }

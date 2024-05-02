@@ -84,144 +84,166 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
 	 *
 	 * @access protected
 	 */
-	protected function register_controls(): void
-	{
-		$this->start_controls_section(
-			'image_section',
-			[
-				'label' => esc_html__( 'Image', 'clinic' ),
-				'tab' => Controls_Manager::TAB_CONTENT,
-			]
-		);
+    protected function register_controls(): void
+    {
+        // heading section
+        $this->start_controls_section(
+            'heading_section',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
-		$this->add_control(
-			'image',
-			[
-				'label' => esc_html__( 'Choose Image', 'textdomain' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
-			]
-		);
+        $this->add_control(
+            'heading',
+            [
+                'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Tiêu đề', 'clinic' ),
+                'label_block' => true,
+            ]
+        );
 
-		$this->end_controls_section();
+        $this->end_controls_section();
 
-		$this->start_controls_section(
-			'list_section',
-			[
-				'label' => esc_html__( 'List', 'clinic' ),
-				'tab' => Controls_Manager::TAB_CONTENT,
-			]
-		);
+        // image section
+        $this->start_controls_section(
+            'image_section',
+            [
+                'label' => esc_html__( 'Image', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
-		$repeater = new Repeater();
+        $this->add_control(
+            'image',
+            [
+                'label' => esc_html__( 'Choose Image', 'textdomain' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
 
-		$repeater->add_control(
-			'list_title', [
-				'label' => esc_html__( 'Title', 'clinic' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Title #1' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
+        $this->end_controls_section();
 
-		$repeater->add_control(
-			'list_content', [
-				'label' => esc_html__( 'Content', 'clinic' ),
-				'type' => Controls_Manager::TEXTAREA,
-				'rows' => 8,
-				'default' => esc_html__( 'List Content' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
+        $this->start_controls_section(
+            'list_section',
+            [
+                'label' => esc_html__( 'List', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
-		$this->add_control(
-			'list',
-			[
-				'label' => esc_html__( 'List', 'clinic' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[
-						'list_title' => __( 'Title #1', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #2', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #3', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #4', 'clinic' ),
-					],
-				],
-				'title_field' => '{{{ list_title }}}',
-			]
-		);
+        $repeater = new Repeater();
 
-		$this->end_controls_section();
+        $repeater->add_control(
+            'list_title', [
+                'label' => esc_html__( 'Title', 'clinic' ),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__( 'Title #1' , 'clinic' ),
+                'label_block' => true,
+            ]
+        );
 
-		// style title
-		$this->start_controls_section(
-			'style_title_section',
-			[
-				'label' => esc_html__( 'Title', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
+        $repeater->add_control(
+            'list_content', [
+                'label' => esc_html__( 'Content', 'clinic' ),
+                'type' => Controls_Manager::TEXTAREA,
+                'rows' => 8,
+                'default' => esc_html__( 'List Content' , 'clinic' ),
+                'label_block' => true,
+            ]
+        );
 
-		$this->add_control(
-			'list_title_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-image-content-list__warp .list-group .list-title' => 'color: {{VALUE}}',
-				],
-			]
-		);
+        $this->add_control(
+            'list',
+            [
+                'label' => esc_html__( 'List', 'clinic' ),
+                'type' => Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'list_title' => __( 'Title #1', 'clinic' ),
+                    ],
+                    [
+                        'list_title' => __( 'Title #2', 'clinic' ),
+                    ],
+                    [
+                        'list_title' => __( 'Title #3', 'clinic' ),
+                    ],
+                    [
+                        'list_title' => __( 'Title #4', 'clinic' ),
+                    ],
+                ],
+                'title_field' => '{{{ list_title }}}',
+            ]
+        );
 
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'list_title_typography',
-				'selector' => '{{WRAPPER}} .element-image-content-list__warp .list-group .list-title',
-			]
-		);
+        $this->end_controls_section();
 
-		$this->end_controls_section();
+        // style title
+        $this->start_controls_section(
+            'style_title_section',
+            [
+                'label' => esc_html__( 'Title', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
 
-		// style list
-		$this->start_controls_section(
-			'style_content_section',
-			[
-				'label' => esc_html__( 'Content', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
+        $this->add_control(
+            'list_title_color',
+            [
+                'label' => esc_html__( 'Color', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-image-content-list__warp .list-group .list-title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
 
-		$this->add_control(
-			'list_content_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-image-content-list__warp .list-group .list-content' => 'color: {{VALUE}}',
-				],
-			]
-		);
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'list_title_typography',
+                'selector' => '{{WRAPPER}} .element-image-content-list__warp .list-group .list-title',
+            ]
+        );
 
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'list_content_typography',
-				'selector' => '{{WRAPPER}} .element-image-content-list__warp .list-group .list-content',
-			]
-		);
+        $this->end_controls_section();
 
-		$this->end_controls_section();
-	}
+        // style list
+        $this->start_controls_section(
+            'style_content_section',
+            [
+                'label' => esc_html__( 'Content', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'list_content_color',
+            [
+                'label' => esc_html__( 'Color', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-image-content-list__warp .list-group .list-content' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'list_content_typography',
+                'selector' => '{{WRAPPER}} .element-image-content-list__warp .list-group .list-content',
+            ]
+        );
+
+        $this->end_controls_section();
+    }
 
 	/**
 	 * Render oEmbed widget output on the frontend.
@@ -230,27 +252,28 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
 	 *
 	 * @access protected
 	 */
-	protected function render(): void
-	{
-		$settings = $this->get_settings_for_display();
+    protected function render(): void
+    {
+        $settings = $this->get_settings_for_display();
 
-		$medical_appointment_form = clinic_get_opt_medical_appointment();
-		?>
-		<div class="element-image-content-list">
-			<div class="element-image-content-list__warp">
+        $medical_appointment_form = clinic_get_opt_medical_appointment();
+    ?>
+        <div class="element-image-content-list">
+            <div class="element-image-content-list__warp">
                 <div class="item item__thumbnail">
-	                <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
+                    <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
                 </div>
 
                 <div class="item item__list">
+                    <h2 class="heading">
+                        <?php echo esc_html( $settings['heading'] ); ?>
+                    </h2>
+
                     <div class="list-group">
-                        <?php
-                        $number_list = 1;
-                        foreach ( $settings['list'] as $item ) :
-                        ?>
+                        <?php foreach ( $settings['list'] as $key => $item ) : ?>
                             <div class="repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
                                 <h4 class="list-title f-family-body">
-                                    <span class="number"><?php echo esc_html($number_list); ?></span>&#46;
+                                    <span class="number"><?php echo esc_html($key + 1); ?></span>
                                     <span class="text"><?php echo esc_html( $item['list_title'] ); ?></span>
                                 </h4>
 
@@ -258,19 +281,19 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
                                     <?php echo esc_html( $item['list_content'] ); ?>
                                 </p>
                             </div>
-                        <?php $number_list++; endforeach; ?>
+                        <?php endforeach; ?>
                     </div>
 
                     <?php if ( $medical_appointment_form ) : ?>
                         <div class="action-box text-center">
                             <a class="booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-			                    <?php esc_html_e('Đặt lịch ngay', 'clinic'); ?>
+                                <?php esc_html_e('Đặt lịch ngay', 'clinic'); ?>
                             </a>
                         </div>
                     <?php endif; ?>
                 </div>
-			</div>
-		</div>
-		<?php
-	}
+            </div>
+        </div>
+    <?php
+    }
 }

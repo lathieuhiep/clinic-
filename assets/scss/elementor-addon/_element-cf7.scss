@@ -1,18 +1,14 @@
 .element-contact-form-7 {
-  box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
-  background-color: var(--color-white);
-
-  @media (min-width: 992px) {
-    padding: 1.8rem 3rem;
-  }
-
-  @media (max-width: 991px) {
-    padding: 1.8rem 2.4rem;
-  }
-
   .heading {
     font-size: 2.9rem;
     color: #FF0000;
+    line-height: 1.1;
+  }
+
+  .content {
+    margin-bottom: 2.4rem;
+    font-size: 2rem;
+    font-family: var(--heading-font-family);
   }
 
   form {
@@ -21,7 +17,7 @@
         &.wpcf7-form-control-wrap {
           input,
           textarea {
-            padding: 0 1.6rem;
+            padding: 1.2rem;
             font-size: 2rem;
             color: #000000;
             border: 1px solid #C7C1C1;
@@ -30,14 +26,6 @@
             &::placeholder {
               color: #000000;
             }
-          }
-
-          input {
-            min-height: 6rem;
-          }
-
-          textarea {
-            min-height: 10.2rem;
           }
         }
       }
@@ -49,7 +37,79 @@
         font-weight: 700;
         font-family: var(--heading-font-family);
         border-radius: .5rem;
-        background: #D7384E;
+        background: #E6171F;
+      }
+    }
+  }
+
+  &.style-1 {
+    .heading {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: "";
+        left: 50%;
+        bottom: 0;
+        width: 20%;
+        height: .3rem;
+        background-color: #FF0000;
+        transform: translateX(-50%);
+      }
+    }
+
+    form {
+      &.wpcf7-form {
+        display: grid;
+        grid-gap: 2.4rem;
+
+        @media (min-width: 992px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        p {
+          margin: 0;
+
+          + p {
+            &:has(input.wpcf7-submit) {
+              @media (min-width: 992px) {
+                grid-column: 1 / span 3;
+              }
+            }
+          }
+        }
+
+        span {
+          &.wpcf7-form-control-wrap {
+            .wpcf7-form-control {
+              padding: 1.2rem;
+              height: 5.9rem;
+              min-height: 100%;
+            }
+          }
+        }
+
+        .wpcf7-response-output {
+          @media (min-width: 992px) {
+            grid-column: 1 / span 3;
+          }
+        }
+      }
+    }
+  }
+
+  &.style-2 {
+    form {
+      &.wpcf7-form {
+        input {
+          min-height: 6rem;
+        }
+
+        textarea {
+          min-height: 10.2rem;
+        }
       }
     }
   }

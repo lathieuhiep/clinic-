@@ -101,7 +101,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         $this->add_responsive_control(
             'column',
             [
-                'label' => esc_html__( 'Cột', 'smartcity' ),
+                'label' => esc_html__( 'Cột', 'clinic' ),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'step' => 1,
@@ -235,7 +235,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         $this->start_controls_section(
             'title_style_section',
             [
-                'label' => esc_html__( 'Tiêu đề', 'smartcity' ),
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -243,7 +243,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label'     =>  esc_html__( 'Color', 'smartcity' ),
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
                     '{{WRAPPER}} .element-circular-progress .item__title' => 'color: {{VALUE}}',
@@ -255,7 +255,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'label' => esc_html__( 'Typography', 'smartcity' ),
+                'label' => esc_html__( 'Typography', 'clinic' ),
                 'selector' => '{{WRAPPER}} .element-circular-progress .item__title',
             ]
         );

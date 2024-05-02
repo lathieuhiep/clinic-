@@ -1,10 +1,22 @@
 .element-image-content-list {
   &__warp {
     display: grid;
-    grid-gap: 3rem 4.8rem;
+    grid-gap: 3rem 6rem;
 
     @media (min-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .heading {
+      font-size: 2.9rem;
+    }
+
+    .list-content {
+      .list-title {
+        span {
+          display: inline-block;
+        }
+      }
     }
 
     .list-group {
@@ -16,8 +28,14 @@
 
       .list-title {
         margin-bottom: .8rem;
-        color: var(--clinic-tertiary-color);
+        color: var(--clinic-theme-fifth-color);
         font-size: 1.6rem;
+
+        .number {
+          &:after {
+            content: ".";
+          }
+        }
       }
 
       .list-content {

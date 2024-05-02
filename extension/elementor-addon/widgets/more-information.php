@@ -197,7 +197,7 @@ class Clinic_Elementor_More_Information extends Widget_Base
 		$this->start_controls_section(
 			'image_style_section',
 			[
-				'label' => esc_html__( 'Ảnh', 'smartcity' ),
+				'label' => esc_html__( 'Ảnh', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);

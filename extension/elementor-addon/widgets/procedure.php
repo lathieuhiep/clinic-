@@ -102,7 +102,7 @@ class Clinic_Elementor_Procedure extends Widget_Base
         $this->add_responsive_control(
             'column',
             [
-                'label' => esc_html__( 'Cột', 'smartcity' ),
+                'label' => esc_html__( 'Cột', 'clinic' ),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'step' => 1,
@@ -214,6 +214,99 @@ class Clinic_Elementor_Procedure extends Widget_Base
                     ],
                 ],
                 'title_field' => '{{{ list_title }}}',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // title style
+        $this->start_controls_section(
+            'title_style_section',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-procedure__warp .item__body .top-box .title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-procedure__warp .item__body .top-box .title',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // number style
+        $this->start_controls_section(
+            'number_style_section',
+            [
+                'label' => esc_html__( 'Số thứ tự', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'number_color',
+            [
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-procedure__warp .item__body .top-box .stt' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'number_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-procedure__warp .item__body .top-box .stt',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // content style
+        $this->start_controls_section(
+            'content_style_section',
+            [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'content_color',
+            [
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-procedure__warp .item__body .content' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'content_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-procedure__warp .item__body .content',
             ]
         );
 
