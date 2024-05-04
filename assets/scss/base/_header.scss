@@ -97,7 +97,7 @@
 
 .navbar-main {
   position: relative;
-  height: 7.8rem;
+  min-height: 7.8rem;
   background-color: var(--color-white);
 
   &:before {
@@ -136,6 +136,14 @@
 
     .logo {
       padding: .6rem 0;
+
+      a {
+        display: inline-block;
+
+        img {
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -150,9 +158,10 @@
       content: "";
       top: 0;
       left: 0;
-      border-left: 0;
-      border-right: 3rem solid transparent;
-      border-top: 7.8rem solid var(--color-white);
+      width: 3rem;
+      height: 100%;
+      background-color: #fff;
+      clip-path: polygon(0% -1%, 100% -1%, 0% 100%);
     }
 
     > ul {
@@ -464,7 +473,9 @@
       height: 100%;
 
       > a {
+        margin: 0 auto;
         height: inherit;
+        max-width: 40rem;
         @include flex-center();
       }
 
