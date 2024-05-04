@@ -23,11 +23,11 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/banner.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
-
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-us.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/circular-progress.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
+
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/category-list-slider.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/procedure.php' );
@@ -60,11 +60,11 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Banner() );
     $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
-
+    $widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
 
 //    $widgets_manager->register( new \Clinic_Elementor_About_Us() );
 //    $widgets_manager->register( new \Clinic_Elementor_Circular_Progress() );
-//    $widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
+
 //    $widgets_manager->register( new \Clinic_Elementor_Category_List_Slider() );
 //    $widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
 //    $widgets_manager->register( new \Clinic_Elementor_Procedure() );

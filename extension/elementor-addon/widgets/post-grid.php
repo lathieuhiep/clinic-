@@ -230,13 +230,10 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 		$query = new WP_Query($args);
 
 		if ($query->have_posts()) :
-
-			?>
-
+        ?>
             <div class="element-post-grid">
                 <div class="element-post-grid__warp">
 					<?php while ($query->have_posts()): $query->the_post(); ?>
-
                         <div class="item">
                             <div class="item__thumbnail">
                                 <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
@@ -271,26 +268,12 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
                                         </p>
                                     </div>
 								<?php endif; ?>
-
-                                <div class="action-box">
-                                    <a class="link" href="<?php the_permalink(); ?>">
-                                        <span><?php esc_html_e('Xem thêm' , 'clinic'); ?></span>
-
-                                        <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M24.75 16.5L11 16.5" stroke="#135CAA" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M29.8927 16.2856L24.5866 13.102C24.0534 12.782 23.375 13.1661 23.375 13.788V19.212C23.375 19.8339 24.0534 20.218 24.5866 19.898L29.8927 16.7144C30.0545 16.6173 30.0545 16.3827 29.8927 16.2856Z" fill="#135CAA"/>
-                                        </svg>
-
-                                    </a>
-                                </div>
                             </div>
                         </div>
-
 					<?php endwhile;
 					wp_reset_postdata(); ?>
                 </div>
             </div>
-
 		<?php
 
 		endif;

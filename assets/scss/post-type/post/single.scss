@@ -161,10 +161,6 @@
       padding: 2rem 1.6rem;
     }
 
-    @media (min-width: 992px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     .title {
       font-weight: 900;
       font-family: var(--body-font-family);
