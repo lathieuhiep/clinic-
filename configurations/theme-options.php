@@ -87,15 +87,23 @@ if ( class_exists( 'CSF' ) ) {
 		)
 	) );
 
-    // Slider
+    // Banner top
     CSF::createSection( $clinic_prefix, array(
         'parent' => 'opt_general_section',
-        'title'  => esc_html__( 'Slider', 'clinic' ),
+        'title'  => esc_html__( 'Contact Top', 'clinic' ),
         'fields' => array(
             array(
-                'id'    => 'opt_general_slider',
-                'type'  => 'gallery',
-                'title' => esc_html__( 'Slider', 'clinic' ),
+                'id'    => 'opt_general_bk_cf_top',
+                'type'  => 'media',
+                'title' => esc_html__( 'Background Image Contact', 'clinic' ),
+                'library' => 'image'
+            ),
+
+            array(
+                'id'      => 'opt_general_cf_top',
+                'type'    => 'select',
+                'title'   => esc_html__( 'Form liên hệ', 'clinic' ),
+                'options' => clinic_get_form_cf7(),
             ),
         )
     ) );

@@ -34,16 +34,3 @@ function clinic_get_opt_chat_zalo()
 {
 	return clinic_get_option('opt_general_chat_zalo');
 }
-
-// get slider theme option general
-function clinic_get_general_slider(): array
-{
-    $gallery = clinic_get_option('opt_general_slider');
-    $gallery_ids = [];
-
-    if ( !empty( $gallery ) ) {
-        $gallery_ids = explode( ',', $gallery );
-    }
-
-    return $gallery_ids;
-}
