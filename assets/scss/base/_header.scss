@@ -94,29 +94,26 @@
 
     > ul {
       min-height: inherit;
+      gap: 1.2rem;
 
       > li {
         min-height: inherit;
-
-        ~ li {
-          @media (min-width: 1400px) {
-            margin-left: 9rem;
-          }
-
-          @media (min-width: 1200px) and (max-width: 1399px) {
-            margin-left: 6rem;
-          }
-
-          @media (min-width: 992px) and (max-width: 1199px) {
-            margin-left: 2rem;
-          }
-        }
+        display: inline-flex;
+        height: 100%;
+        align-items: center;
 
         > a {
           font-weight: 700;
-          font-size: 1.4rem;
           color: var(--color-white);
           text-transform: uppercase;
+
+          @media (min-width: 576px) {
+            font-size: 1.4rem;
+          }
+
+          @media (max-width: 575px) {
+            font-size: 1.3rem;
+          }
         }
       }
     }
@@ -228,16 +225,6 @@
     }
 
     @media (min-width: 992px) {
-      > ul {
-        height: 100%;
-
-        > li {
-          display: inline-flex;
-          height: 100%;
-          align-items: center;
-        }
-      }
-
       ul {
         li {
           .sub-menu {
@@ -296,84 +283,57 @@
         }
       }
     }
-
-    @media (max-width: 991px) {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: #eeeeee;
-      z-index: 99;
-
-      .collapse {
-        display: none !important;
-
-        &.in {
-          display: block !important;
-        }
-      }
-
-      ul {
-        li {
-          display: block;
-          padding: 0 15px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-          &:last-child {
-            border-bottom: 0;
-          }
-
-          a {
-            display: inline-block;
-            padding: 15px 0;
-          }
-
-          .sub-menu-toggle {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            width: 12px;
-            height: 20px;
-
-            &.active {
-              &:after {
-                transform: rotate(180deg);
-              }
-            }
-          }
-
-          .sub-menu {
-            display: none;
-            border-top: 0;
-            background-color: transparent;
-
-            li {
-              border-bottom: 0;
-              padding: 0;
-
-              a {
-                padding: 8px 0;
-              }
-
-              .sub-menu-toggle {
-                top: 5px;
-                right: 0;
-              }
-
-              .sub-menu {
-                padding-left: 20px;
-              }
-            }
-          }
-        }
-      }
-    }
   }
 }
 
 .logo-header {
   padding: .6rem 0;
-  background-color: var(--clinic-theme-tertiary-color);
+  background-color: #358bc9;
+
+  .grid {
+    display: grid;
+    grid-gap: 1.2rem;
+    align-items: center;
+    color: var(--color-white);
+
+    @media (min-width: 640px) {
+      grid-template-columns: 36rem 1fr;
+    }
+
+    @media (min-width: 576px) and (max-width: 639px) {
+      grid-template-columns: 30rem 1fr;
+    }
+
+    @media (max-width: 575px) {
+      text-align: center;
+    }
+
+    .image-box {
+      @media (max-width: 575px) {
+        order: 2;
+      }
+    }
+
+    .address-box {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+
+      @media (max-width: 575px) {
+        justify-content: center;
+      }
+
+      .icon {
+        font-size: 3rem;
+      }
+
+      span {
+        display: inline-block;
+        line-height: 1.5;
+        text-align: left;
+      }
+    }
+  }
 }
 
 .top-nav-mobile {

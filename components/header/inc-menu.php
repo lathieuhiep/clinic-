@@ -5,7 +5,7 @@
             if ( has_nav_menu( 'primary' ) ) :
                 wp_nav_menu( array(
                     'theme_location' => 'primary',
-                    'menu_class' => 'd-lg-flex reset-list',
+                    'menu_class' => 'd-flex justify-content-around reset-list',
                     'container' => false,
                 ) );
             else:
