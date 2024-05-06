@@ -14,8 +14,8 @@
       display: grid;
 
       @media (min-width: 1200px) {
-        grid-column-gap: 6rem;
-        grid-template-columns: 37.6rem 1fr;
+        grid-column-gap: 6.5rem;
+        grid-template-columns: 43rem 1fr;
       }
 
       @media (min-width: 992px) and (max-width: 1199px) {
@@ -65,7 +65,7 @@
 
         i {
           font-size: 4rem;
-          color: var(--clinic-theme-fifth-color);
+          color: #04CE95;
         }
 
         &.item-zalo {
@@ -74,6 +74,15 @@
           a {
             color: var(--clinic-theme-quaternary-color);
           }
+        }
+      }
+
+      .item-hotline {
+        &__box {
+          display: grid;
+          grid-gap: .6rem;
+          grid-template-columns: 3.3rem 1fr;
+          align-items: center;
         }
       }
     }

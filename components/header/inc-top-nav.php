@@ -2,7 +2,7 @@
 $logo = clinic_get_option( 'opt_general_logo' );
 $working_time = clinic_get_option('opt_general_working_time');
 $hotline = clinic_get_opt_hotline();
-$chat_zalo = clinic_get_opt_chat_zalo();
+$licensing = clinic_get_opt_general_licensing();
 ?>
 
 <div class="top-nav d-none d-lg-block">
@@ -23,47 +23,31 @@ $chat_zalo = clinic_get_opt_chat_zalo();
             </div>
 
             <div class="info">
-                <div class="item">
-                    <div class="item__icon alo-circle-anim">
-                        <i class="icon-phone-light"></i>
+                <?php if ( !empty( $licensing['id'] ) ) : ?>
+                    <div class="item-licensing">
+                        <?php echo wp_get_attachment_image( $licensing['id'], 'medium' ); ?>
                     </div>
+                <?php endif; ?>
 
-                    <div class="item__content">
-                        <p><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
+                <div class="item-hotline">
+                    <div class="item-hotline__box">
+                        <div class="left-box">
+                            <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/image-hotline.png' ) ) ?>" alt="" width="33" height="39"/>
+                        </div>
 
-                        <a class="phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
-                            <?php echo esc_html( $hotline ); ?>
-                        </a>
-                    </div>
-                </div>
+                        <div class="right-box">
+                            <p class="txt text-uppercase">
+                                <?php esc_html_e( 'số hotline tư vấn miễn phí', 'clinic' ); ?>
+                            </p>
 
-                <div class="item item-zalo">
-                    <div class="item__icon">
-                        <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-logo.png' ) ) ?>" />
-                    </div>
-
-                    <div class="item__content">
-                        <?php if ( !empty( $chat_zalo ) ) : ?>
-                            <p><?php esc_html_e('Click tư vấn', 'clinic'); ?></p>
-
-                        <?php
-                            $zalo_selcet = $chat_zalo['select_zalo'];
-
-                            if ( $zalo_selcet == 'phone_qr' ) :
-                                $zalo_phone = $chat_zalo['phone'];
-                                $zalo_qr_code = $chat_zalo['qr_code'];
-                        ?>
-                            <a class="link chat-with-us__zalo text-uppercase fw-bold" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
-                                <?php esc_html_e( 'Miễn phí qua zalo', 'clinic' ); ?>
+                            <a class="phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
+                                <?php echo esc_html( $hotline ); ?>
                             </a>
-                        <?php else: ?>
-                            <a class="link text-uppercase fw-bold" href="<?php echo esc_url( $chat_zalo['link'] ); ?>" target="_blank">
-                                <?php esc_html_e( 'Miễn phí qua zalo', 'clinic' ); ?>
-                            </a>
-                        <?php
-                            endif;
-                        endif;
-                        ?>
+                        </div>
+                    </div>
+
+                    <div class="item-hotline__note text-uppercase">
+                        <?php esc_html_e('Làm việc tất cả các ngày trong tuần', 'clinic'); ?>
                     </div>
                 </div>
 

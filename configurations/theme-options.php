@@ -65,6 +65,15 @@ if ( class_exists( 'CSF' ) ) {
 				'url'     => false
 			),
 
+            // licensing
+            array(
+                'id'      => 'opt_general_licensing',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Ảnh cấp phép', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+
 			// show loading
 			array(
 				'id'         => 'opt_general_loading',
