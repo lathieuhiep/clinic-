@@ -24,7 +24,7 @@ $chat_zalo = clinic_get_opt_chat_zalo();
 
             <div class="info">
                 <div class="item">
-                    <div class="item__icon">
+                    <div class="item__icon alo-circle-anim">
                         <i class="icon-phone-light"></i>
                     </div>
 

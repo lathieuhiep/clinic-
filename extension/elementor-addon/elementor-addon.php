@@ -36,6 +36,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-content-number.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-image-content.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/group-button-contact.php' );
@@ -45,7 +46,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/hotline.php' );
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/equipment.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
+
 //  require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-content.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-box-content-list.php' );
@@ -70,6 +71,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_List_Content_Number() );
     $widgets_manager->register( new \Clinic_Elementor_List_image_Content() );
     $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 
 //    $widgets_manager->register( new \Clinic_Elementor_Group_Button_Contact() );
 //    $widgets_manager->register( new \Clinic_Elementor_Category_List() );
@@ -79,7 +81,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 
 
 //    $widgets_manager->register( new \Clinic_Elementor_Equipment() );
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
+
 //  $widgets_manager->register( new \Clinic_Elementor_Slider() );
 //	$widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Content() );
 //	$widgets_manager->register( new \Clinic_Elementor_Image_Box_Content_List() );

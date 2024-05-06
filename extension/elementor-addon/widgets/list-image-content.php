@@ -253,7 +253,7 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
         $this->add_control(
             'grid_layout_options',
             [
-                'label' => esc_html__( 'Bố cục', 'textdomain' ),
+                'label' => esc_html__( 'Bố cục', 'clinic' ),
                 'type' => Controls_Manager::HEADING,
             ]
         );
@@ -331,11 +331,39 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'item_vertical_position',
+            [
+                'label' => esc_html__( 'Căn chỉnh các mục', 'clinic' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'align-items-start' => [
+                        'title' => esc_html__( 'Bắt đầu', 'clinic' ),
+                        'icon' => 'eicon-align-start-v',
+                    ],
+                    'align-items-center' => [
+                        'title' => esc_html__( 'Giữa', 'clinic' ),
+                        'icon' => 'eicon-align-center-v',
+                    ],
+                    'align-items-end' => [
+                        'title' => esc_html__( 'Kết thúc', 'clinic' ),
+                        'icon' => 'eicon-align-end-v',
+                    ],
+                    'align-items-stretch' => [
+                        'title' => esc_html__( 'Nới rộng', 'clinic' ),
+                        'icon' => 'eicon-align-stretch-v',
+                    ],
+                ],
+                'default' => 'align-items-start',
+                'toggle' => true,
+            ]
+        );
+
         // title
         $this->add_control(
             'title_options',
             [
-                'label' => esc_html__( 'Tiêu đề', 'textdomain' ),
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -413,7 +441,7 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
         $this->add_control(
             'content_options',
             [
-                'label' => esc_html__( 'Nội dung', 'textdomain' ),
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -459,7 +487,7 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
         ?>
         <div class="element-list-image-content">
             <?php foreach ($settings['list'] as $item): ?>
-                <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?> <?php echo esc_attr( $settings['item_vertical_position'] ); ?>">
                     <div class="item__thumbnail">
                         <div class="box">
                             <?php

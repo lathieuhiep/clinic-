@@ -12,13 +12,19 @@
       grid-template-columns: 23rem 1fr;
     }
 
+    .post-thumbnail {
+      img {
+        width: 100%;
+      }
+    }
+
     &__content {
       .post-title {
         margin-bottom: .5rem;
         font-size: 1.6rem;
 
         a {
-          color: var(--clinic-theme-secondary-color);
+          color: var(--clinic-theme-primary-color);
         }
       }
 
@@ -65,7 +71,7 @@
         font-size: 1.6rem;
         font-weight: 700;
         border-radius: 2rem;
-        background: var(--clinic-theme-secondary-color);
+        background: var(--clinic-theme-primary-color);
 
         &:hover {
           color: var(--body-color);

@@ -13,7 +13,7 @@ $contact_form = clinic_get_option( 'opt_post_single_contact_form' );
             <div class="list-support">
                 <div class="list-support__item">
                     <div class="thumbnail">
-                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icon-phone.png' ) ) ?>" alt="" width="65" height="64">
+                        <img class="alo-circle-anim" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icon-phone.png' ) ) ?>" alt="" width="65" height="64">
                     </div>
 
                     <a class="link-phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>">

@@ -1,6 +1,4 @@
 <?php
-get_template_part( 'components/inc', 'breadcrumbs' );
-
 $sidebar = clinic_get_option('opt_post_cat_sidebar_position', 'right');
 $class_col_content = clinic_col_use_sidebar($sidebar, 'sidebar-main');
 ?>
@@ -9,8 +7,10 @@ $class_col_content = clinic_col_use_sidebar($sidebar, 'sidebar-main');
     <div class="container">
         <div class="row">
             <div class="<?php echo esc_attr( $class_col_content ); ?>">
+                <?php get_template_part( 'components/inc', 'breadcrumbs' ); ?>
+
                 <?php if ( have_posts() ) : ?>
-                    <div class="content-archive-post">
+                    <div class="content-archive-post mt-4">
 		                <?php
 		                while ( have_posts() ) :
 			                the_post();

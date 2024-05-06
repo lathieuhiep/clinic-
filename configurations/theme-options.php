@@ -126,6 +126,13 @@ if ( class_exists( 'CSF' ) ) {
                 'default' => esc_html__( '180 Trần phú - Phước Ninh', 'clinic' )
             ),
 
+            array(
+                'id'      => 'opt_general_address_link',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Link map', 'clinic' ),
+                'default' => 'https://maps.app.goo.gl/k3NSysAtK5AUJZ7T9'
+            ),
+
 			array(
 				'id'      => 'opt_general_working_time',
 				'type'    => 'text',
