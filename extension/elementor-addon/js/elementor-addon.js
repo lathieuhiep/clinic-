@@ -8,6 +8,24 @@
         return rect.top >= 0 && rect.bottom <= windowHeight;
     }
 
+    // animate
+    const animateValue = (element, start, end, duration) => {
+        let startTime = null;
+        const animation = (currentTime) => {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            element.textContent = Math.floor(start + progress * (end - start));
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+
+        requestAnimationFrame(animation);
+    }
+
     // setting owlCarousel
     const owlCarouselElementorOptions = (options) => {
         let defaults = {
@@ -100,31 +118,45 @@
 
     // element circular progress
     const elementCircularProgress = ($scope, $) => {
-        $(window).on('scroll', function() {
-            const progressCircle = $scope.find('.element-circular-progress');
+        const circularProgress = $scope.find('.element-circular-progress')
+        
+        if ( circularProgress.length ) {
+            // Sử dụng Intersection Observer để chạy hiệu ứng khi cuộn đến
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target
+                        const targetValue = parseInt(element.getAttribute("data-percent"), 10)
+                        const elementToAppendTo = element.querySelector('.item__circle .percent')
 
-            if ( progressCircle.length ) {
-                progressCircle.each(function () {
-                    const thisProgressCircle = $(this)
+                        // 2 giây
+                        animateValue(elementToAppendTo, 0, targetValue, 2000)
 
-                    if ( isElementInViewport(thisProgressCircle[0]) ) {
-                        const circularProgressItem = $(this).find('.item')
-
-                        circularProgressItem.each(function () {
-                            const thisCircularProgress = $(this)
-                            const progressCircleFill = thisCircularProgress.find('.progress-circle-fill')
-
-                            const progressValue = thisCircularProgress.data('progress')
-                            const radius = 65;
-                            const circumference = 2 * Math.PI * radius
-                            const dashOffset = ( circumference * ( (100 - progressValue) / 100 ) + 15 ).toString(); // Đối ứng với phần trăm
-
-                            progressCircleFill.css('stroke-dashoffset', dashOffset);
-                        })
+                        // Dừng quan sát sau khi chạy
+                        observer.unobserve(entry.target)
                     }
                 })
-            }
-        })
+            }, {
+                rootMargin: "100px 0px 0px 0px", // Thêm offset 100px ở trên để kích hoạt sớm hơn
+                threshold: 1 // Phần trăm bao nhiêu của phần tử cần xuất hiện để kích hoạt sự kiện
+            })
+
+            circularProgress.each(function () {
+                const thisCircularProgress = $(this)
+                const thisCircularItem = thisCircularProgress.find('.item')
+
+                thisCircularItem.each((index, element) => {
+                    if (element instanceof Element) {
+                        observer.observe(element);
+                    } else {
+                        const percent = parseInt(element.getAttribute("data-percent"))
+                        const elementToAppendTo = element.querySelector('.item__circle .percent')
+
+                        animateValue(elementToAppendTo, 0, percent, 2000)
+                    }
+                })
+            })
+        }
     }
 
     // element cate list slider
@@ -162,7 +194,6 @@
             })
         }
     }
-
 
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */

@@ -161,6 +161,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 
 		$this->end_controls_section();
 
+        // content section
 		$this->start_controls_section(
 			'content_section',
 			[
@@ -461,6 +462,33 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
+
+        $this->add_responsive_control(
+            'title_min_height',
+            [
+                'label' => esc_html__( 'Chiều cao title', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__title' => 'min-height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->add_responsive_control(
             'title_margin',

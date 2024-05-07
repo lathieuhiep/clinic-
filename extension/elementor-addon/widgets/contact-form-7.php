@@ -1,5 +1,10 @@
 <?php
 
+use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Text_Shadow;
+use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -27,6 +32,19 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 
 	protected function register_controls(): void {
 
+        // layout section
+        $this->start_controls_section(
+            'layout_section',
+            [
+                'label' => esc_html__( 'Layout', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+
+
+        $this->end_controls_section();
+
 		// Content section
 		$this->start_controls_section(
 			'content_section',
@@ -36,35 +54,23 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 			]
 		);
 
-        $this->add_control(
-            'style_layout',
-            [
-                'label' => esc_html__('Kiểu', 'clinic'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'style-1',
-                'options' => [
-                    'style-1' => esc_html__('Kiểu 1', 'clinic'),
-                    'style-2' => esc_html__('Kiểu 2', 'clinic'),
-                ],
-            ]
-        );
-
 		$this->add_control(
 			'heading',
 			[
 				'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'ĐĂNG KÝ THĂM KHÁM', 'clinic' ),
+				'default'     => esc_html__( 'Tiêu đề', 'clinic' ),
 				'label_block' => true
 			]
 		);
 
         $this->add_control(
-            'content',
+            'sub_heading',
             [
-                'label'     =>  esc_html__( 'Nội dung', 'clinic' ),
-                'type'      =>  Controls_Manager::WYSIWYG,
-                'default'   =>  '',
+                'label'       => esc_html__( 'Tiêu đề dưới', 'clinic' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Bảo  mật thông tin tuyệt đối', 'clinic' ),
+                'label_block' => true,
             ]
         );
 
@@ -96,8 +102,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
                 'label' => esc_html__( 'Màu', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-contact-form-7 .heading' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .element-contact-form-7.style-1 .heading:after' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .element-contact-form-7 .heading span' => 'color: {{VALUE}}'
                 ],
             ]
         );
@@ -106,58 +111,80 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'heading_typography',
-                'selector' => '{{WRAPPER}} .element-contact-form-7 .heading',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 .heading span',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Text_Stroke::get_type(),
+            [
+                'name' => 'heading_stroke',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 .heading span',
+            ]
+        );
+
+        $this->add_control(
+            'show_gradient',
+            [
+                'label' => esc_html__( 'Show Gradient', 'clinic' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'clinic' ),
+                'label_off' => esc_html__( 'Hide', 'clinic' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'background',
+                'types' => ['gradient'],
+                'selector' => '{{WRAPPER}} .element-contact-form-7 .heading span.has-gradient',
+                'condition' => [
+                    'show_gradient' => 'yes',
+                ],
             ]
         );
 
         $this->end_controls_section();
 
-        // content style
+        // sub heading style
         $this->start_controls_section(
-            'content_style_section',
+            'sub_heading_style_section',
             [
-                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'label' => esc_html__( 'Tiêu đề dưới', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
-        $this->add_control(
-            'content_align',
+        $this->add_responsive_control(
+            'sub_heading_padding',
             [
-                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
-                'type'      =>  Controls_Manager::CHOOSE,
-                'options'   =>  [
-                    'text-start'  =>  [
-                        'title' =>  esc_html__( 'Left', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-left',
-                    ],
-
-                    'text-center' => [
-                        'title' =>  esc_html__( 'Center', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-center',
-                    ],
-
-                    'text-end' => [
-                        'title' =>  esc_html__( 'Right', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-right',
-                    ],
-
-                    'text-justify' => [
-                        'title' =>  esc_html__( 'Justify', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-justify',
-                    ],
+                'label' => esc_html__( 'Padding', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
                 ],
-                'default' => 'text-justify',
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 .sub-heading .txt' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
         $this->add_control(
-            'content_color',
+            'sub_heading_color',
             [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'label'     =>  esc_html__( 'Màu chữ', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
-                    '{{WRAPPER}} .element-contact-form-7 .content' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-contact-form-7 .sub-heading .txt' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -165,9 +192,351 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'content_typography',
+                'name' => 'sub_heading_typography',
                 'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-contact-form-7 .content',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 .sub-heading .txt',
+            ]
+        );
+
+        $this->add_control(
+            'sub_heading_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-contact-form-7 .sub-heading .txt' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'sub_heading_border',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 .sub-heading .txt',
+            ]
+        );
+
+        $this->add_control(
+            'sub_heading_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 .sub-heading .txt' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // form style
+        $this->start_controls_section(
+            'form_style_section',
+            [
+                'label' => esc_html__( 'Form', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'form_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'form_padding',
+            [
+                'label' => esc_html__( 'Padding', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'form_border',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form',
+            ]
+        );
+
+        $this->add_control(
+            'form_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'form_box_shadow',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // field style
+        $this->start_controls_section(
+            'field_style_section',
+            [
+                'label' => esc_html__( 'Field', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'field_padding',
+            [
+                'label' => esc_html__( 'Padding', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap .wpcf7-form-control:not(.wpcf7-submit)' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'field_color',
+            [
+                'label'     =>  esc_html__( 'Màu chữ', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap .wpcf7-form-control:not(.wpcf7-submit)' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap .wpcf7-form-control:not(.wpcf7-submit)::placeholder' => 'color: {{VALUE}}'
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'field_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap .wpcf7-form-control:not(.wpcf7-submit)',
+            ]
+        );
+
+        $this->add_control(
+            'field_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap .wpcf7-form-control:not(.wpcf7-submit)' => 'background-color: {{VALUE}}'
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'field_border',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap .wpcf7-form-control:not(.wpcf7-submit)',
+            ]
+        );
+
+        $this->add_control(
+            'field_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap .wpcf7-form-control:not(.wpcf7-submit)' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'field_height_input',
+            [
+                'label' => esc_html__( 'Chiều cao input', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap input' => 'min-height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'field_height_textarea',
+            [
+                'label' => esc_html__( 'Chiều cao textarea', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-form-control-wrap textarea' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // submit style
+        $this->start_controls_section(
+            'submit_style_section',
+            [
+                'label' => esc_html__( 'Submit', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'submit_padding',
+            [
+                'label' => esc_html__( 'Padding', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'submit_color',
+            [
+                'label'     =>  esc_html__( 'Màu chữ', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-submit' => 'color: {{VALUE}}'
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'submit_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-submit',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'submit_background',
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-submit',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'submit_border',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-submit',
+            ]
+        );
+
+        $this->add_control(
+            'submit_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -212,16 +581,16 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 		if ( ! empty( $settings['contact_form_list'] ) ) :
 			?>
 
-            <div class="element-contact-form-7 <?php echo esc_attr($settings['style_layout']); ?>">
+            <div class="element-contact-form-7">
                 <?php if ( $settings['heading'] ) : ?>
                     <h3 class="heading text-center">
-		                <?php echo esc_html( $settings['heading'] ); ?>
+		                <span class="d-inline-block<?php echo esc_attr( $settings['show_gradient'] == 'yes' ? ' has-gradient' : '' ); ?>"><?php echo esc_html( $settings['heading'] ); ?></span>
                     </h3>
                 <?php endif; ?>
 
-                <?php if ( $settings['content'] ) : ?>
-                    <div class="content <?php echo esc_attr($settings['content_align']); ?>">
-                        <?php echo wpautop( $settings['content'] ); ?>
+                <?php if ( $settings['sub_heading'] ) : ?>
+                    <div class="sub-heading text-center">
+                        <p class="d-inline-block txt"><?php echo esc_html( $settings['sub_heading'] ); ?></p>
                     </div>
                 <?php endif; ?>
 

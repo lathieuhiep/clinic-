@@ -24,7 +24,7 @@ $licensing = clinic_get_opt_general_licensing();
 
             <div class="info">
                 <?php if ( !empty( $licensing['id'] ) ) : ?>
-                    <div class="item-licensing">
+                    <div class="item-licensing d-flex align-items-center">
                         <?php echo wp_get_attachment_image( $licensing['id'], 'medium' ); ?>
                     </div>
                 <?php endif; ?>
@@ -51,7 +51,7 @@ $licensing = clinic_get_opt_general_licensing();
                     </div>
                 </div>
 
-                <div class="item">
+                <div class="item d-flex align-items-center">
                     <div class="item__icon">
                         <i class="icon-clock"></i>
                     </div>

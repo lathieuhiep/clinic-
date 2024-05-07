@@ -113,7 +113,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'grid-column-gap',
+            'grid_column_gap',
             [
                 'label' => esc_html__( 'Grid column gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -136,7 +136,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'grid-row-gap',
+            'grid_row_gap',
             [
                 'label' => esc_html__( 'Grid row gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -182,7 +182,7 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         $repeater->add_control(
             'list_percent',
             [
-                'label' => esc_html__( 'Phần trăm', 'textdomain' ),
+                'label' => esc_html__( 'Phần trăm', 'clinic' ),
                 'type' => Controls_Manager::NUMBER,
                 'min' => 0,
                 'max' => 100,
@@ -192,22 +192,11 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         );
 
         $repeater->add_control(
-            'list_percent_title',
-            [
-                'label' => esc_html__( 'Tiêu đề phần trăm', 'textdomain' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => "70%",
-            ]
-        );
-
-        $repeater->add_control(
-            'list_background_circular', [
-                'label' => esc_html__( 'Màu hình tròn %', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-circular-progress {{CURRENT_ITEM}} .item__circle .progress-circle-fill' => 'stroke: {{VALUE}}',
-                    '{{WRAPPER}} .element-circular-progress {{CURRENT_ITEM}} .item__circle .percent-title' => 'color: {{VALUE}}'
-                ],
+            'list_content', [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'type' => Controls_Manager::WYSIWYG,
+                'default' => esc_html__( 'Nội dung' , 'clinic' ),
+                'show_label' => false,
             ]
         );
 
@@ -231,22 +220,82 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
 
         $this->end_controls_section();
 
-        // title style
+        // circle style
         $this->start_controls_section(
-            'title_style_section',
+            'circle_style_section',
             [
-                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'label' => esc_html__( 'Hình tròn', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'circle_width',
+            [
+                'label' => esc_html__( 'Độ rộng hình tròn', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 186,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-circular-progress .item__circle' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'circle_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-circular-progress .item__circle' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'circle_second_border_color',
+            [
+                'label'     =>  esc_html__( 'Màu hình tròn 2', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-circular-progress .item__circle:before' => 'border-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // percent style
+        $this->start_controls_section(
+            'percent_style_section',
+            [
+                'label' => esc_html__( 'Phần trăm', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_control(
-            'title_color',
+            'percent_color',
             [
                 'label'     =>  esc_html__( 'Color', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
-                    '{{WRAPPER}} .element-circular-progress .item__title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-circular-progress .item__circle' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -254,9 +303,70 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'title_typography',
+                'name' => 'percent_typography',
                 'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-circular-progress .item__title',
+                'selector' => '{{WRAPPER}} .element-circular-progress .item__circle',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // content style
+        $this->start_controls_section(
+            'content_style_section',
+            [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'content_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'text-start'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'text-center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'text-end' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+
+                    'text-justify' => [
+                        'title' =>  esc_html__( 'Justify', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => 'text-justify',
+            ]
+        );
+
+        $this->add_control(
+            'content_color',
+            [
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-circular-progress .item__content' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'content_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-circular-progress .item__content',
             ]
         );
 
@@ -280,18 +390,14 @@ class Clinic_Elementor_Circular_Progress extends Widget_Base
     ?>
         <div class="element-circular-progress">
             <?php foreach ($settings['list'] as $item): ?>
-                <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>" data-progress="<?php echo esc_attr($item['list_percent']); ?>">
+                <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>" data-percent="<?php echo esc_attr($item['list_percent']); ?>">
                     <div class="item__circle d-flex align-items-center justify-content-center">
-                        <span class="percent-title"><?php echo esc_html( $item['list_percent_title'] ); ?></span>
-
-                        <svg viewBox="0 0 130 130">
-                            <circle cx="65" cy="65" r="60" class="background-circle"></circle>
-                            <circle cx="65" cy="65" r="60" class="progress-circle-fill"></circle>
-                        </svg>
+                        <span class="percent">0</span>
+                        <span class="unit">%</span>
                     </div>
 
-                    <div class="item__title">
-                        <?php echo esc_html( $item['list_title'] ); ?>
+                    <div class="item__content <?php echo esc_attr( $settings['content_align'] ); ?>">
+                        <?php echo wpautop( $item['list_content'] ); ?>
                     </div>
                 </div>
             <?php endforeach; ?>

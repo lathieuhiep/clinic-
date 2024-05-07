@@ -10,34 +10,21 @@
     &__circle {
       position: relative;
       margin-bottom: 1.6rem;
-      @include square(13rem, 50%);
+      font-size: 5rem;
+      font-weight: 500;
+      color: #F30000;
+      border-radius: 50%;
+      background-color: var(--clinic-theme-primary-color);
 
-      .percent-title {
+      &:before {
         position: absolute;
-        color: #FF6F69;
-        font-weight: 700;
-        font-size: 1.8rem;
-      }
-
-      svg {
-        @include square(13rem, 50%);
-      }
-
-      .background-circle {
-        fill: none;
-        stroke: #ddd;
-        stroke-width: 12;
-      }
-
-      .progress-circle-fill {
-        fill: none;
-        stroke: #FF6F69;
-        stroke-width: 12;
-        stroke-dasharray: 408.407; /* Chu vi vòng tròn, 2πr, r=65 */
-        stroke-dashoffset: 408.407;
-        transform: rotate(-90deg);
-        transform-origin: 50% 50%;
-        transition: stroke-dashoffset 1s ease;
+        content: "";
+        top: .5rem;
+        right: .5rem;
+        bottom: .5rem;
+        left: .5rem;
+        border: .3rem dotted var(--color-white);
+        border-radius: 50%;
       }
     }
   }
