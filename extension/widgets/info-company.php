@@ -32,45 +32,53 @@ class clinic_info_company_widget extends WP_Widget {
         }
     ?>
         <div class="info-company-widget">
-            <div class="item">
-                <div class="item__icon">
-                    <i class="icon-house-light"></i>
-                </div>
+            <?php if ( $instance['address'] ) : ?>
+                <div class="item">
+                    <div class="item__icon">
+                        <i class="icon-house-light"></i>
+                    </div>
 
-                <div class="item__content">
-                    <?php echo esc_html( $instance['address'] ); ?>
+                    <div class="item__content">
+                        <?php echo esc_html( $instance['address'] ); ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <div class="item">
-                <div class="item__icon">
-                    <i class="icon-phone-circle"></i>
-                </div>
+            <?php if ( $instance['hotline'] ) : ?>
+                <div class="item">
+                    <div class="item__icon">
+                        <i class="icon-phone-circle"></i>
+                    </div>
 
-                <div class="item__content">
-                    <?php echo esc_html( $instance['hotline'] ); ?>
+                    <div class="item__content">
+                        <?php echo esc_html( $instance['hotline'] ); ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <div class="item">
-                <div class="item__icon">
-                    <i class="icon-facebook"></i>
-                </div>
+		    <?php if ( $instance['facebook'] ) : ?>
+                <div class="item">
+                    <div class="item__icon">
+                        <i class="icon-facebook"></i>
+                    </div>
 
-                <div class="item__content">
-                    <?php echo esc_html( $instance['facebook'] ); ?>
+                    <div class="item__content">
+					    <?php echo esc_html( $instance['facebook'] ); ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <div class="item">
-                <div class="item__icon">
-                    <i class="icon-envelope"></i>
-                </div>
+            <?php if ( $instance['mail'] ) : ?>
+                <div class="item">
+                    <div class="item__icon">
+                        <i class="icon-envelope"></i>
+                    </div>
 
-                <div class="item__content">
-                    <?php echo esc_html( $instance['mail'] ); ?>
+                    <div class="item__content">
+                        <?php echo esc_html( $instance['mail'] ); ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
     <?php
 
