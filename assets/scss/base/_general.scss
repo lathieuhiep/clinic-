@@ -420,3 +420,13 @@ pre {
 
   }
 }
+
+.elementor-element {
+  .swiper {
+    .swiper-pagination-bullets {
+      &.swiper-pagination-horizontal {
+        bottom: -0.7rem;
+      }
+    }
+  }
+}

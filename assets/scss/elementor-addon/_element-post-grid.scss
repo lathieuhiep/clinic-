@@ -1,62 +1,35 @@
 .element-post-grid {
   &__warp {
     display: grid;
-    grid-gap: 2.4rem;
+    grid-gap: 2.7rem 3rem;
 
     @media (min-width: 992px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (min-width: 576px) and (max-width: 991px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
     .item {
-      border: 1px solid #C0C0C0;
-      border-radius: .5rem;
-      overflow: hidden;
+      display: grid;
+      grid-gap: 2rem;
 
-      &__thumbnail {
-        img {
-          width: 100%;
-        }
+      @media (min-width: 576px) {
+        grid-template-columns: 27.5rem 1fr;
       }
 
       &__box {
-        padding: 2rem 2.6rem;
-
         .title {
-          margin-bottom: 1.6rem;
+          margin-bottom: .9rem;
           font-size: 1.6rem;
           font-weight: 500;
           line-height: 2.2rem;
           font-family: var(--body-font-family);
           text-transform: uppercase;
-
-          a {
-            display: inline-block;
-            color: var(--heading-color);
-          }
         }
 
         .content {
-          color: #5F5A5A;
-          font-size: 1.5rem;
+          color: #5D5D5D;
+          font-size: 1.6rem;
+          line-height: 2.2rem;
           text-align: justify;
-        }
-
-        .action-box {
-          margin-top: 2rem;
-          padding-top: 2rem;
-          border-top: 1px solid #8E8E8E;
-
-          a {
-            color: #E6171F;
-
-            &:hover {
-              color: var(--heading-color);
-            }
-          }
         }
       }
     }

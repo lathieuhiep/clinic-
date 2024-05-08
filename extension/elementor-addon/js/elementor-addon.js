@@ -84,9 +84,9 @@
                         0: {
                             items: 1,
                             autoHeight:true,
-                            margin: 0
+                            margin: 12
                         },
-                        768: {
+                        576: {
                             items: 2,
                             margin: 12
                         },
@@ -159,42 +159,6 @@
         }
     }
 
-    // element cate list slider
-    const elementCateListSlider = ($scope, $) => {
-        const slider = $scope.find('.element-cate-list-slider__warp')
-
-        if ( slider.length ) {
-            slider.each(function () {
-                const thisSlider = $(this)
-                const options = {
-                    dots: false,
-                    nav: true,
-                    responsive:{
-                        0: {
-                            items: 1,
-                            autoHeight:true,
-                            margin: 0
-                        },
-                        576: {
-                            items: 2,
-                            margin: 12
-                        },
-                        768: {
-                            items: 3,
-                            margin: 12
-                        },
-                        992: {
-                            items: 4,
-                            margin: 20
-                        }
-                    }
-                }
-
-                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
-            })
-        }
-    }
-
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
@@ -207,9 +171,6 @@
 
         /* Element doctor slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-package-slider.default', elementPackageSlider);
-
-        /* Element cate list slider */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-category-list-slider.default', elementCateListSlider);
 
         /* Element circular progress */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-circular-progress.default', elementCircularProgress);

@@ -16,23 +16,27 @@
         }
       }
 
-      &__title {
-        margin-bottom: .6rem;
-        color: #000000;
-        font-size: 1.7rem;
-        font-weight: 500;
-        font-family: var(--body-font-family);
+      &__body {
+        flex: 1;
 
-        @media (max-width: 1199px) {
-          font-size: 1.6rem;
+        .title {
+          margin-bottom: .6rem;
+          color: #000000;
+          font-size: 1.7rem;
+          font-weight: 500;
+          font-family: var(--body-font-family);
+
+          @media (max-width: 1199px) {
+            font-size: 1.6rem;
+          }
         }
-      }
 
-      &__content {
-        line-height: 1.5;
+        .content {
+          line-height: 1.5;
 
-        a {
-          color: var(--color-sunset-orange);
+          a {
+            color: var(--color-sunset-orange);
+          }
         }
       }
     }
