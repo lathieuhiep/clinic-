@@ -31,20 +31,6 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
 	}
 
 	protected function register_controls(): void {
-
-        // layout section
-        $this->start_controls_section(
-            'layout_section',
-            [
-                'label' => esc_html__( 'Layout', 'clinic' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-
-
-        $this->end_controls_section();
-
 		// Content section
 		$this->start_controls_section(
 			'content_section',
