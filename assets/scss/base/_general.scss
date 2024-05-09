@@ -22,6 +22,7 @@
   --clinic-theme-tertiary-color: #{$theme-tertiary-color};
   --clinic-theme-quaternary-color: #{$theme-quaternary-color};
   --clinic-theme-fifth-color: #{$theme-fifth-color};
+  --clinic-theme-sixth-color: #{$theme-sixth-color};
 
   --color-white: #{$color-white};
   --color-salem: #{$color-salem};
@@ -171,13 +172,14 @@ pre {
 
 /* Breadcrumbs */
 .breadcrumbs {
+  margin-bottom: 3rem;
   padding: 1.2rem 2.4rem;
-  color: rgba(41, 102, 168, 1);
-  font-weight: 700;
+  color: #737373;
+  font-weight: 500;
   background-color: #EDEDED;
 
   a {
-    color: rgba(41, 102, 168, 0.5);
+    color: var(--clinic-theme-primary-color);
   }
 }
 
@@ -257,8 +259,26 @@ pre {
 }
 
 .title-has-icon {
-  padding-left: .8rem;
-  border-left: .7rem solid #FF0000;
+  position: relative;
+  padding-left: 3rem;
+
+  &:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    @include square(2.3rem, 50%);
+    border: .3rem solid #83C261;
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    top: .85rem;
+    left: .85rem;
+    @include square(.6rem, 50%);
+    background-color: #135CAA;
+  }
 
   + p {
     margin-top: 1.5rem;
@@ -267,8 +287,9 @@ pre {
   &__text {
     margin: 0;
     font-size: 2rem;
-    line-height: 1;
+    line-height: 1.2;
     text-transform: uppercase;
+    color: #135CAA;
   }
 }
 

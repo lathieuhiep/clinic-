@@ -33,7 +33,7 @@ class clinic_support_widget extends WP_Widget {
         $link_map = clinic_get_opt_general_address_link();
     ?>
 
-        <div class="warp">
+        <div class="widget-warp">
             <?php if ( !empty( $link_chat ) ) : ?>
                 <div class="item link-chat">
                     <a href="<?php echo esc_url( $link_chat ); ?>">

@@ -57,7 +57,7 @@ class clinic_related_posts_widget extends WP_Widget {
 
 		if ( $post_query->have_posts() ) :
 		?>
-			<div class="related-posts-widget__list recent-post-widget__list">
+			<div class="widget-warp related-posts-widget__list recent-post-widget__list">
 				<?php
 				while ( $post_query->have_posts() ) :
 					$post_query->the_post();

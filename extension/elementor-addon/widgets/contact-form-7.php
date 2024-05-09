@@ -117,7 +117,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
                 'label_on' => esc_html__( 'Show', 'clinic' ),
                 'label_off' => esc_html__( 'Hide', 'clinic' ),
                 'return_value' => 'yes',
-                'default' => 'yes',
+                'default' => '',
             ]
         );
 

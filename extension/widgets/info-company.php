@@ -31,7 +31,7 @@ class clinic_info_company_widget extends WP_Widget {
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         }
     ?>
-        <div class="info-company-widget">
+        <div class="widget-warp info-company-widget">
             <?php if ( $instance['address'] ) : ?>
                 <div class="item">
                     <div class="item__icon">

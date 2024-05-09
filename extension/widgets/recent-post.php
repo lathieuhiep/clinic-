@@ -58,7 +58,7 @@ class clinic_recent_post_widget extends WP_Widget {
 		if ( $post_query->have_posts() ) :
 
         ?>
-            <div class="recent-post-widget__list">
+            <div class="widget-warp recent-post-widget__list">
 				<?php
 				while ( $post_query->have_posts() ) :
 					$post_query->the_post();

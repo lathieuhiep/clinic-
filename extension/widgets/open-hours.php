@@ -31,7 +31,7 @@ class clinic_open_hours_widget extends WP_Widget {
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         }
     ?>
-        <div class="open-hours-widget">
+        <div class="widget-warp open-hours-widget">
             <div class="open-hours-widget__warp text-center">
                 <div class="item">
                     <h3 class="item__title">

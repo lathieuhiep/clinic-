@@ -254,8 +254,8 @@ if ( class_exists( 'CSF' ) ) {
 				'id'         => 'opt_menu_sticky',
 				'type'       => 'switcher',
 				'title'      => esc_html__( 'Sticky menu', 'clinic' ),
-				'text_on'    => esc_html__( 'Yes', 'clinic' ),
-				'text_off'   => esc_html__( 'No', 'clinic' ),
+				'text_on'    => esc_html__( 'Có', 'clinic' ),
+				'text_off'   => esc_html__( 'Không', 'clinic' ),
 				'text_width' => 80,
 				'default'    => true
 			),
@@ -267,44 +267,88 @@ if ( class_exists( 'CSF' ) ) {
 	CSF::createSection( $clinic_prefix, array(
 		'id'    => 'opt_post_section',
 		'icon'  => 'fas fa-blog',
-		'title' => esc_html__( 'Post', 'clinic' ),
+		'title' => esc_html__( 'Bài viết', 'clinic' ),
 	) );
 
 	// Category Post
 	CSF::createSection( $clinic_prefix, array(
 		'parent'      => 'opt_post_section',
-		'title'       => esc_html__( 'Category', 'clinic' ),
+		'title'       => esc_html__( 'Danh mục', 'clinic' ),
 		'description' => esc_html__( 'Use for archive, index, page search', 'clinic' ),
 		'fields'      => array(
 			// Sidebar
 			array(
 				'id'      => 'opt_post_cat_sidebar_position',
 				'type'    => 'select',
-				'title'   => esc_html__( 'Sidebar position', 'clinic' ),
+				'title'   => esc_html__( 'Vị trí sidebar', 'clinic' ),
 				'options' => array(
-					'hide'  => esc_html__( 'Hide', 'clinic' ),
-					'left'  => esc_html__( 'Left', 'clinic' ),
-					'right' => esc_html__( 'Right', 'clinic' ),
+					'hide'  => esc_html__( 'Ẩn', 'clinic' ),
+					'left'  => esc_html__( 'Trái', 'clinic' ),
+					'right' => esc_html__( 'Phải', 'clinic' ),
 				),
 				'default' => 'right'
 			),
+
+            // layout
+            array(
+                'id'        => 'opt_post_cat_grid',
+                'type'      => 'fieldset',
+                'title'     => esc_html__( 'Grid', 'clinic' ),
+                'fields'    => array(
+                    array(
+                        'id'         => 'sm',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
+                        'default'    => 12,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'md',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
+                        'default'    => 6,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'lg',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
+                        'default'    => 4,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+
+                    array(
+                        'id'         => 'xl',
+                        'type'       => 'slider',
+                        'title'      => esc_html__( 'xl: ≥1200px', 'clinic' ),
+                        'default'    => 4,
+                        'min'        => 1,
+                        'max'        => 12,
+                    ),
+                ),
+            ),
 		)
 	) );
 
 	// Single Post
 	CSF::createSection( $clinic_prefix, array(
 		'parent' => 'opt_post_section',
-		'title'  => esc_html__( 'Single', 'clinic' ),
+		'title'  => esc_html__( 'Bài viết chi tiết', 'clinic' ),
 		'fields' => array(
 			array(
 				'id'      => 'opt_post_single_sidebar_position',
 				'type'    => 'select',
-				'title'   => esc_html__( 'Sidebar position', 'clinic' ),
-				'options' => array(
-					'hide'  => esc_html__( 'Hide', 'clinic' ),
-					'left'  => esc_html__( 'Left', 'clinic' ),
-					'right' => esc_html__( 'Right', 'clinic' ),
-				),
+				'title'   => esc_html__( 'Vị trí sidebar', 'clinic' ),
+                'options' => array(
+                    'hide'  => esc_html__( 'Ẩn', 'clinic' ),
+                    'left'  => esc_html__( 'Trái', 'clinic' ),
+                    'right' => esc_html__( 'Phải', 'clinic' ),
+                ),
 				'default' => 'right'
 			),
 
@@ -312,9 +356,9 @@ if ( class_exists( 'CSF' ) ) {
 			array(
 				'id'         => 'opt_post_single_related',
 				'type'       => 'switcher',
-				'title'      => esc_html__( 'Show related post', 'clinic' ),
-				'text_on'    => esc_html__( 'Yes', 'clinic' ),
-				'text_off'   => esc_html__( 'No', 'clinic' ),
+				'title'      => esc_html__( 'Hiển thị bài viết liên quan', 'clinic' ),
+				'text_on'    => esc_html__( 'Có', 'clinic' ),
+				'text_off'   => esc_html__( 'Không', 'clinic' ),
 				'default'    => true,
 				'text_width' => 80
 			),
@@ -323,7 +367,7 @@ if ( class_exists( 'CSF' ) ) {
 			array(
 				'id'      => 'opt_post_single_related_limit',
 				'type'    => 'number',
-				'title'   => esc_html__( 'Limit related post', 'clinic' ),
+				'title'   => esc_html__( 'Số bài viết hiển thị', 'clinic' ),
 				'default' => 6,
 			),
 
@@ -400,7 +444,7 @@ if ( class_exists( 'CSF' ) ) {
                     array(
                         'id'         => 'xl',
                         'type'       => 'slider',
-                        'title'      => esc_html__( 'lg: ≥1200px', 'clinic' ),
+                        'title'      => esc_html__( 'xl: ≥1200px', 'clinic' ),
                         'default'    => 3,
                         'min'        => 1,
                         'max'        => 12,
