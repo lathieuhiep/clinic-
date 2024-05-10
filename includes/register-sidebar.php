@@ -19,10 +19,12 @@ function clinic_multiple_widget_init(): void {
 	clinic_widget_registration( esc_html__('Sidebar Main', 'clinic'), 'sidebar-main' );
 	clinic_widget_registration( esc_html__('Sidebar Post', 'clinic'), 'sidebar-post', esc_html__('Display sidebar on post.', 'clinic') );
 
-	clinic_widget_registration( esc_html__('Sidebar Footer Column 1', 'clinic'), 'sidebar-footer-column-1' );
-	clinic_widget_registration( esc_html__('Sidebar Footer Column 2', 'clinic'), 'sidebar-footer-column-2' );
-	clinic_widget_registration( esc_html__('Sidebar Footer Column 3', 'clinic'), 'sidebar-footer-column-3' );
-	clinic_widget_registration( esc_html__('Sidebar Footer Column 4', 'clinic'), 'sidebar-footer-column-4' );
+    // sidebar footer
+    $opt_number_columns = clinic_get_option('opt_footer_columns', '4');
+
+    for ( $i = 1; $i <= $opt_number_columns; $i++ ) {
+        clinic_widget_registration( esc_html__('Sidebar Footer Column ' . $i, 'clinic'), 'sidebar-footer-column-' . $i );
+    }
 }
 
 add_action('widgets_init', 'clinic_multiple_widget_init');

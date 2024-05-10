@@ -8,162 +8,220 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 
-	public function get_categories(): array {
-		return array( 'my-theme' );
-	}
+    public function get_categories(): array {
+        return array( 'my-theme' );
+    }
 
-	public function get_name(): string {
-		return 'clinic-doctor-slider';
-	}
+    public function get_name(): string {
+        return 'clinic-doctor-slider';
+    }
 
-	public function get_title(): string {
-		return esc_html__( 'Doctor Slider', 'clinic' );
-	}
+    public function get_title(): string {
+        return esc_html__( 'Doctor Slider', 'clinic' );
+    }
 
-	public function get_icon(): string {
-		return 'eicon-slider-push';
-	}
+    public function get_icon(): string {
+        return 'eicon-slider-push';
+    }
 
-	protected function register_controls(): void {
-		// Content section
-		$this->start_controls_section(
-			'content_section',
-			[
-				'label' => esc_html__( 'Query', 'clinic' ),
-				'tab' => Controls_Manager::TAB_CONTENT,
-			]
-		);
+    protected function register_controls(): void {
+        // content section
+        $this->start_controls_section(
+            'content_section',
+            [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
-		$this->add_control(
-			'limit',
-			[
-				'label'     =>  esc_html__( 'Number of Posts', 'clinic' ),
-				'type'      =>  Controls_Manager::NUMBER,
-				'default'   =>  12,
-				'min'       =>  1,
-				'max'       =>  100,
-				'step'      =>  1,
-			]
-		);
+        $this->add_control(
+            'heading',
+            [
+                'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Đội ngũ y bác sĩ', 'clinic' ),
+                'label_block' => true,
+            ]
+        );
 
-		$this->add_control(
-			'order_by',
-			[
-				'label'     =>  esc_html__( 'Order By', 'clinic' ),
-				'type'      =>  Controls_Manager::SELECT,
-				'default'   =>  'id',
-				'options'   =>  [
-					'id'    =>  esc_html__( 'ID', 'clinic' ),
-					'title' =>  esc_html__( 'Title', 'clinic' ),
-					'date'  =>  esc_html__( 'Date', 'clinic' ),
-					'rand'  =>  esc_html__( 'Random', 'clinic' ),
-				],
-			]
-		);
+        $this->add_control(
+            'desc',
+            [
+                'label'     =>  esc_html__( 'Nội dung', 'clinic' ),
+                'type'      =>  Controls_Manager::WYSIWYG,
+                'default'   =>  esc_html__( 'Default description', 'clinic' ),
+            ]
+        );
 
-		$this->add_control(
-			'order',
-			[
-				'label'     =>  esc_html__( 'Order', 'clinic' ),
-				'type'      =>  Controls_Manager::SELECT,
-				'default'   =>  'DESC',
-				'options'   =>  [
-					'ASC'   =>  esc_html__( 'Ascending', 'clinic' ),
-					'DESC'  =>  esc_html__( 'Descending', 'clinic' ),
-				],
-			]
-		);
+        $this->end_controls_section();
 
-		$this->end_controls_section();
-	}
+        // query section
+        $this->start_controls_section(
+            'query_section',
+            [
+                'label' => esc_html__( 'Đội ngũ bác sĩ', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
-	protected function render(): void {
-		$settings = $this->get_settings_for_display();
-		$medical_appointment_form = clinic_get_opt_medical_appointment();
+        $this->add_control(
+            'limit',
+            [
+                'label'     =>  esc_html__( 'Number of Posts', 'clinic' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  12,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
 
-		$owl_options = [
-			'items' => 1,
-            'dots' => false
-		];
+        $this->add_control(
+            'order_by',
+            [
+                'label'     =>  esc_html__( 'Order By', 'clinic' ),
+                'type'      =>  Controls_Manager::SELECT,
+                'default'   =>  'id',
+                'options'   =>  [
+                    'id'    =>  esc_html__( 'ID', 'clinic' ),
+                    'title' =>  esc_html__( 'Title', 'clinic' ),
+                    'date'  =>  esc_html__( 'Date', 'clinic' ),
+                    'rand'  =>  esc_html__( 'Random', 'clinic' ),
+                ],
+            ]
+        );
 
-		$limit_post     =   $settings['limit'];
-		$order_by_post  =   $settings['order_by'];
-		$order_post     =   $settings['order'];
+        $this->add_control(
+            'order',
+            [
+                'label'     =>  esc_html__( 'Order', 'clinic' ),
+                'type'      =>  Controls_Manager::SELECT,
+                'default'   =>  'DESC',
+                'options'   =>  [
+                    'ASC'   =>  esc_html__( 'Ascending', 'clinic' ),
+                    'DESC'  =>  esc_html__( 'Descending', 'clinic' ),
+                ],
+            ]
+        );
 
-		// Query
-		$args = array(
-			'post_type'           => 'clinic_doctor',
-			'posts_per_page'      => $limit_post,
-			'orderby'             => $order_by_post,
-			'order'               => $order_post,
-			'ignore_sticky_posts' => 1,
-		);
+        $this->end_controls_section();
+    }
 
-		$query = new WP_Query( $args );
+    protected function render(): void {
+        $settings = $this->get_settings_for_display();
+        $medical_appointment_form = clinic_get_opt_medical_appointment();
+        $link_chat = clinic_get_opt_link_chat_doctor();
 
-		if ( $query->have_posts() ) :
+        $owl_options = [
+            'items' => 1,
+            'dots' => false,
+            'margin' => 12
+        ];
+
+        $limit_post     =   $settings['limit'];
+        $order_by_post  =   $settings['order_by'];
+        $order_post     =   $settings['order'];
+
+        // Query
+        $args = array(
+            'post_type'           => 'clinic_doctor',
+            'posts_per_page'      => $limit_post,
+            'orderby'             => $order_by_post,
+            'order'               => $order_post,
+            'ignore_sticky_posts' => 1,
+        );
+
+        $query = new WP_Query( $args );
+
+        if ( $query->have_posts() ) :
             $avatars = [];
-        ?>
+            ?>
             <div class="element-doctor-slider">
-                <div class="element-doctor-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
-					<?php
-					while ( $query->have_posts() ) :
-						$query->the_post();
+                <div class="slider-box">
+                    <div class="top-box text-center">
+                        <h2 class="heading">
+                            <?php echo esc_html( $settings['heading'] ); ?>
+                        </h2>
 
-                    $avatar = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_avatar_id', true);
-                    $position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
-                    $specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
+                        <div class="divider-separator">
+                            <div class="line"></div>
 
-                    $avatars[] = $avatar;
-                    ?>
-
-                    <div class="item">
-                        <div class="item__thumbnail">
-                            <?php the_post_thumbnail('large'); ?>
-                        </div>
-
-                        <div class="item__body">
-                            <h3 class="title text-uppercase text-center">
-                                <?php echo esc_html( $position ) . ' '; the_title(); ?>
-                            </h3>
-
-                            <p class="position text-uppercase text-center">
-                                <?php echo esc_html( $specialist ); ?>
-                            </p>
-
-                            <div class="content">
-                                <?php the_content(); ?>
+                            <div class="image-box">
+                                <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/icon-cross.png' ) ) ?>" alt="">
                             </div>
 
-	                        <?php if ( $medical_appointment_form ) : ?>
-                                <div class="action-box">
-                                    <a class="action-box__booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                        <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
-                                    </a>
-                                </div>
-	                        <?php endif; ?>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="desc">
+                            <?php echo wpautop( $settings['desc'] ); ?>
                         </div>
                     </div>
 
-					<?php
-					endwhile;
-					wp_reset_postdata();
-					?>
+                    <div class="element-doctor-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+                        <?php
+                        while ( $query->have_posts() ) :
+                            $query->the_post();
+
+                            $avatars[] = get_post_thumbnail_id();
+                            $position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
+                            $specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
+                            ?>
+
+                            <div class="item">
+                                <div class="item__thumbnail">
+                                    <?php the_post_thumbnail('large'); ?>
+                                </div>
+
+                                <div class="item__body">
+                                    <h3 class="title text-uppercase">
+                                        <?php echo esc_html( $position ) . ' '; the_title(); ?>
+                                    </h3>
+
+                                    <h4 class="position">
+                                        <?php echo esc_html( $specialist ); ?>
+                                    </h4>
+
+                                    <div class="content">
+                                        <?php the_content(); ?>
+                                    </div>
+
+                                    <div class="action-box">
+                                        <?php if ( $medical_appointment_form ) : ?>
+                                            <a class="action-box__booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                                                <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
+                                            </a>
+                                        <?php endif; ?>
+
+                                        <?php if ( $link_chat ) : ?>
+                                            <a class="action-box__link" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                                                <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-bs-tu-van.png' ) ) ?>" alt="">
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php
+                        endwhile;
+                        wp_reset_postdata();
+                        ?>
+                    </div>
                 </div>
 
                 <?php if ( !empty( $avatars ) ) : ?>
                     <div class="element-doctor-avatar">
                         <div class="element-doctor-avatar__slider owl-carousel owl-theme">
-	                        <?php foreach ($avatars as $avatar) : ?>
+                            <?php foreach ($avatars as $avatar) : ?>
                                 <div class="item">
-	                                <?php echo wp_get_attachment_image( $avatar, 'full' ); ?>
+                                    <?php echo wp_get_attachment_image( $avatar, 'large' ); ?>
                                 </div>
-	                        <?php endforeach; ?>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 <?php endif; ?>
             </div>
-		<?php
-		endif;
-	}
+        <?php
+        endif;
+    }
 }

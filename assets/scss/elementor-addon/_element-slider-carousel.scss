@@ -1,0 +1,52 @@
+.element-slider-carousel {
+  &__warp {
+    .item {
+      &__thumbnail {
+        margin-bottom: 2rem;
+      }
+
+      &__body {
+        .title {
+          margin: 0;
+          font-size: 1.6rem;
+          color: #000000;
+        }
+      }
+    }
+
+    &.owl-carousel {
+      &:has(.owl-nav:not(.disabled)) {
+        padding: 0 3rem;
+      }
+
+      .owl-nav {
+        margin: 0;
+
+        button {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          display: flex;
+          align-items: center;
+          transform: translateY(-50%);
+
+          i {
+            font-size: 2.2rem;
+
+            &:before {
+              color: #007B14;
+            }
+          }
+
+          &.owl-prev {
+            left: 0;
+          }
+
+          &.owl-next {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}

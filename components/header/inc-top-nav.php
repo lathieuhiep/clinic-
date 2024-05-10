@@ -1,7 +1,7 @@
 <?php
 $address = clinic_get_option('opt_general_address');
 $working_time = clinic_get_option('opt_general_working_time');
-$hotline_group = clinic_get_option('opt_general_hotline_group');
+$hotline = clinic_get_opt_hotline();
 ?>
 
 <div class="top-nav d-none d-lg-block">
@@ -30,17 +30,10 @@ $hotline_group = clinic_get_option('opt_general_hotline_group');
 
                 <p class="item__txt">
                     <span><?php esc_html_e('Hotline tư vấn:', 'clinic'); ?></span>
-                    <?php
-                    if ( $hotline_group ) :
-                        foreach ( $hotline_group as $item ) :
-                    ?>
-                        <a class="animate-character" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $item['phone'] ) ); ?>">
-                            <?php echo esc_html($item['phone']); ?>
-                        </a>
-                    <?php
-                        endforeach;
-                    endif;
-                    ?>
+
+                    <a class="animate-character" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
+                        <?php echo esc_html( $hotline ); ?>
+                    </a>
                 </p>
             </div>
         </div>

@@ -5,6 +5,16 @@ function clinic_get_opt_hotline()
     return clinic_get_option('opt_general_hotline');
 }
 
+// get option address
+function clinic_get_opt_address() {
+    return clinic_get_option('opt_general_address');
+}
+
+// get option working time
+function clinic_get_opt_working_time() {
+    return clinic_get_option('opt_general_working_time');
+}
+
 // get medical appointment theme option general
 function clinic_get_opt_medical_appointment()
 {

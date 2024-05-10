@@ -24,86 +24,78 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-sort-down:before {
-  content: "\e912";
-}
 .icon-hours-support:before {
-  content: "\e911";
-}
-.icon-send:before {
-  content: "\e910";
-}
-.icon-menu:before {
-  content: "\e90f";
-}
-.icon-close:before {
-  content: "\e90e";
-}
-.icon-facebook-messenger-circle:before {
-  content: "\e90d";
-}
-.icon-check:before {
-  content: "\e90c";
-}
-.icon-zalo:before {
-  content: "\e90b";
-}
-.icon-phone-volume:before {
-  content: "\e90a";
+  content: "\e900";
 }
 .icon-angle-left:before {
-  content: "\e900";
-  color: #09244b;
-}
-.icon-angle-right:before {
   content: "\e901";
   color: #09244b;
 }
-.icon-clock:before {
+.icon-angle-right:before {
   content: "\e902";
-}
-.icon-envelope:before {
-  content: "\e903";
-}
-.icon-square-facebook:before {
-  content: "\e904";
-}
-.icon-facebook-messenger:before {
-  content: "\e905";
-}
-.icon-hose:before {
-  content: "\e906";
-}
-.icon-house-light:before {
-  content: "\e907";
-}
-.icon-location:before {
-  content: "\e908";
-}
-.icon-phone-circle:before {
-  content: "\e909";
-}
-.icon-phone:before {
-  content: "\e942";
-}
-.icon-location-dot:before {
-  content: "\e947";
+  color: #09244b;
 }
 .icon-calendar:before {
-  content: "\e953";
+  content: "\e903";
 }
-.icon-user:before {
-  content: "\e971";
+.icon-chat:before {
+  content: "\e904";
 }
-.icon-sphere:before {
-  content: "\e9c9";
+.icon-chat-light:before {
+  content: "\e905";
 }
-.icon-star-full:before {
-  content: "\e9d9";
+.icon-check-to-slot:before {
+  content: "\e906";
 }
-.icon-facebook-f:before {
-  content: "\ea90";
+.icon-clock:before {
+  content: "\e907";
 }
-.icon-youtube:before {
-  content: "\ea9d";
+.icon-close:before {
+  content: "\e908";
+}
+.icon-envelope:before {
+  content: "\e909";
+}
+.icon-facebook:before {
+  content: "\e90a";
+}
+.icon-facebook-messenger:before {
+  content: "\e90b";
+}
+.icon-facebook-messenger-circle:before {
+  content: "\e90c";
+}
+.icon-globe:before {
+  content: "\e90d";
+}
+.icon-hose:before {
+  content: "\e90e";
+}
+.icon-house-light:before {
+  content: "\e90f";
+}
+.icon-location:before {
+  content: "\e910";
+}
+.icon-location-pin:before {
+  content: "\e911";
+}
+.icon-menu:before {
+  content: "\e912";
+}
+.icon-phone:before {
+  content: "\e913";
+}
+.icon-phone-circle:before {
+  content: "\e914";
+}
+.icon-search:before {
+  content: "\e915";
+  color: #4c505b;
+}
+.icon-send:before {
+  content: "\e916";
+}
+.icon-sort-down:before {
+  content: "\e917";
 }

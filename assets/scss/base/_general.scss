@@ -10,6 +10,7 @@
 
   --heading-font-family: #{$heading-font-family};
   --heading-color: #{$heading-color};
+  --headings-line-height: #{$line-heading};
   --font-size-h1: #{$h1-font-size};
   --font-size-h2: #{$h2-font-size};
   --font-size-h3: #{$h3-font-size};
@@ -97,37 +98,6 @@ pre {
   right: 0;
   background-color: var(--color-white);
   z-index: 99999;
-}
-
-#back-top {
-  background-color: $background-hover;
-  opacity: 0;
-  width: 40px;
-  height: 40px;
-  bottom: 0;
-  cursor: pointer;
-  position: fixed;
-  right: 15px;
-  z-index: 1000;
-  @include transition();
-
-  a {
-    display: block;
-    color: #ffffff;
-    line-height: 40px;
-    text-align: center;
-    text-decoration: none;
-    @include transition(all 0.25s ease-in-out);
-  }
-
-  &.active_top {
-    opacity: 1;
-    bottom: 15px;
-  }
-
-  &:hover {
-    background-color: $background-primary;
-  }
 }
 
 .reset-list {

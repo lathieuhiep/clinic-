@@ -2,7 +2,6 @@
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 
@@ -61,7 +60,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	 */
 	public function get_keywords(): array
 	{
-		return ['image', 'text', 'list', 'about'];
+		return ['image', 'text'];
 	}
 
 	/**
@@ -86,84 +85,436 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	 */
 	protected function register_controls(): void
 	{
+        // layout section
+        $this->start_controls_section(
+            'layout_section',
+            [
+                'label' => esc_html__( 'Layout', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'grid-column-gap',
+            [
+                'label' => esc_html__( 'Grid column gap', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 40,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'grid-row-gap',
+            [
+                'label' => esc_html__( 'Grid row gap', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 40,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Hình ảnh
+        $this->start_controls_section(
+            'image_section',
+            [
+                'label' => esc_html__( 'Hình ảnh', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'image',
+            [
+                'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // heading
+        $this->start_controls_section(
+            'heading_section',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'heading',
+            [
+                'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Tiêu đề', 'clinic' ),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'sub_heading',
+            [
+                'label'       => esc_html__( 'Tiêu đề dưới', 'clinic' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => '',
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'show_dividing_line',
+            [
+                'label' => esc_html__('Hiển thị đường ngăn cách', 'clinic'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'show' => [
+                        'title' => esc_html__('Có', 'clinic'),
+                        'icon' => 'eicon-check',
+                    ],
+
+                    'hide' => [
+                        'title' => esc_html__('Không', 'clinic'),
+                        'icon' => 'eicon-ban',
+                    ]
+                ],
+                'default' => 'hide'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'dividing_line_width',
+            [
+                'label' => esc_html__( 'Độ dài đường ngăn cách', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 25,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .dividing-line' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'show_dividing_line' => 'show',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'dividing_line_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền đường ngăn cách', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-about-us__warp .item .dividing-line' => 'background-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'show_dividing_line' => 'show',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // content section
 		$this->start_controls_section(
-			'list_section',
+			'content_section',
 			[
-				'label' => esc_html__( 'Danh sách', 'clinic' ),
+				'label' => esc_html__( 'Nội dung', 'clinic' ),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
 
-		$repeater = new Repeater();
-
-		$repeater->add_control(
-			'list_image',
+		$this->add_control(
+			'desc',
 			[
-				'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
-				'type' => Controls_Manager::MEDIA,
-				'default' => [
-					'url' => Utils::get_placeholder_image_src(),
-				],
+				'label'     =>  esc_html__( 'Nội dung', 'clinic' ),
+				'type'      =>  Controls_Manager::WYSIWYG,
+				'default'   =>  esc_html__( 'Default description', 'clinic' ),
 			]
 		);
 
-		$repeater->add_control(
-			'list_title', [
+		$this->end_controls_section();
+
+        // contact section
+        $this->start_controls_section(
+            'contact_section',
+            [
+                'label' => esc_html__( 'Liên hệ', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'show_contact',
+            [
+                'label' => esc_html__('Hiển thị liên hệ', 'clinic'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'show' => [
+                        'title' => esc_html__('Có', 'clinic'),
+                        'icon' => 'eicon-check',
+                    ],
+
+                    'hide' => [
+                        'title' => esc_html__('Không', 'clinic'),
+                        'icon' => 'eicon-ban',
+                    ]
+                ],
+                'default' => 'show'
+            ]
+        );
+
+        $this->end_controls_section();
+
+		// style heading
+		$this->start_controls_section(
+			'heading_style_section',
+			[
 				'label' => esc_html__( 'Tiêu đề', 'clinic' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Title #1' , 'clinic' ),
-				'label_block' => true,
+				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
-		$repeater->add_control(
-			'list_content', [
+        $this->add_responsive_control(
+            'heading_margin',
+            [
+                'label' => esc_html__( 'Margin', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'heading_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'text-start'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'text-center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'text-end' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+
+                    'text-justify' => [
+                        'title' =>  esc_html__( 'Justify', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => 'text-start',
+            ]
+        );
+
+		$this->add_control(
+			'heading_color',
+			[
+				'label' => esc_html__( 'Màu', 'clinic' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .element-about-us__warp .item .heading' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'heading_typography',
+				'selector' => '{{WRAPPER}} .element-about-us__warp .item .heading',
+			]
+		);
+
+		$this->end_controls_section();
+
+        // style sub heading
+        $this->start_controls_section(
+            'style_sub_heading_section',
+            [
+                'label' => esc_html__( 'Tiêu đề dưới', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'sub_heading_margin',
+            [
+                'label' => esc_html__( 'Margin', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .sub-heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'sub_heading_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'text-start'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'text-center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'text-end' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+                    'text-justify' => [
+                        'title' =>  esc_html__( 'Justify', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => 'text-center',
+            ]
+        );
+
+        $this->add_control(
+            'sub_heading_color',
+            [
+                'label' => esc_html__( 'Màu', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .sub-heading' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'sub_heading_typography',
+                'selector' => '{{WRAPPER}} .element-about-us__warp .item .sub-heading',
+            ]
+        );
+
+        $this->end_controls_section();
+
+		// style desc
+		$this->start_controls_section(
+			'style_desc_section',
+			[
 				'label' => esc_html__( 'Nội dung', 'clinic' ),
-				'type' => Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'List Content' , 'clinic' ),
-				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
-			'list',
-			[
-				'label' => esc_html__( 'Danh sách', 'clinic' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[
-						'list_title' => __( 'Title #1', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #2', 'clinic' ),
-					],
-					[
-						'list_title' => __( 'Title #3', 'clinic' ),
-					],
-				],
-				'title_field' => '{{{ list_title }}}',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// style stt
-		$this->start_controls_section(
-			'style_stt_section',
-			[
-				'label' => esc_html__( 'Số thự tự', 'clinic' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
+        $this->add_control(
+            'desc_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'text-start'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'text-center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'text-end' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+
+                    'text-justify' => [
+                        'title' =>  esc_html__( 'Justify', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => 'text-justify',
+            ]
+        );
+
 		$this->add_control(
-			'list_stt_color',
+			'desc_color',
 			[
-				'label' => esc_html__( 'Color', 'clinic' ),
+				'label' => esc_html__( 'Màu', 'clinic' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .element-about-us .item__content .stt' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .element-about-us__warp .item .desc' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -171,68 +522,8 @@ class Clinic_Elementor_About_Us extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'list_stt_typography',
-				'selector' => '{{WRAPPER}} .element-about-us .item__content .stt',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// style title
-		$this->start_controls_section(
-			'style_title_section',
-			[
-				'label' => esc_html__( 'Title', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'list_title_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-about-us .item__content .box .title' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'list_title_typography',
-				'selector' => '{{WRAPPER}} .element-about-us .item__content .box .title',
-			]
-		);
-
-		$this->end_controls_section();
-
-		// style content
-		$this->start_controls_section(
-			'style_content_section',
-			[
-				'label' => esc_html__( 'Content', 'clinic' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'list_content_color',
-			[
-				'label' => esc_html__( 'Color', 'clinic' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .element-about-us .item__content .box .desc' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'list_content_typography',
-				'selector' => '{{WRAPPER}} .element-about-us .item__content .box .desc',
+				'name' => 'desc_typography',
+				'selector' => '{{WRAPPER}} .element-about-us__warp .item .desc',
 			]
 		);
 
@@ -249,45 +540,57 @@ class Clinic_Elementor_About_Us extends Widget_Base
 	protected function render(): void
 	{
 		$settings = $this->get_settings_for_display();
-	?>
+
+        $link_chat = clinic_get_opt_link_chat_doctor();
+        $medical_appointment_form = clinic_get_opt_medical_appointment();
+    ?>
 		<div class="element-about-us">
 			<div class="element-about-us__warp">
-				<?php
-				$stt = 1;
-				foreach ( $settings['list'] as $item ) :
-				?>
-					<div class="item d-flex elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-						<div class="item__thumbnail">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'full' ); ?>
-						</div>
+                <div class="item item-thumbnail">
+                    <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
+                </div>
 
-						<div class="item__content">
-							<p class="stt">
-								<?php echo esc_html( $this->addZeroBeforeNumber($stt) ); ?>
-							</p>
+                <div class="item item-content">
+                    <?php if ( $settings['heading'] ) : ?>
+                        <h2 class="heading <?php echo esc_attr($settings['heading_align']); ?>">
+                            <?php echo esc_html( $settings['heading'] ); ?>
+                        </h2>
+                    <?php endif; ?>
 
-                            <div class="box">
-                                <h3 class="title">
-	                                <?php echo esc_html( $item['list_title'] ); ?>
-                                </h3>
+                    <?php if ( $settings['sub_heading'] ) : ?>
+                        <h3 class="sub-heading <?php echo esc_attr($settings['sub_heading_align']); ?>">
+                            <?php echo esc_html( $settings['sub_heading'] ); ?>
+                        </h3>
+                    <?php endif; ?>
 
-                                <div class="desc text-justify">
-                                    <?php echo wpautop( $item['list_content'] ) ?>
-                                </div>
-                            </div>
-						</div>
-					</div>
-				<?php $stt++; endforeach; ?>
+                    <?php if ( $settings['show_dividing_line'] == 'show' ) : ?>
+                        <div class="dividing-line"></div>
+                    <?php endif; ?>
+
+                    <div class="desc <?php echo esc_attr($settings['desc_align']); ?>">
+                        <div class="desc__box position-relative z-1">
+                            <?php echo wpautop( $settings['desc'] ); ?>
+                        </div>
+                    </div>
+
+                    <?php if ( $settings['show_contact'] == 'show' ) : ?>
+                        <div class="action-box d-flex">
+                            <?php if ( $link_chat ) : ?>
+                                <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                                    <?php esc_html_e('Gặp bác sĩ tư vấn', "clinic"); ?>
+                                </a>
+                            <?php endif; ?>
+
+                            <?php if ( $medical_appointment_form ) : ?>
+                                <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                                    <?php esc_html_e('Đặt lịch hẹn khám', "clinic"); ?>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
 			</div>
 		</div>
 		<?php
-	}
-
-	protected function addZeroBeforeNumber(int $number): int|string {
-		if ( $number < 10 ) {
-			return '0' . $number;
-		}
-
-		return $number;
 	}
 }

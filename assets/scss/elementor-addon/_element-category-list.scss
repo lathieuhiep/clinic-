@@ -2,54 +2,11 @@
   &__grid {
     display: grid;
 
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media (min-width: 576px) and (max-width: 767px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (max-width: 575px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     .item {
       position: relative;
-      padding: 3rem 1.2rem;
-      border: 1px solid #BDD7EB;
-      background-color: #F2FFFA;
-      @include transition();
-
-      @media (min-width: 768px) {
-        &:nth-child(n+2):not(:nth-child(4n+1)) {
-          border-left: transparent;
-        }
-
-        &:nth-child(n+5) {
-          border-top: transparent;
-        }
-      }
-
-      @media (min-width: 576px) and (max-width: 767px) {
-        &:nth-child(n+2):not(:nth-child(3n+1)) {
-          border-left: transparent;
-        }
-
-        &:nth-child(n+4) {
-          border-top: transparent;
-        }
-      }
-      
-      @media (max-width: 575px) {
-        &:nth-child(n+2):not(:nth-child(2n+1)) {
-          border-left: transparent;
-        }
-
-        &:nth-child(n+3) {
-          border-top: transparent;
-        }
-      }
+      display: grid;
+      grid-gap: 1.5rem;
+      grid-template-columns: 9.2rem 1fr;
 
       &__link {
         position: absolute;
@@ -57,90 +14,19 @@
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: 2;
       }
 
       &__image {
-        position: relative;
-        margin: 0 auto 1.5rem;
-        width: 10rem;
-        height: 8rem;
-        overflow: hidden;
-        @include flex-center-vert();
-
-        @media (max-width: 575px) {
-          width: 7.2rem;
-          height: 6.2rem;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          @include transition();
-
-          &.image-change {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            opacity: 0;
-            visibility: hidden;
-          }
-        }
+        @include square(9.2rem, 50%);
+        background-color: #3A9460;
+        @include flex-center();
       }
 
-      &__title {
-        color: #132432;
-        font-family: var(--heading-font-family);
-        @include transition();
-
-        @media (min-width: 992px) {
-          font-size: 1.8rem;
-        }
-
-        @media (min-width: 576px) and (max-width: 991px) {
-          font-size: 1.5rem;
-        }
-
-        @media (max-width: 575px) {
-          font-size: 1.4rem;
-        }
-      }
-
-      &:hover {
-        border-color: var(--clinic-tertiary-color);
-        background-color: var(--clinic-tertiary-color);
-
-        .item__image {
-          .image-main {
-            opacity: 0;
-            visibility: hidden;
-          }
-
-          .image-change {
-            opacity: 1;
-            visibility: visible;
-          }
-        }
-
-        .item__title {
-          color: var(--color-white);
-        }
+      .title {
+        font-size: 1.7rem;
+        color: #000000;
+        font-weight: 500;
       }
     }
-  }
-}
-
-@-webkit-keyframes shine {
-  100% {
-    left: 125%;
-  }
-}
-
-@keyframes shine {
-  100% {
-    left: 125%;
   }
 }
