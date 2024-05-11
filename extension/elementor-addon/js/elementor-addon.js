@@ -147,6 +147,20 @@
         }
     }
 
+    // element chat with us
+    const elementChatWithUs = ($scope, $) => {
+        const slider = $scope.find('.element-chat-with-us__warp')
+        const options = slider.data('owl-options')
+
+        if (slider.length) {
+            slider.each(function () {
+                const thisSlider = $(this)
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+            })
+        }
+    }
+
     $(window).on('elementor/frontend/init', function () {
         // element slider
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
@@ -159,5 +173,8 @@
 
         // element doctor slider
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', elementDoctorSlider);
+
+        // element chat with us
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-chat-with-us.default', elementChatWithUs);
     });
 })(jQuery);

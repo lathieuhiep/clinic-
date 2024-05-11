@@ -204,7 +204,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'min_width_1200',
             [
-                'label'     => esc_html__( 'Min Width 1200px', 'basictheme' ),
+                'label'     => esc_html__( 'Min Width 1200px', 'clinic' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -213,7 +213,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'item_1200',
             [
-                'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 4,
                 'min'     => 1,
@@ -225,7 +225,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'margin_item_1200',
             [
-                'label'   => esc_html__( 'Khoảng cách', 'basictheme' ),
+                'label'   => esc_html__( 'Khoảng cách', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 24,
                 'min'     => 0,
@@ -238,7 +238,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'min_width_992',
             [
-                'label'     => esc_html__( 'Min Width 992px', 'basictheme' ),
+                'label'     => esc_html__( 'Min Width 992px', 'clinic' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -247,7 +247,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'item_992',
             [
-                'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 2,
                 'min'     => 1,
@@ -259,7 +259,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'margin_item_992',
             [
-                'label'   => esc_html__( 'Khoảng cách', 'basictheme' ),
+                'label'   => esc_html__( 'Khoảng cách', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 24,
                 'min'     => 0,
@@ -272,7 +272,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'min_width_768',
             [
-                'label'     => esc_html__( 'Min Width 768px', 'basictheme' ),
+                'label'     => esc_html__( 'Min Width 768px', 'clinic' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -281,7 +281,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'item_768',
             [
-                'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 2,
                 'min'     => 1,
@@ -293,7 +293,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'margin_item_768',
             [
-                'label'   => esc_html__( 'Khoảng cách', 'basictheme' ),
+                'label'   => esc_html__( 'Khoảng cách', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 12,
                 'min'     => 0,
@@ -306,7 +306,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'min_width_576',
             [
-                'label'     => esc_html__( 'Min Width 576px', 'basictheme' ),
+                'label'     => esc_html__( 'Min Width 576px', 'clinic' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -315,7 +315,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'item_576',
             [
-                'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 2,
                 'min'     => 1,
@@ -327,7 +327,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'margin_item_576',
             [
-                'label'   => esc_html__( 'Space Between Item', 'basictheme' ),
+                'label'   => esc_html__( 'Space Between Item', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 12,
                 'min'     => 0,
@@ -340,7 +340,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'max_width_575',
             [
-                'label'     => esc_html__( 'Max Width 575px', 'basictheme' ),
+                'label'     => esc_html__( 'Max Width 575px', 'clinic' ),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -349,7 +349,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'item_575',
             [
-                'label'   => esc_html__( 'Number of Item', 'basictheme' ),
+                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 1,
                 'min'     => 1,
@@ -361,7 +361,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
         $this->add_control(
             'margin_item_575',
             [
-                'label'   => esc_html__( 'Khoảng cách', 'basictheme' ),
+                'label'   => esc_html__( 'Khoảng cách', 'clinic' ),
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 12,
                 'min'     => 0,

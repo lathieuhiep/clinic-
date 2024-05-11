@@ -6,7 +6,7 @@ use Elementor\Controls_Manager;
 
 if (!defined('ABSPATH')) exit;
 
-class Clinic_Elementor_Addon_Post_Grid extends Widget_Base
+class Clinic_Elementor_Post_Grid extends Widget_Base
 {
     public function get_categories(): array {
         return array('my-theme');
@@ -230,9 +230,7 @@ class Clinic_Elementor_Addon_Post_Grid extends Widget_Base
         $query = new WP_Query($args);
 
         if ($query->have_posts()) :
-
             ?>
-
             <div class="element-post-grid">
                 <div class="element-post-grid__warp">
                     <?php while ($query->have_posts()): $query->the_post(); ?>
@@ -278,9 +276,7 @@ class Clinic_Elementor_Addon_Post_Grid extends Widget_Base
                     wp_reset_postdata(); ?>
                 </div>
             </div>
-
         <?php
-
         endif;
     }
 

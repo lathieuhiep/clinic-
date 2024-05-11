@@ -8,6 +8,7 @@
       flex-direction: column;
 
       &__thumbnail {
+        position: relative;
         margin-bottom: 2rem;
         overflow: hidden;
 

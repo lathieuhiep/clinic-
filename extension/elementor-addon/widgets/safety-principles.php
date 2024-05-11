@@ -90,7 +90,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
         $this->start_controls_section(
             'image_section',
             [
-                'label' => esc_html__( 'Image', 'clinic' ),
+                'label' => esc_html__( 'Ảnh', 'clinic' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -131,7 +131,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
         $repeater->add_control(
             'list_content', [
                 'label' => esc_html__( 'Nội dung', 'clinic' ),
-                'type' => Controls_Manager::TEXTAREA,
+                'type' => Controls_Manager::WYSIWYG,
                 'default' => esc_html__( 'Nội dung' , 'clinic' ),
                 'label_block' => true,
             ]
@@ -238,6 +238,67 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
         );
 
         $this->end_controls_section();
+
+        // content style
+        $this->start_controls_section(
+            'content_style_section',
+            [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'content_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'text-start'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'text-center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'text-end' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+
+                    'text-justify' => [
+                        'title' =>  esc_html__( 'Justify', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => 'text-justify',
+            ]
+        );
+
+        $this->add_control(
+            'content_color',
+            [
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-safety-principles__warp .item-group .content-box' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'content_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-safety-principles__warp .item-group .content-box',
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**
@@ -263,19 +324,19 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
         ?>
         <div class="element-safety-principles">
             <div class="element-safety-principles__warp">
-                <?php $this->listContent($listFirst, 'item-left'); ?>
+                <?php $this->listContent($listFirst, 'item-left', $settings); ?>
 
                 <div class="item item-thumbnail">
                     <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
                 </div>
 
-                <?php $this->listContent($listLast, 'item-right'); ?>
+                <?php $this->listContent($listLast, 'item-right', $settings); ?>
             </div>
         </div>
         <?php
     }
 
-    protected function listContent($list, $class): void {
+    protected function listContent($list, $class, $settings): void {
         ?>
         <div class="item item-group <?php echo esc_attr( $class ); ?>">
             <?php
@@ -293,7 +354,7 @@ class Clinic_Elementor_Safety_Principles extends Widget_Base
                             </strong>
                         </div>
 
-                        <div class="content-box text-justify">
+                        <div class="content-box <?php echo esc_attr( $settings['content_align'] ); ?>">
                             <?php echo wpautop( $item['list_content'] ); ?>
                         </div>
                     </div>

@@ -18,6 +18,7 @@
   --font-size-h5: #{$h5-font-size};
   --font-size-h6: #{$h6-font-size};
 
+  --clinic-primary-color: #{$primary-color};
   --clinic-secondary-color: #{$secondary-color};
   --clinic-tertiary-color: #{$tertiary-color};
   --color-white: #{$color-white};
@@ -282,7 +283,7 @@ pre {
     bottom: 10rem;
   }
 
-  &__zalo {
+  .link {
     @include square(5rem, 50%);
     overflow: hidden;
 
@@ -321,7 +322,7 @@ pre {
   }
 
   .owl-dots {
-    margin-top: 1.8rem;
+    margin-top: 2rem;
     @include flex-center;
 
     .owl-dot {

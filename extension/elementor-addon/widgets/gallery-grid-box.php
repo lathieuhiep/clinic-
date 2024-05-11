@@ -114,7 +114,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'grid-column-gap',
+            'grid_column_gap',
             [
                 'label' => esc_html__( 'Grid column gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -137,7 +137,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'grid-row-gap',
+            'grid_row_gap',
             [
                 'label' => esc_html__( 'Grid row gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,

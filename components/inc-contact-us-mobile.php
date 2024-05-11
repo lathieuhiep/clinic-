@@ -25,7 +25,7 @@ $chat_zalo = clinic_get_opt_chat_zalo();
 		if ( $zalo_type == 'phone_qr' ) :
         ?>
 
-            <a class="item zalo chat-with-us__zalo" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>"></a>
+            <a class="item zalo chat-zalo-open" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>"></a>
 
 		<?php else: ?>
             <a class="item zalo" href="<?php echo esc_url( $zalo_link ); ?>" target="_blank"></a>

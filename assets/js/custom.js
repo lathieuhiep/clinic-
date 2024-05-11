@@ -122,7 +122,7 @@
 
     // handle click zalo
     const handleZaLoClick = () => {
-        const chatWithUsZalo = $('.chat-with-us__zalo')
+        const chatWithUsZalo = $('.chat-zalo-open')
 
         if ( chatWithUsZalo.length ) {
             chatWithUsZalo.on('click', function (e) {
