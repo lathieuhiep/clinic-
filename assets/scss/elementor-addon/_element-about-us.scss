@@ -3,17 +3,11 @@
     display: grid;
 
     @media (min-width: 992px) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 48.8rem 1fr;
       align-items: center;
     }
 
     .item {
-      &.item-thumbnail {
-        img {
-          width: 100%;
-        }
-      }
-
       .heading {
         font-family: var(--body-font-family);
       }
@@ -28,28 +22,13 @@
         background-color: #FFAC4B;
       }
 
+      &.item-content {
+        order: 1;
+      }
+
       .action-box {
         margin-top: 2.4rem;
         gap: 1.2rem;
-
-        a {
-          padding: 1.2rem 1.8rem 1rem;
-          display: inline-block;
-          text-align: center;
-          font-size: 1.6rem;
-          font-weight: 700;
-          border-radius: 5rem;
-        }
-
-        &__chat {
-          color: #0F4137;
-          background: linear-gradient(180deg,#FFFF00 0,#FE6F01 100%);
-        }
-
-        &__booking {
-          color: #FFFFFF;
-          background: linear-gradient(180deg,#FF0000 0,#FF7777 100%);
-        }
       }
     }
   }

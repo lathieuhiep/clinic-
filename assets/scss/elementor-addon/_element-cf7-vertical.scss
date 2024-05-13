@@ -1,0 +1,40 @@
+.element-cf7-vertical {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .wpcf7 {
+    overflow: hidden;
+  }
+
+  .wpcf7-form {
+    display: flex;
+    flex-wrap: wrap;
+
+    p {
+      margin: 0;
+
+      &:has(.wpcf7-form-control:not(.wpcf7-submit)) {
+        flex: 1;
+      }
+
+      &:has(.wpcf7-submit) {
+        flex: 0 0 auto;
+      }
+    }
+
+    .wpcf7-form-control {
+      border-radius: 0;
+      min-height: 5rem;
+    }
+  }
+
+  &.field-full {
+    .wpcf7-form {
+      @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}

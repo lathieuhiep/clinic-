@@ -40,25 +40,6 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
         );
 
         $this->add_control(
-            'view',
-            [
-                'label' => esc_html__( 'Bố cục', 'clinic' ),
-                'type' => Controls_Manager::CHOOSE,
-                'default' => 'traditional',
-                'options' => [
-                    'traditional' => [
-                        'title' => esc_html__( 'Mặc định', 'clinic' ),
-                        'icon' => 'eicon-editor-list-ul',
-                    ],
-                    'inline' => [
-                        'title' => esc_html__( 'Nội tuyến', 'clinic' ),
-                        'icon' => 'eicon-ellipsis-h',
-                    ],
-                ],
-            ]
-        );
-
-        $this->add_control(
             'heading',
             [
                 'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
@@ -861,7 +842,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
         if ( ! empty( $settings['contact_form_list'] ) ) :
             ?>
 
-            <div class="element-contact-form-7 style-<?php echo esc_attr( $settings['view'] ); ?>">
+            <div class="element-contact-form-7">
                 <?php if ( $settings['heading'] ) : ?>
                     <h3 class="heading text-center">
                         <span class="d-inline-block<?php echo esc_attr( $settings['show_gradient'] == 'yes' ? ' has-gradient' : '' ); ?>"><?php echo esc_html( $settings['heading'] ); ?></span>

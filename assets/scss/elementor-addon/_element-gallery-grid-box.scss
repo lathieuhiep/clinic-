@@ -9,8 +9,12 @@
 
       &__thumbnail {
         position: relative;
-        margin-bottom: 2rem;
         overflow: hidden;
+
+        .image-box {
+          margin-bottom: 2rem;
+          overflow: hidden;
+        }
 
         img {
           object-fit: cover;

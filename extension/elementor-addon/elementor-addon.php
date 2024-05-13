@@ -29,9 +29,10 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/safety-principles.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/working-time.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
-    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/chat-with-us.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/package-slider.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advise.php' );
@@ -58,9 +59,10 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Safety_Principles() );
     $widgets_manager->register( new \Clinic_Elementor_Working_Time() );
     $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
-    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
     $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
     $widgets_manager->register( new \Clinic_Elementor_Chat_With_Us() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Package_Slider() );
 //	$widgets_manager->register( new \Clinic_Elementor_Advise() );

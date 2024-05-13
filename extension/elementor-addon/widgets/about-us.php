@@ -140,6 +140,30 @@ class Clinic_Elementor_About_Us extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'image_location',
+            [
+                'label'     =>  esc_html__( 'Vị trí hình ảnh', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    '1'  =>  [
+                        'title' =>  esc_html__( 'Bên trái', 'clinic' ),
+                        'icon'  =>  'eicon-h-align-left',
+                    ],
+
+
+                    '2' => [
+                        'title' =>  esc_html__( 'Bên phải', 'clinic' ),
+                        'icon'  =>  'eicon-h-align-right',
+                    ],
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item.item-thumbnail' => 'order: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Hình ảnh
@@ -305,6 +329,44 @@ class Clinic_Elementor_About_Us extends Widget_Base
                     ]
                 ],
                 'default' => 'show'
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // image style
+        $this->start_controls_section(
+            'image_style_section',
+            [
+                'label' => esc_html__( 'Ảnh', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_width',
+            [
+                'label' => esc_html__( 'Chiều rộng ảnh', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item.item-thumbnail img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -577,13 +639,13 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         <div class="action-box d-flex">
                             <?php if ( $link_chat ) : ?>
                                 <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                                    <?php esc_html_e('Gặp bác sĩ tư vấn', "clinic"); ?>
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-bs-tu-van.png' ) ) ?>" alt="">
                                 </a>
                             <?php endif; ?>
 
                             <?php if ( $medical_appointment_form ) : ?>
                                 <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                    <?php esc_html_e('Đặt lịch hẹn khám', "clinic"); ?>
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/btn-hen-kham.png' ) ) ?>" alt="">
                                 </a>
                             <?php endif; ?>
                         </div>
