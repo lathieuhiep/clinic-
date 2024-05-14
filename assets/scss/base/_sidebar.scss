@@ -279,6 +279,7 @@ section {
 
           &__note {
             font-size: 1.6rem;
+            color: var(--color-white);
           }
         }
       }
@@ -311,13 +312,36 @@ section {
       padding: 1.1rem .9rem 1.4rem;
     }
 
-    &.widget_media_image {
+    &.widget_media_image,
+    &.appointment-form-widget {
+      padding-top: 2rem;
+      position: relative;
       text-align: center;
+      border-color: #2E7A7A;
+      overflow: visible;
 
-      .widget-title {
-        margin-bottom: 0;
+      &:before {
+        position: absolute;
+        content: "";
+        top: -0.4rem;
+        left: 50%;
+        width: 80%;
+        height: .8rem;
+        background-color: #2E7A7A;
+        transform: translateX(-50%);
       }
 
+      .widget-title {
+        margin-bottom: 1rem;
+        padding: 0;
+        position: relative;
+        color: #208B45;
+        font-size: 2.4rem;
+        background: transparent;
+      }
+    }
+
+    &.widget_media_image {
       img {
         display: inline-block;
         padding: 1rem;
@@ -325,26 +349,8 @@ section {
     }
 
     &.appointment-form-widget {
-      border: none;
-
-      .image-title {
-        padding: 0;
-
-        ~ .widget-warp {
-          margin-top: -2rem;
-        }
-      }
-
       .widget-warp {
         padding: 0;
-        border: 1px solid #078450;
-
-        .widget-title {
-          padding: 2.4rem 1.6rem 1.4rem;
-          color: #FF0000;
-          background: #ECECEC;
-          border-bottom: 1px solid #078450;
-        }
       }
 
       .wpcf7-form {
@@ -362,13 +368,21 @@ section {
 
         .wpcf7-form-control-wrap {
           input, textarea {
-            min-height: 3.5rem;
-            color: #909090;
+            min-height: 4.5rem;
+            color: #5E5E5E;
             font-size: 1.4rem;
             font-family: var(--heading-font-family);
-            border: 1px solid #CDCDCD;
-            border-radius: 2rem;
-            background-color: var(--color-white);
+            border: 1px solid #2E7A7A;
+            border-radius: .5rem;
+            background-color: #EAF1F1;
+
+            &::placeholder {
+              color: #5E5E5E;
+            }
+
+            &::-ms-input-placeholder {
+              color: #5E5E5E;
+            }
           }
 
           textarea {
@@ -378,13 +392,13 @@ section {
 
         .wpcf7-submit {
           padding: 1rem .9rem;
-          min-width: 12.3rem;
+          min-width: 17.3rem;
           font-weight: 900;
           font-size: 1.4rem;
           line-height: 1.6rem;
           text-transform: uppercase;
           border: none;
-          border-radius: 2rem;
+          border-radius: .5rem;
           background: linear-gradient(180deg, #FF0008 0%, #941115 100%);
         }
       }

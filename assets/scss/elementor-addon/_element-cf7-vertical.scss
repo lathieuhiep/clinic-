@@ -27,6 +27,16 @@
       border-radius: 0;
       min-height: 5rem;
     }
+
+    .wpcf7-not-valid-tip {
+      font-size: 1.4rem;
+    }
+
+    .wpcf7-response-output {
+      margin: 0;
+      width: 100%;
+      font-size: 1.4rem;
+    }
   }
 
   &.field-full {

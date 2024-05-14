@@ -35,7 +35,7 @@ $link_messenger = clinic_get_opt_link_chat_messenger()
 	<?php endif; ?>
 
 	<?php if ($call_phone) : ?>
-        <a class="link chat-with-us__phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($call_phone)); ?>">
+        <a class="link chat-with-us__phone alo-circle-anim" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($call_phone)); ?>">
             <img alt="phone" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/phone-icon-contact.png' ) ) ?>" width="50" height="" />
         </a>
 	<?php endif; ?>

@@ -33,6 +33,9 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/chat-with-us.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/compare-appointments.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/package-slider.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/advise.php' );
@@ -43,7 +46,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/quality.php' );
 //	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/equipment.php' );
-//	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
+
 
 
 	// register add on
@@ -63,6 +66,9 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
     $widgets_manager->register( new \Clinic_Elementor_Chat_With_Us() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
+    $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
+    $widgets_manager->register( new \Clinic_Elementor_Compare_Appointments() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 
 //	$widgets_manager->register( new \Clinic_Elementor_Package_Slider() );
 //	$widgets_manager->register( new \Clinic_Elementor_Advise() );
@@ -73,7 +79,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 
 //	$widgets_manager->register( new \Clinic_Elementor_Quality() );
 //	$widgets_manager->register( new \Clinic_Elementor_Equipment() );
-//	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
+
 }
 
 // Register scripts

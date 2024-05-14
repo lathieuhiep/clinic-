@@ -102,7 +102,7 @@ class clinic_recent_post_widget extends WP_Widget {
 	function form( $instance ) {
 
 		$defaults = array(
-			'title' => esc_html__('Recent Post', 'clinic'),
+			'title' => esc_html__('Bài viết mới nhất', 'clinic'),
 			'order' => 'DESC'
 		);
 
