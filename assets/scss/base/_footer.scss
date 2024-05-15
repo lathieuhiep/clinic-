@@ -33,7 +33,10 @@
 
   &__column {
     padding: 4rem 0 2rem;
-    background: linear-gradient(180deg, #1E944B 0%, #137260 100%);
+    background-image: url("../images/bk-footer.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
 }
 
