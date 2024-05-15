@@ -282,15 +282,17 @@ class Clinic_Elementor_Category_List extends Widget_Base
 
 						if ( $category_link ) :
 					?>
-					<div class="item d-flex flex-column align-items-center justify-content-center">
-						<a class="item__link" href="<?php echo esc_url( $category_link ); ?>"></a>
-
-						<div class="item__image">
-							<?php echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large'); ?>
+					<div class="item">
+						<div class="item__image text-center">
+                            <a class="d-inline-block" href="<?php echo esc_url( $category_link ); ?>">
+                                <?php echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large'); ?>
+                            </a>
 						</div>
 
-						<h4 class="item__title text-center f-family-body m-0">
-							<?php echo esc_html( $item['list_title'] ) ?>
+						<h4 class="item__title text-center">
+                            <a class="d-inline-block" href="<?php echo esc_url( $category_link ); ?>">
+                                <?php echo esc_html( $item['list_title'] ) ?>
+                            </a>
 						</h4>
 					</div>
 					<?php

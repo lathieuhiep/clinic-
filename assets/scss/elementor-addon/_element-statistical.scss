@@ -1,0 +1,28 @@
+.element-statistical {
+  display: grid;
+  grid-gap: 2.4rem 3rem;
+
+  .item {
+    text-align: center;
+
+    p {
+      margin-bottom: 0;
+
+      ~ p {
+        margin-top: 1rem;
+      }
+    }
+
+    .parameter {
+      font-weight: 700;
+      font-size: 3rem;
+      color: var(--clinic-theme-secondary-color);
+      font-family: var(--heading-font-family);
+    }
+
+    .title {
+      font-size: 1.7rem;
+      font-family: var(--heading-font-family);
+    }
+  }
+}

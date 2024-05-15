@@ -65,15 +65,6 @@ if ( class_exists( 'CSF' ) ) {
 				'url'     => false
 			),
 
-            // licensing
-            array(
-                'id'      => 'opt_general_licensing',
-                'type'    => 'media',
-                'title'   => esc_html__( 'Ảnh cấp phép', 'clinic' ),
-                'library' => 'image',
-                'url'     => false
-            ),
-
 			// show loading
 			array(
 				'id'         => 'opt_general_loading',
@@ -109,20 +100,6 @@ if ( class_exists( 'CSF' ) ) {
         )
     ) );
 
-    // Banner
-    CSF::createSection( $clinic_prefix, array(
-        'parent' => 'opt_general_section',
-        'title'  => esc_html__( 'Banner', 'clinic' ),
-        'fields' => array(
-            array(
-                'id'    => 'opt_general_banner',
-                'type'  => 'media',
-                'title' => esc_html__( 'Banner', 'clinic' ),
-                'library' => 'image'
-            ),
-        )
-    ) );
-
 	// Contact
 	CSF::createSection( $clinic_prefix, array(
 		'parent' => 'opt_general_section',
@@ -135,25 +112,18 @@ if ( class_exists( 'CSF' ) ) {
                 'default' => esc_html__( '180 Trần phú - Phước Ninh', 'clinic' )
             ),
 
-            array(
-                'id'      => 'opt_general_address_link',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Link map', 'clinic' ),
-                'default' => 'https://maps.app.goo.gl/k3NSysAtK5AUJZ7T9'
-            ),
-
 			array(
 				'id'      => 'opt_general_working_time',
 				'type'    => 'text',
 				'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
-				'default' => '7h30-20h'
+				'default' => '08:00 - 20:30'
 			),
 
 			array(
 				'id'      => 'opt_general_hotline',
 				'type'    => 'text',
 				'title'   => esc_html__( 'Hotline', 'clinic' ),
-				'default' => '0827.764.988'
+				'default' => '0987.851.230'
 			),
 
 			array(

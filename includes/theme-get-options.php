@@ -1,10 +1,4 @@
 <?php
-// get image licensing theme option
-function clinic_get_opt_general_licensing()
-{
-    return clinic_get_option('opt_general_licensing');
-}
-
 // get hotline theme option general
 function clinic_get_opt_hotline()
 {
@@ -15,12 +9,6 @@ function clinic_get_opt_hotline()
 function clinic_get_opt_general_address()
 {
     return clinic_get_option('opt_general_address');
-}
-
-// get address link options
-function clinic_get_opt_general_address_link()
-{
-    return clinic_get_option('opt_general_address_link');
 }
 
 // get medical appointment theme option general

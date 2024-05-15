@@ -373,56 +373,6 @@ section {
         }
       }
     }
-
-    &.support-widget {
-      border: 0;
-
-      .widget-warp {
-        padding: 0;
-
-        .item {
-          border-radius: .5rem;
-
-          ~ .item {
-            margin-top: .8rem;
-          }
-
-          a {
-            padding: 1.1rem 3rem;
-            display: grid;
-            grid-gap: 1.2rem;
-            color: var(--color-white);
-            grid-template-columns: 3rem 1fr;
-            align-items: center;
-
-            .icon {
-              font-size: 3rem;
-              text-align: center;
-            }
-
-            span {
-              font-weight: 700;
-            }
-          }
-
-          &.link-chat {
-            background-color: #61AA89;
-          }
-
-          &.hotline {
-            background-color: #DB724B;
-          }
-
-          &.contact {
-            background-color: #D76E74;
-          }
-
-          &.link-map {
-            background-color: #2864A8;
-          }
-        }
-      }
-    }
   }
 }
 

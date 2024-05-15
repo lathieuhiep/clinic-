@@ -1,28 +1,25 @@
 <?php
 
-use Elementor\Group_Control_Typography;
-use Elementor\Repeater;
-use Elementor\Utils;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Clinic_Elementor_Banner extends Widget_Base {
+class Clinic_Elementor_Slider extends Widget_Base {
     public function get_categories(): array {
         return array( 'my-theme' );
     }
 
     public function get_name(): string {
-        return 'clinic-banner';
+        return 'clinic-slider';
     }
 
     public function get_title(): string {
-        return esc_html__( 'Banner', 'clinic' );
+        return esc_html__( 'Slider', 'clinic' );
     }
 
     public function get_icon(): string {
-        return 'eicon-image';
+        return 'eicon-slider-device';
     }
 
     /**
@@ -35,7 +32,7 @@ class Clinic_Elementor_Banner extends Widget_Base {
      */
     public function get_keywords(): array
     {
-        return ['banner', 'image' ];
+        return ['slider', 'image' ];
     }
 
     protected function register_controls(): void {
@@ -52,7 +49,7 @@ class Clinic_Elementor_Banner extends Widget_Base {
         $this->add_control(
             'more_options',
             [
-                'label' => esc_html__( 'Sử dụng ảnh ở mục banner trong theme options', 'clinic' ),
+                'label' => esc_html__( 'Sử dụng ảnh ở mục slider trong theme options', 'clinic' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -62,12 +59,23 @@ class Clinic_Elementor_Banner extends Widget_Base {
     }
 
     protected function render(): void {
-        $banner = clinic_get_option('opt_general_banner');
+        $settings = $this->get_settings_for_display();
+        $gallery_ids = clinic_get_general_slider();
+
+	    $owl_options = [
+		    'items' => 1
+	    ];
     ?>
 
-        <div class="element-banner">
-            <?php if ( !empty( $banner ) ) : ?>
-                <?php echo wp_get_attachment_image( $banner['id'], 'full' ); ?>
+        <div class="element-slider">
+            <?php if ( !empty( $gallery_ids ) ) : ?>
+                <div class="element-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+                    <?php foreach ( $gallery_ids as $gallery_item_id ): ?>
+                        <div class="item">
+                            <?php echo wp_get_attachment_image( $gallery_item_id, 'full' ); ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
         </div>
 
