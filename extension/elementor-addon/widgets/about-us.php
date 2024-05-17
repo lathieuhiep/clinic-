@@ -166,7 +166,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 
         $this->end_controls_section();
 
-        // Hình ảnh
+        // image
         $this->start_controls_section(
             'image_section',
             [
