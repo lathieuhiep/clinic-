@@ -1,31 +1,4 @@
 (function ($) {
-    // Hàm kiểm tra nếu phần tử trong khung nhìn
-    const isElementInViewport = (element) => {
-        const rect = element.getBoundingClientRect(); // Lấy vị trí phần tử
-        const windowHeight = window.innerHeight; // Chiều cao cửa sổ
-
-        // Kiểm tra nếu phần tử trong khung nhìn
-        return rect.top >= 0 && rect.bottom <= windowHeight;
-    }
-
-    // animate
-    const animateValue = (element, start, end, duration) => {
-        let startTime = null;
-        const animation = (currentTime) => {
-            if (!startTime) startTime = currentTime;
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            element.textContent = Math.floor(start + progress * (end - start));
-
-            if (elapsed < duration) {
-                requestAnimationFrame(animation);
-            }
-        }
-
-        requestAnimationFrame(animation);
-    }
-
     // setting owlCarousel
     const owlCarouselElementorOptions = (options) => {
         let defaults = {
@@ -56,6 +29,39 @@
         }
     }
 
+    // element slider carousel
+    const elementSliderCarousel = ($scope, $) => {
+        const slider = $scope.find('.element-slider-carousel__warp')
+
+        if (slider.length) {
+            slider.each(function () {
+                const thisSlider = $(this)
+                const options = {
+                    margin: 12,
+                    nav: true,
+                    dots: false,
+                    responsive : {
+                        0: {
+                            items: 1,
+
+                        },
+                        576: {
+                            items: 2
+                        },
+                        768: {
+                            items: 3
+                        },
+                        1200: {
+                            margin: 44
+                        }
+                    }
+                }
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+            })
+        }
+    }
+
     // element testimonial slider
     const elementTestimonialSlider = ($scope, $) => {
         const slider = $scope.find('.element-testimonial-slider__warp')
@@ -71,34 +77,85 @@
     }
 
     // element doctor slider
-    const elementDoctorSlider = ($scope, $) => {
+    const elementDoctorSlider = function ($scope, $) {
+        // slider main
+        const syncedSecondary = true;
         const slider = $scope.find('.element-doctor-slider__warp')
+        const sliderThumbnail = $scope.find('.element-doctor-avatar__slider')
+        const options = slider.data('owl-options')
 
         if ( slider.length ) {
             slider.each(function () {
                 const thisSlider = $(this)
-                const options = {
-                    dots: false,
-                    nav: true,
-                    responsive:{
-                        0: {
-                            items: 1,
-                            autoHeight:true,
-                            margin: 12
-                        },
-                        576: {
-                            items: 2,
-                            margin: 12
-                        },
-                        992: {
-                            items: 3,
-                            margin: 20
-                        }
-                    }
-                }
+                const parent = thisSlider.closest('.element-doctor-slider')
+                const sync2 = parent.find('.element-doctor-avatar__slider')
 
                 thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+                    .on('changed.owl.carousel', function (el) {
+                        //if you set loop to false, you have to restore this next line
+                        //var current = el.item.index;
+
+                        //if you disable loop you have to comment this block
+                        const count = el.item.count - 1;
+                        let current = Math.round(el.item.index - (el.item.count / 2) - .5);
+
+                        if (current < 0) {
+                            current = count;
+                        }
+                        if (current > count) {
+                            current = 0;
+                        }
+
+                        //end block
+
+                        sync2.find(".owl-item").removeClass("current").eq(current).addClass("current")
+                        const onscreen = sync2.find('.owl-item.active').length - 1;
+                        const start = sync2.find('.owl-item.active').first().index();
+                        const end = sync2.find('.owl-item.active').last().index();
+
+                        if (current > end) {
+                            sync2.data('owl.carousel').to(current, 100, true);
+                        }
+                        if (current < start) {
+                            sync2.data('owl.carousel').to(current - onscreen, 100, true);
+                        }
+                    });
             })
+        }
+
+        // slider thumbnail
+        if ( sliderThumbnail.length ) {
+            sliderThumbnail.each(function () {
+                const thisSlider = $(this)
+                const parent = thisSlider.closest('.element-doctor-slider')
+                const sync1 = parent.find('.element-doctor-slider__warp')
+
+                thisSlider.on('initialized.owl.carousel', function() {
+                    thisSlider.find(".owl-item").eq(0).addClass("current");
+                }).owlCarousel(owlCarouselElementorOptions({
+                    loop: false,
+                    items: 4
+                })).on('changed.owl.carousel', function (el) {
+                    if (syncedSecondary) {
+                        const number = el.item.index;
+                        sync1.data('owl.carousel').to(number, 800, true);
+                    }
+                })
+
+                thisSlider.on("click", ".owl-item", function(e) {
+                    e.preventDefault();
+
+                    const number = $(this).index();
+                    sync1.data('owl.carousel').to(number, 800, true);
+                });
+            })
+        }
+
+        function syncPosition2(el) {
+            if (syncedSecondary) {
+                const number = el.item.index;
+                sync1.data('owl.carousel').to(number, 100, true);
+            }
         }
     }
 
@@ -116,52 +173,12 @@
         }
     }
 
-    // element circular progress
-    const elementCircularProgress = ($scope, $) => {
-        const circularProgress = $scope.find('.element-circular-progress')
-        
-        if ( circularProgress.length ) {
-            // Sử dụng Intersection Observer để chạy hiệu ứng khi cuộn đến
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target
-                        const targetValue = parseInt(element.getAttribute("data-percent"), 10)
-                        const elementToAppendTo = element.querySelector('.item__circle .percent')
-
-                        // 2 giây
-                        animateValue(elementToAppendTo, 0, targetValue, 2000)
-
-                        // Dừng quan sát sau khi chạy
-                        observer.unobserve(entry.target)
-                    }
-                })
-            }, {
-                rootMargin: "100px 0px 0px 0px", // Thêm offset 100px ở trên để kích hoạt sớm hơn
-                threshold: 1 // Phần trăm bao nhiêu của phần tử cần xuất hiện để kích hoạt sự kiện
-            })
-
-            circularProgress.each(function () {
-                const thisCircularProgress = $(this)
-                const thisCircularItem = thisCircularProgress.find('.item')
-
-                thisCircularItem.each((index, element) => {
-                    if (element instanceof Element) {
-                        observer.observe(element);
-                    } else {
-                        const percent = parseInt(element.getAttribute("data-percent"))
-                        const elementToAppendTo = element.querySelector('.item__circle .percent')
-
-                        animateValue(elementToAppendTo, 0, percent, 2000)
-                    }
-                })
-            })
-        }
-    }
-
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
+
+        // element slider carousel
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider-carousel.default', elementSliderCarousel);
 
         /* Element testimonial slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-testimonial-slider.default', elementTestimonialSlider);
@@ -171,8 +188,5 @@
 
         /* Element doctor slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-package-slider.default', elementPackageSlider);
-
-        /* Element circular progress */
-        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-circular-progress.default', elementCircularProgress);
     });
 })(jQuery);

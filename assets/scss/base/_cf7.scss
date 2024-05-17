@@ -20,11 +20,6 @@ form {
       + p {
         margin: 1rem 0 0;
       }
-
-      &:has(.wpcf7-submit) {
-        margin-top: 2rem;
-        text-align: center;
-      }
     }
 
     label {

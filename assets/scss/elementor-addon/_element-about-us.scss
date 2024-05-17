@@ -15,43 +15,69 @@
       }
 
       .heading {
-        font-size: 4.5rem;
         font-family: var(--body-font-family);
-
-        @media (min-width: 1024px) {
-          margin-bottom: 3.7rem;
-        }
-
-        @media (max-width: 1023px) {
-          margin-bottom: 1.6rem;
-        }
       }
 
       .sub-heading {
         font-size: 3.6rem;
       }
 
+      .dividing-line {
+        margin-bottom: 1.2rem;
+        height: .3rem;
+        background-color: #FFAC4B;
+      }
+
+      .desc {
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          li {
+            position: relative;
+            padding-left: 3.5rem;
+
+           &:before {
+             position: absolute;
+             content: "";
+             top: .6rem;
+             left: 0;
+             @include square(1.2rem, 50%);
+             background-color: #E6171F;
+           }
+
+            ~ li {
+              margin-top: 1rem;
+            }
+          }
+        }
+      }
+
       .action-box {
         margin-top: 2.4rem;
-        gap: 1.2rem;
+        gap: 1.5rem;
+
+        @media (max-width: 480px) {
+          flex-direction: column;
+        }
 
         a {
-          padding: 1.2rem 1.8rem 1rem;
+          padding: 1.5rem 1.8rem;
           display: inline-block;
+          min-width: 22.4rem;
           text-align: center;
           font-size: 1.6rem;
-          font-weight: 700;
+          color: var(--color-white);
           border-radius: 5rem;
         }
 
         &__chat {
-          color: #0F4137;
-          background: linear-gradient(180deg,#FFFF00 0,#FE6F01 100%);
+          background: linear-gradient(180deg, #FF0000 0, #990000 100%);
         }
 
         &__booking {
-          color: #FFFFFF;
-          background: linear-gradient(180deg,#FF0000 0,#FF7777 100%);
+          background: linear-gradient(180deg, #2C904F 0, #20D35F 100%);
         }
       }
     }

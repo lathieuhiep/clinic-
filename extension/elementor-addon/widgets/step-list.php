@@ -1,9 +1,9 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
+use Elementor\Utils;
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -107,11 +107,12 @@ class Clinic_Elementor_Step_List extends Widget_Base
         );
 
         $repeater->add_control(
-            'list_content', [
-                'label' => esc_html__( 'Nội dung', 'clinic' ),
-                'type' => Controls_Manager::WYSIWYG,
-                'default' => esc_html__( 'Nội dung' , 'clinic' ),
-                'show_label' => false,
+            'list_image', [
+                'label' => esc_html__( 'Image', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
             ]
         );
 
@@ -137,9 +138,6 @@ class Clinic_Elementor_Step_List extends Widget_Base
                     [
                         'list_title' => __( 'Tiêu đề #5', 'clinic' ),
                     ],
-                    [
-                        'list_title' => __( 'Tiêu đề #6', 'clinic' ),
-                    ],
                 ],
                 'title_field' => '{{{ list_title }}}',
             ]
@@ -157,23 +155,12 @@ class Clinic_Elementor_Step_List extends Widget_Base
         );
 
         $this->add_control(
-            'title_color_odd',
+            'title_color',
             [
-                'label' => esc_html__( 'Màu chữ mục lẻ', 'clinic' ),
+                'label' => esc_html__( 'Màu chữ', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-step-list .group-box.odd .item .title' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'title_color_even',
-            [
-                'label' => esc_html__( 'Màu chữ mục chẵn', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-step-list .group-box.even .item .title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-step-list .item_body .title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -182,48 +169,7 @@ class Clinic_Elementor_Step_List extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'list_title_typography',
-                'selector' => '{{WRAPPER}} .element-step-list .group-box .item .title',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // style content
-        $this->start_controls_section(
-            'style_content_section',
-            [
-                'label' => esc_html__( 'Nội dung', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'content_color_odd',
-            [
-                'label' => esc_html__( 'Màu chữ mục lẻ', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-step-list .group-box.odd .item__box .content' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'content_color_even',
-            [
-                'label' => esc_html__( 'Màu chữ mục chẵn', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-step-list .group-box.even .item__box .content' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'content_typography',
-                'selector' => '{{WRAPPER}} .element-step-list .group-box .item__box .content',
+                'selector' => '{{WRAPPER}} .element-step-list .item_body .title',
             ]
         );
 
@@ -239,23 +185,12 @@ class Clinic_Elementor_Step_List extends Widget_Base
         );
 
         $this->add_control(
-            'number_color_odd',
+            'number_color',
             [
-                'label' => esc_html__( 'Màu chữ mục lẻ', 'clinic' ),
+                'label' => esc_html__( 'Màu chữ', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-step-list .group-box.odd .item .number' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'number_color_even',
-            [
-                'label' => esc_html__( 'Màu chữ mục chẵn', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-step-list .group-box.even .item .number' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-step-list .item_body .number' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -264,7 +199,7 @@ class Clinic_Elementor_Step_List extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'number_typography',
-                'selector' => '{{WRAPPER}} .element-step-list .group-box .item .number',
+                'selector' => '{{WRAPPER}} .element-step-list .item_body .number',
             ]
         );
 
@@ -281,53 +216,28 @@ class Clinic_Elementor_Step_List extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
-    ?>
-        <div class="element-step-list">
-            <?php
-            if ( !empty( $settings['list'] ) ) :
-                $oddData = [];
-                $evenData = [];
 
-                for ($i = 0; $i < count( $settings['list'] ); $i++) {
-                    $j = $i + 1;
-
-                    if ($i % 2 == 0) {
-                        $oddData[$j] = $settings['list'][$i];
-                    } else {
-                        $evenData[$j] = $settings['list'][$i];
-                    }
-                }
-
-                $this->itemList($oddData, 'odd');
-                $this->itemList($evenData, 'even');
-             endif;
-             ?>
-        </div>
-    <?php
-    }
-
-    protected function itemList($data, $class): void
-    {
-        if ( empty( $data ) ):
+        if ( empty( $settings['list'] ) ) :
             return;
         endif;
-
     ?>
-        <div class="group-box <?php echo esc_attr($class); ?>">
-            <?php foreach ( $data as $key => $item ) : ?>
+        <div class="element-step-list">
+            <?php foreach ( $settings['list'] as $key => $item ) : ?>
                 <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                    <div class="item__box">
-                        <h4 class="title">
+                    <?php if ( !empty( $item['list_image']['id'] ) ) : ?>
+                        <div class="item__thumbnail">
+                            <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="item_body text-center">
+                        <div class="number text-uppercase">
+                            <?php esc_html_e('Bước', 'clinic'); echo  ' ' . esc_html( addZeroBeforeNumber($key+1) ); ?>
+                        </div>
+
+                        <h3 class="title">
                             <?php echo esc_html( $item['list_title'] ); ?>
-                        </h4>
-
-                        <div class="content text-justify">
-                            <?php echo wpautop( $item['list_content'] ); ?>
-                        </div>
-
-                        <div class="number">
-                            <?php echo esc_html( addZeroBeforeNumber($key) ); ?>
-                        </div>
+                        </h3>
                     </div>
                 </div>
             <?php endforeach; ?>

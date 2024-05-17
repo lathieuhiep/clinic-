@@ -1,42 +1,103 @@
 .element-evaluate {
   position: relative;
   display: grid;
-  grid-gap: 2.4rem 5rem;
-  grid-template-columns: 40% 1fr;
+
+  @media (min-width: 768px) {
+    grid-gap: 2.4rem 5rem;
+    grid-template-columns: 40% 1fr;
+  }
+
+  @media (max-width: 767px) {
+    grid-gap: 2rem;
+  }
+
+  @media (min-width: 576px) and (max-width: 767px) {
+    grid-template-columns: 45% 1fr;
+  }
 
   &__item {
     .heading {
       margin: 0;
       padding: 1.2rem 2.8rem;
-      position: absolute;
-      top: 5rem;
-      left: 0;
-      min-width: 39.5rem;
       color: var(--color-white);
       border-top-right-radius: 5rem;
       background: linear-gradient(180deg, #01BB82 0%, #0D8566 100%);
+
+      @media (min-width: 768px) {
+        top: 5rem;
+      }
+
+      @media (max-width: 767px) {
+        top: 3rem;
+      }
+
+      @media (min-width: 576px) {
+        position: absolute;
+        left: 0;
+        min-width: 39.5rem;
+      }
     }
 
     .sub-heading {
       margin: 0;
       padding: 1.2rem 2.8rem;
-      position: absolute;
-      top: 10.2rem;
-      left: 7.5rem;
-      min-width: 35rem;
       color: var(--color-white);
-      font-size: 1.8rem;
       border-bottom-left-radius: 5rem;
       border-top-right-radius: 5rem;
       background: linear-gradient(180deg, #CF202C 0%, #A31F28 100%);
+
+      @media (min-width: 768px) {
+        top: 10.2rem;
+      }
+
+      @media (max-width: 767px) {
+        top: 8.2rem;
+      }
+
+      @media (min-width: 576px) {
+        position: absolute;
+        left: 7.5rem;
+        min-width: 35rem;
+        font-size: 1.8rem;
+      }
+
+      @media (min-width: 480px) and (max-width: 575px) {
+        margin-left: 6rem;
+        font-size: 1.6rem;
+      }
+
+      @media (max-width: 575px) {
+        margin-top: -1.2rem;
+      }
+
+      @media (max-width: 479px) {
+        margin-left: 3rem;
+        font-size: 1.4rem;
+      }
     }
 
     .list {
-      margin-top: 65%;
       font-weight: 700;
       display: grid;
-      grid-gap: 1.2rem 1.6rem;
       grid-template-columns: repeat(2, auto);
+
+      @media (min-width: 768px) {
+        margin-top: 65%;
+        grid-gap: 1.2rem 1.6rem;
+      }
+
+      @media (max-width: 767px) {
+        grid-gap: 1.2rem;
+        font-size: 1.4rem;
+      }
+
+      @media (min-width: 576px) and (max-width: 767px) {
+        margin-top: 60%;
+      }
+
+      @media (max-width: 575px) {
+        margin-top: 2rem;
+      }
 
       li {
         &:first-child {
@@ -44,14 +105,27 @@
         }
 
         .icon {
-          margin-right: 1rem;
           color: var(--clinic-theme-secondary-color);
+
+          @media (min-width: 768px) {
+            margin-right: 1rem;
+          }
+
+          @media (max-width: 767px) {
+            margin-right: .6rem;
+          }
         }
       }
     }
 
     .image-box {
       height: 100%;
+    }
+
+    &.item-content {
+      @media (max-width: 575px) {
+        order: 2;
+      }
     }
   }
 }

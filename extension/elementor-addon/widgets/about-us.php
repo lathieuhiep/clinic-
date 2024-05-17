@@ -1,7 +1,6 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Utils;
 use Elementor\Widget_Base;
@@ -96,7 +95,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'grid-column-gap',
+            'grid_column_gap',
             [
                 'label' => esc_html__( 'Grid column gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -110,7 +109,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 40,
+                    'size' => 30,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .element-about-us__warp' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
@@ -119,7 +118,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'grid-row-gap',
+            'grid_row_gap',
             [
                 'label' => esc_html__( 'Grid row gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -133,10 +132,127 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 40,
+                    'size' => 30,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .element-about-us__warp' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // image
+        $this->start_controls_section(
+            'image_section',
+            [
+                'label' => esc_html__( 'Hình ảnh', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'image',
+            [
+                'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // heading
+        $this->start_controls_section(
+            'heading_section',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'heading',
+            [
+                'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Tiêu đề', 'clinic' ),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'sub_heading',
+            [
+                'label'       => esc_html__( 'Tiêu đề dưới', 'clinic' ),
+                'type'        => Controls_Manager::TEXT,
+                'default'     => '',
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'show_dividing_line',
+            [
+                'label' => esc_html__('Hiển thị đường ngăn cách', 'clinic'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'show' => [
+                        'title' => esc_html__('Có', 'clinic'),
+                        'icon' => 'eicon-check',
+                    ],
+
+                    'hide' => [
+                        'title' => esc_html__('Không', 'clinic'),
+                        'icon' => 'eicon-ban',
+                    ]
+                ],
+                'default' => 'hide'
+            ]
+        );
+
+        $this->add_responsive_control(
+            'dividing_line_width',
+            [
+                'label' => esc_html__( 'Độ dài đường ngăn cách', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 25,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .dividing-line' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'show_dividing_line' => 'show',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'dividing_line_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền đường ngăn cách', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-about-us__warp .item .dividing-line' => 'background-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'show_dividing_line' => 'show',
                 ],
             ]
         );
@@ -151,37 +267,6 @@ class Clinic_Elementor_About_Us extends Widget_Base
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
-
-        $this->add_control(
-            'image',
-            [
-                'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-		$this->add_control(
-			'heading',
-			[
-				'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
-				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Tiêu đề', 'clinic' ),
-				'label_block' => true,
-			]
-		);
-
-        $this->add_control(
-            'sub_heading',
-            [
-                'label'       => esc_html__( 'Tiêu đề dưới', 'clinic' ),
-                'type'        => Controls_Manager::TEXT,
-                'default'     => '',
-                'label_block' => true,
-            ]
-        );
 
 		$this->add_control(
 			'desc',
@@ -250,6 +335,26 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .element-about-us__warp .item .heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'heading_padding',
+            [
+                'label' => esc_html__( 'Padding', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .heading' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -393,6 +498,26 @@ class Clinic_Elementor_About_Us extends Widget_Base
 			]
 		);
 
+        $this->add_responsive_control(
+            'desc_margin',
+            [
+                'label' => esc_html__( 'Margin', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .desc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_control(
             'desc_align',
             [
@@ -467,15 +592,19 @@ class Clinic_Elementor_About_Us extends Widget_Base
 
                 <div class="item item-content">
                     <?php if ( $settings['heading'] ) : ?>
-                        <h3 class="heading <?php echo esc_attr($settings['heading_align']); ?>">
+                        <h2 class="heading <?php echo esc_attr($settings['heading_align']); ?>">
                             <?php echo esc_html( $settings['heading'] ); ?>
-                        </h3>
+                        </h2>
                     <?php endif; ?>
 
                     <?php if ( $settings['sub_heading'] ) : ?>
-                        <h4 class="sub-heading <?php echo esc_attr($settings['sub_heading_align']); ?>">
+                        <h3 class="sub-heading <?php echo esc_attr($settings['sub_heading_align']); ?>">
                             <?php echo esc_html( $settings['sub_heading'] ); ?>
-                        </h4>
+                        </h3>
+                    <?php endif; ?>
+
+                    <?php if ( $settings['show_dividing_line'] == 'show' ) : ?>
+                        <div class="dividing-line"></div>
                     <?php endif; ?>
 
                     <div class="desc <?php echo esc_attr($settings['desc_align']); ?>">
@@ -494,7 +623,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
 
                             <?php if ( $medical_appointment_form ) : ?>
                                 <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                    <?php esc_html_e('Đặt lịch hẹn khám', "clinic"); ?>
+                                    <?php esc_html_e('Đặt lịch ngay', "clinic"); ?>
                                 </a>
                             <?php endif; ?>
                         </div>

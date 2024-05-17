@@ -224,6 +224,10 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                     ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                        <div class="desc text-justify">
+                            <?php echo wp_kses_post( $item['list_description'] ) ?>
+                        </div>
+
                         <div class="top-box">
                             <div class="thumbnail">
                                 <?php
@@ -244,10 +248,6 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                                     <?php echo wp_kses_post( $item['list_info'] ) ?>
                                 </p>
                             </div>
-                        </div>
-
-                        <div class="desc text-justify">
-                            <?php echo wp_kses_post( $item['list_description'] ) ?>
                         </div>
                     </div>
 

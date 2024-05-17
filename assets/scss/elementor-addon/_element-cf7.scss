@@ -18,6 +18,12 @@
 
   form {
     &.wpcf7-form {
+      p {
+        &:has(.wpcf7-submit) {
+          text-align: center;
+        }
+      }
+
       .wpcf7-form-control-wrap {
         input,
         textarea {

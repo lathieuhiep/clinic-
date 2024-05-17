@@ -1,35 +1,69 @@
 .element-post-grid {
   &__warp {
     display: grid;
-    grid-gap: 2.7rem 3rem;
+    grid-gap: 2.4rem;
 
     @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 576px) and (max-width: 991px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
     .item {
-      display: grid;
-      grid-gap: 2rem;
+      &__thumbnail {
+        margin-bottom: 1.7rem;
+        overflow: hidden;
+        border-radius: 1.5rem;
+        border: .1rem solid var(--clinic-theme-secondary-color);
 
-      @media (min-width: 576px) {
-        grid-template-columns: 27.5rem 1fr;
+        img {
+          width: 100%;
+        }
       }
 
       &__box {
         .title {
-          margin-bottom: .9rem;
+          margin-bottom: 1rem;
           font-size: 1.6rem;
           font-weight: 500;
           line-height: 2.2rem;
           font-family: var(--body-font-family);
           text-transform: uppercase;
+
+          a {
+            display: inline-block;
+            color: #030303;
+
+            &:hover {
+              color: var(--clinic-theme-primary-color);
+            }
+          }
         }
 
         .content {
-          color: #5D5D5D;
-          font-size: 1.6rem;
-          line-height: 2.2rem;
+          color: #5F5A5A;
+          font-size: 1.5rem;
           text-align: justify;
+        }
+
+        .action-box {
+          margin-top: 2rem;
+          text-align: right;
+
+          a {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            color: var(--clinic-theme-secondary-color);
+            font-weight: 700;
+            border-radius: 5rem;
+            background: linear-gradient(90deg, #FFFFFF 0, #A8F2CE 100%);
+
+            &:hover {
+              color: #000000;
+            }
+          }
         }
       }
     }

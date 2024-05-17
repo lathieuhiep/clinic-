@@ -1,28 +1,73 @@
 .element-statistical {
-  display: grid;
-  grid-gap: 2.4rem 3rem;
+  &__list {
+    margin-bottom: 2rem;
+    display: grid;
+    grid-gap: 2.4rem 3rem;
 
-  .item {
-    text-align: center;
+    .item {
+      padding-bottom: 2rem;
+      position: relative;
+      text-align: center;
 
-    p {
-      margin-bottom: 0;
+      p {
+        margin-bottom: 0;
 
-      ~ p {
-        margin-top: 1rem;
+        ~ p {
+          margin-top: 1rem;
+        }
+      }
+
+      .parameter {
+        font-weight: 700;
+        font-size: 3rem;
+        color: var(--clinic-theme-secondary-color);
+        font-family: var(--heading-font-family);
+      }
+
+      .title {
+        font-size: 1.7rem;
+        font-family: var(--heading-font-family);
+      }
+
+      ~ .item {
+        &:before {
+          position: absolute;
+          content: "";
+          top: 0;
+          bottom: 0;
+          left: -1.5rem;
+          width: .2rem;
+          background-color: var(--clinic-theme-secondary-color);
+        }
       }
     }
+  }
 
-    .parameter {
-      font-weight: 700;
-      font-size: 3rem;
-      color: var(--clinic-theme-secondary-color);
-      font-family: var(--heading-font-family);
+  &__action {
+    display: flex;
+    gap: 1rem 2.1rem;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 375px) {
+      flex-direction: column;
     }
 
-    .title {
-      font-size: 1.7rem;
-      font-family: var(--heading-font-family);
+    .contact-title {
+      margin: 0;
+      font-size: 3rem;
+      color: #FF1F1F;
+    }
+
+    .btn-booking {
+      width: 16.5rem;
+      height: 4.4rem;
+      color: #ffffff;
+      font-weight: 700;
+      background-image: url("../images/ntn-btn.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 }

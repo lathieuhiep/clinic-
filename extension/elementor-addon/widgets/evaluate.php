@@ -198,7 +198,7 @@ class Clinic_Elementor_Evaluate extends Widget_Base {
         $settings = $this->get_settings_for_display();
     ?>
         <div class="element-evaluate">
-            <div class="element-evaluate__item">
+            <div class="element-evaluate__item item-content">
                 <h2 class="heading">
                     <?php echo esc_html( $settings['heading'] ); ?>
                 </h2>
@@ -219,7 +219,7 @@ class Clinic_Elementor_Evaluate extends Widget_Base {
                 <?php endif; ?>
             </div>
 
-            <div class="element-evaluate__item">
+            <div class="element-evaluate__item item-image">
                 <div class="image-box">
                     <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
                 </div>
