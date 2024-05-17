@@ -67,6 +67,7 @@
     const handleDropdownCategoryWidget = () => {
         // handle show cate current
         const cateItemLink = $('.categories-dropdown-widget .cat-item__link')
+
         if ( cateItemLink.length ) {
             cateItemLink.each(function () {
                 const hasClassCurrent = $(this).hasClass('current-cate')
@@ -81,16 +82,19 @@
         }
 
         // handle slideToggle
-        const cateLinkHasChildWidget = $('.categories-dropdown-widget .cate-link-has-child')
+        const cateLinkHasChildWidget = $('.categories-dropdown-widget .icon-has-child-cate')
         if ( cateLinkHasChildWidget.length ) {
             cateLinkHasChildWidget.each(function () {
                 $(this).on('click', function (e) {
                     e.preventDefault()
 
-                    $(this).toggleClass('active')
-                    $(this).closest( '.cat-item' ).siblings().find(cateLinkHasChildWidget).removeClass( 'active' )
-                    $(this).parent().children( '.children' ).slideToggle()
-                    $(this).parents( '.cat-item-has-child' ).siblings().find('.children').slideUp();
+                    const catItem = $(this).closest('.cat-item')
+                    const catItemLink = catItem.find('.cat-item__link').first()
+
+                    catItemLink.toggleClass('active')
+                    catItem.siblings().find(cateLinkHasChildWidget).removeClass( 'active' )
+                    catItem.children( '.children' ).slideToggle()
+                    catItem.siblings().find('.children').slideUp();
                 })
             })
         }

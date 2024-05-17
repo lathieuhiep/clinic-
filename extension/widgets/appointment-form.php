@@ -26,7 +26,11 @@ class clinic_appointment_form_widget extends WP_Widget {
      */
 	function widget( $args, $instance ): void {
         echo $args['before_widget'];
-
+    ?>
+        <div class="image-box">
+            <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/dang-ki-nhan-tu-van.png' ) ) ?>" alt="">
+        </div>
+    <?php
         if ( ! empty( $instance['title'] ) ) {
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         }

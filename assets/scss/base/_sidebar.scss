@@ -399,8 +399,17 @@ section {
     }
 
     .widget-warp {
+      overflow: hidden;
       border: 1px solid var(--clinic-theme-primary-color);
       border-top-width: 0;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.25);
+      background-image: url("../images/bk-widget-warp.png");
+      background-repeat: no-repeat;
+      background-size: 105%;
+      background-position: center;
+      background-color: #ffffff;
     }
 
     &.widget_media_image {
@@ -430,29 +439,34 @@ section {
 
         .wpcf7-form-control-wrap {
           input, textarea {
-            min-height: 3.5rem;
-            color: #909090;
-            font-size: 1.4rem;
+            min-height: 4rem;
+            color: #000000;
+            font-size: 1.6rem;
+            font-style: italic;
             font-family: var(--heading-font-family);
-            border: 1px solid #CDCDCD;
-            background-color: var(--color-white);
+            border: 1px solid #2E7A7A;
+            background-color: #EAF1F1;
+
+            &::placeholder {
+              color: #000000;
+            }
           }
 
           textarea {
-            min-height: 10.6rem;
+            min-height: 14.8rem;
           }
         }
 
         .wpcf7-submit {
-          padding: 1rem .9rem;
-          min-width: 12.3rem;
-          font-weight: 900;
-          font-size: 1.4rem;
+          padding: 1.4rem .9rem;
+          min-width: 20.8rem;
+          font-weight: 700;
+          font-size: 1.8rem;
           line-height: 1.6rem;
           text-transform: uppercase;
           border: none;
-          border-radius: 2rem;
-          background: linear-gradient(180deg, #FF0008 0%, #941115 100%);
+          border-radius: .5rem;
+          background: #E6171F;
         }
       }
     }
@@ -460,27 +474,44 @@ section {
     &.categories-dropdown-widget {
       background: #F7F7F7;
 
+      .widget-title {
+        font-size: 2.9rem;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+
       .widget-warp {
-        padding: 0;
+        padding: 1.4rem 3rem;
 
         > li {
           margin: 0;
-          padding: 0 .8rem;
+          padding: 0;
 
           > a {
-            padding: .8rem 0;
-            font-size: 1.6rem;
-            font-weight: 700;
-          }
+            position: relative;
+            padding: 1.4rem 1.6rem 1rem 3.4rem;
+            border-radius: 5rem;
+            background-color: #ECECEC;
 
-          ~ li {
-             > a {
-              border-top: 1px dashed var(--clinic-theme-primary-color);
+            &:before {
+              position: absolute;
+              content: "";
+              top: 50%;
+              left: 1rem;
+              @include square(1.6rem, 50%);
+              background-color: var(--color-white);
+              transform: translateY(-50%);
+            }
+
+            &.current-cate {
+              &:before {
+                background-color: var(--clinic-theme-secondary-color);
+              }
             }
           }
 
-          > ul {
-            border-top: 1px dashed var(--clinic-theme-primary-color);
+          ~ li {
+            margin-top: .7rem;
           }
         }
 
@@ -491,7 +522,7 @@ section {
             position: relative;
             z-index: 1;
             color: #000;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 400;
 
             &:hover {
@@ -511,18 +542,13 @@ section {
 
                 > a {
                   position: relative;
-                  padding-left: 1.6rem;
-                  font-size: 1.4rem;
+                  padding-left: 2rem;
+                  font-size: 1.6rem;
                   line-height: 3rem;
+                  color: #636363;
 
-                  &:before {
-                    position: absolute;
-                    content: "";
-                    top: 50%;
-                    left: 0;
-                    @include square(.5rem, 50%);
-                    background-color: #000;
-                    transform: translateY(-50%);
+                  &:hover {
+                    color: var(--clinic-theme-primary-color);
                   }
                 }
 
@@ -535,9 +561,16 @@ section {
 
           .icon-has-child-cate {
             position: absolute;
-            top: .8rem;
+            top: 1.6rem;
             right: 1.2rem;
+            z-index: 1;
+            cursor: pointer;
+            @include square(1.6rem);
             @include transition();
+
+            &:hover {
+              color: var(--clinic-theme-primary-color);
+            }
 
             svg {
               path {
@@ -551,6 +584,12 @@ section {
               ~ .icon-has-child-cate {
                 transform: rotate(180deg);
               }
+            }
+          }
+
+          &:has(.icon-has-child-cate) {
+            a {
+              padding-right: 3.2rem;
             }
           }
         }

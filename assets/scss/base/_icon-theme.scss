@@ -30,16 +30,20 @@
 .icon-star:before {
   content: "\e918";
 }
+.icon-down-arrow:before {
+  content: "\e906";
+}
+.icon-up-arrow:before {
+  content: "\e911";
+}
 .icon-hours-support:before {
   content: "\e900";
 }
 .icon-angle-left:before {
   content: "\e901";
-  color: #09244b;
 }
 .icon-angle-right:before {
   content: "\e902";
-  color: #09244b;
 }
 .icon-calendar:before {
   content: "\e903";
@@ -91,7 +95,6 @@
 }
 .icon-search:before {
   content: "\e915";
-  color: #4c505b;
 }
 .icon-send:before {
   content: "\e916";

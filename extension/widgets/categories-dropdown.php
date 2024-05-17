@@ -107,15 +107,13 @@ class clinic_categories_dropdown_widget extends WP_Widget {
         <li class="cat-item<?php echo esc_attr($class ? ' ' . $class : '') . esc_attr( !empty( $child_categories ) ? ' cat-item-has-child' : '' ); ?>">
             <a class="cat-item__link<?php echo esc_attr( !empty( $child_categories ) ? ' cate-link-has-child' : '' ) . esc_attr( $term_current_id == $parent_category_id ? ' current-cate' : '' ) ?>" href="<?php echo esc_url( get_category_link( $parent_category_id ) ); ?>">
 				<?php echo esc_html( $parent_category->name ); ?>
+
             </a>
 
 			<?php if ( !empty( $child_categories ) ) : ?>
-                <div class="icon-has-child-cate">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8" viewBox="0 0 10 8"
-                         fill="none">
-                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="white"/>
-                    </svg>
-                </div>
+                <span class="icon-has-child-cate">
+                    <i class="icon icon-down-arrow"></i>
+                </span>
 
                 <ul class="children">
                     <?php

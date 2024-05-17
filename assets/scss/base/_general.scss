@@ -172,14 +172,15 @@ pre {
 
 /* Breadcrumbs */
 .breadcrumbs {
-  margin-bottom: 3rem;
-  padding: 1.2rem 2.4rem;
-  color: #737373;
-  font-weight: 500;
-  background-color: #EDEDED;
+  color: var(--color-white);
+  background-color: var(--clinic-theme-primary-color);
+
+  .breadcrumbs-col {
+    padding: 2.4rem 0;
+  }
 
   a {
-    color: var(--clinic-theme-primary-color);
+    color: var(--color-white);
   }
 }
 
@@ -439,15 +440,5 @@ pre {
       width: 27%;
     }
 
-  }
-}
-
-.elementor-element {
-  .swiper {
-    .swiper-pagination-bullets {
-      &.swiper-pagination-horizontal {
-        bottom: -0.7rem;
-      }
-    }
   }
 }
