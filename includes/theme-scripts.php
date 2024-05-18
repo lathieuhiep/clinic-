@@ -48,6 +48,11 @@ function clinic_register_front_end(): void
 	// style theme
 	wp_enqueue_style( 'clinic-style', get_theme_file_uri( '/assets/css/style-theme.min.css' ), array(), clinic_get_version_theme() );
 
+    // get owl carousel css
+    if ( clinic_is_blog() || is_singular('post') ) {
+        wp_enqueue_style( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ), array(), '2.3.4' );
+    }
+
 	// style post
 	if ( clinic_is_blog() ) {
 		wp_enqueue_style( 'post', get_theme_file_uri( '/assets/css/post-type/post/archive.min.css' ), array(), clinic_get_version_theme() );
@@ -66,6 +71,11 @@ function clinic_register_front_end(): void
 
 	// bootstrap js
 	wp_enqueue_script( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.bundle.min.js' ), array('jquery'), '5.2.3', true );
+
+    // get owl carousel js
+    if ( clinic_is_blog() || is_singular('post') ) {
+        wp_enqueue_script( 'owl.carousel', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array('jquery'), '2.3.4', true );
+    }
 
 	// comment reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

@@ -104,9 +104,16 @@
 
   &__title {
     margin-bottom: 1.6rem;
-    line-height: 3rem;
     text-transform: uppercase;
     color: #FC0000;
+
+    @media (min-width: 992px) {
+      font-size: 2.4rem;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 2rem;
+    }
   }
 
   &__tax {

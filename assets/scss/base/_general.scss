@@ -260,26 +260,13 @@ pre {
 }
 
 .title-has-icon {
-  position: relative;
-  padding-left: 3rem;
-
-  &:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    @include square(2.3rem, 50%);
-    border: .3rem solid #83C261;
-  }
-
-  &:after {
-    position: absolute;
-    content: "";
-    top: .85rem;
-    left: .85rem;
-    @include square(.6rem, 50%);
-    background-color: #135CAA;
-  }
+  padding: .9rem;
+  display: grid;
+  grid-gap: 1.2rem;
+  grid-template-columns: 4rem 1fr;
+  align-items: center;
+  border-radius: .5rem;
+  background-color: #0E9D71;
 
   + p {
     margin-top: 1.5rem;
@@ -287,10 +274,17 @@ pre {
 
   &__text {
     margin: 0;
-    font-size: 2rem;
-    line-height: 1.2;
+    line-height: 3rem;
+    color: var(--color-white);
     text-transform: uppercase;
-    color: #135CAA;
+
+    @media (min-width: 992px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 1.8rem;
+    }
   }
 }
 

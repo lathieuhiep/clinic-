@@ -35,6 +35,12 @@ function clinic_get_opt_chat_zalo()
 	return clinic_get_option('opt_general_chat_zalo');
 }
 
+// get chat zalo theme option general
+function clinic_get_opt_chat_qr_code_zalo()
+{
+	return clinic_get_option('opt_general_chat_qr_code_zalo');
+}
+
 // get slider theme option general
 function clinic_get_general_slider(): array
 {

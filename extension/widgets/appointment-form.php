@@ -25,6 +25,8 @@ class clinic_appointment_form_widget extends WP_Widget {
      * @param array $instance
      */
 	function widget( $args, $instance ): void {
+        $qrCodeZalo = clinic_get_opt_chat_qr_code_zalo();
+
         echo $args['before_widget'];
     ?>
         <div class="image-box">
@@ -41,6 +43,18 @@ class clinic_appointment_form_widget extends WP_Widget {
 	            echo do_shortcode( '[contact-form-7 id="' . $instance['select_form'] . '" ]' );
             endif;
             ?>
+
+            <?php if ( !empty( $qrCodeZalo ) ) : ?>
+                <div class="qr-code">
+                    <p class="note-text m-0">
+                        <strong><?php esc_html_e('Quét mã QR', 'clinic'); ?></strong> <?php esc_html_e('bên cạnh để nhanh chóng nhận tư vấn qua Zalo', 'clinic'); ?>
+                    </p>
+
+                    <div class="image-box">
+                        <?php echo wp_get_attachment_image($qrCodeZalo['id'], 'large'); ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     <?php
 

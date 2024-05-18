@@ -1,11 +1,10 @@
 <?php
 $show_related = clinic_get_option('opt_post_single_related', '1');
+$show_contact = clinic_get_option('opt_post_single_show_contact');
 ?>
 
 <div id="post-<?php the_ID() ?>" class="single-post-content">
-    <?php get_template_part( 'components/inc', 'breadcrumbs' ); ?>
-
-    <h1 class="single-post-content__title f-family-body mt-5">
+    <h1 class="single-post-content__title f-family-body">
 		<?php the_title(); ?>
     </h1>
 
@@ -17,7 +16,9 @@ $show_related = clinic_get_option('opt_post_single_related', '1');
 </div>
 
 <?php
-get_template_part( 'components/inc','single-contact-us' );
+if ( $show_contact ) {
+    get_template_part( 'components/inc','single-contact-us' );
+}
 
 get_template_part( 'components/inc','comment-form' );
 

@@ -141,8 +141,6 @@ if ( class_exists( 'CSF' ) ) {
 				'desc'    => esc_html__( 'Hiển thị khi click button hẹn khám', 'clinic' ),
 				'options' => clinic_get_form_cf7(),
 			),
-
-
 		)
 	) );
 
@@ -209,6 +207,14 @@ if ( class_exists( 'CSF' ) ) {
                         'dependency' => array( 'select_zalo', '==', 'link' ),
                     ),
                 ),
+            ),
+
+            array(
+                'id'      => 'opt_general_chat_qr_code_zalo',
+                'type'    => 'media',
+                'title'   => esc_html__( 'QR code ZaLo', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
             ),
         )
     ) );
@@ -341,6 +347,17 @@ if ( class_exists( 'CSF' ) ) {
 				'default' => 6,
 			),
 
+            // Show contact
+            array(
+                'id'         => 'opt_post_single_show_contact',
+                'type'       => 'switcher',
+                'title'      => esc_html__( 'Hiển thị liên hệ', 'clinic' ),
+                'text_on'    => esc_html__( 'Có', 'clinic' ),
+                'text_off'   => esc_html__( 'Không', 'clinic' ),
+                'default'    => false,
+                'text_width' => 80
+            ),
+
 			array(
 				'id'      => 'opt_post_single_contact_form',
 				'type'    => 'select',
@@ -349,6 +366,36 @@ if ( class_exists( 'CSF' ) ) {
 			),
 		)
 	) );
+
+    //
+    // Create a section social network
+    CSF::createSection( $clinic_prefix, array(
+        'title'  => esc_html__( 'Social Network', 'clinic' ),
+        'icon'   => 'fab fa-hive',
+        'fields' => array(
+            array(
+                'id'      => 'opt_social_network',
+                'type'    => 'repeater',
+                'title'   => esc_html__( 'Mạng xã hội', 'clinic' ),
+                'fields'  => array(
+                    array(
+                        'id'      => 'icon',
+                        'type'    => 'media',
+                        'title'   => esc_html__( 'Icon', 'clinic' ),
+                        'library' => 'image',
+                        'url'     => false
+                    ),
+
+                    array(
+                        'id'    => 'url',
+                        'type'  => 'text',
+                        'title' => esc_html__('URL', 'clinic'),
+                        'default' => '#'
+                    ),
+                ),
+            ),
+        )
+    ) );
 
 	//
 	// -> Create a section footer

@@ -11,6 +11,27 @@ get_template_part('components/inc', 'breadcrumbs');
     <div class="container">
         <div class="row">
             <div class="<?php echo esc_attr( $class_col_content ); ?>">
+                <?php
+                if ( is_category() ) :
+                    $category = get_queried_object();
+                ?>
+
+                <div class="cate-box">
+                    <div class="cate-box__top">
+                        <h1 class="name d-inline-block m-0">
+                            <?php echo esc_html( $category->name ) ?>
+                        </h1>
+                    </div>
+
+                    <div class="cate-box__under">
+                        <h3 class="desc d-inline-block m-0">
+                            <?php esc_html_e('Chia sẻ kiến thức chăm sóc sức khỏe sinh sản', 'clinic'); ?>
+                        </h3>
+                    </div>
+                </div>
+
+                <?php endif; ?>
+
                 <?php if ( have_posts() ) : ?>
                     <div class="content-archive-post">
                         <div class="row">
