@@ -10,7 +10,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
 	<?php endif; ?>
 
 	<?php if ( $link_chat ) : ?>
-        <a class="item" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+        <a class="item" href="<?php echo esc_url( $link_chat ); ?>">
             <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/post-contact-advise.png' ) ) ?>" alt="" />
         </a>
 	<?php endif; ?>
