@@ -264,7 +264,7 @@ class Clinic_Elementor_More_Information extends Widget_Base
                     ?>
                     <div class="action-box">
                         <?php if ( $link_chat ) : ?>
-                            <a class="action-box__link" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                            <a class="action-box__link" href="<?php echo esc_url( $link_chat ); ?>">
 		                        <?php esc_html_e('Gặp bác sĩ tư vấn', 'clinic'); ?>
                             </a>
                         <?php endif; ?>

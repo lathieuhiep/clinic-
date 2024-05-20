@@ -26,7 +26,7 @@ $contact_form = clinic_get_option( 'opt_post_single_contact_form' );
                         <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icon-chat.png' ) ) ?>" alt="" width="66" height="60">
                     </div>
 
-                    <a class="link-chat" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                    <a class="link-chat" href="<?php echo esc_url( $link_chat ); ?>">
 	                    <?php esc_html_e('Chat với bác sĩ', 'clinic'); ?>
                     </a>
                 </div>

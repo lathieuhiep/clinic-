@@ -71,7 +71,7 @@ $link_chat_messenger = clinic_get_opt_link_chat_messenger();
                 </div>
 
                 <div class="item__content">
-                    <a href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                    <a href="<?php echo esc_url( $link_chat ); ?>">
 					    <?php esc_html_e('Chat với bác sĩ', 'clinic'); ?>
                     </a>
                 </div>

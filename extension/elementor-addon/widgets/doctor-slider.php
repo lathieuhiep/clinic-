@@ -128,7 +128,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 
                             <div class="action-box">
 		                        <?php if ( $link_chat ) : ?>
-                                    <a class="btn-support" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                                    <a class="btn-support" href="<?php echo esc_url( $link_chat ); ?>">
 				                        <?php esc_html_e('Tư vấn', 'clinic'); ?>
                                     </a>
 		                        <?php
