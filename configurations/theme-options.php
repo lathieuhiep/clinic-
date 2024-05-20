@@ -100,20 +100,6 @@ if ( class_exists( 'CSF' ) ) {
         )
     ) );
 
-    // Banner
-    CSF::createSection( $clinic_prefix, array(
-        'parent' => 'opt_general_section',
-        'title'  => esc_html__( 'Banner', 'clinic' ),
-        'fields' => array(
-            array(
-                'id'    => 'opt_general_banner',
-                'type'  => 'media',
-                'title' => esc_html__( 'Banner', 'clinic' ),
-                'library' => 'image'
-            ),
-        )
-    ) );
-
 	// Contact
 	CSF::createSection( $clinic_prefix, array(
 		'parent' => 'opt_general_section',

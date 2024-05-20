@@ -23,26 +23,24 @@ $chat_zalo = clinic_get_opt_chat_zalo();
             </div>
 
             <div class="info">
-                <div class="item">
-                    <div class="item__icon alo-circle-anim">
-                        <i class="icon-phone-light"></i>
+                <div class="item item-working-time">
+                    <div class="icon-box">
+                        <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-gio-lam-viec.png' ) ) ?>" />
                     </div>
 
-                    <div class="item__content">
-                        <p><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
+                    <div class="content-box">
+                        <p><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
 
-                        <a class="phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
-                            <?php echo esc_html( $hotline ); ?>
-                        </a>
+                        <strong><?php echo esc_html( $working_time ); ?></strong>
                     </div>
                 </div>
 
                 <div class="item item-zalo">
-                    <div class="item__icon">
-                        <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-logo.png' ) ) ?>" />
+                    <div class="icon-box">
+                        <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-zalo-logo.png' ) ) ?>" />
                     </div>
 
-                    <div class="item__content">
+                    <div class="content-box">
                         <?php if ( !empty( $chat_zalo ) ) : ?>
                             <p><?php esc_html_e('Click tư vấn', 'clinic'); ?></p>
 
@@ -67,15 +65,17 @@ $chat_zalo = clinic_get_opt_chat_zalo();
                     </div>
                 </div>
 
-                <div class="item">
-                    <div class="item__icon">
-                        <i class="icon-clock"></i>
+                <div class="item item-hotline">
+                    <div class="icon-box">
+                        <img alt="" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icons/icon-hotline.png' ) ) ?>" />
                     </div>
 
-                    <div class="item__content">
-                        <p><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
+                    <div class="content-box">
+                        <p><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
 
-                        <strong><?php echo esc_html( $working_time ); ?></strong>
+                        <a class="link phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
+                            <?php echo esc_html( $hotline ); ?>
+                        </a>
                     </div>
                 </div>
             </div>
