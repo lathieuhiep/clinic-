@@ -62,21 +62,8 @@
                 const options = {
                     dots: false,
                     nav: true,
-                    responsive:{
-                        0: {
-                            items: 1,
-                            autoHeight:true,
-                            margin: 0
-                        },
-                        768: {
-                            items: 2,
-                            margin: 12
-                        },
-                        992: {
-                            items: 3,
-                            margin: 20
-                        }
-                    }
+                    items: 1,
+                    margin: 12
                 }
 
                 thisSlider.owlCarousel(owlCarouselElementorOptions(options))

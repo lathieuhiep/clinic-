@@ -1,9 +1,6 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
@@ -13,7 +10,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class Clinic_Elementor_Procedure extends Widget_Base
+class Clinic_Elementor_Step_List extends Widget_Base
 {
 
     /**
@@ -26,7 +23,7 @@ class Clinic_Elementor_Procedure extends Widget_Base
      */
     public function get_name(): string
     {
-        return 'clinic-procedure';
+        return 'clinic-step-list';
     }
 
     /**
@@ -39,7 +36,7 @@ class Clinic_Elementor_Procedure extends Widget_Base
      */
     public function get_title(): string
     {
-        return esc_html__('Quy trình', 'clinic');
+        return esc_html__('Danh sách các bước', 'clinic');
     }
 
     /**
@@ -50,9 +47,8 @@ class Clinic_Elementor_Procedure extends Widget_Base
      * @access public
      * @return string Widget icon.
      */
-    public function get_icon()
-    {
-        return 'eicon-gallery-grid';
+    public function get_icon(): string {
+        return 'eicon-text';
     }
 
     /**
@@ -65,7 +61,7 @@ class Clinic_Elementor_Procedure extends Widget_Base
      */
     public function get_keywords(): array
     {
-        return ['image', 'grid', 'gallery', 'list' ];
+        return ['step', 'list'];
     }
 
     /**
@@ -106,15 +102,15 @@ class Clinic_Elementor_Procedure extends Widget_Base
                 'type' => Controls_Manager::NUMBER,
                 'min' => 1,
                 'step' => 1,
-                'default' => 3,
+                'default' => 2,
                 'selectors' => [
-                    '{{WRAPPER}} .element-procedure__warp' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+                    '{{WRAPPER}} .element-step-list' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
                 ],
             ]
         );
 
         $this->add_responsive_control(
-            'grid-column-gap',
+            'grid_column_gap',
             [
                 'label' => esc_html__( 'Grid column gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -131,13 +127,13 @@ class Clinic_Elementor_Procedure extends Widget_Base
                     'size' => 24,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-procedure__warp' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .element-step-list' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
 
         $this->add_responsive_control(
-            'grid-row-gap',
+            'grid_row_gap',
             [
                 'label' => esc_html__( 'Grid row gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -154,17 +150,18 @@ class Clinic_Elementor_Procedure extends Widget_Base
                     'size' => 24,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-procedure__warp' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .element-step-list' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
 
         $this->end_controls_section();
 
+        // list content
         $this->start_controls_section(
-            'content_section',
+            'list_section',
             [
-                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'label' => esc_html__( 'Danh sách', 'clinic' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -175,42 +172,29 @@ class Clinic_Elementor_Procedure extends Widget_Base
             'list_title', [
                 'label' => esc_html__( 'Tiêu đề', 'clinic' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'List Title' , 'clinic' ),
+                'default' => esc_html__( 'Tiêu đề' , 'clinic' ),
                 'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_image', [
-                'label' => esc_html__( 'Image', 'clinic' ),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'list_content', [
-                'label' => esc_html__( 'Nội dung', 'clinic' ),
-                'type' => Controls_Manager::WYSIWYG,
-                'default' => esc_html__( 'Nội dung' , 'clinic' ),
-                'show_label' => false,
             ]
         );
 
         $this->add_control(
             'list',
             [
-                'label' => esc_html__( 'Danh sách', 'clinic' ),
+                'label' => esc_html__( 'List', 'clinic' ),
                 'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'list_title' => esc_html__( 'Title #1', 'clinic' ),
+                        'list_title' => __( 'Tiêu đề #1', 'clinic' ),
                     ],
                     [
-                        'list_title' => esc_html__( 'Title #2', 'clinic' ),
+                        'list_title' => __( 'Tiêu đề #2', 'clinic' ),
+                    ],
+                    [
+                        'list_title' => __( 'Tiêu đề #3', 'clinic' ),
+                    ],
+                    [
+                        'list_title' => __( 'Tiêu đề #4', 'clinic' ),
                     ],
                 ],
                 'title_field' => '{{{ list_title }}}',
@@ -219,9 +203,9 @@ class Clinic_Elementor_Procedure extends Widget_Base
 
         $this->end_controls_section();
 
-        // title style
+        // style title
         $this->start_controls_section(
-            'title_style_section',
+            'style_title_section',
             [
                 'label' => esc_html__( 'Tiêu đề', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
@@ -231,10 +215,10 @@ class Clinic_Elementor_Procedure extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-procedure__warp .item__body .title' => 'color: {{VALUE}}',
+                'label' => esc_html__( 'Màu chữ', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-step-list .title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -242,19 +226,18 @@ class Clinic_Elementor_Procedure extends Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'title_typography',
-                'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-procedure__warp .item__body .title',
+                'name' => 'list_title_typography',
+                'selector' => '{{WRAPPER}} .element-step-list .title',
             ]
         );
 
         $this->end_controls_section();
 
-        // number style
+        // style number
         $this->start_controls_section(
-            'number_style_section',
+            'style_number_section',
             [
-                'label' => esc_html__( 'Số thứ tự', 'clinic' ),
+                'label' => esc_html__( 'Số', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -262,10 +245,10 @@ class Clinic_Elementor_Procedure extends Widget_Base
         $this->add_control(
             'number_color',
             [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-procedure__warp .item__body .stt' => 'color: {{VALUE}}',
+                'label' => esc_html__( 'Màu chữ', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-step-list .number' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -274,39 +257,7 @@ class Clinic_Elementor_Procedure extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'number_typography',
-                'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-procedure__warp .item__body .stt',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // content style
-        $this->start_controls_section(
-            'content_style_section',
-            [
-                'label' => esc_html__( 'Nội dung', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'content_color',
-            [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-procedure__warp .item__body .content' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'content_typography',
-                'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-procedure__warp .item__body .content',
+                'selector' => '{{WRAPPER}} .element-step-list .number',
             ]
         );
 
@@ -323,38 +274,24 @@ class Clinic_Elementor_Procedure extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
-        ?>
-        <div class="element-procedure">
-            <div class="element-procedure__warp">
-                <?php foreach ( $settings['list'] as $key => $item ) : ?>
-                    <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <?php if ( $item['list_image'] ) : ?>
-                            <div class="item__thumbnail">
-                                <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
-                            </div>
-                        <?php endif; ?>
 
-                        <div class="item__body">
-                            <div class="box-number text-center">
-                                <span class="stt"><?php echo esc_html( addZeroBeforeNumber($key + 1) ); ?></span>
-                            </div>
-
-                            <?php if ( $item['list_title'] ) : ?>
-                                <h3 class="title m-0">
-                                    <?php echo esc_html( $item['list_title'] ); ?>
-                                </h3>
-                            <?php endif; ?>
-
-                            <?php if ( $item['list_content'] ) : ?>
-                                <div class="content">
-                                    <?php echo wpautop( $item['list_content'] ); ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+        if ( empty( $settings['list'] ) ) :
+            return;
+        endif;
+    ?>
+        <div class="element-step-list">
+            <?php foreach ( $settings['list'] as $key => $item ) : ?>
+                <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                    <div class="number">
+                        <?php echo esc_html( $key + 1 ); ?>
                     </div>
-                <?php endforeach; ?>
-            </div>
+
+                    <h3 class="title">
+                        <?php echo esc_html( $item['list_title'] ); ?>
+                    </h3>
+                </div>
+            <?php endforeach; ?>
         </div>
-        <?php
+    <?php
     }
 }

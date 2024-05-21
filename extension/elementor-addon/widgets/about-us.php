@@ -95,6 +95,38 @@ class Clinic_Elementor_About_Us extends Widget_Base
         );
 
         $this->add_responsive_control(
+            'columns_grid',
+            [
+                'label' => esc_html__( 'Cột', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'fr' => [
+                        'min' => 1,
+                        'max' => 12,
+                        'step' => 1,
+                    ],
+                ],
+                'size_units' => [ 'fr', 'custom' ],
+                'unit_selectors_dictionary' => [
+                    'custom' => 'grid-template-columns: {{SIZE}}',
+                ],
+                'default' => [
+                    'unit' => 'fr',
+                    'size' => 2,
+                ],
+                'mobile_default' => [
+                    'unit' => 'fr',
+                    'size' => 1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp' => 'grid-template-columns: repeat({{SIZE}}, 1fr)',
+                ],
+                'responsive' => true,
+                'editor_available' => true,
+            ]
+        );
+
+        $this->add_responsive_control(
             'grid_column_gap',
             [
                 'label' => esc_html__( 'Grid column gap', 'clinic' ),
@@ -273,7 +305,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
             [
                 'label'     =>  esc_html__( 'Nội dung', 'clinic' ),
                 'type'      =>  Controls_Manager::WYSIWYG,
-                'default'   =>  esc_html__( 'Default description', 'clinic' ),
+                'default'   =>  esc_html__( 'Nội dung', 'clinic' ),
             ]
         );
 
@@ -581,7 +613,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        $link_chat = clinic_get_opt_link_chat_doctor();
+        // theme options
         $medical_appointment_form = clinic_get_opt_medical_appointment();
         ?>
         <div class="element-about-us">
@@ -615,15 +647,10 @@ class Clinic_Elementor_About_Us extends Widget_Base
 
                     <?php if ( $settings['show_contact'] == 'show' ) : ?>
                         <div class="action-box d-flex">
-                            <?php if ( $link_chat ) : ?>
-                                <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                                    <?php esc_html_e('Gặp bác sĩ tư vấn', "clinic"); ?>
-                                </a>
-                            <?php endif; ?>
-
                             <?php if ( $medical_appointment_form ) : ?>
                                 <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                    <?php esc_html_e('Đặt lịch ngay', "clinic"); ?>
+                                    <i class="icon icon-calendar"></i>
+                                    <span><?php esc_html_e('Đặt lịch khám', "clinic"); ?></span>
                                 </a>
                             <?php endif; ?>
                         </div>
