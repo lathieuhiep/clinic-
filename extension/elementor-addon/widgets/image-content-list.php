@@ -86,27 +86,6 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
 	 */
     protected function register_controls(): void
     {
-        // heading section
-        $this->start_controls_section(
-            'heading_section',
-            [
-                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'heading',
-            [
-                'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
-                'type'        => Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Tiêu đề', 'clinic' ),
-                'label_block' => true,
-            ]
-        );
-
-        $this->end_controls_section();
-
         // image section
         $this->start_controls_section(
             'image_section',
@@ -119,7 +98,7 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
         $this->add_control(
             'image',
             [
-                'label' => esc_html__( 'Choose Image', 'textdomain' ),
+                'label' => esc_html__( 'Chọn ảnh', 'textdomain' ),
                 'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
@@ -141,19 +120,30 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
 
         $repeater->add_control(
             'list_title', [
-                'label' => esc_html__( 'Title', 'clinic' ),
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'Title #1' , 'clinic' ),
+                'default' => esc_html__( 'Tiêu đề #1' , 'clinic' ),
                 'label_block' => true,
             ]
         );
 
         $repeater->add_control(
+            'list_image',
+            [
+                'label' => esc_html__( 'Chọn ảnh', 'textdomain' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $repeater->add_control(
             'list_content', [
-                'label' => esc_html__( 'Content', 'clinic' ),
-                'type' => Controls_Manager::TEXTAREA,
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'type' => Controls_Manager::WYSIWYG,
                 'rows' => 8,
-                'default' => esc_html__( 'List Content' , 'clinic' ),
+                'default' => esc_html__( 'Nội dung' , 'clinic' ),
                 'label_block' => true,
             ]
         );
@@ -161,21 +151,21 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
         $this->add_control(
             'list',
             [
-                'label' => esc_html__( 'List', 'clinic' ),
+                'label' => esc_html__( 'Danh sách', 'clinic' ),
                 'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'list_title' => __( 'Title #1', 'clinic' ),
+                        'list_title' => __( 'Tiêu đề #1', 'clinic' ),
                     ],
                     [
-                        'list_title' => __( 'Title #2', 'clinic' ),
+                        'list_title' => __( 'Tiêu đề #2', 'clinic' ),
                     ],
                     [
-                        'list_title' => __( 'Title #3', 'clinic' ),
+                        'list_title' => __( 'Tiêu đề #3', 'clinic' ),
                     ],
                     [
-                        'list_title' => __( 'Title #4', 'clinic' ),
+                        'list_title' => __( 'Tiêu đề #4', 'clinic' ),
                     ],
                 ],
                 'title_field' => '{{{ list_title }}}',
@@ -255,8 +245,6 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
-
-        $medical_appointment_form = clinic_get_opt_medical_appointment();
     ?>
         <div class="element-image-content-list">
             <div class="element-image-content-list__warp">
@@ -265,32 +253,27 @@ class Clinic_Elementor_Image_Content_List extends Widget_Base
                 </div>
 
                 <div class="item item__list">
-                    <h2 class="heading">
-                        <?php echo esc_html( $settings['heading'] ); ?>
-                    </h2>
-
                     <div class="list-group">
-                        <?php foreach ( $settings['list'] as $key => $item ) : ?>
+                        <?php foreach ( $settings['list'] as $item ) : ?>
                             <div class="repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                                <h4 class="list-title f-family-body">
-                                    <span class="number"><?php echo esc_html($key + 1); ?></span>
-                                    <span class="text"><?php echo esc_html( $item['list_title'] ); ?></span>
-                                </h4>
+                                <div class="list-image">
+                                    <div class="image-box">
+                                        <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
+                                    </div>
+                                </div>
 
-                                <p class="list-content">
-                                    <?php echo esc_html( $item['list_content'] ); ?>
-                                </p>
+                                <div class="body-box">
+                                    <h4 class="list-title">
+                                        <?php echo esc_html( $item['list_title'] ); ?>
+                                    </h4>
+
+                                    <div class="list-content">
+                                        <?php echo wpautop( $item['list_content'] ); ?>
+                                    </div>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
-
-                    <?php if ( $medical_appointment_form ) : ?>
-                        <div class="action-box text-center">
-                            <a class="booking" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                <?php esc_html_e('Đặt lịch ngay', 'clinic'); ?>
-                            </a>
-                        </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>

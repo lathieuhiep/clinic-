@@ -1,92 +1,114 @@
 .element-image-content-list {
   &__warp {
     display: grid;
-    grid-gap: 3rem 6rem;
+    align-items: center;
 
-    @media (min-width: 992px) {
-      grid-template-columns: repeat(2, 1fr);
+    @media (min-width: 1200px) {
+      grid-gap: 3rem 6.5rem;
+      grid-template-columns: 52.5rem 1fr;
     }
 
-    .heading {
-      font-size: 2.9rem;
+    @media (max-width: 1199px) {
+      grid-gap: 3rem;
     }
 
-    .list-content {
-      .list-title {
-        span {
-          display: inline-block;
-        }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      grid-template-columns: 45rem 1fr;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      grid-template-columns: 30rem 1fr;
+    }
+
+    .item__thumbnail {
+      @media (max-width: 767px) {
+        display: none;
       }
     }
 
     .list-group {
       .repeater-item {
+        display: grid;
+        align-items: center;
+
+        @media (min-width: 992px) {
+          grid-gap: 2.4rem 4rem;
+        }
+
+        @media (max-width: 991px) {
+          grid-gap: 2.4rem;
+        }
+
+        @media (min-width: 576px) {
+          grid-template-columns: 22.1rem 1fr;
+        }
+
+        @media (max-width: 575px) {
+          grid-template-columns: 15rem 1fr;
+        }
+
         ~ .repeater-item {
-          margin-top: 1.2rem;
+          margin-top: 1.5rem;
+        }
+      }
+
+      .list-image {
+        position: relative;
+        text-align: right;
+
+        &:before {
+          position: absolute;
+          content: "";
+          left: 0;
+          top: 50%;
+          @include square(2.7rem, 50%);
+          background: linear-gradient(180deg, #44F6DC 0, #1AD2DD 100%);
+          transform: translateY(-50%);
+        }
+
+        &:after {
+          position: absolute;
+          content: "";
+          left: 2.7rem;
+          top: 50%;
+          width: calc(100% - (10.8rem + 2.7rem));
+          height: .7rem;
+          background-color: #23E6D9;
+          transform: translateY(-50%);
+        }
+
+        .image-box {
+          position: relative;
+          @include square(10.8rem, 50%);
+          background: linear-gradient(180deg, #2AF5D7 0, #19D0DE 100%);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          &:before {
+            position: absolute;
+            content: "";
+            top: .8rem;
+            right: .8rem;
+            bottom: .8rem;
+            left: .8rem;
+            border-radius: 50%;
+            background-color: var(--color-white);
+          }
+
+          img {
+            position: relative;
+          }
         }
       }
 
       .list-title {
-        margin-bottom: .8rem;
-        color: var(--clinic-theme-fifth-color);
-        font-size: 1.6rem;
-
-        .number {
-          &:after {
-            content: ".";
-          }
-        }
-      }
-
-      .list-content {
-        font-size: 1.6rem;
-        line-height: 2rem;
-      }
-    }
-
-    .action-box {
-      margin-top: 1.2rem;
-
-      .booking {
-        position: relative;
-        display: inline-block;
-        padding: 1rem 2rem;
-        min-width: 21.5rem;
-        font-size: 1.6rem;
-        color: var(--color-white);
-        font-family: var(--heading-font-family);
-        font-weight: 700;
+        margin-bottom: .5rem;
+        font-family: var(--body-font-family);
+        font-weight: 500;
+        font-size: 1.7rem;
+        color: #208B45;
         text-transform: uppercase;
-        overflow: hidden;
-        border-radius: 5rem;
-        background: linear-gradient(180deg, #FFB06D 0%, #FF611D 100%);
-        box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
-        @include transition( none);
-
-        &:before {
-          position: absolute;
-          content: "\e903";
-          font-family: $font-icon;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          text-align: center;
-          font-size: 30px;
-          text-indent: 0;
-          transition: all 0.2s linear 0s;
-        }
-
-        &:hover {
-          text-indent: -9999px;
-
-          &:before {
-            top: 0;
-          }
-        }
       }
     }
   }
