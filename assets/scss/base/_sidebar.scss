@@ -23,15 +23,24 @@
 section {
   &.widget {
     margin-bottom: 1rem;
+    border-radius: .5rem;
 
     &:last-child {
       margin-bottom: 0;
     }
 
     .widget-title {
-      font-size: 1.8rem;
       line-height: 1.1;
-      font-family: var(--body-font-family);
+      font-weight: 400;
+      font-family: var(--clinic-theme-tertiary-font-family);
+
+      @media (min-width: 1200px) {
+        font-size: 3rem;
+      }
+
+      @media (max-width: 1199px) {
+        font-size: 2.4rem;
+      }
     }
 
     ul {
@@ -209,6 +218,7 @@ section {
           overflow: hidden;
           font-weight: 400;
           line-height: 1.8rem;
+          text-align: justify;
           font-family: var(--body-font-family);
         }
 
@@ -285,60 +295,83 @@ section {
     }
 
     &.working-time-widget {
+      padding: 1.6rem;
       border: 0;
+      background: #F2E0FF;
 
-      .widget-title {
-        color: #057EFF;
-        background-image: url("../images/bk-work-time.png");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
+      .widget-warp {
+        padding: 0;
+        border: 0;
 
-      .warp {
-        padding: 2rem;
-        line-height: 1.1;
-        background-color: #ECECEC;
-
-        > div {
-          &:not(:last-child) {
-            margin-bottom: 1.1rem;
-          }
-        }
-
-        .time {
-          padding: 1.1rem;
-          text-align: center;
-          font-size: 3rem;
-          font-weight: 700;
-          color: #FF0000;
-          border: .1rem solid #DEDBDB;
-          border-radius: 1rem;
-          background-color: var(--color-white);
-        }
-
-        .arrive {
-          padding: 0 1.2rem;
-          display: grid;
-          grid-gap: 1.2rem;
-          grid-template-columns: 1fr auto 1fr;
+        .work-box {
+          display: flex;
+          gap: .5rem;
           align-items: center;
+          justify-content: center;
 
-          &__line {
-            height: .1rem;
-            background-color: #000000;
-          }
+          .time {
+            position: relative;
+            display: flex;
+            gap: .7rem;
+            align-items: center;
+            justify-content: center;
 
-          &__txt {
-            font-size: 2.8rem;
-            font-weight: 700;
+            ~ .time {
+              margin-left: 3rem;
+
+              &:before {
+                position: absolute;
+                content: "-";
+                left: -2.7rem;
+                top: 0;
+                bottom: 0;
+                width: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @media (min-width: 992px) {
+                  font-size: 4rem;
+                }
+
+                @media (min-width: 768px) and (max-width: 992px) {
+                  transform: translateY(-1px);
+                }
+              }
+            }
+
+            span {
+              display: inline-block;
+            }
+
+            .character {
+              font-size: 3rem;
+            }
+
+            &__box {
+              padding: .6rem .9rem;
+              text-align: center;
+              font-family: var(--clinic-theme-tertiary-font-family);
+              border-radius: .6rem;
+              background-color: var(--color-white);
+
+              @media (min-width: 1200px) {
+                font-size: 3rem;
+              }
+
+              @media (min-width: 768px) and (max-width: 1199px) {
+                font-size: 2rem;
+              }
+
+              @media (max-width: 767px) {
+                font-size: 2.4rem;
+              }
+            }
           }
         }
 
         .note {
-          line-height: 1.6;
-          font-size: 1.4rem;
-          color: #030303;
+          font-size: 1.5rem;
         }
       }
     }
@@ -401,16 +434,35 @@ section {
   }
 
   .widget {
+    margin-bottom: 0;
+    padding-top: 3rem;
+    position: relative;
+    text-align: center;
+    overflow: visible;
+    background-color: #fff;
     border: 1px solid var(--clinic-theme-primary-color);
-    background: #FFF;
+
+    &:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 50%;
+      width: 80%;
+      height: .8rem;
+      background-color: var(--clinic-theme-primary-color);
+      transform: translateX(-50%);
+    }
+
+    ~ .widget {
+      margin-top: 1.7rem;
+    }
 
     .widget-title {
-      margin: 0;
-      padding: 1.7rem 1.2rem 1.2rem;
+      margin-bottom: 1.6rem;
+      position: relative;
       text-align: center;
       text-transform: uppercase;
-      color: var(--color-white);
-      background: var(--clinic-theme-primary-color);
+      color: var(--clinic-theme-six-color);
     }
 
     > div,
@@ -418,13 +470,12 @@ section {
       padding: 1.1rem .9rem 1.4rem;
     }
 
+    &.widget_media_image,
+    &.appointment-form-widget {
+
+    }
+
     &.widget_media_image {
-      text-align: center;
-
-      .widget-title {
-        margin-bottom: 0;
-      }
-
       img {
         display: inline-block;
         padding: 1rem;
@@ -432,27 +483,8 @@ section {
     }
 
     &.appointment-form-widget {
-      border: none;
-
-      .image-title {
-        padding: 0;
-        text-align: center;
-
-        ~ .widget-warp {
-          margin-top: -2rem;
-        }
-      }
-
       .widget-warp {
         padding: 0;
-        border: 1px solid var(--clinic-theme-secondary-color);
-
-        .widget-title {
-          padding: 2.4rem 1.6rem 1.4rem;
-          color: #FF0000;
-          background: #ECECEC;
-          border-bottom: 1px solid var(--clinic-theme-secondary-color);
-        }
       }
 
       .wpcf7-form {
@@ -470,13 +502,21 @@ section {
 
         .wpcf7-form-control-wrap {
           input, textarea {
-            min-height: 3.5rem;
-            color: #909090;
+            min-height: 4.5rem;
+            color: #5E5E5E;
             font-size: 1.4rem;
             font-family: var(--heading-font-family);
-            border: 1px solid #CDCDCD;
-            border-radius: 2rem;
-            background-color: var(--color-white);
+            border: 1px solid var(--clinic-theme-primary-color);
+            border-radius: .5rem;
+            background-color: #EAF1F1;
+
+            &::placeholder {
+              color: #5E5E5E;
+            }
+
+            &::-ms-input-placeholder {
+              color: #5E5E5E;
+            }
           }
 
           textarea {
@@ -486,13 +526,13 @@ section {
 
         .wpcf7-submit {
           padding: 1rem .9rem;
-          min-width: 12.3rem;
+          min-width: 17.3rem;
           font-weight: 900;
           font-size: 1.4rem;
           line-height: 1.6rem;
           text-transform: uppercase;
           border: none;
-          border-radius: 2rem;
+          border-radius: .5rem;
           background: linear-gradient(180deg, #FF0008 0%, #941115 100%);
         }
       }
@@ -500,10 +540,6 @@ section {
 
     &.categories-dropdown-widget {
       background: #F7F7F7;
-
-      .widget-title {
-        border-bottom: 1px solid var(--color-white);
-      }
 
       .widget-warp {
         padding: 0;

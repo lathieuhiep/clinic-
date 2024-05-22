@@ -17,11 +17,14 @@
   --font-size-h5: #{$h5-font-size};
   --font-size-h6: #{$h6-font-size};
 
+  --clinic-theme-tertiary-font-family: #{$tertiary-font-family};
+
   --clinic-theme-primary-color: #{$theme-primary-color};
   --clinic-theme-secondary-color: #{$theme-secondary-color};
   --clinic-theme-tertiary-color: #{$theme-tertiary-color};
   --clinic-theme-quaternary-color: #{$theme-quaternary-color};
   --clinic-theme-fifth-color: #{$theme-fifth-color};
+  --clinic-theme-six-color: #{$theme-six-color};
 
   --color-white: #{$color-white};
   --color-salem: #{$color-salem};
@@ -170,14 +173,17 @@ pre {
 }
 
 /* Breadcrumbs */
+/* Breadcrumbs */
 .breadcrumbs {
-  padding: 1.2rem 2.4rem;
-  color: rgba(41, 102, 168, 1);
-  font-weight: 700;
-  background-color: #EDEDED;
+  color: #000000;
+  background-color: #FAF2FF;
+
+  .breadcrumbs-col {
+    padding: 1.4rem 0;
+  }
 
   a {
-    color: rgba(41, 102, 168, 0.5);
+    color: #000000;
   }
 }
 
@@ -257,8 +263,10 @@ pre {
 }
 
 .title-has-icon {
-  padding-left: .8rem;
-  border-left: .7rem solid #FF0000;
+  display: grid;
+  grid-gap: 1.2rem;
+  grid-template-columns: 4rem 1fr;
+  align-items: center;
 
   + p {
     margin-top: 1.5rem;
@@ -266,9 +274,17 @@ pre {
 
   &__text {
     margin: 0;
-    font-size: 2rem;
-    line-height: 1;
+    line-height: 3rem;
+    color: #E6171F;
     text-transform: uppercase;
+
+    @media (min-width: 992px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 1.8rem;
+    }
   }
 }
 
