@@ -37,22 +37,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider-carousel.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/circular-progress.php' );
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/category-list-slider.php' );
-
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-between-line.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-content-number.php' );
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
-
-
-	// register add on
+    // register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_About_Us() );
     $widgets_manager->register( new \Clinic_Elementor_Heading_And_Content() );
@@ -68,15 +53,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_List_image_Content() );
     $widgets_manager->register( new \Clinic_Elementor_Slider_Carousel() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Circular_Progress() );
-//    $widgets_manager->register( new \Clinic_Elementor_Category_List_Slider() );
-//    $widgets_manager->register( new \Clinic_Elementor_Heading_Between_Line() );
-//    $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
-//    $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
-//    $widgets_manager->register( new \Clinic_Elementor_List_Content_Number() );
-//    $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
-
 }
 
 // Register scripts
