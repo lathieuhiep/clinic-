@@ -1,17 +1,23 @@
 @import "../variables-site/variables";
 
+@import "element-custom";
 @import "element-about-us";
-@import "element-circular-progress";
+@import "element-category-list";
 @import "element-gallery-grid-box";
-@import "element-category-list-slider";
 @import "element-doctor-slider";
-@import "element-procedure";
-@import "element-heading-between-line";
-@import "element-testimonial-slider";
-@import "element-cf7";
-@import "element-post-grid";
-@import "element-image-content-list";
-@import "element-list-content-number";
-@import "element-list-image-content";
-@import "element-title-number-list";
-@import "element-contact-us";
+@import "element-step-list";
+
+//@import "element-circular-progress";
+
+//@import "element-category-list-slider";
+
+//@import "element-procedure";
+//@import "element-heading-between-line";
+//@import "element-testimonial-slider";
+//@import "element-cf7";
+//@import "element-post-grid";
+//@import "element-image-content-list";
+//@import "element-list-content-number";
+//@import "element-list-image-content";
+//@import "element-title-number-list";
+//@import "element-contact-us";

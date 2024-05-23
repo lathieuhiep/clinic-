@@ -66,7 +66,7 @@
                         0: {
                             items: 1,
                             autoHeight:true,
-                            margin: 0
+                            margin: 12
                         },
                         768: {
                             items: 2,
@@ -74,7 +74,7 @@
                         },
                         992: {
                             items: 3,
-                            margin: 20
+                            margin: 26
                         }
                     }
                 }
