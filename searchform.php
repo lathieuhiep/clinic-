@@ -8,8 +8,6 @@
     <input type="search" id="<?php echo $clinic_unique_id; ?>" class="search-field" placeholder="<?php echo esc_attr_x( 'Tìm kiếm', 'placeholder', 'clinic' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
 
     <button type="submit" class="search-submit">
-        <span class="search-reader-text">
-            <?php echo _x( 'Search', 'submit button', 'clinic' ); ?>
-        </span>
+        <i class="icon icon-search"></i>
     </button>
 </form>

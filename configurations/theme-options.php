@@ -100,20 +100,6 @@ if ( class_exists( 'CSF' ) ) {
         )
     ) );
 
-    // Banner
-    CSF::createSection( $clinic_prefix, array(
-        'parent' => 'opt_general_section',
-        'title'  => esc_html__( 'Banner', 'clinic' ),
-        'fields' => array(
-            array(
-                'id'    => 'opt_general_banner',
-                'type'  => 'media',
-                'title' => esc_html__( 'Banner', 'clinic' ),
-                'library' => 'image'
-            ),
-        )
-    ) );
-
 	// Contact
 	CSF::createSection( $clinic_prefix, array(
 		'parent' => 'opt_general_section',
@@ -126,25 +112,18 @@ if ( class_exists( 'CSF' ) ) {
                 'default' => esc_html__( '180 Trần phú - Phước Ninh', 'clinic' )
             ),
 
-            array(
-                'id'      => 'opt_general_address_link',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Link map', 'clinic' ),
-                'default' => 'https://maps.app.goo.gl/k3NSysAtK5AUJZ7T9'
-            ),
-
 			array(
 				'id'      => 'opt_general_working_time',
 				'type'    => 'text',
 				'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
-				'default' => '7h30-20h'
+				'default' => '7h30 - 20h'
 			),
 
 			array(
 				'id'      => 'opt_general_hotline',
 				'type'    => 'text',
 				'title'   => esc_html__( 'Hotline', 'clinic' ),
-				'default' => '0827.764.988'
+				'default' => '0888.888.115'
 			),
 
 			array(
@@ -183,7 +162,7 @@ if ( class_exists( 'CSF' ) ) {
                 'id'      => 'opt_general_chat_messenger',
                 'type'    => 'text',
                 'title'   => esc_html__( 'Link messenger', 'clinic' ),
-                'default' => '',
+                'default' => '#',
             ),
 
             array(
@@ -198,7 +177,7 @@ if ( class_exists( 'CSF' ) ) {
                         'title'   => esc_html__( 'Kiểu liên hệ', 'clinic' ),
                         'options' => array(
                             'phone_qr' => esc_html__('Số điện thoại + QR code', 'clinic'),
-                            'link' =>  esc_html__('Link Zalo', 'clinic'),
+                            'link' =>  esc_html__('Zalo OA', 'clinic'),
                         ),
                         'default' => 'phone_qr'
                     ),
@@ -208,7 +187,7 @@ if ( class_exists( 'CSF' ) ) {
                         'id'    => 'phone',
                         'type'  => 'text',
                         'title' => esc_html__( 'Số điện thoại', 'clinic' ),
-                        'default' => '0827.764.988',
+                        'default' => '0888.888.115',
                         'dependency' => array( 'select_zalo', '==', 'phone_qr' )
                     ),
 
@@ -216,7 +195,7 @@ if ( class_exists( 'CSF' ) ) {
                         'id'    => 'qr_code',
                         'type'  => 'text',
                         'title' => esc_html__( 'Mã QR', 'clinic' ),
-                        'default' => '1dih4viqk5rpm',
+                        'default' => 'i44981jfbz1g',
                         'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/',
                         'dependency' => array( 'select_zalo', '==', 'phone_qr' )
                     ),

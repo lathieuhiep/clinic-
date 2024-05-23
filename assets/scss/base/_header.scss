@@ -65,7 +65,7 @@
 
         i {
           font-size: 4rem;
-          color: var(--clinic-theme-fifth-color);
+          color: var(--clinic-theme-tertiary-color);
         }
 
         &.item-zalo {
@@ -452,23 +452,10 @@
         right: 2.5rem;
         bottom: 0;
         width: 2rem;
+        color: #4C505B;
+        font-size: 2rem;
         border-radius: 0;
         background: transparent;
-
-        &:before {
-          position: absolute;
-          content: "\e913";
-          top: 50%;
-          left: 50%;
-          color: #4c505b;
-          font-size: 2rem;
-          font-family: "icomoon", serif;
-          transform: translate(-50%, -50%);
-        }
-
-        .search-reader-text {
-          font-size: 0;
-        }
       }
     }
   }

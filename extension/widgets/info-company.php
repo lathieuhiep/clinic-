@@ -59,7 +59,7 @@ class clinic_info_company_widget extends WP_Widget {
             <?php if ( $instance['facebook'] ) : ?>
                 <div class="item">
                     <div class="item__icon">
-                        <i class="icon-square-facebook"></i>
+                        <i class="icon-facebook"></i>
                     </div>
 
                     <div class="item__content">

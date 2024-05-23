@@ -11,12 +11,6 @@ function clinic_get_opt_general_address()
     return clinic_get_option('opt_general_address');
 }
 
-// get address link options
-function clinic_get_opt_general_address_link()
-{
-    return clinic_get_option('opt_general_address_link');
-}
-
 // get medical appointment theme option general
 function clinic_get_opt_medical_appointment()
 {
