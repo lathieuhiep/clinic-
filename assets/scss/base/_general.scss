@@ -281,7 +281,7 @@ pre {
   }
 
   @media (max-width: 991px) {
-    bottom: 10rem;
+    bottom: 15rem;
   }
 
   .link {
@@ -398,8 +398,10 @@ pre {
   background: #ffffff;
   z-index: 999;
 
-  img {
-    width: 100%;
+  .warp {
+    position: relative;
+    max-width: 64rem;
+    margin: 0 auto;
   }
 
   .item {
@@ -408,18 +410,18 @@ pre {
     height: 100%;
 
     &.chat {
-      left: 1.2rem;
-      width: 32%;
+      left: 0;
+      width: 22%;
     }
 
     &.phone {
-      left: calc(32% + 1.2rem);
-      width: 38%;
+      left: 22%;
+      width: 56%;
     }
 
     &.zalo {
-      left: calc(32% + 38% + 1.2rem);
-      width: 23%;
+      right: 0;
+      width: 22%;
     }
 
   }

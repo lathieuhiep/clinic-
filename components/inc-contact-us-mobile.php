@@ -5,32 +5,32 @@ $chat_zalo = clinic_get_opt_chat_zalo();
 ?>
 
 <div class="contact-us-mobile d-lg-none">
-    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/chan-trang-nam-khoa.gif' ) ) ?>" alt="">
+    <div class="warp">
+        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/chan-trang-lien-he.gif' ) ) ?>" alt="">
 
-	<?php if ( $link_chat ) : ?>
-        <a class="item chat" href="<?php echo esc_url( $link_chat ); ?>" target="_blank"></a>
-	<?php endif; ?>
+        <?php if ( $link_chat ) : ?>
+            <a class="item chat" href="<?php echo esc_url( $link_chat ); ?>" target="_blank"></a>
+        <?php endif; ?>
 
-    <?php if ( $phone ) : ?>
-        <a class="item phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>"></a>
-    <?php endif; ?>
+        <?php if ( $phone ) : ?>
+            <a class="item phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>"></a>
+        <?php endif; ?>
 
-	<?php
-	if ( !empty( $chat_zalo ) ) :
-		$zalo_type = $chat_zalo['select_zalo'];
-		$zalo_phone = $chat_zalo['phone'];
-		$zalo_qr_code = $chat_zalo['qr_code'];
-		$zalo_link = $chat_zalo['link'];
+        <?php
+        if ( !empty( $chat_zalo ) ) :
+            $zalo_type = $chat_zalo['select_zalo'];
+            $zalo_phone = $chat_zalo['phone'];
+            $zalo_qr_code = $chat_zalo['qr_code'];
+            $zalo_link = $chat_zalo['link'];
 
-		if ( $zalo_type == 'phone_qr' ) :
+            if ( $zalo_type == 'phone_qr' ) :
         ?>
-
             <a class="item zalo chat-zalo-open" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>"></a>
-
-		<?php else: ?>
+        <?php else: ?>
             <a class="item zalo" href="<?php echo esc_url( $zalo_link ); ?>" target="_blank"></a>
-		<?php
-		endif;
-	endif;
-	?>
+        <?php
+            endif;
+        endif;
+        ?>
+    </div>
 </div>
