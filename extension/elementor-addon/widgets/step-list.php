@@ -1,6 +1,7 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Widget_Base;
@@ -176,12 +177,23 @@ class Clinic_Elementor_Step_List extends Widget_Base
             ]
         );
 
+
         $repeater->add_control(
             'list_content', [
                 'label' => esc_html__( 'Nội dung', 'clinic' ),
                 'type' => Controls_Manager::WYSIWYG,
                 'default' => esc_html__( 'Nội dung' , 'clinic' ),
                 'show_label' => false,
+            ]
+        );
+
+        $repeater->add_control(
+            'list_number_color', [
+                'label' => esc_html__( 'Màu số', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-step-list {{CURRENT_ITEM}}.item .number' => 'color: {{VALUE}}',
+                ],
             ]
         );
 

@@ -3,6 +3,8 @@
     display: grid;
 
     .item {
+      order: 1;
+
       &.item-thumbnail {
         img {
           width: 100%;
@@ -43,7 +45,7 @@
             }
 
             ~ li {
-              margin-top: 1rem;
+              margin-top: 1.2rem;
             }
           }
         }
@@ -52,8 +54,9 @@
       .action-box {
         margin-top: 2.4rem;
         gap: 1.5rem;
+        flex-wrap: wrap;
 
-        @media (max-width: 480px) {
+        @media (max-width: 479px) {
           flex-direction: column;
           align-items: center;
           justify-content: center;
@@ -61,7 +64,6 @@
 
         a {
           padding: 1.5rem 2.4rem 1.4rem;
-          min-width: 24.2rem;
           font-size: 1.7rem;
           font-weight: 500;
           color: var(--color-white);
@@ -69,6 +71,14 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
+
+          @media (min-width: 1200px) {
+            min-width: 24.2rem;
+          }
+
+          @media (max-width: 1199px) {
+            min-width: 20rem;
+          }
 
           .icon {
             font-size: 2.8rem;

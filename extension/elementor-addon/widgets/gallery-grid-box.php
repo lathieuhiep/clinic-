@@ -215,7 +215,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                 'label' => esc_html__( 'Màu tiêu đề', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}} .item__body .title ' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}} .item__body .title' => 'color: {{VALUE}}',
                 ],
             ]
         );

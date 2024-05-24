@@ -1,54 +1,95 @@
 <?php
 
+use Elementor\Controls_Manager;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
-use Elementor\Controls_Manager;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
 
-class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
-    public function get_categories(): array {
-        return array( 'my-theme' );
+class Clinic_Elementor_Slider_Carousel extends Widget_Base
+{
+
+    /**
+     * Get widget name.
+     *
+     * Retrieve oEmbed widget name.
+     *
+     * @access public
+     * @return string Widget name.
+     */
+    public function get_name(): string
+    {
+        return 'clinic-slider-carousel';
     }
 
-    public function get_name(): string {
-        return 'clinic-testimonial-slider';
+    /**
+     * Get widget title.
+     *
+     * Retrieve oEmbed widget title.
+     *
+     * @access public
+     * @return string Widget title.
+     */
+    public function get_title(): string
+    {
+        return esc_html__('Slider Carousel', 'clinic');
     }
 
-    public function get_title(): string {
-        return esc_html__( 'Testimonial Slider', 'clinic' );
+    /**
+     * Get widget icon.
+     *
+     * Retrieve oEmbed widget icon.
+     *
+     * @access public
+     * @return string Widget icon.
+     */
+    public function get_icon(): string
+    {
+        return 'eicon-slider-push';
     }
 
-    public function get_icon(): string {
-        return 'eicon-user-circle-o';
+    /**
+     * Get widget keywords.
+     *
+     * Retrieve the list of keywords the oEmbed widget belongs to.
+     *
+     * @access public
+     * @return array Widget keywords.
+     */
+    public function get_keywords(): array
+    {
+        return ['slider', 'carousel' ];
     }
 
-    protected function register_controls(): void {
+    /**
+     * Get widget categories.
+     *
+     * Retrieve the list of categories the oEmbed widget belongs to.
+     *
+     * @access public
+     * @return array Widget categories.
+     */
+    public function get_categories(): array
+    {
+        return ['my-theme'];
+    }
 
-        // content global
-        $this->start_controls_section(
-            'content_global_section',
-            [
-                'label' => esc_html__( 'Thông tin chung', 'clinic' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'content_global',
-            [
-                'label' => esc_html__( 'Mô tả', 'clinic' ),
-                'type' => Controls_Manager::WYSIWYG,
-                'rows' => 10,
-                'default' => esc_html__( 'Mô tả', 'clinic' ),
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // list testimonial
+    /**
+     * Register oEmbed widget controls.
+     *
+     * Add input fields to allow the user to customize the widget settings.
+     *
+     * @access protected
+     */
+    protected function register_controls(): void
+    {
+        // list
         $this->start_controls_section(
             'list_section',
             [
@@ -58,6 +99,15 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         );
 
         $repeater = new Repeater();
+
+        $repeater->add_control(
+            'list_title', [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__( 'List Title' , 'clinic' ),
+                'label_block' => true,
+            ]
+        );
 
         $repeater->add_control(
             'list_image',
@@ -71,30 +121,11 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         );
 
         $repeater->add_control(
-            'list_title', [
-                'label' => esc_html__( 'Tên', 'clinic' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'Anh L.T.D' , 'clinic' ),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_info', [
-                'label' => esc_html__( 'Thông tin thêm', 'clinic' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'Cái Răng, Cần Thơ' , 'clinic' ),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_description',
-            [
-                'label' => esc_html__( 'Mô tả', 'clinic' ),
-                'type' => Controls_Manager::TEXTAREA,
-                'rows' => 10,
-                'default' => esc_html__( 'Mô tả', 'clinic' ),
+            'list_content', [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'type' => Controls_Manager::WYSIWYG,
+                'default' => esc_html__( 'Nội dung' , 'clinic' ),
+                'show_label' => false,
             ]
         );
 
@@ -106,10 +137,12 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'list_title' => esc_html__( 'Title #1', 'clinic' ),
+                        'list_title' => esc_html__( 'Tiêu đề #1', 'clinic' ),
+                        'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'clinic' ),
                     ],
                     [
-                        'list_title' => esc_html__( 'Title #2', 'clinic' ),
+                        'list_title' => esc_html__( 'Tiêu đề #2', 'clinic' ),
+                        'list_content' => esc_html__( 'Item content. Click the edit button to change this text.', 'clinic' ),
                     ],
                 ],
                 'title_field' => '{{{ list_title }}}',
@@ -348,122 +381,42 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         );
 
         $this->end_controls_section();
-
-        // style description
-        $this->start_controls_section(
-            'style_description',
-            [
-                'label' => esc_html__( 'Description', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'desc_color',
-            [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-testimonial-slider .item .desc' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'desc_typography',
-                'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-testimonial-slider .item .desc',
-            ]
-        );
-
-        $this->end_controls_section();
-
     }
 
-    protected function render(): void {
+    /**
+     * Render oEmbed widget output on the frontend.
+     *
+     * Written in PHP and used to generate the final HTML.
+     *
+     * @access protected
+     */
+    protected function render(): void
+    {
         $settings = $this->get_settings_for_display();
-
-        $owl_options = [
-            'loop'       => ( 'yes' === $settings['loop'] ),
-            'nav'        => $settings['navigation'] == 'both' || $settings['navigation'] == 'arrows',
-            'dots'       => $settings['navigation'] == 'both' || $settings['navigation'] == 'dots',
-            'autoplay'   => ( 'yes' === $settings['autoplay'] ),
-            'responsive' => [
-                '0' => array(
-                    'items'  => $settings['item_575'],
-                    'margin' => $settings['margin_item_575']
-                ),
-
-                '576' => array(
-                    'items'  => $settings['item_576'],
-                    'margin' => $settings['margin_item_576']
-                ),
-
-                '768' => array(
-                    'items' => $settings['item_768'],
-                    'margin' => $settings['margin_item_768'],
-                ),
-
-                '992' => array(
-                    'items' => $settings['item_992'],
-                    'margin' => $settings['margin_item_992'],
-                ),
-
-                '1200' => array(
-                    'items' => $settings['item_1200'],
-                    'margin' => $settings['margin_item_1200'],
-                ),
-            ],
-        ];
-        ?>
-
-        <div class="element-testimonial-slider">
-            <div class="element-testimonial-slider__warp owl-carousel owl-theme custom-equal-height-owl" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+    ?>
+        <div class="element-slider-carousel">
+            <div class="element-slider-carousel__warp owl-carousel owl-theme">
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
-                    ?>
+                ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <?php if ( $settings['content_global'] ) : ?>
-                            <div class="item__top-box">
-                                <?php echo wpautop( $settings['content_global'] ); ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="item__thumbnail">
+                            <?php
+                            if ( $imageId ) :
+                                echo wp_get_attachment_image( $imageId, 'large' );
+                            endif;
+                            ?>
+                        </div>
 
                         <div class="item__body">
-                            <div class="desc text-justify">
-                                <?php echo wp_kses_post( $item['list_description'] ) ?>
-                            </div>
+                            <h3 class="title-box">
+                                <?php echo esc_html( $item['list_title'] ); ?>
+                            </h3>
 
-                            <div class="vote">
-                                <?php for ($i = 0; $i < 5; $i++) : ?>
-                                    <i class="icon icon-star"></i>
-                                <?php endfor; ?>
-                            </div>
-
-                            <div class="profile">
-                                <div class="avatar">
-                                    <?php
-                                    if ( $imageId ) :
-                                        echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
-                                    else:
-                                        ?>
-                                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
-                                    <?php endif; ?>
-                                </div>
-
-                                <div class="meta">
-                                    <p class="name">
-                                        <?php echo esc_html( $item['list_title'] ); ?>
-                                    </p>
-
-                                    <p class="info">
-                                        <?php echo esc_html( $item['list_info'] ); ?>
-                                    </p>
-                                </div>
+                            <div class="content-box">
+                                <?php echo wpautop( $item['list_content'] ); ?>
                             </div>
                         </div>
                     </div>
@@ -471,7 +424,6 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                 <?php endforeach; ?>
             </div>
         </div>
-
         <?php
     }
 }

@@ -38,6 +38,39 @@
         }
     }
 
+    // element slider carousel
+    const elementSliderCarousel = ($scope, $) => {
+        const slider = $scope.find('.element-slider-carousel__warp')
+
+        if (slider.length) {
+            slider.each(function () {
+                const thisSlider = $(this)
+                const options = {
+                    margin: 12,
+                    nav: true,
+                    dots: false,
+                    responsive : {
+                        0: {
+                            items: 1,
+
+                        },
+                        576: {
+                            items: 2
+                        },
+                        768: {
+                            items: 3
+                        },
+                        1200: {
+                            margin: 44
+                        }
+                    }
+                }
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+            })
+        }
+    }
+
     // element testimonial slider
     const elementTestimonialSlider = ($scope, $) => {
         const slider = $scope.find('.element-testimonial-slider__warp')
@@ -167,6 +200,9 @@
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
+
+        // element slider carousel
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider-carousel.default', elementSliderCarousel);
 
         /* Element testimonial slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-testimonial-slider.default', elementTestimonialSlider);

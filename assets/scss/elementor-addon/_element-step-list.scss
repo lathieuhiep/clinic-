@@ -2,7 +2,7 @@
   display: grid;
 
   .item {
-    padding: 1rem 2.4rem;
+    padding: .9rem 2.4rem;
     display: grid;
     grid-gap: 3rem 2.4rem;
     grid-template-columns: max-content 1fr;
@@ -17,10 +17,8 @@
       line-height: 1;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      -webkit-text-stroke-width: 2px;
-      stroke-width: 2px;
-      -webkit-text-stroke-color: #F30000;
-      stroke: #F30000;
+      -webkit-text-stroke-width: 1px;
+      stroke-width: 1px;
     }
 
     .title {

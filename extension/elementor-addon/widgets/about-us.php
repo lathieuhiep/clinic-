@@ -226,6 +226,29 @@ class Clinic_Elementor_About_Us extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'image_order',
+            [
+                'label' => esc_html__( 'Vị trí', 'clinic' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    '1' => [
+                        'title' => esc_html__( 'Bắt đầu', 'clinic' ),
+                        'icon' => 'eicon-order-start',
+                    ],
+                    '2' => [
+                        'title' => esc_html__( 'Kết thúc', 'clinic' ),
+                        'icon' => 'eicon-order-end',
+                    ],
+                ],
+                'default' => '',
+                'toggle' => true,
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item.item-thumbnail' => 'order: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // heading
