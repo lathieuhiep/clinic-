@@ -259,8 +259,10 @@ pre {
 }
 
 .title-has-icon {
-  padding-left: .8rem;
-  border-left: .7rem solid #FF0000;
+  display: grid;
+  grid-gap: 1.2rem;
+  grid-template-columns: 4rem 1fr;
+  align-items: center;
 
   + p {
     margin-top: 1.5rem;
@@ -268,9 +270,17 @@ pre {
 
   &__text {
     margin: 0;
-    font-size: 2rem;
-    line-height: 1;
+    line-height: 3rem;
+    color: #E6171F;
     text-transform: uppercase;
+
+    @media (min-width: 992px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 1.8rem;
+    }
   }
 }
 

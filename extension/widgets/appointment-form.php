@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class clinic_appointment_form_widget extends WP_Widget {
-	/* Widget setup */
+    /* Widget setup */
     public function __construct() {
         $clinic_appointment_form_widget_ops = array(
             'classname'     =>  'appointment-form-widget',
@@ -24,75 +24,68 @@ class clinic_appointment_form_widget extends WP_Widget {
      * @param array $args
      * @param array $instance
      */
-	function widget( $args, $instance ): void {
+    function widget( $args, $instance ): void {
         echo $args['before_widget'];
-
-        if( ! empty( $instance['title'] ) ) {
-        ?>
-            <div class="image-title">
-                <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/dang-ki-nhan-tu-van.png' ) ) ?>" alt="">
-            </div>
-        <?php
-        }
     ?>
-        <div class="widget-warp">
-	        <?php
-            if ( ! empty( $instance['title'] ) ):
-	            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-            endif;
+        <?php
+        if ( ! empty( $instance['title'] ) ) {
+            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+        }
+        ?>
 
+        <div class="widget-warp">
+            <?php
             if ( $instance['select_form'] ) :
-	            echo do_shortcode( '[contact-form-7 id="' . $instance['select_form'] . '" ]' );
+                echo do_shortcode( '[contact-form-7 id="' . $instance['select_form'] . '" ]' );
             endif;
             ?>
         </div>
     <?php
-
         echo $args['after_widget'];
-	}
+    }
 
     /**
      * Outputs the options form on admin
      *
      * @param array $instance The widget options
      */
-	function form( $instance ): void {
-		$defaults = array(
+    function form( $instance ): void {
+        $defaults = array(
             'title' => esc_html__('ĐẶT HẸN VỚI BÁC SĨ', 'clinic'),
             'select_form' => ''
         );
 
-		$select_form = $instance['select_form'] ?? '0';
+        $select_form = $instance['select_form'] ?? '0';
         $cf7_list = clinic_get_form_cf7();
 
-		$instance = wp_parse_args( (array) $instance, $defaults );
+        $instance = wp_parse_args( (array) $instance, $defaults );
         ?>
 
-		<!-- Widget Title: Text Input -->
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
+        <!-- Widget Title: Text Input -->
+        <p>
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>">
                 <?php esc_html_e( 'Tiêu đề:', 'clinic' ); ?>
             </label>
 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
-		</p>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
+        </p>
 
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'select_form' ) ); ?>">
-		        <?php esc_html_e( 'Chọn form liên hệ:', 'clinic' ); ?>
+                <?php esc_html_e( 'Chọn form liên hệ:', 'clinic' ); ?>
             </label>
 
             <select id="<?php echo esc_attr( $this->get_field_id( 'select_form' ) ); ?>" name="<?php echo $this->get_field_name( 'select_form' ) ?>" class="widefat">
                 <?php foreach ( $cf7_list as $key => $value ) : ?>
                     <option value="<?php echo esc_attr($key); ?>" <?php echo( $select_form == $key ? 'selected="selected"' : '' ); ?>>
-		                <?php echo esc_html( $value ); ?>
+                        <?php echo esc_html( $value ); ?>
                     </option>
                 <?php endforeach; ?>
             </select>
         </p>
-	<?php
+        <?php
 
-	}
+    }
 
     /**
      * Processing widget options on save
@@ -106,7 +99,7 @@ class clinic_appointment_form_widget extends WP_Widget {
         $instance = array();
 
         $instance['title'] = strip_tags( $new_instance['title'] );
-	    $instance['select_form'] = $new_instance['select_form'];
+        $instance['select_form'] = $new_instance['select_form'];
 
         return $instance;
     }
