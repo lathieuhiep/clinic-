@@ -36,20 +36,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/circular-progress.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/category-list-slider.php' );
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/procedure.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-between-line.php' );
-
-
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-content-list.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-content-number.php' );
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
-
-
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_About_Us() );
@@ -65,20 +51,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Circular_Progress() );
-//    $widgets_manager->register( new \Clinic_Elementor_Category_List_Slider() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Procedure() );
-//    $widgets_manager->register( new \Clinic_Elementor_Heading_Between_Line() );
-
-
-
-//    $widgets_manager->register( new \Clinic_Elementor_Image_Content_List() );
-//    $widgets_manager->register( new \Clinic_Elementor_List_Content_Number() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
-
 }
 
 // Register scripts
