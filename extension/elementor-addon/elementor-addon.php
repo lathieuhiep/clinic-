@@ -32,6 +32,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-image-content.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider-carousel.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/circular-progress.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/category-list-slider.php' );
@@ -59,6 +60,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Info() );
     $widgets_manager->register( new \Clinic_Elementor_List_image_Content() );
     $widgets_manager->register( new \Clinic_Elementor_Slider_Carousel() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
 
 //    $widgets_manager->register( new \Clinic_Elementor_Circular_Progress() );
 //    $widgets_manager->register( new \Clinic_Elementor_Category_List_Slider() );

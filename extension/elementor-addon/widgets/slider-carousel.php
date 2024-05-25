@@ -227,7 +227,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 4,
                 'min'     => 1,
-                'max'     => 100,
+                'max'     => 10,
                 'step'    => 1,
             ]
         );
@@ -261,7 +261,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 2,
                 'min'     => 1,
-                'max'     => 100,
+                'max'     => 10,
                 'step'    => 1,
             ]
         );
@@ -341,7 +341,7 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
                 'type'    => Controls_Manager::NUMBER,
                 'default' => 12,
                 'min'     => 0,
-                'max'     => 10,
+                'max'     => 100,
                 'step'    => 1,
             ]
         );
@@ -393,9 +393,43 @@ class Clinic_Elementor_Slider_Carousel extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
+
+        // owl options
+        $owl_options = [
+            'loop'       => ( 'yes' === $settings['loop'] ),
+            'nav'        => $settings['navigation'] == 'both' || $settings['navigation'] == 'arrows',
+            'dots'       => $settings['navigation'] == 'both' || $settings['navigation'] == 'dots',
+            'autoplay'   => ( 'yes' === $settings['autoplay'] ),
+            'responsive' => [
+                '0' => array(
+                    'items'  => $settings['item_575'],
+                    'margin' => $settings['margin_item_575']
+                ),
+
+                '576' => array(
+                    'items'  => $settings['item_576'],
+                    'margin' => $settings['margin_item_576']
+                ),
+
+                '768' => array(
+                    'items' => $settings['item_768'],
+                    'margin' => $settings['margin_item_768'],
+                ),
+
+                '992' => array(
+                    'items' => $settings['item_992'],
+                    'margin' => $settings['margin_item_992'],
+                ),
+
+                '1200' => array(
+                    'items' => $settings['item_1200'],
+                    'margin' => $settings['margin_item_1200'],
+                ),
+            ],
+        ];
     ?>
         <div class="element-slider-carousel">
-            <div class="element-slider-carousel__warp owl-carousel owl-theme">
+            <div class="element-slider-carousel__warp owl-carousel owl-theme custom-equal-height-owl" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
