@@ -61,7 +61,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
      */
     public function get_keywords(): array
     {
-        return ['image', 'text'];
+        return ['about us', 'text'];
     }
 
     /**
@@ -245,6 +245,65 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 'toggle' => true,
                 'selectors' => [
                     '{{WRAPPER}} .element-about-us__warp .item.item-thumbnail' => 'order: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_width',
+            [
+                'label' => esc_html__( 'Chiều rộng ảnh', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item.item-thumbnail img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'left'  =>  [
+                        'title' =>  esc_html__( 'Trái', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'center' => [
+                        'title' =>  esc_html__( 'Giữa', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'right' => [
+                        'title' =>  esc_html__( 'Phải', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+
+                    'justify' => [
+                        'title' =>  esc_html__( 'Căn đều hai lề', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-justify',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item.item-thumbnail .box-image' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -757,7 +816,9 @@ class Clinic_Elementor_About_Us extends Widget_Base
         <div class="element-about-us">
             <div class="element-about-us__warp">
                 <div class="item item-thumbnail">
-                    <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
+                    <div class="box-image">
+                        <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
+                    </div>
                 </div>
 
                 <div class="item item-content">
@@ -785,13 +846,15 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         <div class="action-box d-flex">
                             <?php if ( $settings['show_booking'] == 'show' && $medical_appointment_form ) : ?>
                                 <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                    <?php esc_html_e('Đặt lịch ngay', "clinic"); ?>
+                                    <i class="icon icon-calendar"></i>
+                                    <span class="txt"><?php esc_html_e('Đặt lịch khám', "clinic"); ?></span>
                                 </a>
                             <?php endif; ?>
 
                             <?php if ( $settings['show_chat'] == 'show' && $link_chat ) : ?>
                                 <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                                    <?php esc_html_e('Gặp bác sĩ', "clinic"); ?>
+                                    <i class="icon icon-phone"></i>
+                                    <span class="txt"><?php esc_html_e('Gặp bác sĩ', "clinic"); ?></span>
                                 </a>
                             <?php endif; ?>
                         </div>

@@ -80,6 +80,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 
         $medical_appointment_form = clinic_get_opt_medical_appointment();
+        $link_chat = clinic_get_opt_link_chat_doctor();
 
 		$limit_post     =   $settings['limit'];
 		$order_by_post  =   $settings['order_by'];
@@ -105,6 +106,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 						$query->the_post();
 
 						$specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
+
                     ?>
 
                         <div class="item">
@@ -123,16 +125,17 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                                     </p>
                                 </div>
 
-                                <?php if ( !empty( get_the_content() ) ) : ?>
-                                    <div class="content">
-                                        <?php the_content(); ?>
-                                    </div>
-                                <?php endif; ?>
-
                                 <div class="action-box">
                                     <?php if ( $medical_appointment_form ) : ?>
                                         <a class="action-box__booking text-uppercase d-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                            <?php esc_html_e('Đăng ký khám', "clinic"); ?>
+                                            <?php esc_html_e('Đặt hẹn', "clinic"); ?>
+                                        </a>
+                                    <?php endif; ?>
+
+
+                                    <?php if ( $link_chat ) : ?>
+                                        <a class="action-box__chat text-uppercase d-inline-block" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                                            <?php esc_html_e('Tư vấn', "clinic"); ?>
                                         </a>
                                     <?php endif; ?>
                                 </div>

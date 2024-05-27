@@ -41,39 +41,20 @@
         grid-template-columns: 4rem 1fr;
         align-items: center;
 
-        @media (min-width: 1200px) {
-          font-size: 1.4rem;
-        }
-
-        @media (min-width: 992px) and (max-width: 1199px) {
-          font-size: 1.3rem;
-        }
-
         &__content {
-          strong, .phone {
-            color: var(--clinic-theme-quaternary-color);
+          .txt {
+            font-size: 1.4rem;
+          }
 
-            @media (min-width: 1200px) {
-              font-size: 1.8rem;
-            }
-
-            @media (min-width: 992px) and (max-width: 1199px) {
-              font-size: 1.5rem;
-            }
+          .value {
+            font-size: 1.5rem;
+            color: var(--clinic-theme-eighth-color);
           }
         }
 
         i {
           font-size: 4rem;
-          color: var(--clinic-theme-tertiary-color);
-        }
-
-        &.item-zalo {
-          grid-template-columns: 9.8rem 1fr;
-
-          a {
-            color: var(--clinic-theme-quaternary-color);
-          }
+          color: var(--clinic-theme-primary-color);
         }
       }
     }

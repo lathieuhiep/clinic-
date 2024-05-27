@@ -67,19 +67,19 @@
                 const options = {
                     dots: false,
                     nav: true,
+                    margin: 32,
                     responsive:{
                         0: {
                             items: 1,
-                            autoHeight:true,
-                            margin: 12
                         },
                         768: {
                             items: 2,
-                            margin: 12
                         },
                         992: {
                             items: 3,
-                            margin: 26
+                        },
+                        1200: {
+                            items: 4,
                         }
                     }
                 }

@@ -5,12 +5,6 @@
     .item {
       order: 1;
 
-      &.item-thumbnail {
-        img {
-          width: 100%;
-        }
-      }
-
       .heading {
         font-family: var(--body-font-family);
       }
@@ -63,11 +57,11 @@
         }
 
         a {
-          padding: 1.5rem 2.4rem 1.4rem;
+          padding: 1.3rem 2.4rem;
           font-size: 1.7rem;
           font-weight: 500;
           color: var(--color-white);
-          border-radius: 5rem;
+          border-radius: .7rem;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -77,7 +71,11 @@
           }
 
           @media (max-width: 1199px) {
-            min-width: 20rem;
+            flex: 0 0 auto;
+          }
+
+          @media (max-width: 480px) {
+            width: 100%;
           }
 
           .icon {
@@ -87,11 +85,11 @@
         }
 
         &__booking {
-          background: linear-gradient(180deg, #FF0000 0, #990000 100%);
+          background: linear-gradient(180deg, #2FC86E 0, #18994E 100%);
         }
 
         &__chat {
-          background: linear-gradient(180deg, #2C904F 0, #20D35F 100%);
+          background: linear-gradient(180deg, #FF0000 0, #990000 100%);
         }
       }
     }

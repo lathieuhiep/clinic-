@@ -1,0 +1,25 @@
+.element-group-button-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem 5.2rem;
+  align-items: center;
+  justify-content: center;
+
+  .btn-contact {
+    padding: 1rem 2rem;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 5rem;
+
+
+    &.btn-booking {
+      background-image: linear-gradient(180deg, #E93038, #FF5518);
+    }
+
+    &.btn-chat {
+      background-image: linear-gradient(180deg, #58A700, #00A5A0);
+    }
+  }
+}

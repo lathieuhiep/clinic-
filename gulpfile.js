@@ -7,9 +7,6 @@ const browserSync = require('browser-sync')
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
 const rename = require("gulp-rename")
-const newer = require('gulp-newer');
-const cached = require('gulp-cached');
-const remember = require('gulp-remember');
 
 const pathAssets = './assets'
 const pathNodeModule = './node_modules'
@@ -21,8 +18,8 @@ function server() {
         open: false,
         cors: true,
         ghostMode: false,
-        notify: false, // Tắt thông báo của BrowserSync
-        injectChanges: true // Chỉ inject CSS thay vì reload toàn bộ trang
+        notify: false,
+        injectChanges: true
     })
 }
 
@@ -33,14 +30,10 @@ Task build Bootstrap
 // Task build style bootstrap
 function buildStylesBootstrap() {
     return src(`${pathAssets}/scss/bootstrap.scss`)
-        .pipe(newer(`${pathAssets}/libs/bootstrap/`))
-        .pipe(cached('stylesBootstrap'))
         .pipe(sass({
             outputStyle: 'expanded'
         }).on('error', sass.logError))
-        .pipe(remember('stylesBootstrap'))
         .pipe(minifyCss({
-            compatibility: 'ie8',
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
@@ -74,7 +67,7 @@ function buildStylesOwlCarousel() {
         }))
         .pipe(rename({suffix: '.min'}))
         .pipe(dest(`${pathAssets}/libs/owl.carousel/`))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
 function buildJsOwlCarouse() {
@@ -89,49 +82,39 @@ function buildJsOwlCarouse() {
 
 // Task build style
 function buildStylesTheme() {
-    const destPath = `${pathAssets}/css/`;
     return src(`${pathAssets}/scss/style-theme.scss`)
-        .pipe(newer(destPath))
-        .pipe(cached('stylesTheme'))
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
         }).on('error', sass.logError))
         .pipe(sourcemaps.write())
-        .pipe(remember('stylesTheme'))
-        .pipe(dest(destPath))
-        .pipe(sourcemaps.init())
-        .pipe(minifyCss({
-            level: {1: {specialComments: 0}}
-        }))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(sourcemaps.write())
-        .pipe(dest(destPath))
-        .pipe(browserSync.stream({ match: '**/*.css' }));
-}
-
-// Task build style elementor
-function buildStylesElementor() {
-    const sourceFile = `${pathAssets}/scss/elementor-addon/elementor-addon.scss`;
-    const destPath = './extension/elementor-addon/css/';
-
-    return src(sourceFile)
-        .pipe(newer(destPath))
-        .pipe(cached('stylesElementor'))
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }).on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(remember('stylesElementor'))
-        .pipe(dest(destPath))
+        .pipe(dest(`${pathAssets}/css/`))
         .pipe(sourcemaps.init())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
         .pipe(sourcemaps.write())
-        .pipe(dest(destPath))
+        .pipe(dest(`${pathAssets}/css/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }));
+}
+
+// Task build style elementor
+function buildStylesElementor() {
+    return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'}
+        ).on('error', sass.logError))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`./extension/elementor-addon/css/`))
+        .pipe(sourcemaps.init())
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`./extension/elementor-addon/css/`))
         .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
@@ -148,24 +131,20 @@ function buildJSElementor() {
 
 // Task build style custom post type
 function buildStylesCustomPostType() {
-    const destPath = `${pathAssets}/css/post-type/`;
     return src(`${pathAssets}/scss/post-type/*/**.scss`)
-        .pipe(newer(destPath))
-        .pipe(cached('stylesCustomPostType'))
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
         }).on('error', sass.logError))
         .pipe(sourcemaps.write())
-        .pipe(remember('stylesCustomPostType'))
-        .pipe(dest(destPath))
+        .pipe(dest(`${pathAssets}/css/post-type/`))
         .pipe(sourcemaps.init())
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename( {suffix: '.min'} ))
         .pipe(sourcemaps.write())
-        .pipe(dest(destPath))
+        .pipe(dest(`${pathAssets}/css/post-type/`))
         .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
@@ -199,66 +178,46 @@ async function buildProject() {
     await buildStylesElementor()
     await buildJSElementor()
 
-    browserSync.reload();
+    browserSync.reload()
 }
 exports.buildProject = buildProject
 
 
 // Task watch
 function watchTask() {
-    server();
+    server()
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/bootstrap.scss`
-    ], buildStylesBootstrap).on('change', function(path) {
-        if (cached.caches['stylesBootstrap']) {
-            delete cached.caches['stylesBootstrap'][path];
-        }
-        remember.forget('stylesBootstrap', path);
-    });
+    ], buildStylesBootstrap)
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/base/*.scss`,
-        `${pathAssets}/scss/style.scss`
-    ], buildStylesTheme).on('change', function(path) {
-        if (cached.caches['stylesTheme']) {
-            delete cached.caches['stylesTheme'][path];
-        }
-        remember.forget('stylesTheme', path);
-    });
+        `${pathAssets}/scss/style.scss`,
+    ], buildStylesTheme)
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/elementor-addon/*.scss`
-    ], buildStylesElementor).on('change', function(path) {
-        if (cached.caches['stylesElementor']) {
-            delete cached.caches['stylesElementor'][path];
-        }
-        remember.forget('stylesElementor', path);
-    });
+    ], buildStylesElementor)
 
     watch([
         `${pathAssets}/scss/variables-site/*.scss`,
         `${pathAssets}/scss/post-type/*/**.scss`
-    ], buildStylesCustomPostType).on('change', function(path) {
-        if (cached.caches['stylesCustomPostType']) {
-            delete cached.caches['stylesCustomPostType'][path];
-        }
-        remember.forget('stylesCustomPostType', path);
-    });
+    ], buildStylesCustomPostType)
 
-    watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme);
+    watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
 
     watch([
         './extension/elementor-addon/js/*.js',
         '!./extension/elementor-addon/js/*.min.js'
-    ], buildJSElementor);
+    ], buildJSElementor)
 
     watch([
         './*.php',
         './**/*.php'
     ]).on('change', browserSync.reload);
 }
-exports.watchTask = watchTask;
+exports.watchTask = watchTask

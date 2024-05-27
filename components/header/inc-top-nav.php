@@ -2,7 +2,7 @@
 $logo = clinic_get_option( 'opt_general_logo' );
 $working_time = clinic_get_option('opt_general_working_time');
 $hotline = clinic_get_opt_hotline();
-$chat_zalo = clinic_get_opt_chat_zalo();
+$address = clinic_get_opt_general_address();
 ?>
 
 <div class="top-nav d-none d-lg-block">
@@ -29,41 +29,11 @@ $chat_zalo = clinic_get_opt_chat_zalo();
                     </div>
 
                     <div class="item__content">
-                        <p><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
+                        <p class="txt"><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
 
-                        <a class="phone fw-bold" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
+                        <a class="phone fw-bold value" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
                             <?php echo esc_html( $hotline ); ?>
                         </a>
-                    </div>
-                </div>
-
-                <div class="item item-zalo">
-                    <div class="item__icon">
-                        <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-logo.png' ) ) ?>" />
-                    </div>
-
-                    <div class="item__content">
-                        <?php if ( !empty( $chat_zalo ) ) : ?>
-                            <p><?php esc_html_e('Click tư vấn', 'clinic'); ?></p>
-
-                        <?php
-                            $zalo_selcet = $chat_zalo['select_zalo'];
-
-                            if ( $zalo_selcet == 'phone_qr' ) :
-                                $zalo_phone = $chat_zalo['phone'];
-                                $zalo_qr_code = $chat_zalo['qr_code'];
-                        ?>
-                            <a class="link chat-with-us__zalo text-uppercase fw-bold" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
-                                <?php esc_html_e( 'Miễn phí qua zalo', 'clinic' ); ?>
-                            </a>
-                        <?php else: ?>
-                            <a class="link text-uppercase fw-bold" href="<?php echo esc_url( $chat_zalo['link'] ); ?>" target="_blank">
-                                <?php esc_html_e( 'Miễn phí qua zalo', 'clinic' ); ?>
-                            </a>
-                        <?php
-                            endif;
-                        endif;
-                        ?>
                     </div>
                 </div>
 
@@ -73,9 +43,21 @@ $chat_zalo = clinic_get_opt_chat_zalo();
                     </div>
 
                     <div class="item__content">
-                        <p><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
+                        <p class="txt"><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
 
-                        <strong><?php echo esc_html( $working_time ); ?></strong>
+                        <strong class="value"><?php echo esc_html( $working_time ); ?></strong>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item__icon">
+                        <i class="icon-location"></i>
+                    </div>
+
+                    <div class="item__content">
+                        <p class="txt"><?php esc_html_e('Địa chỉ', 'clinic'); ?></p>
+
+                        <strong class="value"><?php echo esc_html( $address ); ?></strong>
                     </div>
                 </div>
             </div>
