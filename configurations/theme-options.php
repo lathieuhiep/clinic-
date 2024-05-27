@@ -116,7 +116,7 @@ if ( class_exists( 'CSF' ) ) {
 				'id'      => 'opt_general_working_time',
 				'type'    => 'text',
 				'title'   => esc_html__( 'Giờ làm việc', 'clinic' ),
-				'default' => '7h30 - 20h'
+				'default' => '7h30-20h'
 			),
 
 			array(
