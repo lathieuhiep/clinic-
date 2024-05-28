@@ -12,11 +12,11 @@ $chat_zalo = clinic_get_opt_chat_zalo();
             $zalo_phone = $chat_zalo['phone'];
             $zalo_qr_code = $chat_zalo['qr_code'];
     ?>
-        <a class="link chat-with-us__zalo" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
+        <a class="link zalo chat-with-us__zalo" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
             <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-icon-contact.png' ) ) ?>" width="50" height="" />
         </a>
     <?php else: ?>
-        <a class="link" href="<?php echo esc_url( $chat_zalo['link'] ); ?>" target="_blank">
+        <a class="link zalo" href="<?php echo esc_url( $chat_zalo['link'] ); ?>" target="_blank">
             <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-icon-contact.png' ) ) ?>" width="50" height="" />
         </a>
 	<?php

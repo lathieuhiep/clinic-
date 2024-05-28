@@ -3,8 +3,6 @@ $show_related = clinic_get_option('opt_post_single_related', '1');
 ?>
 
 <div id="post-<?php the_ID() ?>" class="single-post-content">
-    <?php get_template_part( 'components/inc', 'breadcrumbs' ); ?>
-
     <h1 class="single-post-content__title f-family-body mt-5">
 		<?php the_title(); ?>
     </h1>

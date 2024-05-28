@@ -410,6 +410,57 @@ section {
         }
       }
     }
+
+    &.contact-us-widget {
+      .top-box {
+        margin-bottom: 1.5rem;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 3.8rem 1fr;
+        align-items: center;
+
+        .widget-title {
+          margin: 0;
+          font-size: 2rem;
+          color: #000000;
+        }
+      }
+
+      .widget-warp {
+        .item {
+          display: grid;
+          grid-gap: 1.7rem;
+          grid-template-columns: 3.8rem 1fr;
+          align-items: center;
+
+          ~ .item {
+            margin-top: 1.5rem;
+          }
+
+          &__icon {
+            font-size: 2rem;
+            text-align: center;
+            line-height: 3.8rem;
+            color: var(--color-white);
+            @include square(3.8rem);
+            background-color: #5F9FD7;
+          }
+
+          &__body {
+            line-height: 1.2;
+            font-size: 1.5rem;
+
+            p {
+              margin: 0;
+            }
+
+            a {
+              color: var(--clinic-theme-eighth-color);
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -419,21 +470,29 @@ section {
   }
 
   .widget {
-    border: 1px solid var(--clinic-theme-primary-color);
-    background: #FFF;
+    margin-bottom: 0;
 
-    .widget-title {
-      margin: 0;
-      padding: 1.7rem 1.2rem 1.2rem;
-      text-align: center;
-      text-transform: uppercase;
-      color: var(--color-white);
-      background: var(--clinic-theme-primary-color);
+    ~ .widget {
+      margin-top: 1.6rem;
     }
 
-    > div,
-    > ul {
-      padding: 1.1rem .9rem 1.4rem;
+    &:not(.contact-us-widget) {
+      border: 1px solid var(--clinic-theme-primary-color);
+      background: #FFF;
+
+      .widget-title {
+        margin: 0;
+        padding: 1.7rem 1.2rem 1.2rem;
+        text-align: center;
+        text-transform: uppercase;
+        color: var(--color-white);
+        background: var(--clinic-theme-primary-color);
+      }
+
+      > div,
+      > ul {
+        padding: 1.1rem .9rem 1.4rem;
+      }
     }
 
     &.widget_media_image {
