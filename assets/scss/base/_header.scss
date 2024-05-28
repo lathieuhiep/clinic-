@@ -223,11 +223,11 @@
 
     > ul {
       @media (min-width: 1400px) {
-        column-gap: 6.2rem;
+        column-gap: 5rem;
       }
 
       @media (min-width: 1200px) and (max-width: 1399px) {
-        column-gap: 4rem;
+        column-gap: 2.6rem;
       }
 
       @media (min-width: 992px) and (max-width: 1199px) {
@@ -341,16 +341,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    }
-
-    @media (min-width: 992px) and (max-width: 1200px) {
-      ul {
-        li {
-          a {
-            padding: 0 7px;
           }
         }
       }
