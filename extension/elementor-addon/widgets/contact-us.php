@@ -1,6 +1,7 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
@@ -170,14 +171,12 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
 
         $repeater = new Repeater();
 
-        $repeater->add_control(
-            'list_background_item',
+        $repeater->add_group_control(
+            Group_Control_Background::get_type(),
             [
-                'label' => esc_html__( 'Màu nền hộp chứa', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-contact-us__list {{CURRENT_ITEM}}.item' => 'background-color: {{VALUE}}',
-                ],
+                'name' => 'list_background_item',
+                'types' => [ 'classic', 'gradient' ],
+                'selector' => '{{WRAPPER}} .element-contact-us__list {{CURRENT_ITEM}}.item',
             ]
         );
 

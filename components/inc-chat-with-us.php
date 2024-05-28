@@ -1,7 +1,6 @@
 <?php
 $call_phone = clinic_get_opt_hotline();
 $chat_zalo = clinic_get_opt_chat_zalo();
-$link_messenger = clinic_get_opt_link_chat_messenger()
 ?>
 
 <div class="chat-with-us">
@@ -24,12 +23,6 @@ $link_messenger = clinic_get_opt_link_chat_messenger()
         endif;
     endif;
     ?>
-
-	<?php if ( $link_messenger ) : ?>
-        <a class="link chat-with-us__messenger" href="<?php echo esc_url($link_messenger); ?>" target="_blank">
-            <img alt="facebook" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/mess-facebook-contact.png' ) ) ?>" width="50" height="" />
-        </a>
-	<?php endif; ?>
 
 	<?php if ($call_phone) : ?>
         <a class="link chat-with-us__phone alo-circle-anim" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($call_phone)); ?>">

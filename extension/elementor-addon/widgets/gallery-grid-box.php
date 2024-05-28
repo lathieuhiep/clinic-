@@ -201,11 +201,11 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
         );
 
         $repeater->add_control(
-            'list_content_background_color', [
+            'list_item_background_color', [
                 'label' => esc_html__( 'Màu nền', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}} .item__body' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}}.item' => 'background-color: {{VALUE}}',
                 ],
             ]
         );

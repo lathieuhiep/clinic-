@@ -33,15 +33,14 @@
 
   &__column {
     padding: 4rem 0 2rem;
-    background-image: url("../images/bk-footer.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: #00667B;
   }
 }
 
 .contact-us-group {
+  padding: 1.8rem 0;
   text-align: start;
+  border-top: .2rem solid #3CBECE;
   background-color: var(--clinic-theme-six-color);
 
   .grid-layout {
@@ -56,7 +55,7 @@
       justify-content: center;
 
       &:not(:last-child) {
-        border-right: .1px solid var(--color-white);
+        border-right: .6rem solid #00667B;
       }
 
       &.phone {

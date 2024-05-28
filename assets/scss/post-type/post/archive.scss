@@ -1,18 +1,16 @@
 @import "../../variables-site/variables";
 
 .content-archive-post {
-  .row {
-    row-gap: 2.4rem;
-  }
-
   .item {
-    min-height: 100%;
-    overflow: hidden;
-    border: .1rem solid #CEC6C6;
-    border-radius: 1rem;
-    box-shadow: 0 .1rem .1rem rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
+    padding: 2.4rem 1.6rem;
+    display: grid;
+    grid-gap: 1.3rem;
+    margin-bottom: 1.5rem;
+    border: .1rem solid #D9D5D5;
+
+    @media (min-width: 576px) {
+      grid-template-columns: 23rem 1fr;
+    }
 
     .post-thumbnail {
       img {
@@ -21,80 +19,64 @@
     }
 
     &__content {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-
-      @media (min-width: 992px) {
-        padding: 3.2rem;
-      }
-
-      @media (max-width: 991px) {
-        padding: 2rem;
-      }
-
-      .meta {
-        margin-bottom: 2rem;
-        display: grid;
-        grid-gap: 1rem;
-        grid-template-columns: 1.5rem 1fr;
-
-        svg {
-          transform: translateY(.6rem);
-        }
-
-        &__cate {
-          a {
-            color: #A79E7C;
-            font-size: 1.5rem;
-            font-weight: 500;
-
-            &:hover {
-              color: #F30000;
-            }
-          }
-        }
-      }
-
       .post-title {
-        margin-bottom: 1.2rem;
-        line-height: 1.2;
-        text-align: left;
-
-        @media (min-width: 992px) {
-          font-size: 2rem;
-        }
-
-        @media (max-width: 991px) {
-          font-size: 1.8rem;
-        }
+        margin-bottom: .8rem;
+        font-size: 1.6rem;
+        font-family: var(--body-font-family);
 
         a {
-          color: #F30000;
-
-          &:hover {
-            color: var(--clinic-theme-primary-color);
-          }
+          color: var(--clinic-theme-eighth-color);
         }
       }
 
       .post-desc {
-        color: #949494;
-        flex: 1;
-      }
+        ul {
+          li {
+            margin-bottom: 10px;
 
-      .action-box {
-        margin-top: 2rem;
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        table {
+          margin-bottom: 30px;
+          width: 100%;
+
+          tr {
+            border-bottom: 1px solid $border-color;
+
+            th {
+              padding: 10px 20px 10px 0;
+            }
+          }
+        }
+
+        dd {
+          margin: 0 0 20px;
+        }
+
+        &:after {
+          display: table;
+          clear: both;
+          content: '';
+        }
       }
 
       .text-read-more {
         display: inline-block;
-        font-weight: 500;
-        color: var(--clinic-theme-secondary-color);
-        text-decoration: underline;
+        margin-top: 1.6rem;
+        padding: .4rem 3.3rem;
+        color: var(--color-white);
+        font-size: 1.6rem;
+        font-weight: 700;
+        border-radius: 2rem;
+        background: #607BC6;
 
         &:hover {
           color: var(--body-color);
+          background-color: var(--color-cadmium-yellow);
         }
       }
     }

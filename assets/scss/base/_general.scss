@@ -175,12 +175,11 @@ pre {
 /* Breadcrumbs */
 .breadcrumbs {
   padding: 1.2rem 2.4rem;
-  color: rgba(41, 102, 168, 1);
-  font-weight: 700;
-  background-color: #EDEDED;
+  color: #000000;
+  background-color: #DFE7FF;
 
   a {
-    color: rgba(41, 102, 168, 0.5);
+    color: var(--clinic-theme-primary-color);
   }
 }
 
