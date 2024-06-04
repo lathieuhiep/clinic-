@@ -8,8 +8,10 @@
       flex-direction: column;
 
       &__thumbnail {
-        margin-bottom: 2rem;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         img {
           object-fit: cover;
@@ -22,7 +24,7 @@
         .title {
           margin-bottom: .6rem;
           color: #000000;
-          font-size: 1.7rem;
+          font-size: 1.6rem;
           font-weight: 500;
           font-family: var(--body-font-family);
 

@@ -1,0 +1,15 @@
+.element-banner {
+  &:has(.banner-mobile) {
+    .banner-pc {
+      @media (max-width: 390px) {
+        display: none;
+      }
+    }
+  }
+
+  .banner-mobile {
+    @media (min-width: 390px) {
+      display: none;
+    }
+  }
+}

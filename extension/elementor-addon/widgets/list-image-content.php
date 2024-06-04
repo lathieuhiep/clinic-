@@ -291,27 +291,32 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
         $this->add_responsive_control(
             'item_layout_grid',
             [
-                'label' => esc_html__( 'Chiều rộng hộp ảnh', 'clinic' ),
+                'label' => esc_html__( 'Bố cục', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                 'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
+                    'fr' => [
+                        'min' => 1,
+                        'max' => 12,
                         'step' => 1,
                     ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
+                ],
+                'size_units' => [ 'fr', 'custom' ],
+                'unit_selectors_dictionary' => [
+                    'custom' => 'grid-template-columns: {{SIZE}}',
                 ],
                 'default' => [
-                    'unit' => 'px',
-                    'size' => '120',
+                    'unit' => 'custom',
+                    'size' => '120px 1fr',
+                ],
+                'mobile_default' => [
+                    'unit' => 'fr',
+                    'size' => 1,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-list-image-content .item' => 'grid-template-columns: {{SIZE}}{{UNIT}} 1fr;',
+                    '{{WRAPPER}} .element-list-image-content .item' => 'grid-template-columns: repeat({{SIZE}}, 1fr)',
                 ],
+                'responsive' => true,
+                'editor_available' => true,
             ]
         );
 
@@ -389,6 +394,14 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .element-list-image-content .item' => 'align-items: {{VALUE}};',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'item_border',
+                'selector' => '{{WRAPPER}} .element-list-image-content .item',
             ]
         );
 
@@ -590,6 +603,119 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .element-list-image-content .item__thumbnail .box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // image style
+        $this->start_controls_section(
+            'image_style_section',
+            [
+                'label' => esc_html__( 'Ảnh', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_width',
+            [
+                'label' => esc_html__( 'Chiều rộng ảnh', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-list-image-content .item__thumbnail .box img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_height',
+            [
+                'label' => esc_html__( 'Chiều cao ảnh', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-list-image-content .item__thumbnail .box img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_object_fit',
+            [
+                'label' => esc_html__( 'Object Fit', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'condition' => [
+                    'image_height[size]!' => '',
+                ],
+                'options' => [
+                    '' => esc_html__( 'Default', 'elementor' ),
+                    'fill' => esc_html__( 'Fill', 'elementor' ),
+                    'cover' => esc_html__( 'Cover', 'elementor' ),
+                    'contain' => esc_html__( 'Contain', 'elementor' ),
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .element-list-image-content .item__thumbnail .box img' => 'object-fit: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_object_position',
+            [
+                'label' => esc_html__( 'Object Position', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'center center' => esc_html__( 'Center Center', 'elementor' ),
+                    'center left' => esc_html__( 'Center Left', 'elementor' ),
+                    'center right' => esc_html__( 'Center Right', 'elementor' ),
+                    'top center' => esc_html__( 'Top Center', 'elementor' ),
+                    'top left' => esc_html__( 'Top Left', 'elementor' ),
+                    'top right' => esc_html__( 'Top Right', 'elementor' ),
+                    'bottom center' => esc_html__( 'Bottom Center', 'elementor' ),
+                    'bottom left' => esc_html__( 'Bottom Left', 'elementor' ),
+                    'bottom right' => esc_html__( 'Bottom Right', 'elementor' ),
+                ],
+                'default' => 'center center',
+                'selectors' => [
+                    '{{WRAPPER}} .element-list-image-content .item__thumbnail .box img' => 'object-position: {{VALUE}};',
+                ],
+                'condition' => [
+                    'image_height[size]!' => '',
+                    'image_object_fit' => 'cover',
                 ],
             ]
         );

@@ -1,9 +1,11 @@
 .element-doctor-slider {
   &__warp {
-    padding: 0 3rem;
+    @media (min-width: 768px) {
+      padding: 0 3rem;
+    }
 
     .item {
-      padding: 1rem 1.7rem 2rem;
+      padding: 2.5rem 1.7rem 2rem;
       border-radius: 1rem;
       box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
       background-color: var(--color-white);
@@ -16,11 +18,13 @@
       }
 
       &__thumbnail {
+        margin: 0 auto;
         background-image: url("../images/bk-avatar-doi-ngu-bac-si.png");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         border-radius: .5rem;
+        @include square(23.8rem, 50%);
         overflow: hidden;
         display: flex;
         align-items: flex-end;
@@ -106,7 +110,8 @@
           position: absolute;
           margin: 0;
           top: 50%;
-          font-size: 2rem;
+          font-size: 2.6rem;
+          color: #5994C2;
           transform: translateY(-50%);
 
           &.owl-prev {
@@ -115,6 +120,16 @@
 
           &.owl-next {
             right: 0;
+          }
+        }
+      }
+
+      .owl-dots {
+        .owl-dot {
+          &.active {
+            span {
+              background-color: var(--clinic-theme-quaternary-color);
+            }
           }
         }
       }

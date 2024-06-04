@@ -200,12 +200,20 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
             ]
         );
 
+        $repeater->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'list_item_border_image_box',
+                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}} .item__thumbnail',
+            ]
+        );
+
         $repeater->add_control(
-            'list_content_background_color', [
+            'list_item_background_color', [
                 'label' => esc_html__( 'Màu nền', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}} .item__body' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}}.item' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -326,6 +334,131 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 
         $this->end_controls_section();
 
+        // image box style
+        $this->start_controls_section(
+            'image_box_style_section',
+            [
+                'label' => esc_html__( 'Hộp chứa ảnh', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'image_box_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'flex-start'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'flex-end' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail' => 'align-items: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_box_margin',
+            [
+                'label' => esc_html__( 'Margin', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_box_padding',
+            [
+                'label' => esc_html__( 'Padding', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_box_height',
+            [
+                'label' => esc_html__( 'Chiều cao hộp chứa', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail' => 'min-height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'image_box_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'image_box_border',
+                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail',
+            ]
+        );
+
+        $this->end_controls_section();
+
         // image style
         $this->start_controls_section(
             'image_style_section',
@@ -350,7 +483,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail img' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -372,31 +505,6 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .element-gallery-grid-box__warp .item__thumbnail img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-            ]
-        );
-
-        $this->add_control(
-            'image_align',
-            [
-                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
-                'type'      =>  Controls_Manager::CHOOSE,
-                'options'   =>  [
-                    'text-start'  =>  [
-                        'title' =>  esc_html__( 'Left', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-left',
-                    ],
-
-                    'text-center' => [
-                        'title' =>  esc_html__( 'Center', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-center',
-                    ],
-
-                    'text-end' => [
-                        'title' =>  esc_html__( 'Right', 'clinic' ),
-                        'icon'  =>  'eicon-text-align-right',
-                    ],
-                ],
-                'default' => 'text-center',
             ]
         );
 
@@ -843,7 +951,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                 <?php foreach ( $settings['list'] as $item ) : ?>
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
                         <?php if ( !empty( $item['list_image']['id'] ) ) : ?>
-                            <div class="item__thumbnail <?php echo esc_attr( $settings['image_align'] ); ?>">
+                            <div class="item__thumbnail">
                                 <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
                             </div>
                         <?php endif; ?>
