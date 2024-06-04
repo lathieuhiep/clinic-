@@ -4,14 +4,9 @@ const { src, dest, watch } = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync')
-const concat = require('gulp-concat')
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
-const concatCss = require('gulp-concat-css')
 const rename = require("gulp-rename")
-const babel = require('gulp-babel');
-const webpack = require('webpack-stream')
-const TerserPlugin = require('terser-webpack-plugin')
 
 const pathAssets = './assets'
 const pathNodeModule = './node_modules'
@@ -19,10 +14,12 @@ const pathNodeModule = './node_modules'
 // server
 function server() {
     browserSync.init({
-        proxy: "localhost/chuabenhxahoi.com.vn",
+        proxy: "localhost/nk.suckhoeankhang.net",
         open: false,
         cors: true,
-        ghostMode: false
+        ghostMode: false,
+        notify: false,
+        injectChanges: true
     })
 }
 
@@ -35,12 +32,11 @@ function buildStylesBootstrap() {
     return src(`${pathAssets}/scss/bootstrap.scss`)
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(minifyCss({
-            compatibility: 'ie8',
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
         .pipe(dest(`${pathAssets}/libs/bootstrap/`))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
 // Task build js bootstrap
@@ -67,7 +63,7 @@ function buildStylesOwlCarousel() {
         }))
         .pipe(rename({suffix: '.min'}))
         .pipe(dest(`${pathAssets}/libs/owl.carousel/`))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
 function buildJsOwlCarouse() {
@@ -94,14 +90,14 @@ function buildStylesTheme() {
         .pipe(rename( {suffix: '.min'} ))
         .pipe(sourcemaps.write())
         .pipe(dest(`${pathAssets}/css/`))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
 // Task build style elementor
 function buildStylesElementor() {
     return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(dest(`./extension/elementor-addon/css/`))
         .pipe(sourcemaps.init())
@@ -111,7 +107,7 @@ function buildStylesElementor() {
         .pipe(rename( {suffix: '.min'} ))
         .pipe(sourcemaps.write())
         .pipe(dest(`./extension/elementor-addon/css/`))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
 function buildJSElementor() {
@@ -129,7 +125,7 @@ function buildJSElementor() {
 function buildStylesCustomPostType() {
     return src(`${pathAssets}/scss/post-type/*/**.scss`)
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(dest(`${pathAssets}/css/post-type/`))
         .pipe(sourcemaps.init())
@@ -139,7 +135,7 @@ function buildStylesCustomPostType() {
         .pipe(rename( {suffix: '.min'} ))
         .pipe(sourcemaps.write())
         .pipe(dest(`${pathAssets}/css/post-type/`))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({ match: '**/*.css' }));
 }
 
 // buildJSTheme
