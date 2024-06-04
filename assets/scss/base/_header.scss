@@ -65,7 +65,7 @@
 
         i {
           font-size: 4rem;
-          color: var(--clinic-theme-tertiary-color);
+          color: var(--clinic-theme-primary-color);
         }
 
         &.item-zalo {
@@ -81,15 +81,16 @@
 
   .contact-mobile {
     padding: .8rem 1.2rem;
+    box-shadow: 0 .2rem .2rem 0 rgba(0,0,0,0.25);
     background-color: var(--color-white);
 
     .wpcf7-form {
       display: grid;
-      grid-gap: 1.2rem;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr 3.8rem;
 
       p {
         margin: 0;
+
       }
 
       .wpcf7-form-control-wrap {
@@ -98,26 +99,67 @@
         .wpcf7-not-valid-tip {
           font-size: 1.5rem;
         }
+
+        .wpcf7-form-control {
+
+
+          &::-ms-input-placeholder {
+            color: #464646;
+          }
+
+          &::placeholder {
+            color: #464646;
+          }
+        }
       }
 
       .wpcf7-form-control {
         padding: .8rem 1.2rem;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        font-family: var(--heading-font-family);
+        min-height: 4rem;
         color: rgba(0, 0, 0, 0.30);
+        border-radius: 0;
         background-color: #E6E6E6;
 
         &.wpcf7-submit {
-          min-width: 8rem;
-          font-size: 1.2rem;
+          padding: 0;
+          width: 100%;
           font-weight: 500;
           color: var(--color-white);
-          border-radius: .5rem;
+          border-radius: 0;
           background-color: var(--clinic-theme-primary-color);
+        }
+      }
+
+      .btn-icon-submit {
+        display: inline-block;
+        width: 100%;
+        min-height: 4rem;
+        position: relative;
+        background-color: var(--clinic-theme-quaternary-color);
+
+        &:before {
+          position: absolute;
+          content: "\e91b";
+          top: 50%;
+          left: 50%;
+          font-family: "icomoon", serif;
+          color: var(--color-white);
+          font-size: 2rem;
+          transform: translate(-50%, -50%);
+        }
+
+        .wpcf7-submit {
+          position: relative;
+          font-size: 0;
+          background-color: transparent;
         }
       }
 
       .wpcf7-response-output {
         margin: 0;
+        grid-column: 1 / span 2;
       }
     }
   }
@@ -483,7 +525,9 @@
         border: none;
         height: 100%;
         width: 100%;
-        background-color: var(--color-cadmium-yellow);
+        font-size: 2.8rem;
+        color: var(--color-white);
+        background-color: transparent;
       }
     }
 
@@ -537,6 +581,13 @@
         @include flex-center();
         border: .3rem solid #5AE0DA ;
         background-color: var(--color-white);
+        box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
+
+        svg {
+          path {
+            fill: #FF5A56;
+          }
+        }
       }
     }
   }
