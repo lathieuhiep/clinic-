@@ -3,6 +3,11 @@
 
   .item {
     display: grid;
+    grid-template-rows: max-content;
+
+    &__thumbnail {
+      flex: 1;
+    }
 
     &__content {
       .title {

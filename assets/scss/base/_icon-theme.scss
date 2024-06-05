@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-check-circle:before {
+  content: "\e91d";
+}
 .icon-hours-support:before {
   content: "\e900";
 }

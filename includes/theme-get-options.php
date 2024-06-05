@@ -11,6 +11,12 @@ function clinic_get_opt_general_address()
     return clinic_get_option('opt_general_address');
 }
 
+// get link chat doctor theme option general
+function clinic_get_opt_link_map()
+{
+    return clinic_get_option('opt_general_link_map');
+}
+
 // get medical appointment theme option general
 function clinic_get_opt_medical_appointment()
 {

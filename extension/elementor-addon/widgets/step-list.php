@@ -1,7 +1,6 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Widget_Base;
@@ -177,7 +176,6 @@ class Clinic_Elementor_Step_List extends Widget_Base
             ]
         );
 
-
         $repeater->add_control(
             'list_content', [
                 'label' => esc_html__( 'Nội dung', 'clinic' ),
@@ -188,11 +186,20 @@ class Clinic_Elementor_Step_List extends Widget_Base
         );
 
         $repeater->add_control(
-            'list_number_color', [
-                'label' => esc_html__( 'Màu số', 'clinic' ),
+            'list_more_number_options',
+            [
+                'label' => esc_html__( 'Số thứ tự', 'textdomain' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $repeater->add_control(
+            'list_item_background_number', [
+                'label' => esc_html__( 'Màu nền', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-step-list {{CURRENT_ITEM}}.item .number' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-step-list {{CURRENT_ITEM}} .item__number .box-warp' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -213,11 +220,38 @@ class Clinic_Elementor_Step_List extends Widget_Base
                     [
                         'list_title' => __( 'Tiêu đề #3', 'clinic' ),
                     ],
-                    [
-                        'list_title' => __( 'Tiêu đề #4', 'clinic' ),
-                    ],
                 ],
                 'title_field' => '{{{ list_title }}}',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // style title
+        $this->start_controls_section(
+            'style_title_section',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => esc_html__( 'Màu chữ', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-step-list .title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'list_title_typography',
+                'selector' => '{{WRAPPER}} .element-step-list .title',
             ]
         );
 
@@ -238,7 +272,7 @@ class Clinic_Elementor_Step_List extends Widget_Base
                 'label' => esc_html__( 'Màu chữ', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-step-list .number' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-step-list .item__number .box-warp' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -247,67 +281,7 @@ class Clinic_Elementor_Step_List extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'number_typography',
-                'selector' => '{{WRAPPER}} .element-step-list .number',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // style title
-        $this->start_controls_section(
-            'style_title_section',
-            [
-                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'list_title_color',
-            [
-                'label' => esc_html__( 'Màu chữ', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-step-list .title' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'list_title_typography',
-                'selector' => '{{WRAPPER}} .element-step-list .title',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // content style
-        $this->start_controls_section(
-            'content_style_section',
-            [
-                'label' => esc_html__( 'Nội dung', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'list_content_color',
-            [
-                'label' => esc_html__( 'Màu chữ', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-step-list .content' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name' => 'list_content_typography',
-                'selector' => '{{WRAPPER}} .element-step-list .content',
+                'selector' => '{{WRAPPER}} .element-step-list .item__number .box-warp',
             ]
         );
 
@@ -332,22 +306,20 @@ class Clinic_Elementor_Step_List extends Widget_Base
         <div class="element-step-list">
             <?php foreach ( $settings['list'] as $key => $item ) : ?>
                 <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                    <div class="number">
-                        <?php echo esc_html( $key + 1 ); ?>
+                    <div class="item__number">
+                        <div class="box-warp">
+                            <?php echo esc_html( addZeroBeforeNumber($key + 1) ); ?>
+                        </div>
                     </div>
 
-                    <div class="body-box">
-                        <?php if ( $item['list_title'] ) : ?>
-                            <h3 class="title">
-                                <?php echo esc_html( $item['list_title'] ); ?>
-                            </h3>
-                        <?php endif; ?>
+                    <div class="item__body">
+                        <h3 class="title">
+                            <?php echo esc_html( $item['list_title'] ); ?>
+                        </h3>
 
-                        <?php if ( $item['list_content'] ) : ?>
-                            <div class="content">
-                                <?php echo wpautop( $item['list_content'] ); ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="content">
+                            <?php echo wpautop( $item['list_content'] ); ?>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>

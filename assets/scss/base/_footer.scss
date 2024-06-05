@@ -33,7 +33,7 @@
 
   &__column {
     padding: 4rem 0 2rem;
-    background-image: url("../images/bk-footer.jpg");
+    background-image: url("../images/bk-footer.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -41,61 +41,96 @@
 }
 
 .contact-us-group {
+  padding: 1.8rem 0;
   text-align: start;
-  background-color: var(--clinic-theme-six-color);
+  border-top: .3rem solid #74FBB1;
+  background-color: #116C3A;
 
   .grid-layout {
     min-height: 6rem;
     display: flex;
+    flex-wrap: wrap;
+
+    @media (min-width: 1200px) {
+      gap: 3rem 6rem;
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+      gap: 3rem 5rem;
+    }
 
     .item {
+      position: relative;
       padding: 0 .5rem;
-      flex: 1;
-      display: flex;
+      display: grid;
+      grid-gap: 1rem;
       align-items: center;
-      justify-content: center;
+      flex: auto;
 
-      &:not(:last-child) {
-        border-right: .1px solid var(--color-white);
+      @media (min-width: 1200px) {
+        grid-template-columns: auto 1fr;
       }
 
-      &.phone {
-        @media (max-width: 992px) {
-          display: none;
+      @media (min-width: 992px) and (max-width: 1199px) {
+        grid-template-columns: 3.2rem 1fr;
+      }
+
+      ~ .item {
+        &:after {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: -2.5rem;
+          bottom: 0;
+          width: .6rem;
+          background-color: var(--color-white);
         }
       }
 
-      &__icon {
-        flex: 0 0 auto;
-
-        svg {
-          width: 3rem;
-        }
-
-        @media (min-width: 376px) {
-          margin-right: 1.2rem;
-        }
-
-        @media (max-width: 375px) {
-          margin-right: 1rem;
-        }
+      .link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
       }
+
+      &__icon {}
 
       &__content {
-        a {
-          color: var(--color-white);
-          font-weight: 700;
+        font-family: var(--heading-font-family);
+        font-weight: 700;
+        line-height: 1.2;
 
-          @media (min-width: 1200px) {
-            font-size: 2rem;
+        span {
+          display: block;
+
+          ~ span {
+            margin-top: .2rem;
           }
 
-          @media (max-width: 1199px) {
-            font-size: 1.5rem;
+          &.txt-top {
+            color: var(--color-white);
+
+            @media (min-width: 1200px) {
+              font-size: 1.6rem;
+            }
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+              font-size: 1.4rem;
+            }
           }
 
-          &:hover {
-            color: var(--color-cadmium-yellow);
+          &.txt-sub {
+            color: #FFF4C3;
+
+            @media (min-width: 1200px) {
+              font-size: 2rem;
+            }
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+              font-size: 1.6rem;
+            }
           }
         }
       }

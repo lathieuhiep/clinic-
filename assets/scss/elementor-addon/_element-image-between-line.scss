@@ -1,0 +1,21 @@
+.element-image-between-line {
+  display: flex;
+  flex-direction: column;
+
+  &__warp {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    max-width: 100%;
+
+    .line {
+      flex: 1;
+      height: 1px;
+      background-color: #208B45;
+    }
+
+    .box-image {
+      width: max-content;
+    }
+  }
+}

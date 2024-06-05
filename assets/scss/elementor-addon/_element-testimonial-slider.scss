@@ -1,6 +1,13 @@
 .element-testimonial-slider {
+  &__warp {
+    padding: 0 .1rem;
+  }
+
   .item {
     padding: 3rem 3.4rem;
+    border: 1px solid var(--clinic-theme-primary-color);
+    border-bottom-width: .7rem;
+    border-bottom-color: #086A64;
     background-color: var(--color-white);
 
     &__top-box {
@@ -23,7 +30,7 @@
       .profile {
         display: grid;
         grid-gap: 1.7rem;
-        grid-template-columns: 8rem 1fr;
+        grid-template-columns: 5.4rem 1fr;
         align-items: center;
 
         .avatar {
@@ -42,19 +49,6 @@
 
           .info {
             color: #2C904F;
-          }
-        }
-      }
-    }
-  }
-
-  .owl-carousel {
-    .owl-dots {
-      .owl-dot {
-        &.active,
-        &:hover {
-          span {
-            background-color: #F5EE3E;
           }
         }
       }

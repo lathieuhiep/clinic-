@@ -151,6 +151,13 @@ if ( class_exists( 'CSF' ) ) {
 				'default' => '0888.888.115'
 			),
 
+            array(
+                'id'      => 'opt_general_link_map',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Link địa chỉ map', 'clinic' ),
+                'default' => '#'
+            ),
+
 			array(
 				'id'      => 'opt_general_cf',
 				'type'    => 'select',

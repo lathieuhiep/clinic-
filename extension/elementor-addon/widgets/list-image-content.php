@@ -215,7 +215,7 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
         $repeater->add_control(
             'list_content', [
                 'label' => esc_html__( 'Nội dung', 'clinic' ),
-                'type' => Controls_Manager::TEXTAREA,
+                'type' => Controls_Manager::WYSIWYG,
                 'default' => esc_html__( 'Nhập nội dung vào đây' , 'clinic' ),
                 'label_block' => true,
             ]
@@ -402,6 +402,26 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
             [
                 'name' => 'item_border',
                 'selector' => '{{WRAPPER}} .element-list-image-content .item',
+            ]
+        );
+
+        $this->add_control(
+            'item_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-list-image-content .item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -813,6 +833,39 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'title_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'left'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'right' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+
+                    'justify' => [
+                        'title' =>  esc_html__( 'Justify', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .element-list-image-content .item__content .title' => 'text-align: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_control(
             'title_color',
             [
@@ -849,6 +902,39 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
             [
                 'label' => esc_html__( 'Nội dung', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'content_align',
+            [
+                'label'     =>  esc_html__( 'Alignment', 'clinic' ),
+                'type'      =>  Controls_Manager::CHOOSE,
+                'options'   =>  [
+                    'left'  =>  [
+                        'title' =>  esc_html__( 'Left', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-left',
+                    ],
+
+                    'center' => [
+                        'title' =>  esc_html__( 'Center', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-center',
+                    ],
+
+                    'right' => [
+                        'title' =>  esc_html__( 'Right', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-right',
+                    ],
+
+                    'justify' => [
+                        'title' =>  esc_html__( 'Justify', 'clinic' ),
+                        'icon'  =>  'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .element-list-image-content .item__content .desc' => 'text-align: {{VALUE}};',
+                ],
             ]
         );
 
@@ -894,7 +980,7 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
             <?php foreach ($settings['list'] as $item): ?>
                 <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
                     <div class="item__thumbnail">
-                        <div class="box  d-flex">
+                        <div class="box d-flex">
                             <?php
                             if ( !empty( $item['list_image']['id'] )  ) :
                                 echo wp_get_attachment_image( $item['list_image']['id'], 'large' );

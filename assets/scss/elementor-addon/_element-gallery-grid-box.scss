@@ -8,10 +8,12 @@
       flex-direction: column;
 
       &__thumbnail {
+        position: relative;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        z-index: 2;
 
         img {
           object-fit: cover;
