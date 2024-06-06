@@ -286,7 +286,7 @@ section {
 
     &.working-time-widget {
       .widget-warp {
-        background: linear-gradient(180deg, #97CACA 0, #22B1B1 100%);
+        background: linear-gradient(180deg, #16A346 0, #28884F 100%);
 
         .work-box {
           display: flex;
@@ -609,6 +609,15 @@ section {
           }
         }
       }
+    }
+  }
+
+  &__inner {
+    left: auto !important;
+
+    @media (max-width: 768px) {
+      position: static !important;
+      transform: translate(0) !important;
     }
   }
 }

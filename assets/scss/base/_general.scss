@@ -173,13 +173,14 @@ pre {
 
 /* Breadcrumbs */
 .breadcrumbs {
+  margin-bottom: 1.6rem;
   padding: 1.2rem 2.4rem;
-  color: rgba(41, 102, 168, 1);
+  color: #737373;
   font-weight: 700;
   background-color: #EDEDED;
 
   a {
-    color: rgba(41, 102, 168, 0.5);
+    color: var(--clinic-theme-primary-color);
   }
 }
 
@@ -271,7 +272,7 @@ pre {
   &__text {
     margin: 0;
     line-height: 3rem;
-    color: #E6171F;
+    color: #135CAA;
     text-transform: uppercase;
 
     @media (min-width: 992px) {

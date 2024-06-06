@@ -37,14 +37,14 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-between-line.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/round-box-image.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
-
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
 
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider-carousel.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
+
 
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
@@ -63,14 +63,15 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Image_Between_Line() );
     $widgets_manager->register( new \Clinic_Elementor_Round_Box_Image() );
     $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
-
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
 
 
 //    $widgets_manager->register( new \Clinic_Elementor_Info() );
 //    $widgets_manager->register( new \Clinic_Elementor_Slider_Carousel() );
 //    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
+
+
 }
 
 // Register scripts
