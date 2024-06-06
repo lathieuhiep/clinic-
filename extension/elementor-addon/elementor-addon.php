@@ -35,6 +35,8 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-list.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-between-line.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/round-box-image.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
 
 
 
@@ -59,6 +61,8 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
     $widgets_manager->register( new \Clinic_Elementor_Step_List() );
     $widgets_manager->register( new \Clinic_Elementor_Image_Between_Line() );
+    $widgets_manager->register( new \Clinic_Elementor_Round_Box_Image() );
+    $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
 
 
 
