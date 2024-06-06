@@ -41,11 +41,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
 
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/info.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider-carousel.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
-
-
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_About_Us() );
@@ -65,13 +60,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
-
-
-//    $widgets_manager->register( new \Clinic_Elementor_Info() );
-//    $widgets_manager->register( new \Clinic_Elementor_Slider_Carousel() );
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
-
-
 }
 
 // Register scripts
