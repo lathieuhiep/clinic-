@@ -288,23 +288,16 @@ pre {
 .chat-with-us {
   position: fixed;
   right: 1.6rem;
+  bottom: 18rem;
   z-index: 99;
   display: grid;
   grid-row-gap: 1.2rem;
   grid-template-columns: 5rem;
   align-items: center;
-
-  @media (min-width: 992px) {
-    bottom: 10rem;
-  }
-
-  @media (max-width: 991px) {
-    bottom: 10rem;
-  }
 }
 
 #LRMINIBar {
-  bottom: 2rem !important;
+  bottom: 10rem !important;
 }
 
 /* owl carousel navigation */
