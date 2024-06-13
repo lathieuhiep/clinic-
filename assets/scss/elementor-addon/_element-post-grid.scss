@@ -1,0 +1,55 @@
+.element-post-grid {
+  .tob-box {
+    margin-bottom: 2.4rem;
+  }
+
+  &__warp {
+    .item {
+      padding: 1.2rem;
+      border: 1px solid #C0C0C0;
+      border-radius: .5rem;
+      overflow: hidden;
+      display: grid;
+      grid-gap: 1.2rem 2.4rem;
+
+      &__post-name {
+        @media (min-width: 480px) {
+          grid-column: 1 / span 2;
+        }
+
+        .title {
+          margin-bottom: 0;
+          font-size: 2rem;
+          font-family: var(--body-font-family);
+          text-transform: uppercase;
+
+          a {
+            display: inline-block;
+            color: var(--clinic-theme-tertiary-color);
+          }
+        }
+      }
+
+      @media (min-width: 480px) {
+        grid-template-columns: 22rem 1fr;
+      }
+
+      ~ .item {
+        margin-top: 2.4rem;
+      }
+
+      &__thumbnail {
+        img {
+          width: 100%;
+        }
+      }
+
+      &__box {
+        .content {
+          font-size: 1.8rem;
+          text-align: justify;
+        }
+      }
+    }
+  }
+}
