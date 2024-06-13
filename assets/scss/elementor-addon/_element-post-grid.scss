@@ -1,0 +1,48 @@
+.element-post-grid {
+  &__warp {
+    .item {
+      padding: 1.2rem;
+      border: 1px solid #C0C0C0;
+      border-radius: .5rem;
+      overflow: hidden;
+      display: grid;
+      grid-gap: 2.4rem;
+
+      @media (min-width: 480px) {
+        grid-template-columns: 22rem 1fr;
+      }
+
+      ~ .item {
+        margin-top: 2.4rem;
+      }
+
+      &__thumbnail {
+        img {
+          width: 100%;
+        }
+      }
+
+      &__box {
+        .title {
+          margin-bottom: 1rem;
+          font-size: 1.6rem;
+          font-weight: 500;
+          line-height: 2.2rem;
+          font-family: var(--body-font-family);
+          text-transform: uppercase;
+
+          a {
+            display: inline-block;
+            color: var(--heading-color);
+          }
+        }
+
+        .content {
+          color: #5F5A5A;
+          font-size: 1.5rem;
+          text-align: justify;
+        }
+      }
+    }
+  }
+}
