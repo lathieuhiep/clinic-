@@ -6,6 +6,7 @@ $class_col_content = clinic_col_use_sidebar( $sidebar, 'sidebar-post' );
 
 // include breadcrumbs
 get_template_part( 'components/inc', 'breadcrumbs' );
+get_template_part( 'components/inc', 'banner' );
 ?>
 
 <div class="site-container single-post-warp">
