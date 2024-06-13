@@ -15,10 +15,23 @@
       flex-direction: column;
 
       &__image {
-        @include square(12rem, 50%);
         background-color: #F0F0F0;
         box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
         @include flex-center();
+
+        @media (min-width: 480px) {
+          @include square(12rem, 50%);
+        }
+
+        @media (max-width: 479px) {
+          @include square(7.7rem, 50%);
+        }
+
+        img {
+          @media (max-width: 479px) {
+            width: 4.3rem;
+          }
+        }
       }
 
       &__title {
