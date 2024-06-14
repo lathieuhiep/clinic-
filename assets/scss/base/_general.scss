@@ -250,11 +250,6 @@ pre {
 }
 
 .title-has-icon {
-  display: grid;
-  grid-gap: 1.2rem;
-  grid-template-columns: 4rem 1fr;
-  align-items: center;
-
   + p {
     margin-top: 1.5rem;
   }
@@ -262,8 +257,23 @@ pre {
   &__text {
     margin: 0;
     font-size: 2rem;
-    line-height: 3rem;
+    line-height: 1.2;
     text-transform: uppercase;
+
+    &:before {
+      margin-right: 1rem;
+      content: "";
+      float: left;
+      @include square(4rem);
+      background-image: url("../images/icon-title.png");
+      background-repeat: no-repeat;
+    }
+
+    &:after {
+      display: table;
+      content: "";
+      clear: both;
+    }
   }
 }
 
