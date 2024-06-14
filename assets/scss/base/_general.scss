@@ -288,6 +288,34 @@ pre {
   }
 }
 
+.c {
+  -webkit-animation: flashing 1s infinite;
+  -moz-animation: flashing 1s infinite;
+  -o-animation: flashing 1s infinite;
+  animation: flashing 1s infinite;
+}
+
+@-webkit-keyframes flashing {
+  0% { color: var(--clinic-theme-primary-color); }
+  50% { color: var(--clinic-theme-quaternary-color);  }
+  100% { color: var(--clinic-theme-primary-color);  }
+}
+@-moz-keyframes flashing {
+  0% { color: var(--clinic-theme-primary-color); }
+  50% { color: var(--clinic-theme-quaternary-color);  }
+  100% { color: var(--clinic-theme-primary-color);  }
+}
+@-o-keyframes flashing {
+  0% { color: var(--clinic-theme-primary-color); }
+  50% { color: var(--clinic-theme-quaternary-color);  }
+  100% { color: var(--clinic-theme-primary-color);  }
+}
+@keyframes flashing {
+  0% { color: var(--clinic-theme-primary-color); }
+  50% { color: var(--clinic-theme-quaternary-color);  }
+  100% { color: var(--clinic-theme-primary-color);  }
+}
+
 .chat-with-us {
   position: fixed;
   right: 1.6rem;

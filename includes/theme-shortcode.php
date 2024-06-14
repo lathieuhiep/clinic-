@@ -17,30 +17,6 @@ function clinic_title_has_icon ($args): false|string {
 	return $content;
 }
 
-/*
- * short code image overlay
- * */
-
-// Add button to the editor
-add_action('media_buttons', 'clinic_button_add_image_overlay');
-function clinic_button_add_image_overlay(): void {
-	echo '<a href="#" id="btn-add-image-overlay" class="button">'. esc_html__('Thêm Ảnh Làm Mờ', 'clinic') .'</a>';
-}
-
-// shortcode image overlay
-add_shortcode('image_overlay', 'clinic_image_overlay_shortcode');
-function clinic_image_overlay_shortcode ($args): false|string {
-	ob_start();
-?>
-    <div class="image-overlay-box">
-        <!-- Your image editor content goes here -->
-    </div>
-<?php
-	$content = ob_get_contents();
-	ob_end_clean();
-	return $content;
-}
-
 // short code contact us
 add_shortcode('single_contact_us' , 'clinic_shortcode_contactus');
 function clinic_shortcode_contactus(): bool|string {
