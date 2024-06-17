@@ -3,10 +3,9 @@
     display: grid;
 
     .item {
-      padding: 3rem 2.4rem 2.6rem;
-      border-radius: 2rem;
-      border: .1rem solid #ACACAC;
-      box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
+      padding: 2.3rem .8rem;
+      border-radius: 1rem;
+      border: .1rem solid var(--clinic-theme-secondary-color);
       background-color: var(--color-white);
       display: flex;
       gap: 2.4rem;
@@ -14,31 +13,14 @@
       justify-content: center;
       flex-direction: column;
 
-      &__image {
-        background-color: #F0F0F0;
-        box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
-        @include flex-center();
-
-        @media (min-width: 480px) {
-          @include square(12rem, 50%);
-        }
-
-        @media (max-width: 479px) {
-          @include square(7.7rem, 50%);
-        }
-
-        img {
-          @media (max-width: 479px) {
-            width: 4.3rem;
-          }
-        }
-      }
+      &__image {}
 
       &__title {
         margin-bottom: 0;
         color: #000000;
-        font-size: 2rem;
-        font-family: var(--heading-font-family);
+        font-size: 1.5rem;
+        font-weight: 500;
+        font-family: var(--body-font-family);
 
         a {
          color: inherit;

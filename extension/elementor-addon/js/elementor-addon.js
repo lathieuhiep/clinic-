@@ -91,8 +91,68 @@
         }
     }
 
+    // element circular progress
+    const animateValue = (element, start, end, duration) => {
+        let startTime = null;
+        const animation = (currentTime) => {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            element.textContent = Math.floor(start + progress * (end - start));
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+
+        requestAnimationFrame(animation);
+    }
+
+    const elementCircularProgress = ($scope, $) => {
+        const circularProgress = $scope.find('.element-circular-progress')
+
+        if ( circularProgress.length ) {
+            // Sử dụng Intersection Observer để chạy hiệu ứng khi cuộn đến
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target
+                        const targetValue = parseInt(element.getAttribute("data-percent"), 10)
+                        const elementToAppendTo = element.querySelector('.item__circle .percent')
+
+                        // 2 giây
+                        animateValue(elementToAppendTo, 0, targetValue, 2000)
+
+                        // Dừng quan sát sau khi chạy
+                        observer.unobserve(entry.target)
+                    }
+                })
+            }, {
+                rootMargin: "100px 0px 0px 0px", // Thêm offset 100px ở trên để kích hoạt sớm hơn
+                threshold: 1 // Phần trăm bao nhiêu của phần tử cần xuất hiện để kích hoạt sự kiện
+            })
+
+            circularProgress.each(function () {
+                const thisCircularProgress = $(this)
+                const thisCircularItem = thisCircularProgress.find('.item')
+
+                thisCircularItem.each((index, element) => {
+                    if (element instanceof Element) {
+                        observer.observe(element);
+                    } else {
+                        const percent = parseInt(element.getAttribute("data-percent"))
+                        const elementToAppendTo = element.querySelector('.item__circle .percent')
+
+                        animateValue(elementToAppendTo, 0, percent, 2000)
+                    }
+                })
+            })
+        }
+    }
+
     $(window).on('elementor/frontend/init', function () {
-        /* Element slider */
+        // element slider
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
 
         // element slider carousel
@@ -103,5 +163,8 @@
 
         /* Element doctor slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', elementDoctorSlider);
+
+        /* Element circular progress */
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-circular-progress.default', elementCircularProgress);
     });
 })(jQuery);

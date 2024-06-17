@@ -777,23 +777,23 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         <div class="dividing-line"></div>
                     <?php endif; ?>
 
-                    <div class="desc <?php echo esc_attr($settings['desc_align']); ?>">
+                    <div class="desc">
                         <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
 
                     <?php if ( $settings['show_booking'] == 'show' || $settings['show_chat'] == 'show' ) : ?>
                         <div class="action-box d-flex">
-                            <?php if ( $settings['show_booking'] == 'show' && $medical_appointment_form ) : ?>
-                                <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                    <?php esc_html_e('Đặt lịch ngay', "clinic"); ?>
+                            <?php if ( $settings['show_chat'] == 'show' && $link_chat ) : ?>
+                                <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                                    <?php esc_html_e('Gặp bác sĩ tư vấn', "clinic"); ?>
                                 </a>
                             <?php endif; ?>
 
-                            <?php if ( $settings['show_chat'] == 'show' && $link_chat ) : ?>
-                                <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                                    <?php esc_html_e('Gặp bác sĩ', "clinic"); ?>
+	                        <?php if ( $settings['show_booking'] == 'show' && $medical_appointment_form ) : ?>
+                                <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+			                        <?php esc_html_e('Đặt lịch hẹn khám', "clinic"); ?>
                                 </a>
-                            <?php endif; ?>
+	                        <?php endif; ?>
                         </div>
                     <?php endif; ?>
                 </div>

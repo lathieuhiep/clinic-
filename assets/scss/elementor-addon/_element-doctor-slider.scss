@@ -23,8 +23,6 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        border-radius: .5rem;
-        @include square(23.8rem, 50%);
         overflow: hidden;
         display: flex;
         align-items: flex-end;
@@ -45,6 +43,7 @@
           margin-bottom: 0;
           font-size: 1.8rem;
           font-family: var(--body-font-family);
+          color: #208B45;
         }
 
         .meta {
@@ -78,10 +77,6 @@
 
           &__booking {
             background: linear-gradient(180deg, #D14040 0%, #951D21 100%);
-
-            &:hover {
-              background: linear-gradient(180deg, var(--clinic-theme-primary-color) 0%, var(--clinic-theme-secondary-color) 100%)
-            }
           }
         }
       }
@@ -111,7 +106,6 @@
           margin: 0;
           top: 50%;
           font-size: 2.6rem;
-          color: #5994C2;
           transform: translateY(-50%);
 
           &.owl-prev {

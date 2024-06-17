@@ -17,6 +17,7 @@
 
         img {
           object-fit: cover;
+          width: 100%;
         }
       }
 
@@ -24,6 +25,8 @@
         flex: 1;
 
         .title {
+          position: relative;
+          z-index: 2;
           margin-bottom: .6rem;
           color: #000000;
           font-size: 1.6rem;

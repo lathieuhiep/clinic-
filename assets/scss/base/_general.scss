@@ -310,13 +310,24 @@ pre {
       &.owl-prev,
       &.owl-next {
         margin: 0 6px;
-        color: var(--color-salem);
+
         font-size: 20px;
         line-height: normal;
         @include transition();
 
         &:hover {
           color: $color-hover;
+        }
+      }
+
+      i {
+        color: #FFF400;
+        @include transition();
+      }
+
+      &:hover {
+        i {
+          color: #000000;
         }
       }
     }

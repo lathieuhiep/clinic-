@@ -978,6 +978,17 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
             ]
         );
 
+	    $this->add_control(
+		    'title_background_color',
+		    [
+			    'label'     =>  esc_html__( 'Màu nền', 'clinic' ),
+			    'type'      =>  Controls_Manager::COLOR,
+			    'selectors' =>  [
+				    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title' => 'background-color: {{VALUE}}',
+			    ],
+		    ]
+	    );
+
         $this->add_control(
             'title_align',
             [
@@ -1035,6 +1046,26 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                 'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title',
             ]
         );
+
+	    $this->add_control(
+		    'title_border_radius',
+		    [
+			    'label' => esc_html__( 'Border radius', 'clinic' ),
+			    'type' => Controls_Manager::DIMENSIONS,
+			    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+			    'default' => [
+				    'top' => '',
+				    'right' => '',
+				    'bottom' => '',
+				    'left' => '',
+				    'unit' => 'px',
+				    'isLinked' => true,
+			    ],
+			    'selectors' => [
+				    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			    ],
+		    ]
+	    );
 
         $this->end_controls_section();
 
