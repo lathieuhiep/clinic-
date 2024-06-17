@@ -15,7 +15,7 @@ $layout_grid = clinic_get_option('opt_post_cat_grid');
                         <div class="row">
                             <?php while ( have_posts() ) : the_post(); ?>
 
-                                <div class="col-12 col-sm-<?php echo esc_attr( $layout_grid['sm'] ); ?> col-md-<?php echo esc_attr( $layout_grid['md'] ); ?> col-lg-<?php echo esc_attr( $layout_grid['lg'] ); ?> col-xl-<?php echo esc_attr( $layout_grid['xl'] ); ?>">
+                                <div class="col-12 col-sm-<?php echo esc_attr( $layout_grid['sm'] ?? '6' ); ?> col-md-<?php echo esc_attr( $layout_grid['md'] ?? '4' ); ?> col-lg-<?php echo esc_attr( $layout_grid['lg'] ?? '4' ); ?> col-xl-<?php echo esc_attr( $layout_grid['xl'] ?? '4' ); ?>">
                                     <div class="item">
                                         <div class="post-thumbnail">
                                             <?php the_post_thumbnail('large'); ?>
