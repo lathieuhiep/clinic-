@@ -32,22 +32,22 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-between-line.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider-carousel.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-content-list.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-and-content.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-image-content.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider.php' );
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-image-content.php' );
-
-
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/working-time.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/procedure.php' );
-
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-list.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-between-line.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/round-box-image.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
 
 
 	// register add on
@@ -62,21 +62,24 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	$widgets_manager->register( new \Clinic_Elementor_Heading_Between_Line() );
 	$widgets_manager->register( new \Clinic_Elementor_Slider_Carousel() );
 	$widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
+	$widgets_manager->register( new \Clinic_Elementor_Image_Content_List() );
+	$widgets_manager->register( new \Clinic_Elementor_Heading_And_Content() );
+	$widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
+	$widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
+	$widgets_manager->register( new \Clinic_Elementor_List_image_Content() );
+	$widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
+	$widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
 
 //    $widgets_manager->register( new \Clinic_Elementor_Slider() );
-//    $widgets_manager->register( new \Clinic_Elementor_List_image_Content() );
-
-
 //    $widgets_manager->register( new \Clinic_Elementor_Working_Time() );
 //    $widgets_manager->register( new \Clinic_Elementor_Procedure() );
-
 //    $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
 //    $widgets_manager->register( new \Clinic_Elementor_Step_List() );
 //    $widgets_manager->register( new \Clinic_Elementor_Image_Between_Line() );
 //    $widgets_manager->register( new \Clinic_Elementor_Round_Box_Image() );
-//    $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
+
+
+
 }
 
 // Register scripts

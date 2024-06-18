@@ -260,10 +260,26 @@ pre {
 }
 
 .title-has-icon {
-  display: grid;
-  grid-gap: 1.2rem;
-  grid-template-columns: 4rem 1fr;
-  align-items: center;
+  position: relative;
+  padding-left: 3rem;
+
+  &:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    @include square(2.3rem, 50%);
+    border: .3rem solid #83C261;
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    top: .85rem;
+    left: .85rem;
+    @include square(.6rem, 50%);
+    background-color: #135CAA;
+  }
 
   + p {
     margin-top: 1.5rem;
@@ -271,17 +287,10 @@ pre {
 
   &__text {
     margin: 0;
-    line-height: 3rem;
-    color: #135CAA;
+    font-size: 2rem;
+    line-height: 1.2;
     text-transform: uppercase;
-
-    @media (min-width: 992px) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: 991px) {
-      font-size: 1.8rem;
-    }
+    color: #135CAA;
   }
 }
 

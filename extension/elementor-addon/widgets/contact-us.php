@@ -2,6 +2,7 @@
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
@@ -315,6 +316,34 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
                 ],
             ]
         );
+
+	    $this->add_group_control(
+		    Group_Control_Border::get_type(),
+		    [
+			    'name' => 'box_item_border',
+			    'selector' => '{{WRAPPER}} .element-contact-us__list .item',
+		    ]
+	    );
+
+	    $this->add_control(
+		    'box_item_border_radius',
+		    [
+			    'label' => esc_html__( 'Border radius', 'clinic' ),
+			    'type' => Controls_Manager::DIMENSIONS,
+			    'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+			    'default' => [
+				    'top' => '',
+				    'right' => '',
+				    'bottom' => '',
+				    'left' => '',
+				    'unit' => 'px',
+				    'isLinked' => true,
+			    ],
+			    'selectors' => [
+				    '{{WRAPPER}} .element-contact-us__list .item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+			    ],
+		    ]
+	    );
 
         $this->end_controls_section();
 

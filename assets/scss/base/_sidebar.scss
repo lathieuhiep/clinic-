@@ -286,7 +286,7 @@ section {
 
     &.working-time-widget {
       .widget-warp {
-        background: linear-gradient(180deg, #16A346 0, #28884F 100%);
+        background: var(--clinic-theme-primary-color);
 
         .work-box {
           display: flex;
