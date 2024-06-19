@@ -5,8 +5,7 @@
     .item {
       padding: 2.3rem .8rem;
       border-radius: 1rem;
-      border: .1rem solid var(--clinic-theme-secondary-color);
-      background-color: var(--color-white);
+      background-color: var(--clinic-theme-primary-color);
       display: flex;
       gap: 2.4rem;
       align-items: center;
@@ -17,7 +16,7 @@
 
       &__title {
         margin-bottom: 0;
-        color: #000000;
+        color: #fff;
         font-size: 1.5rem;
         font-weight: 500;
         font-family: var(--body-font-family);
