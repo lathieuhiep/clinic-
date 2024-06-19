@@ -274,17 +274,8 @@ pre {
 
   &__text {
     margin: 0;
-    line-height: 3rem;
     color: var(--color-white);
     text-transform: uppercase;
-
-    @media (min-width: 992px) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: 991px) {
-      font-size: 1.8rem;
-    }
   }
 }
 

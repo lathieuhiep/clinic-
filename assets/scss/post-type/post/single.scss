@@ -9,11 +9,23 @@
   margin-bottom: 15px;
   font-size: 1.6rem;
 
-  &__detail {
-    h2 {
-      text-transform: uppercase;
-    }
+  h1 {
+    font-size: 2.4rem;
+  }
 
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  h4, h5, h6 {
+    font-size: 1.6rem;
+  }
+
+  &__detail {
     p, span, a, ul li, ul ol {
       @media (max-width: 767px) {
         word-spacing: 0.05rem;
@@ -106,14 +118,6 @@
     margin-bottom: 1.6rem;
     text-transform: uppercase;
     color: #FC0000;
-
-    @media (min-width: 992px) {
-      font-size: 2.4rem;
-    }
-
-    @media (max-width: 991px) {
-      font-size: 2rem;
-    }
   }
 
   &__tax {
