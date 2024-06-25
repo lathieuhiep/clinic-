@@ -17,6 +17,7 @@ function clinic_add_elementor_widget_categories( $elements_manager ): void {
 add_action( 'elementor/widgets/register', 'clinic_register_widget_elementor_addon' );
 function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
+	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/banner.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/category-list.php' );
 	require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about.php' );
@@ -37,6 +38,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 
 
 	// register add on
+	$widgets_manager->register( new \Clinic_Elementor_Banner() );
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
 	$widgets_manager->register( new \Clinic_Elementor_Category_List() );
 	$widgets_manager->register( new \Clinic_Elementor_About() );
