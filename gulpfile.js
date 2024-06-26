@@ -3,7 +3,7 @@
 const { src, dest, watch } = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const sourcemaps = require('gulp-sourcemaps')
-const browserSync = require('browser-sync')
+const browserSync = require('browser-sync').create()
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
 const rename = require("gulp-rename")
@@ -14,7 +14,7 @@ const pathNodeModule = './node_modules'
 // server
 function server() {
     browserSync.init({
-        proxy: "localhost/chuabenhtri.com.vn",
+        proxy: "localhost/phongkham.namkhoacantho.com.vn",
         open: false,
         cors: true,
         ghostMode: false,
@@ -215,9 +215,6 @@ function watchTask() {
         '!./extension/elementor-addon/js/*.min.js'
     ], buildJSElementor)
 
-    watch([
-        './*.php',
-        './**/*.php'
-    ]).on('change', browserSync.reload);
+    watch('./**/*.php').on('change', browserSync.reload);
 }
 exports.watchTask = watchTask
