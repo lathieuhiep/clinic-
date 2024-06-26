@@ -1,27 +1,13 @@
 <?php
-$logo = clinic_get_option( 'opt_general_logo' );
 $working_time = clinic_get_option('opt_general_working_time');
 $hotline = clinic_get_opt_hotline();
 $address = clinic_get_opt_general_address();
+$link_chat = clinic_get_opt_link_chat_doctor();
 ?>
 
 <div class="top-nav d-none d-lg-block">
     <div class="container">
         <div class="grid-layout">
-            <div class="logo">
-                <a class="d-block" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
-                    <?php
-                    if ( ! empty( $logo['id'] ) ) :
-                        echo wp_get_attachment_image( $logo['id'], 'full' );
-                    else :
-                        ?>
-
-                        <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/logo.png' ) ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>" width="64" height="64"/>
-
-                    <?php endif; ?>
-                </a>
-            </div>
-
             <div class="info">
                 <div class="item">
                     <div class="item__icon alo-circle-anim">
@@ -29,9 +15,9 @@ $address = clinic_get_opt_general_address();
                     </div>
 
                     <div class="item__content">
-                        <p class="txt"><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
+                        <span class="txt"><?php esc_html_e('Hotline tư vấn:', 'clinic'); ?></span>
 
-                        <a class="phone fw-bold value" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
+                        <a class="phone" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
                             <?php echo esc_html( $hotline ); ?>
                         </a>
                     </div>
@@ -43,9 +29,9 @@ $address = clinic_get_opt_general_address();
                     </div>
 
                     <div class="item__content">
-                        <p class="txt"><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
+                        <span class="txt"><?php esc_html_e('Thời gian làm việc:', 'clinic'); ?></span>
 
-                        <strong class="value"><?php echo esc_html( $working_time ); ?></strong>
+                        <span class="value"><?php echo esc_html( $working_time ); ?></span>
                     </div>
                 </div>
 
@@ -55,11 +41,19 @@ $address = clinic_get_opt_general_address();
                     </div>
 
                     <div class="item__content">
-                        <p class="txt"><?php esc_html_e('Địa chỉ', 'clinic'); ?></p>
+                        <span class="txt"><?php esc_html_e('Địa chỉ:', 'clinic'); ?></span>
 
-                        <strong class="value"><?php echo esc_html( $address ); ?></strong>
+                        <span class="value"><?php echo esc_html( $address ); ?></span>
                     </div>
                 </div>
+            </div>
+
+            <div class="chat">
+                <?php if ( $link_chat ) : ?>
+                    <a class="link f-family-heading fw-bold" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
+                        <?php esc_html_e('Chat với bác sĩ', 'clinic'); ?>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
