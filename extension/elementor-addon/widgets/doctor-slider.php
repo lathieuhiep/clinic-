@@ -100,18 +100,18 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 		if ( $query->have_posts() ) :
         ?>
             <div class="element-doctor-slider">
-                <div class="element-doctor-slider__warp owl-carousel owl-theme">
+                <div class="element-doctor-slider__warp owl-carousel owl-theme custom-equal-height-owl">
 					<?php
 					while ( $query->have_posts() ) :
 						$query->the_post();
 
 						$specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
-
                     ?>
-
                         <div class="item">
                             <div class="item__thumbnail">
-								<?php the_post_thumbnail('large'); ?>
+                                <div class="box">
+                                    <?php the_post_thumbnail('large'); ?>
+                                </div>
                             </div>
 
                             <div class="item__body">
@@ -125,17 +125,14 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                                     </p>
                                 </div>
 
+                                <div class="desc">
+                                    <?php the_content(); ?>
+                                </div>
+
                                 <div class="action-box">
                                     <?php if ( $medical_appointment_form ) : ?>
                                         <a class="action-box__booking text-uppercase d-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                            <?php esc_html_e('Đặt hẹn', "clinic"); ?>
-                                        </a>
-                                    <?php endif; ?>
-
-
-                                    <?php if ( $link_chat ) : ?>
-                                        <a class="action-box__chat text-uppercase d-inline-block" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                                            <?php esc_html_e('Tư vấn', "clinic"); ?>
+                                            <?php esc_html_e('Đăng ký khám', "clinic"); ?>
                                         </a>
                                     <?php endif; ?>
                                 </div>
