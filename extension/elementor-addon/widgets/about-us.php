@@ -838,7 +838,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         <div class="dividing-line"></div>
                     <?php endif; ?>
 
-                    <div class="desc <?php echo esc_attr($settings['desc_align']); ?>">
+                    <div class="desc">
                         <?php echo wpautop( $settings['desc'] ); ?>
                     </div>
 
@@ -846,15 +846,13 @@ class Clinic_Elementor_About_Us extends Widget_Base
                         <div class="action-box d-flex">
                             <?php if ( $settings['show_booking'] == 'show' && $medical_appointment_form ) : ?>
                                 <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                    <i class="icon icon-calendar"></i>
-                                    <span class="txt"><?php esc_html_e('Đặt lịch khám', "clinic"); ?></span>
+                                    <?php esc_html_e('Đặt lịch khám', "clinic"); ?>
                                 </a>
                             <?php endif; ?>
 
                             <?php if ( $settings['show_chat'] == 'show' && $link_chat ) : ?>
                                 <a class="action-box__chat text-uppercase" href="<?php echo esc_url( $link_chat ); ?>" target="_blank">
-                                    <i class="icon icon-phone"></i>
-                                    <span class="txt"><?php esc_html_e('Gặp bác sĩ', "clinic"); ?></span>
+                                    <?php esc_html_e('Gặp bác sĩ', "clinic"); ?>
                                 </a>
                             <?php endif; ?>
                         </div>

@@ -851,7 +851,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                         <div class="item__body">
                             <?php if ( $item['list_title'] ) : ?>
                                 <h3 class="title <?php echo esc_attr( $settings['title_align'] ); ?>">
-                                    <?php echo esc_html( $item['list_title'] ); ?>
+                                    <?php echo wp_kses_post( $item['list_title'] ); ?>
                                 </h3>
                             <?php endif; ?>
 

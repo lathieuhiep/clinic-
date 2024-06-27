@@ -235,13 +235,6 @@
           }
         }
 
-        &.current-menu-item,
-        &.current-menu-parent {
-          > a {
-            color: var(--color-cadmium-yellow);
-          }
-        }
-
         &.home-icon {
           a {
             @include flex-center();
