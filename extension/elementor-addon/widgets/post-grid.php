@@ -50,7 +50,7 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
             [
                 'label' => esc_html__('Number of Posts', 'clinic'),
                 'type' => Controls_Manager::NUMBER,
-                'default' => 3,
+                'default' => 5,
                 'min' => 1,
                 'max' => 100,
                 'step' => 1,
@@ -230,58 +230,54 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
         $query = new WP_Query($args);
 
         if ($query->have_posts()) :
-        ?>
-            <div class="element-post-grid">
-                <div class="element-post-grid__warp">
-                    <?php while ($query->have_posts()): $query->the_post(); ?>
-                        <div class="item">
-                            <div class="item__thumbnail">
-                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                    <?php
-                                    if (has_post_thumbnail()) :
-                                        the_post_thumbnail('large');
-                                    else:
-                                        ?>
-                                        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>"
-                                             alt="<?php the_title(); ?>"/>
-                                    <?php endif; ?>
-                                </a>
-                            </div>
-
-                            <div class="item__box">
-                                <h3 class="title">
-                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                        <?php the_title(); ?>
-                                    </a>
-                                </h3>
-
-                                <?php if ($settings['show_excerpt'] == 'show') : ?>
-                                    <div class="content">
-                                        <p>
-                                            <?php
-                                            if (has_excerpt()) :
-                                                echo esc_html(wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '...'));
-                                            else:
-                                                echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
-                                            endif;
-                                            ?>
-                                        </p>
-                                    </div>
+    ?>
+        <div class="element-post-grid">
+            <div class="element-post-grid__warp">
+                <?php while ($query->have_posts()):
+                    $query->the_post();
+                ?>
+                    <div class="item">
+                        <div class="item__thumbnail">
+                            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                <?php
+                                if (has_post_thumbnail()) :
+                                    the_post_thumbnail('large');
+                                else:
+                                ?>
+                                    <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>" alt="<?php the_title(); ?>"/>
                                 <?php endif; ?>
-
-                                <div class="action-box">
-                                    <a class="link" href="<?php the_permalink(); ?>">
-                                        <?php esc_html_e('Xem chi tiết >>' , 'clinic'); ?>
-                                    </a>
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                    <?php endwhile;
-                    wp_reset_postdata(); ?>
-                </div>
+
+                        <div class="item__box">
+                            <h3 class="title">
+                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h3>
+
+                            <?php if ( $settings['show_excerpt'] == 'show' ) : ?>
+                                <div class="content">
+                                    <p>
+                                        <?php
+                                        if (has_excerpt()) :
+                                            echo esc_html(wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '...'));
+                                        else:
+                                            echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
+                                        endif;
+                                        ?>
+                                    </p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php
+                endwhile;
+                wp_reset_postdata();
+                ?>
             </div>
-        <?php
+        </div>
+    <?php
         endif;
     }
-
 }

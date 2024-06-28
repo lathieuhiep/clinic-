@@ -824,7 +824,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 <div class="item item-content">
                     <?php if ( $settings['heading'] ) : ?>
                         <h2 class="heading <?php echo esc_attr($settings['heading_align']); ?>">
-                            <?php echo esc_html( $settings['heading'] ); ?>
+                            <?php echo wp_kses_post( $settings['heading'] ); ?>
                         </h2>
                     <?php endif; ?>
 

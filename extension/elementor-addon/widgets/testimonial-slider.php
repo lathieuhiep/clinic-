@@ -26,28 +26,6 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
     }
 
     protected function register_controls(): void {
-
-        // content global
-        $this->start_controls_section(
-            'content_global_section',
-            [
-                'label' => esc_html__( 'Thông tin chung', 'clinic' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'content_global',
-            [
-                'label' => esc_html__( 'Mô tả', 'clinic' ),
-                'type' => Controls_Manager::WYSIWYG,
-                'rows' => 10,
-                'default' => esc_html__( 'Mô tả', 'clinic' ),
-            ]
-        );
-
-        $this->end_controls_section();
-
         // list testimonial
         $this->start_controls_section(
             'list_section',
@@ -427,44 +405,28 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                     ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <?php if ( $settings['content_global'] ) : ?>
-                            <div class="item__top-box">
-                                <?php echo wpautop( $settings['content_global'] ); ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="avatar">
+                            <?php
+                            if ( $imageId ) :
+                                echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
+                            else:
+                                ?>
+                                <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
+                            <?php endif; ?>
+                        </div>
 
-                        <div class="item__body">
-                            <div class="profile">
-                                <div class="avatar">
-                                    <?php
-                                    if ( $imageId ) :
-                                        echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
-                                    else:
-                                        ?>
-                                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
-                                    <?php endif; ?>
-                                </div>
+                        <div class="meta text-center f-family-heading fw-bold">
+                            <p class="name">
+                                <?php echo esc_html( $item['list_title'] ); ?>
+                            </p>
 
-                                <div class="meta">
-                                    <p class="name">
-                                        <?php echo esc_html( $item['list_title'] ); ?>
-                                    </p>
+                            <p class="info">
+                                <?php echo esc_html( $item['list_info'] ); ?>
+                            </p>
+                        </div>
 
-                                    <p class="info">
-                                        <?php echo esc_html( $item['list_info'] ); ?>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="vote">
-                                <?php for ($i = 0; $i < 5; $i++) : ?>
-                                    <i class="icon icon-star"></i>
-                                <?php endfor; ?>
-                            </div>
-
-                            <div class="desc text-justify">
-                                <?php echo wp_kses_post( $item['list_description'] ) ?>
-                            </div>
+                        <div class="desc text-justify">
+                            <?php echo wp_kses_post( $item['list_description'] ) ?>
                         </div>
                     </div>
 

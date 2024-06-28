@@ -1,0 +1,53 @@
+.element-step-grid {
+  &__warp {
+    display: grid;
+
+    .item {
+      padding: .7rem;
+      overflow: hidden;
+      border-radius: 1rem;
+      background-color: var(--color-white);
+
+      &__body {
+        border: .2rem dotted #037195;
+        border-radius: 1rem;
+
+        @media (min-width: 1200px) {
+          padding: 4.3rem 2.5rem 3.2rem;
+        }
+
+        @media (max-width: 1199px) {
+          padding: 1.2rem 2.4rem 2.5rem;
+        }
+
+        .box-number {}
+
+        .stt {
+          position: relative;
+          font-size: 4.5rem;
+          font-weight: 700;
+          line-height: 1;
+          @include square(8.9rem, 50%);
+          border: .3rem solid #000000;
+          background-color: var(--color-white);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .title {
+          padding-bottom: 1rem;
+          position: relative;
+          color: #FFF400;
+          font-size: 2rem;
+          font-weight: 900;
+          font-family: var(--body-font-family);
+        }
+
+        .content {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}

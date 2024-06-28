@@ -1,62 +1,21 @@
 .element-testimonial-slider {
   .item {
-    padding: 3rem 3.4rem;
+    padding: 1.5rem;
     background-color: var(--color-white);
 
-    &__top-box {
-      margin-bottom: 1.8rem;
-      font-weight: 700;
-      font-family: var(--heading-font-family);
+    .avatar {
+      margin-bottom: 2rem;
     }
 
-    &__body {
-      > div {
-        &:not(:last-child) {
-          margin-bottom: 1.6rem;
-        }
+    .meta {
+      margin-bottom: 2rem;
+
+      .name {
+        margin-bottom: .5rem;
       }
 
-      .vote {
-        color: #FFC226;
-      }
-
-      .profile {
-        display: grid;
-        grid-gap: 1.7rem;
-        grid-template-columns: 8rem 1fr;
-        align-items: center;
-
-        .avatar {
-          img {
-            width: auto;
-          }
-        }
-
-        .meta {
-          font-weight: 700;
-          font-family: var(--heading-font-family);
-
-          p {
-            margin: 0;
-          }
-
-          .info {
-            color: #2C904F;
-          }
-        }
-      }
-    }
-  }
-
-  .owl-carousel {
-    .owl-dots {
-      .owl-dot {
-        &.active,
-        &:hover {
-          span {
-            background-color: #F5EE3E;
-          }
-        }
+      .info {
+        color: #FA5E1B;
       }
     }
   }
