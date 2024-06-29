@@ -186,6 +186,26 @@ class Clinic_Elementor_Step_Grid extends Widget_Base
             ]
         );
 
+        $repeater->add_control(
+            'list_stt_color', [
+                'label' => esc_html__( 'Màu số thứ tự', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-step-grid__warp {{CURRENT_ITEM}} .item__body .stt' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'list_title_color', [
+                'label' => esc_html__( 'Màu số thứ tự', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-step-grid__warp {{CURRENT_ITEM}} .item__body .title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
         $this->add_control(
             'list',
             [
@@ -321,7 +341,7 @@ class Clinic_Elementor_Step_Grid extends Widget_Base
                             </div>
 
                             <?php if ( $item['list_title'] ) : ?>
-                                <h3 class="title m-0">
+                                <h3 class="title">
                                     <?php echo wp_kses_post( $item['list_title'] ); ?>
                                 </h3>
                             <?php endif; ?>

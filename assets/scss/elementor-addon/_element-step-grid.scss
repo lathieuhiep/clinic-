@@ -9,6 +9,7 @@
       background-color: var(--color-white);
 
       &__body {
+        min-height: 100%;
         border: .2rem dotted #037195;
         border-radius: 1rem;
 
@@ -20,7 +21,9 @@
           padding: 1.2rem 2.4rem 2.5rem;
         }
 
-        .box-number {}
+        .box-number {
+          margin-bottom: 2.4rem;
+        }
 
         .stt {
           position: relative;
@@ -28,7 +31,7 @@
           font-weight: 700;
           line-height: 1;
           @include square(8.9rem, 50%);
-          border: .3rem solid #000000;
+          border: .3rem solid currentColor;
           background-color: var(--color-white);
           display: inline-flex;
           align-items: center;
@@ -36,16 +39,16 @@
         }
 
         .title {
-          padding-bottom: 1rem;
+          margin-bottom: 2rem;
           position: relative;
-          color: #FFF400;
-          font-size: 2rem;
+          font-size: 2.5rem;
           font-weight: 900;
-          font-family: var(--body-font-family);
+          text-align: center;
         }
 
         .content {
           font-size: 1.8rem;
+          text-align: justify;
         }
       }
     }
