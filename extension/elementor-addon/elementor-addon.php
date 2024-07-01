@@ -32,6 +32,8 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-grid.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider-carousel.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/editor-list-number.php' );
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/special-title.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/group-button-contact.php' );
@@ -53,6 +55,8 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
     $widgets_manager->register( new \Clinic_Elementor_Step_Grid() );
+    $widgets_manager->register( new \Clinic_Elementor_Slider_Carousel() );
+    $widgets_manager->register( new \Clinic_Elementor_Edit_List_Number() );
 
 //    $widgets_manager->register( new \Clinic_Elementor_Special_Title() );
 //    $widgets_manager->register( new \Clinic_Elementor_Group_Button_Contact() );

@@ -3,7 +3,6 @@
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use Elementor\Utils;
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
