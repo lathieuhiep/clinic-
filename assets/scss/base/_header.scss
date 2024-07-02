@@ -235,6 +235,13 @@
           }
         }
 
+        &.current-menu-item,
+        &.current-menu-parent {
+          > a {
+            color: var(--clinic-theme-primary-color);
+          }
+        }
+
         &.home-icon {
           a {
             @include flex-center();

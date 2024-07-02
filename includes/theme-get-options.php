@@ -47,3 +47,9 @@ function clinic_get_general_slider(): array
 
     return $gallery_ids;
 }
+
+// get chat zalo theme option general
+function clinic_get_opt_chat_qr_code_zalo()
+{
+    return clinic_get_option('opt_general_chat_qr_code_zalo');
+}
