@@ -4,6 +4,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
+use Elementor\Utils;
 use Elementor\Widget_Base;
 
 if (!defined('ABSPATH')) {
@@ -95,6 +96,17 @@ class Clinic_Elementor_Title_Number_List extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'image',
+            [
+                'label' => esc_html__( 'Ảnh icon', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
         $repeater = new Repeater();
 
         $repeater->add_control(
@@ -157,6 +169,33 @@ class Clinic_Elementor_Title_Number_List extends Widget_Base
             [
                 'label' => esc_html__( 'Vùng chứa nội dung', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_distance',
+            [
+                'label' => esc_html__( 'Khoảng cách các khối', 'textdomain' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 12,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-title-number-list__warp .item ~ .item' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -230,13 +269,33 @@ class Clinic_Elementor_Title_Number_List extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'margin',
+            [
+                'label' => esc_html__( 'Margin', 'textdomain' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 16,
+                    'left' => 0,
+                    'unit' => 'px',
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-title-number-list__warp .item__heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_control(
             'title_color',
             [
                 'label' => esc_html__( 'Color', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .element-title-number-list__warp .item__heading' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-title-number-list__warp .item__heading .title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -245,7 +304,7 @@ class Clinic_Elementor_Title_Number_List extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .element-title-number-list__warp .item__heading',
+                'selector' => '{{WRAPPER}} .element-title-number-list__warp .item__heading .title',
             ]
         );
 
@@ -292,21 +351,25 @@ class Clinic_Elementor_Title_Number_List extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
-        ?>
+    ?>
         <div class="element-title-number-list">
             <?php if ( $settings['list'] ) : ?>
                 <div class="element-title-number-list__warp">
                     <?php foreach ( $settings['list'] as $key => $item) : ?>
                         <div class="item repeater-item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                            <h4 class="item__heading">
-                                <span class="number">
-                                    <?php echo esc_html( $key + 1 ) . '.'; ?>
-                                </span>
+                            <div class="item__heading">
+                                <?php if ( !empty( $settings['image']['id'] )  ) : ?>
+                                    <div class="icon-box">
+                                        <?php echo wp_get_attachment_image( $settings['image']['id'], 'large' ); ?>
+                                    </div>
+                                <?php endif; ?>
 
-                                <span class="text">
-                                    <?php echo esc_html( $item['list_title'] ); ?>
-                                </span>
-                            </h4>
+                                <h4 class="title">
+                                    <span class="number"><?php echo esc_html( $key + 1 ) . '.'; ?></span>
+
+                                    <span class="text"><?php echo esc_html( $item['list_title'] ); ?></span>
+                                </h4>
+                            </div>
 
                             <?php if ( $item['list_content'] ) : ?>
                                 <div class="item__content">
@@ -318,6 +381,6 @@ class Clinic_Elementor_Title_Number_List extends Widget_Base
                 </div>
             <?php endif; ?>
         </div>
-        <?php
+    <?php
     }
 }

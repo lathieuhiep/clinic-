@@ -1,0 +1,68 @@
+.element-scheduling-form {
+  .wpcf7-form {
+    display: grid;
+    grid-gap: 1.8rem 1rem;
+
+    @media (min-width: 480px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    p {
+      + p {
+        margin: 0;
+      }
+
+      &:has(.wpcf7-textarea),
+      &:has(.wpcf7-submit) {
+        @media (min-width: 480px) {
+          grid-column: 1 / span 2;
+        }
+      }
+    }
+
+    .wpcf7-form-control-wrap {
+      input {
+        &:not(.wpcf7-submit) {
+          min-height: 6.2rem;
+        }
+      }
+
+      .wpcf7-form-control {
+        font-size: 2rem;
+        font-family: var(--heading-font-family);
+
+        &:not(.wpcf7-submit) {
+          padding: 0 1.6rem;
+
+          &::-ms-input-placeholder {
+            color: #000000;
+          }
+
+          &::placeholder {
+            color: #000000;
+          }
+        }
+
+        &.wpcf7-textarea {
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+          min-height: 11.7rem;
+        }
+      }
+    }
+
+    .wpcf7-submit {
+      padding: 12px 25px;
+      font-family: var(--heading-font-family);
+      font-size: 2rem;
+      color: #ffffff;
+      font-weight: 700;
+      border-radius: .5rem;
+      background-color: #FF0000;
+    }
+
+    .wpcf7-response-output {
+      grid-column: 1 / span 2;
+    }
+  }
+}

@@ -3,7 +3,6 @@
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
@@ -503,7 +502,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
         $this->add_responsive_control(
             'submit_margin',
             [
-                'label' => esc_html__( 'Padding', 'clinic' ),
+                'label' => esc_html__( 'Margin', 'clinic' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
                 'default' => [
@@ -636,25 +635,24 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         if ( ! empty( $settings['contact_form_list'] ) ) :
-            ?>
+    ?>
+        <div class="element-contact-form-7">
+            <?php if ( $settings['heading'] ) : ?>
+                <h3 class="heading text-center">
+                    <span class="d-inline-block<?php echo esc_attr( $settings['show_gradient'] == 'yes' ? ' has-gradient' : '' ); ?>"><?php echo esc_html( $settings['heading'] ); ?></span>
+                </h3>
+            <?php endif; ?>
 
-            <div class="element-contact-form-7">
-                <?php if ( $settings['heading'] ) : ?>
-                    <h3 class="heading text-center">
-                        <span class="d-inline-block<?php echo esc_attr( $settings['show_gradient'] == 'yes' ? ' has-gradient' : '' ); ?>"><?php echo esc_html( $settings['heading'] ); ?></span>
-                    </h3>
-                <?php endif; ?>
+            <?php if ( $settings['sub_heading'] ) : ?>
+                <div class="sub-heading text-center">
+                    <p class="d-inline-block txt"><?php echo esc_html( $settings['sub_heading'] ); ?></p>
+                </div>
+            <?php endif; ?>
 
-                <?php if ( $settings['sub_heading'] ) : ?>
-                    <div class="sub-heading text-center">
-                        <p class="d-inline-block txt"><?php echo esc_html( $settings['sub_heading'] ); ?></p>
-                    </div>
-                <?php endif; ?>
+            <?php echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' ); ?>
+        </div>
 
-                <?php echo do_shortcode( '[contact-form-7 id="' . $settings['contact_form_list'] . '" ]' ); ?>
-            </div>
-
-        <?php
+    <?php
         endif;
     }
 }

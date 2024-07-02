@@ -22,7 +22,7 @@ class Clinic_Elementor_Step_Grid extends Widget_Base
      */
     public function get_name(): string
     {
-        return 'clinic-procedure';
+        return 'clinic-step-grid';
     }
 
     /**
