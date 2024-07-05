@@ -66,15 +66,18 @@
                         0: {
                             items: 1,
                             autoHeight:true,
+                            stagePadding: 0,
                             margin: 0
                         },
                         768: {
                             items: 2,
+                            stagePadding: 12,
                             margin: 12
                         },
                         992: {
                             items: 3,
-                            margin: 20
+                            stagePadding: 20,
+                            margin: 30
                         }
                     }
                 }

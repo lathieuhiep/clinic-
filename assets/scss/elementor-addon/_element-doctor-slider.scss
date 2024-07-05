@@ -1,7 +1,5 @@
 .element-doctor-slider {
   &__warp {
-    padding: 0 3rem;
-
     .item {
       padding: 1rem 1.7rem 2rem;
       border-radius: 1rem;
@@ -18,8 +16,6 @@
         background-size: cover;
         background-repeat: no-repeat;
         border-radius: .5rem;
-        height: 30rem;
-        overflow: hidden;
         display: flex;
         align-items: flex-end;
         justify-content: center;
