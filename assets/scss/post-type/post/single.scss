@@ -100,13 +100,11 @@
 
         &:before {
           position: absolute;
-          content: "\f00c";
-          top: 0;
+          content: "";
+          top: .8rem;
           left: 0;
-          font-size: 1.6rem;
-          font-weight: 900;
-          font-family: $font-icon;
-          color: var(--color-salem);
+          @include square(1rem, 50%);
+          background-color: #000000;
         }
       }
     }
