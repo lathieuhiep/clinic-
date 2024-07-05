@@ -99,7 +99,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 		if ( $query->have_posts() ) :
         ?>
             <div class="element-doctor-slider">
-                <div class="element-doctor-slider__warp owl-carousel owl-theme">
+                <div class="element-doctor-slider__warp owl-carousel custom-equal-height-owl">
 					<?php
 					while ( $query->have_posts() ) :
 						$query->the_post();

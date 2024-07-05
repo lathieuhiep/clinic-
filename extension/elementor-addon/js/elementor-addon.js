@@ -80,19 +80,22 @@
                 const options = {
                     dots: false,
                     nav: true,
+                    autoHeight:true,
                     responsive:{
                         0: {
                             items: 1,
-                            autoHeight:true,
-                            margin: 12
+                            stagePadding: 0,
+                            margin: 0
                         },
-                        576: {
+                        768: {
                             items: 2,
+                            stagePadding: 12,
                             margin: 12
                         },
                         992: {
                             items: 3,
-                            margin: 20
+                            stagePadding: 20,
+                            margin: 30
                         }
                     }
                 }
