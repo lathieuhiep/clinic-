@@ -17,16 +17,16 @@ function clinic_get_opt_medical_appointment()
     return clinic_get_option('opt_general_medical_appointment_form');
 }
 
+// get link chat messenger theme option general
+function clinic_get_opt_link_chat_messenger()
+{
+    return clinic_get_option('opt_general_chat_messenger');
+}
+
 // get link chat doctor theme option general
 function clinic_get_opt_link_chat_doctor()
 {
     return clinic_get_option('opt_general_chat_doctor');
-}
-
-// get link chat doctor theme option general
-function clinic_get_opt_link_map()
-{
-    return clinic_get_option('opt_general_link_map');
 }
 
 // get chat zalo theme option general

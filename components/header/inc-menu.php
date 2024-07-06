@@ -1,23 +1,10 @@
 <?php
-$logo = clinic_get_option( 'opt_general_logo' );
+$link_chat = clinic_get_opt_link_chat_doctor();
 ?>
+
 <nav class="navbar-main d-none d-lg-block">
     <div class="container">
-        <div class="grid-layout h-100">
-            <div class="logo">
-                <a class="d-block" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
-                    <?php
-                    if ( ! empty( $logo['id'] ) ) :
-                        echo wp_get_attachment_image( $logo['id'], 'full' );
-                    else :
-                        ?>
-
-                        <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/logo.png' ) ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>" width="64" height="64"/>
-
-                    <?php endif; ?>
-                </a>
-            </div>
-
+        <div class="grid-layout">
             <div id="primary-menu" class="primary-menu">
                 <?php
                 if ( has_nav_menu( 'primary' ) ) :
@@ -38,9 +25,14 @@ $logo = clinic_get_option( 'opt_general_logo' );
                 <?php endif; ?>
             </div>
 
-            <div class="search-box d-flex align-items-center">
-                <?php get_search_form() ?>
-            </div>
+            <?php if ( $link_chat ) : ?>
+                <div class="chat-box">
+                    <a class="chat-box__btn" href="<?php echo esc_url( $link_chat  ); ?>" target="_blank">
+                        <i class="icon-chat"></i>
+                        <span class="text-uppercase"><?php esc_html_e('Chat với bác sĩ', 'clinic'); ?></span>
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
