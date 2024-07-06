@@ -144,29 +144,16 @@
   .grid-layout {
     display: grid;
 
-    @media (min-width: 1600px) {
-      grid-template-columns: 42.3rem 1fr 16.6rem;
-    }
-
-    @media (min-width: 1366px) and (max-width: 1599px) {
-      grid-template-columns: 40rem 1fr 16.6rem;
-    }
-
-    @media (min-width: 1366px) {
-      grid-gap: 3.4rem;
-    }
-
-    @media (max-width: 1365px) {
-      grid-gap: 2.4rem;
-    }
-
-    @media (min-width: 1200px) and (max-width: 1365px) {
-      grid-template-columns: 36rem 1fr 16.6rem;
+    @media (min-width: 1200px) {
+      grid-column-gap: 4.6rem;
+      grid-template-columns: 28.5rem 1fr 26rem;
     }
 
     @media (min-width: 992px) and (max-width: 1199px) {
-      grid-template-columns: 30rem 1fr 16.6rem;
+      grid-column-gap: 2.4rem;
+      grid-template-columns: 25rem 1fr 20rem;
     }
+
 
     .logo {
       padding: .8rem 0;
@@ -188,8 +175,8 @@
             font-size: 2rem;
           }
 
-          @media (max-width: 992px) and (max-width: 1199px) {
-            font-size: 1.6rem;
+          @media (min-width: 992px) and (max-width: 1199px) {
+            font-size: 1.7rem;
           }
         }
       }

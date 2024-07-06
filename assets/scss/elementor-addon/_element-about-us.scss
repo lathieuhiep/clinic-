@@ -14,9 +14,13 @@
       }
 
       .dividing-line {
-        margin-bottom: 1.2rem;
+        line-height: .3rem;
         height: .3rem;
-        background-color: #FFAC4B;
+
+        &__box {
+          display: inline-block;
+          height: inherit;
+        }
       }
 
       .desc {

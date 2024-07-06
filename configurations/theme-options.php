@@ -78,6 +78,31 @@ if ( class_exists( 'CSF' ) ) {
 		)
 	) );
 
+    // Banner
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Banner', 'clinic' ),
+        'fields' => array(
+            // banner pc
+            array(
+                'id'      => 'opt_general_banner_pc',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Banner PC', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+
+            // banner mobile
+            array(
+                'id'      => 'opt_general_banner_mobile',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Banner Mobile', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+        )
+    ) );
+
     // Slider
     CSF::createSection( $clinic_prefix, array(
         'parent' => 'opt_general_section',

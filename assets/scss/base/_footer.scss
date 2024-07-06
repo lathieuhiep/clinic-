@@ -14,10 +14,6 @@
       }
 
       .open-hours-widget {
-        @media (min-width: 992px) {
-          padding: 0 3rem;
-        }
-
         &__warp {
           border-color: var(--color-white);
         }
@@ -33,7 +29,7 @@
 
   &__column {
     padding: 4rem 0 2rem;
-    background: linear-gradient(180deg, #6FC6D5 0, #086794 100%);
+    background: linear-gradient(180deg, #FF97BD 0, #ED256E 100%);
   }
 }
 
@@ -41,7 +37,7 @@
   padding: 1.8rem 0;
   text-align: start;
   border-top: .5rem solid #74FBB1;
-  background-color: #0C5376;
+  background-color: #D62866;
 
   .grid-layout {
     min-height: 6rem;
