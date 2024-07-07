@@ -3,6 +3,11 @@
 .single-post-warp {
   padding-top: 2.3rem;
   padding-bottom: 2.7rem;
+
+  .post-box {
+    padding: 1.2rem;
+    border: .3rem double #D8D8D8;
+  }
 }
 
 .single-post-content {
