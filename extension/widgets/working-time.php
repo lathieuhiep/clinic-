@@ -34,8 +34,11 @@ class clinic_working_time_widget extends WP_Widget {
                     <span class="time__box"><?php echo esc_html($instance['open_minute']); ?></span>
                 </div>
 
+                <div class="line"></div>
+
                 <div class="time">
                     <span class="time__box"><?php echo esc_html($instance['closed_hours']); ?></span>
+
                     <span class="time__box"><?php echo esc_html($instance['closed_minute']); ?></span>
                 </div>
             </div>

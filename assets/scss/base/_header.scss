@@ -143,19 +143,15 @@
     min-height: inherit;
 
     > ul {
-      gap: 2.4rem;
+      gap: 5rem;
 
       > li {
         min-height: inherit;
 
         > a {
-          @media (min-width: 1200px) {
-            font-size: 2rem;
-          }
-
-          @media (max-width: 992px) and (max-width: 1199px) {
-            font-size: 1.6rem;
-          }
+          font-size: 1.6rem;
+          color: var(--color-white);
+          font-weight: 700;
         }
       }
     }
@@ -195,7 +191,8 @@
           margin-left: .6rem;
           color: var(--color-white);
 
-          &:after {
+          i {
+            display: inline-block;
             @include transition();
           }
         }
@@ -203,7 +200,7 @@
         &.current-menu-item,
         &.current-menu-parent {
           > a {
-            color: var(--clinic-theme-primary-color);
+            color: var(--clinic-theme-fifth-color);;
           }
         }
 
@@ -272,7 +269,7 @@
           .sub-menu {
             display: block !important;
             min-width: 160px;
-            background-color: var(--clinic-theme-primary-color);
+            background-color: var(--clinic-theme-tertiary-color);
             position: absolute;
             top: 120%;
             left: 0;
@@ -297,7 +294,7 @@
 
               .sub-menu {
                 left: 90%;
-                top: -1px;
+                top: 0;
               }
 
               &:hover {
@@ -308,6 +305,16 @@
                 > .sub-menu-toggle {
                   &:after {
                     transform: rotate(-90deg);
+                  }
+                }
+              }
+
+              &.menu-item-has-children {
+                &:hover {
+                  .sub-menu-toggle {
+                    i {
+                      transform: rotate(-90deg);
+                    }
                   }
                 }
               }
@@ -400,6 +407,9 @@
   }
 
   .chat-box {
+    display: flex;
+    align-items: center;
+
     &__btn {
       padding: 1rem 2rem;
       min-width: 25.8rem;
@@ -416,30 +426,6 @@
 
       .icon-chat {
         font-size: 2.4rem
-      }
-    }
-  }
-}
-
-// max mega menu
-#mega-menu-wrap-primary {
-  min-height: inherit;
-
-  .mega-menu {
-    min-height: inherit;
-  }
-
-  #mega-menu-primary {
-    min-height: inherit;
-
-    > li {
-      &.mega-menu-item {
-        min-height: inherit;
-        line-height: 100%;
-
-        &:last-child {
-          margin-right: 0;
-        }
       }
     }
   }

@@ -14,6 +14,38 @@
       text-transform: uppercase;
     }
 
+    .f {
+      margin: 3rem 0 2rem;
+      padding: 1.2rem 2.4rem 1.2rem 12rem;
+      position: relative;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+      min-height: 6rem;
+      display: flex;
+      align-items: center;
+      border-radius: .5rem;
+      background-image: linear-gradient(to right, #019265, #2BB58B, #019265);
+
+      @media (min-width: 992px) {
+        font-size: 2rem;
+      }
+
+      @media (max-width: 991px) {
+        font-size: 1.8rem !important;
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        left: 1rem;
+        top: -2rem;
+        width: 10.5rem;
+        height: 7.6rem;
+        background: url("../../../images/icon-title-2.png") no-repeat center center;
+      }
+    }
+
     p, span, a, ul li, ul ol {
       @media (max-width: 767px) {
         word-spacing: 0.05rem;
@@ -142,10 +174,7 @@
 
 .single-contact-us {
   padding: 1.2rem 1.6rem;
-  background-image: url("../../../images/bk-support-single.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: var(--clinic-theme-secondary-color);
 
   .grid {
     display: grid;

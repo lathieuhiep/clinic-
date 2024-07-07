@@ -1,18 +1,24 @@
 @import "../variables-site/variables";
 
 @import "element-custom";
-@import "element-about-us";
-@import "element-gallery-grid-box";
-@import "element-box-image-content";
+@import "element-slider";
 @import "element-category-list";
-@import "element-doctor-slider";
-@import "element-title-number-list";
-@import "element-procedure";
-@import "element-testimonial-slider";
 @import "element-post-grid";
-@import "element-step-grid";
-@import "element-editor-list-number";
-@import "element-scheduling-form.scss";
+@import "element-cf7-vertical";
 @import "element-list-image-content";
-@import "element-cf7";
 @import "element-contact-us";
+@import "element-cf7";
+
+//@import "element-about-us";
+//@import "element-gallery-grid-box";
+//@import "element-box-image-content";
+
+//@import "element-doctor-slider";
+//@import "element-title-number-list";
+//@import "element-procedure";
+//@import "element-testimonial-slider";
+
+//@import "element-step-grid";
+//@import "element-editor-list-number";
+//@import "element-scheduling-form.scss";
+

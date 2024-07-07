@@ -8,23 +8,28 @@ if (!defined('ABSPATH')) exit;
 
 class Clinic_Elementor_Post_Grid extends Widget_Base
 {
-    public function get_categories(): array {
+    public function get_categories(): array
+    {
         return array('my-theme');
     }
 
-    public function get_name(): string {
+    public function get_name(): string
+    {
         return 'clinic-post-grid';
     }
 
-    public function get_title(): string {
+    public function get_title(): string
+    {
         return esc_html__('Posts Grid', 'clinic');
     }
 
-    public function get_icon(): string {
+    public function get_icon(): string
+    {
         return 'eicon-gallery-grid';
     }
 
-    protected function register_controls(): void {
+    protected function register_controls(): void
+    {
 
         // Content query
         $this->start_controls_section(
@@ -210,7 +215,8 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 
     }
 
-    protected function render(): void {
+    protected function render(): void
+    {
         $settings = $this->get_settings_for_display();
         $cat_post = $settings['select_cat'];
         $limit_post = $settings['limit'];
@@ -230,54 +236,89 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
         $query = new WP_Query($args);
 
         if ($query->have_posts()) :
-    ?>
-        <div class="element-post-grid">
-            <div class="element-post-grid__warp">
+            $i = 1;
+            $count_posts = $query->post_count;
+            ?>
+            <div class="element-post-grid">
                 <?php while ($query->have_posts()):
                     $query->the_post();
-                ?>
-                    <div class="item">
-                        <div class="item__thumbnail">
-                            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                <?php
-                                if (has_post_thumbnail()) :
-                                    the_post_thumbnail('large');
-                                else:
-                                ?>
-                                    <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>" alt="<?php the_title(); ?>"/>
-                                <?php endif; ?>
-                            </a>
-                        </div>
+                    ?>
+                    <?php if ($i == 1) : ?>
+                    <div class="top-box">
+                <?php endif; ?>
 
-                        <div class="item__box">
-                            <h3 class="title">
-                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h3>
+                    <?php
+                    if ($i <= 3) :
+                        $this->item_post($settings);
+                    endif;
+                    ?>
 
-                            <?php if ( $settings['show_excerpt'] == 'show' ) : ?>
-                                <div class="content">
-                                    <p>
-                                        <?php
-                                        if (has_excerpt()) :
-                                            echo esc_html(wp_trim_words(get_the_excerpt(), $settings['excerpt_length'], '...'));
-                                        else:
-                                            echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
-                                        endif;
-                                        ?>
-                                    </p>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                    <?php if ($i == 3 || ($count_posts < 3 && $count_posts == $i)) : ?>
                     </div>
-                <?php
+                <?php endif; ?>
+
+                    <?php if ($i == 4) : ?>
+                    <div class="under-box">
+                <?php endif; ?>
+
+                    <?php
+                    if ($i > 3) :
+                        $this->item_post($settings);
+                    endif;
+                    ?>
+
+                    <?php if ($i > 3 && $i == $count_posts) : ?>
+                    </div>
+                <?php endif; ?>
+                    <?php
+                    $i++;
                 endwhile;
                 wp_reset_postdata();
                 ?>
             </div>
-        </div>
-    <?php
+        <?php
         endif;
+    }
+
+    protected function item_post($settings): void
+    {
+        ?>
+        <div class="item">
+            <div class="item__thumbnail">
+                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                    <?php
+                    if (has_post_thumbnail()) :
+                        the_post_thumbnail('large');
+                    else:
+                        ?>
+                        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>"
+                             alt="<?php the_title(); ?>"/>
+                    <?php endif; ?>
+                </a>
+            </div>
+
+            <div class="item__box">
+                <h3 class="title">
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </h3>
+
+                <?php if ($settings['show_excerpt'] == 'show') : ?>
+                    <div class="content">
+                        <p>
+                            <?php
+                            if (has_excerpt()) :
+                                echo esc_html(get_the_excerpt());
+                            else:
+                                echo esc_html(wp_trim_words(get_the_content(), $settings['excerpt_length'], '...'));
+                            endif;
+                            ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php
     }
 }

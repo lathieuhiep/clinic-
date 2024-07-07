@@ -1,0 +1,26 @@
+.element-slider {
+  &__warp {
+    position: relative;
+
+    .owl-dots {
+      margin: 0;
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.2rem;
+      right: 1.2rem;
+
+      .owl-dot {
+        span {
+          @include square(.8rem);
+          background-color: rgba(0,0,0,0.2);
+        }
+
+        &.active {
+          span {
+            background-color: #000000;
+          }
+        }
+      }
+    }
+  }
+}

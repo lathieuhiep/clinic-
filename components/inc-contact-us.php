@@ -13,7 +13,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
                     <a class="link" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>"></a>
 
                     <div class="item__icon">
-                        <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/ho-tro/goi-dien.png') ) ?>" alt="">
+                        <i class="icon-phone-light"></i>
                     </div>
 
                     <div class="item__content">
@@ -28,12 +28,12 @@ $link_chat = clinic_get_opt_link_chat_doctor();
                     <a class="link" href="<?php echo esc_url( $chat_messenger ); ?>" target="_blank"></a>
 
                     <div class="item__icon">
-                        <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/ho-tro/tro-chuyen.png') ) ?>" alt="">
+                        <i class="icon-facebook-messenger"></i>
                     </div>
 
                     <div class="item__content">
                         <span class="txt-top"><?php esc_html_e('TƯ VẤN', 'clinic'); ?></span>
-                        <span class="txt-sub"><?php esc_html_e('CHAT CÙNG BÁC SĨ', 'clinic'); ?></span>
+                        <span class="txt-sub"><?php esc_html_e('MESSENGER', 'clinic'); ?></span>
                     </div>
                 </div>
             <?php endif; ?>
@@ -43,7 +43,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
                     <a class="link" href="<?php echo esc_url( $link_chat ); ?>" target="_blank"></a>
 
                     <div class="item__icon">
-                        <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/ho-tro/tro-chuyen.png') ) ?>" alt="">
+                        <i class="icon-chat-light"></i>
                     </div>
 
                     <div class="item__content">
@@ -58,7 +58,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
                     <a class="link" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form"></a>
 
                     <div class="item__icon">
-                        <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/ho-tro/dat-lich.png') ) ?>" alt="">
+                        <i class="icon-calendar"></i>
                     </div>
 
                     <div class="item__content">

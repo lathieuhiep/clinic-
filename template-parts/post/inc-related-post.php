@@ -37,7 +37,14 @@ if ( !empty( $term_ids ) ):
                         <div class="related-post-item">
                             <?php if (has_post_thumbnail()) : ?>
                                 <figure class="post-image mb-2">
-                                    <?php the_post_thumbnail('large'); ?>
+                                    <?php
+                                    if (has_post_thumbnail()) :
+                                        the_post_thumbnail('large');
+                                    else:
+                                        ?>
+                                        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/no-image.png')) ?>"
+                                             alt="<?php the_title(); ?>"/>
+                                    <?php endif; ?>
                                 </figure>
                             <?php endif; ?>
 

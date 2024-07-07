@@ -10,7 +10,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
                 if ( has_nav_menu( 'primary' ) ) :
                     wp_nav_menu( array(
                         'theme_location' => 'primary',
-                        'menu_class' => 'd-lg-flex reset-list justify-content-around',
+                        'menu_class' => 'd-lg-flex reset-list',
                         'container' => false,
                     ) );
                 else:

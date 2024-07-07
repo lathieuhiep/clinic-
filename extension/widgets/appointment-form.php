@@ -25,39 +25,20 @@ class clinic_appointment_form_widget extends WP_Widget {
      * @param array $instance
      */
     function widget( $args, $instance ): void {
-        $qrCodeZalo = clinic_get_opt_chat_qr_code_zalo();
-
         echo $args['before_widget'];
-        ?>
-        <div class="image-box">
-            <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/dang-ki-nhan-tu-van.png' ) ) ?>" alt="">
-        </div>
-        <?php
-        if ( ! empty( $instance['title'] ) ) {
-            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-        }
         ?>
         <div class="widget-warp">
             <?php
+            if ( ! empty( $instance['title'] ) ):
+                echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+            endif;
+
             if ( $instance['select_form'] ) :
                 echo do_shortcode( '[contact-form-7 id="' . $instance['select_form'] . '" ]' );
             endif;
             ?>
-
-            <?php if ( !empty( $qrCodeZalo ) ) : ?>
-                <div class="qr-code">
-                    <p class="note-text m-0">
-                        <strong><?php esc_html_e('Quét mã QR', 'clinic'); ?></strong> <?php esc_html_e('bên cạnh để nhanh chóng nhận tư vấn qua Zalo', 'clinic'); ?>
-                    </p>
-
-                    <div class="image-box">
-                        <?php echo wp_get_attachment_image($qrCodeZalo['id'], 'large'); ?>
-                    </div>
-                </div>
-            <?php endif; ?>
         </div>
         <?php
-
         echo $args['after_widget'];
     }
 

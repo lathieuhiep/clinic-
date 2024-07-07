@@ -63,13 +63,14 @@ class Clinic_Elementor_Slider extends Widget_Base {
         $gallery_ids = clinic_get_general_slider();
 
 	    $owl_options = [
-		    'items' => 1
+		    'items' => 1,
+            'autoHeight' => true
 	    ];
     ?>
 
         <div class="element-slider">
             <?php if ( !empty( $gallery_ids ) ) : ?>
-                <div class="element-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+                <div class="element-slider__warp owl-carousel" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
                     <?php foreach ( $gallery_ids as $gallery_item_id ): ?>
                         <div class="item">
                             <?php echo wp_get_attachment_image( $gallery_item_id, 'full' ); ?>
