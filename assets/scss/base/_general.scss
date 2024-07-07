@@ -299,6 +299,23 @@ pre {
   bottom: 2rem !important;
 }
 
+#us_chat_content {
+  #fixed_chat {
+    top: auto;
+    bottom: 9.5rem;
+  }
+
+  .yuanquan {
+    top: auto;
+    right: 1.6rem;
+    bottom: 10rem;
+    @include square(5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 /* owl carousel navigation */
 .owl-carousel {
   .owl-nav {
