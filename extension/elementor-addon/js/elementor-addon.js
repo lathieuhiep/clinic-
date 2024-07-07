@@ -67,16 +67,20 @@
                 const options = {
                     dots: false,
                     nav: true,
-                    margin: 24,
+                    margin: 25,
+                    stagePadding: 20,
                     responsive:{
                         0: {
                             items: 1,
                         },
-                        678: {
+                        480: {
                             items: 2,
                         },
-                        1024: {
+                        768: {
                             items: 3,
+                        },
+                        1024: {
+                            items: 4,
                         }
                     }
                 }

@@ -200,6 +200,16 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
             ]
         );
 
+        // item options
+        $repeater->add_control(
+            'list_item_options',
+            [
+                'label' => esc_html__( 'Thiết lập thành phần', 'textdomain' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $repeater->add_control(
             'list_item_background_color', [
                 'label' => esc_html__( 'Màu nền', 'clinic' ),
@@ -211,12 +221,52 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
         );
 
         $repeater->add_control(
+            'list_item_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}}.item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // item title options
+        $repeater->add_control(
+            'list_item_title_options',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'textdomain' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $repeater->add_control(
             'list_title_color', [
                 'label' => esc_html__( 'Màu tiêu đề', 'clinic' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}} .item__body .title' => 'color: {{VALUE}}',
                 ],
+            ]
+        );
+
+        // item title options
+        $repeater->add_control(
+            'list_item_content_options',
+            [
+                'label' => esc_html__( 'Nội dung', 'textdomain' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
