@@ -1,22 +1,67 @@
 .element-testimonial-slider {
   .item {
-    padding: 1.5rem;
+    margin: 0 .2rem 0;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    border: .1rem solid #D32664;
+    border-radius: 1rem;
+    box-shadow: 0 .4rem .4rem 0 rgba(0,0,0,0.25);
     background-color: var(--color-white);
+    @include transition();
 
-    .avatar {
-      margin-bottom: 2rem;
+    .top-box {
+      position: relative;
+      margin-bottom: 3rem;
+      display: grid;
+      grid-gap: 2rem;
+      grid-template-columns: 8rem 1fr;
+      align-items: center;
+
+      &:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        bottom: 0;
+        width: calc(100% - 10rem);
+        height: .1rem;
+        background-color: var(--clinic-theme-primary-color);
+      }
     }
 
-    .meta {
-      margin-bottom: 2rem;
+    .thumbnail {
+      @include square(8rem, 50%);
+      border: .1rem solid var(--clinic-theme-primary-color);
+      background-color: var(--color-white);
+      @include flex-center();
 
-      .name {
-        margin-bottom: .5rem;
+      img {
+        @include square(6.8rem, 50%);
+        object-fit: cover;
       }
+    }
 
-      .info {
-        color: #FA5E1B;
-      }
+    .name {
+      margin-bottom: .4rem;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #000000;
+      @include transition();
+    }
+
+    .info {
+      font-weight: 700;
+      font-family: var(--heading-font-family);
+      color: var(--color-salem);
+      @include transition();
+    }
+
+    .desc {}
+  }
+
+  .owl-carousel {
+    .owl-stage-outer {
+      padding-bottom: .5rem;
     }
   }
 }

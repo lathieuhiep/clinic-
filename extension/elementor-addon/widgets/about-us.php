@@ -1,7 +1,10 @@
 <?php
 
 use Elementor\Controls_Manager;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Utils;
 use Elementor\Widget_Base;
@@ -901,6 +904,191 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .element-about-us__warp .item .desc' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // style action options
+        $this->start_controls_section(
+            'style_action_section',
+            [
+                'label' => esc_html__( 'Nhóm nút', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'action_box_horizontal_position',
+            [
+                'label' => esc_html__( 'Căn chỉnh nội dung', 'clinic' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'start' => [
+                        'title' => esc_html__( 'Bắt đầu', 'clinic' ),
+                        'icon' => 'eicon-justify-start-h',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Giữa', 'clinic' ),
+                        'icon' => 'eicon-justify-center-h',
+                    ],
+                    'end' => [
+                        'title' => esc_html__( 'Kết thúc', 'clinic' ),
+                        'icon' => 'eicon-justify-end-h',
+                    ],
+                ],
+                'default' => '',
+                'toggle' => true,
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .action-box' => 'justify-content: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'action_btn_padding',
+            [
+                'label' => esc_html__( 'Padding', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .action-box a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'action_btn_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-about-us__warp .item .action-box a',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'action_btn_border',
+                'selector' => '{{WRAPPER}} .element-about-us__warp .item .action-box a',
+            ]
+        );
+
+        $this->add_control(
+            'action_btn_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .action-box a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'action_btn_box_shadow',
+                'selector' => '{{WRAPPER}} .element-about-us__warp .item .action-box a',
+            ]
+        );
+
+        // button booking options
+        $this->add_control(
+            'btn_booking_options',
+            [
+                'label' => esc_html__( 'Nút đặt lịch', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'btn_booking_color',
+            [
+                'label' => esc_html__( 'Màu chữ', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .action-box__booking' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'btn_booking_background',
+                'types' => [ 'classic', 'gradient' ],
+                'exclude' => [ 'image' ],
+                'selector' => '{{WRAPPER}} .element-about-us__warp .item .action-box__booking',
+                'fields_options' => [
+                    'background' => [
+                        'default' => 'classic',
+                    ],
+                    'color' => [
+                        'global' => [
+                            'default' => Global_Colors::COLOR_ACCENT,
+                        ],
+                    ],
+                ]
+            ]
+        );
+
+        // button chat options
+        $this->add_control(
+            'btn_chat_options',
+            [
+                'label' => esc_html__( 'Nút trò chuyện', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'btn_chat_color',
+            [
+                'label' => esc_html__( 'Màu chữ', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-about-us__warp .item .action-box__chat' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'btn_chat_background',
+                'types' => [ 'classic', 'gradient' ],
+                'exclude' => [ 'image' ],
+                'selector' => '{{WRAPPER}} .element-about-us__warp .item .action-box__chat',
+                'fields_options' => [
+                    'background' => [
+                        'default' => 'classic',
+                    ],
+                    'color' => [
+                        'global' => [
+                            'default' => Global_Colors::COLOR_ACCENT,
+                        ],
+                    ],
+                ]
             ]
         );
 
