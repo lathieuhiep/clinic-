@@ -10,10 +10,6 @@
   font-size: 1.6rem;
 
   &__detail {
-    h2 {
-      text-transform: uppercase;
-    }
-
     p, span, a, ul li, ul ol {
       @media (max-width: 767px) {
         word-spacing: 0.05rem;

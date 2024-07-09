@@ -171,30 +171,17 @@ section {
       }
     }
 
-    &.social-widget {
-      .txt {
-        margin-right: .6rem;
-        font-size: 1.6rem;
-      }
-
-      .social-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: inline-flex;
-        gap: 1rem .6rem;
-
-        li {
-          margin: 0;
-          flex: 0 0 auto;
-        }
-      }
+    .social-network-item {
+      margin-bottom: 10px;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 50%;
     }
 
     .recent-post-widget {
       &__list {
-        border: 1px solid #3884a9;
-
         .post {
           margin-bottom: 1.2rem;
           display: grid;
@@ -298,20 +285,8 @@ section {
     }
 
     &.working-time-widget {
-      padding: 1.6rem;
-      background: var(--clinic-theme-sixth-color);
-
-      .widget-title {
-        margin-bottom: 1.4rem;
-        padding: 0;
-        color: #F30000;
-        border-radius: 0;
-        background: transparent;
-      }
-
       .widget-warp {
-        padding: 0;
-        border: 0;
+        background: linear-gradient(180deg, #97CACA 0, #22B1B1 100%);
 
         .work-box {
           display: flex;
@@ -322,7 +297,7 @@ section {
           .time {
             position: relative;
             display: flex;
-            gap: .2rem;
+            gap: .7rem;
             align-items: center;
             justify-content: center;
 
@@ -359,10 +334,9 @@ section {
             }
 
             &__box {
-              padding: 0 .5rem;
+              padding: .6rem .9rem;
               text-align: center;
-              font-weight: 700;
-              font-family: "Rozha One", serif;
+              font-weight: 500;
               border-radius: .6rem;
               background-color: var(--color-white);
 
@@ -370,18 +344,68 @@ section {
                 font-size: 3rem;
               }
 
-              @media (min-width: 992px) and (max-width: 1199px) {
+              @media (min-width: 768px) and (max-width: 1199px) {
                 font-size: 2rem;
-              }
-
-              @media (min-width: 768px) and (max-width: 991px) {
-                font-size: 2.2rem;
               }
 
               @media (max-width: 767px) {
                 font-size: 2.4rem;
               }
             }
+          }
+        }
+
+        .note {
+          color: var(--color-white);
+        }
+      }
+    }
+
+    &.support-widget {
+      border: 0;
+
+      .warp {
+        padding: 0;
+
+        .item {
+          border-radius: .5rem;
+
+          ~ .item {
+            margin-top: .8rem;
+          }
+
+          a {
+            padding: 1.1rem 3rem;
+            display: grid;
+            grid-gap: 1.2rem;
+            color: var(--color-white);
+            grid-template-columns: 3rem 1fr;
+            align-items: center;
+
+            .icon {
+              font-size: 3rem;
+              text-align: center;
+            }
+
+            span {
+              font-weight: 700;
+            }
+          }
+
+          &.link-chat {
+            background-color: #61AA89;
+          }
+
+          &.hotline {
+            background-color: #DB724B;
+          }
+
+          &.contact {
+            background-color: #D76E74;
+          }
+
+          &.link-map {
+            background-color: #2864A8;
           }
         }
       }
@@ -395,6 +419,7 @@ section {
   }
 
   .widget {
+    border: 1px solid var(--clinic-theme-primary-color);
     background: #FFF;
 
     .widget-title {
@@ -403,25 +428,12 @@ section {
       text-align: center;
       text-transform: uppercase;
       color: var(--color-white);
-      background: rgba(56, 132, 169, 1);
+      background: var(--clinic-theme-primary-color);
     }
 
     > div,
     > ul {
-      padding: 2.4rem 2.2rem;
-    }
-
-    .widget-warp {
-      overflow: hidden;
-      border-top-width: 0;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;
-      box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.25);
-      background-image: url("../images/bk-widget-warp.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-color: #ffffff;
+      padding: 1.1rem .9rem 1.4rem;
     }
 
     &.widget_media_image {
@@ -438,87 +450,59 @@ section {
     }
 
     &.appointment-form-widget {
-      .image-box {
-        text-align: center;
-      }
-
-      .widget-warp {
-        &:has(.qr-code) {
-          padding: 0;
-
-          .wpcf7 {
-            padding: 2.4rem 2.2rem;
-          }
-        }
-      }
-
       .wpcf7-form {
         p {
           ~ p {
-            margin-top: 1.1rem;
+            margin-top: 1.2rem;
           }
 
           &:has(.wpcf7-submit) {
+            margin-top: 1.7rem;
             text-align: center;
           }
         }
 
         .wpcf7-form-control-wrap {
-          input, textarea {
-            min-height: 4rem;
-            color: #000000;
+          .wpcf7-form-control {
             font-size: 1.6rem;
-            font-style: italic;
-            font-family: var(--heading-font-family);
-            border: 1px solid #2E7A7A;
-            background-color: #EAF1F1;
+            font-family: var(--body-font-family);
 
             &::placeholder {
-              color: #000000;
+              color: #000;
+            }
+
+            &::-ms-input-placeholder {
+              color: #000;
             }
           }
 
+          input, textarea {
+            min-height: 3.5rem;
+            font-family: var(--heading-font-family);
+            border: 1px solid #2E7A7A;
+            border-radius: .5rem;
+            background-color: #EAF1F1;
+          }
+
+          input {
+            min-height: 4rem;
+          }
+
           textarea {
-            min-height: 14.8rem;
+            height: 14.8rem;
           }
         }
 
         .wpcf7-submit {
-          padding: 1.4rem .9rem;
-          min-width: 20.8rem;
-          font-weight: 700;
-          font-size: 1.8rem;
+          padding: 1rem 2.4rem;
+          min-width: 12.3rem;
+          font-weight: 900;
+          font-size: 1.4rem;
           line-height: 1.6rem;
           text-transform: uppercase;
           border: none;
           border-radius: .5rem;
-          background: #E6171F;
-        }
-      }
-
-      .qr-code {
-        padding: 1.2rem;
-        display: grid;
-        grid-gap: 2.4rem;
-        align-items: center;
-        grid-template-columns: minmax(auto, 1fr) 10rem;
-        background-color: rgba(56, 132, 169, 1);
-
-        .note-text {
-          line-height: 1.2;
-          color: var(--color-white);
-
-          @media (min-width: 992px) {
-            font-size: 1.8rem;
-          }
-
-          @media (min-width: 768px) and (max-width: 991px) {
-            font-size: 1.6rem;
-          }
-
-          strong {
-            color: #FAFF00;
-          }
+          background-color: var(--clinic-theme-primary-color);
         }
       }
     }
@@ -527,60 +511,30 @@ section {
       background: #F7F7F7;
 
       .widget-title {
-        font-weight: 500;
-        line-height: 1.2;
-
-        @media (min-width: 1200px) {
-          font-size: 2.9rem;
-        }
-
-        @media (max-width: 1199px) {
-          font-size: 1.8rem;
-        }
+        border-bottom: 1px solid var(--color-white);
       }
 
       .widget-warp {
-        @media (min-width: 1200px) {
-          padding: 1.4rem 3rem;
-        }
-
-        @media (max-width: 1199px) {
-          padding: 1.4rem 1.6rem;
-        }
+        padding: 0;
 
         > li {
           margin: 0;
-          padding: 0;
+          padding: 0 .8rem;
 
           > a {
-            position: relative;
-            padding: 1.4rem 1.6rem 1rem 3.4rem;
-            border-radius: 5rem;
-            background-color: #ECECEC;
-            border: 1px solid rgba(0, 0, 0, 1);
-
-            &:before {
-              position: absolute;
-              content: "";
-              top: 50%;
-              left: 1rem;
-              @include square(1.6rem, 50%);
-              background-color: rgba(0, 160, 17, 1);
-              transform: translateY(-50%);
-            }
-
-            &.current-cate {
-              border-color: rgba(187, 243, 233, 1);
-              background-color: rgba(187, 243, 233, 1);
-
-              &:before {
-                background-color: rgba(250, 94, 27, 1);
-              }
-            }
+            padding: .8rem 0;
+            font-size: 1.6rem;
+            font-weight: 700;
           }
 
           ~ li {
-            margin-top: .7rem;
+            > a {
+              border-top: 1px dashed var(--clinic-theme-primary-color);
+            }
+          }
+
+          > ul {
+            border-top: 1px dashed var(--clinic-theme-primary-color);
           }
         }
 
@@ -591,8 +545,8 @@ section {
             position: relative;
             z-index: 1;
             color: #000;
-            font-size: 1.6rem;
-            font-weight: 500;
+            font-size: 1.5rem;
+            font-weight: 400;
 
             &:hover {
               color: var(--clinic-theme-primary-color);
@@ -611,13 +565,18 @@ section {
 
                 > a {
                   position: relative;
-                  padding-left: 2rem;
-                  font-size: 1.6rem;
+                  padding-left: 1.6rem;
+                  font-size: 1.4rem;
                   line-height: 3rem;
-                  color: #636363;
 
-                  &:hover {
-                    color: var(--clinic-theme-primary-color);
+                  &:before {
+                    position: absolute;
+                    content: "";
+                    top: 50%;
+                    left: 0;
+                    @include square(.5rem, 50%);
+                    background-color: #000;
+                    transform: translateY(-50%);
                   }
                 }
 
@@ -630,16 +589,9 @@ section {
 
           .icon-has-child-cate {
             position: absolute;
-            top: 1.6rem;
+            top: .8rem;
             right: 1.2rem;
-            z-index: 1;
-            cursor: pointer;
-            @include square(1.6rem);
             @include transition();
-
-            &:hover {
-              color: var(--clinic-theme-primary-color);
-            }
 
             svg {
               path {
@@ -653,12 +605,6 @@ section {
               ~ .icon-has-child-cate {
                 transform: rotate(180deg);
               }
-            }
-          }
-
-          &:has(.icon-has-child-cate) {
-            a {
-              padding-right: 3.2rem;
             }
           }
         }
