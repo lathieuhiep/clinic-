@@ -429,6 +429,9 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 'type'        => Controls_Manager::TEXT,
                 'default'     => esc_html__('Đặt lịch ngay', 'clinic'),
                 'label_block' => true,
+                'condition' => [
+                    'show_booking' => 'show',
+                ],
             ]
         );
 
@@ -468,6 +471,9 @@ class Clinic_Elementor_About_Us extends Widget_Base
                 'type'        => Controls_Manager::TEXT,
                 'default'     => esc_html__('Gặp bác sĩ', 'clinic'),
                 'label_block' => true,
+                'condition' => [
+                    'show_chat' => 'show',
+                ],
             ]
         );
 
@@ -918,6 +924,18 @@ class Clinic_Elementor_About_Us extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'action_btn_order',
+            [
+                'label' => esc_html__( 'Đảo vị trí', 'clinic' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Có', 'clinic' ),
+                'label_off' => esc_html__( 'Không', 'clinic' ),
+                'return_value' => 'yes',
+                'default' => 'no',
+            ]
+        );
+
         $this->add_responsive_control(
             'action_box_horizontal_position',
             [
@@ -1010,13 +1028,17 @@ class Clinic_Elementor_About_Us extends Widget_Base
             ]
         );
 
+        $this->end_controls_section();
+
         // button booking options
-        $this->add_control(
-            'btn_booking_options',
+        $this->start_controls_section(
+            'style_btn_booking_section',
             [
                 'label' => esc_html__( 'Nút đặt lịch', 'clinic' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_booking' => 'show',
+                ],
             ]
         );
 
@@ -1051,13 +1073,17 @@ class Clinic_Elementor_About_Us extends Widget_Base
             ]
         );
 
+        $this->end_controls_section();
+
         // button chat options
-        $this->add_control(
-            'btn_chat_options',
+        $this->start_controls_section(
+            'style_btn_chat_section',
             [
                 'label' => esc_html__( 'Nút trò chuyện', 'clinic' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_chat' => 'show',
+                ],
             ]
         );
 
@@ -1144,7 +1170,7 @@ class Clinic_Elementor_About_Us extends Widget_Base
                     <?php if ( $settings['show_booking'] == 'show' || $settings['show_chat'] == 'show' ) : ?>
                         <div class="action-box d-flex">
                             <?php if ( $settings['show_booking'] == 'show' && $medical_appointment_form ) : ?>
-                                <a class="action-box__booking text-uppercase" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                                <a class="action-box__booking text-uppercase<?php echo esc_attr( $settings['action_btn_order'] ? ' order-2' : '' ) ?>" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
                                     <?php echo esc_html( $settings['txt_booking'] ) ?>
                                 </a>
                             <?php endif; ?>

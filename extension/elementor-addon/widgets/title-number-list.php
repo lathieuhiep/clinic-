@@ -351,7 +351,7 @@ class Clinic_Elementor_Title_Number_List extends Widget_Base
     protected function render(): void
     {
         $settings = $this->get_settings_for_display();
-    ?>
+        ?>
         <div class="element-title-number-list">
             <?php if ( $settings['list'] ) : ?>
                 <div class="element-title-number-list__warp">
@@ -381,6 +381,6 @@ class Clinic_Elementor_Title_Number_List extends Widget_Base
                 </div>
             <?php endif; ?>
         </div>
-    <?php
+        <?php
     }
 }
