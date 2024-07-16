@@ -51,7 +51,7 @@
 
         .content-box {
           strong, a {
-            color: var(--clinic-theme-quaternary-color);
+            color: var(--clinic-theme-primary-color);
           }
 
           .link {
@@ -450,19 +450,9 @@
         border-radius: 0;
         background: transparent;
 
-        &:before {
-          position: absolute;
-          content: "\e913";
-          top: 50%;
-          left: 50%;
-          color: var(--clinic-theme-tertiary-color);
-          font-size: 2rem;
-          font-family: "icomoon", serif;
-          transform: translate(-50%, -50%);
-        }
-
-        .search-reader-text {
-          font-size: 0;
+        i {
+          color: #000000;
+          font-size: 1.6rem;
         }
       }
     }

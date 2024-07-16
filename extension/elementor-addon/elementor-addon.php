@@ -23,6 +23,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-us.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/category-list.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-and-content.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/safety-principles.php' );
@@ -40,6 +41,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     // register add on
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_About_Us() );
+    $widgets_manager->register( new \Clinic_Elementor_Category_List() );
     $widgets_manager->register( new \Clinic_Elementor_Heading_And_Content() );
     $widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Safety_Principles() );
