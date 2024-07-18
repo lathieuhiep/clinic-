@@ -24,93 +24,78 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-check-circle:before {
-  content: "\e91d";
+.icon-quote-left:before {
+  content: "\e919";
+}
+.icon-star:before {
+  content: "\e918";
 }
 .icon-hours-support:before {
   content: "\e900";
 }
 .icon-angle-left:before {
   content: "\e901";
+  color: #09244b;
 }
 .icon-angle-right:before {
   content: "\e902";
+  color: #09244b;
 }
 .icon-calendar:before {
   content: "\e903";
 }
-.icon-caret-down:before {
+.icon-chat:before {
   content: "\e904";
 }
-.icon-caret-up:before {
+.icon-chat-light:before {
   content: "\e905";
 }
-.icon-chat:before {
-  content: "\e906";
-}
-.icon-chat-light:before {
+.icon-clock:before {
   content: "\e907";
 }
-.icon-chevron-down-light:before {
+.icon-close:before {
   content: "\e908";
 }
-.icon-chevron-up-light:before {
+.icon-envelope:before {
   content: "\e909";
 }
-.icon-clock:before {
+.icon-facebook:before {
   content: "\e90a";
 }
-.icon-clock-rotate-right:before {
+.icon-facebook-messenger:before {
   content: "\e90b";
 }
-.icon-close:before {
+.icon-facebook-messenger-circle:before {
   content: "\e90c";
 }
-.icon-envelope:before {
+.icon-globe:before {
   content: "\e90d";
 }
-.icon-facebook:before {
+.icon-hose:before {
   content: "\e90e";
 }
-.icon-facebook-messenger:before {
+.icon-house-light:before {
   content: "\e90f";
 }
-.icon-facebook-messenger-circle:before {
+.icon-location:before {
   content: "\e910";
 }
-.icon-globe:before {
-  content: "\e911";
-}
-.icon-hose:before {
+.icon-menu:before {
   content: "\e912";
 }
-.icon-house-light:before {
+.icon-phone:before {
   content: "\e913";
 }
-.icon-location:before {
+.icon-phone-circle:before {
   content: "\e914";
 }
-.icon-menu:before {
-  content: "\e915";
-}
-.icon-phone:before {
-  content: "\e916";
-}
-.icon-phone-circle:before {
-  content: "\e917";
-}
-.icon-phone-light:before {
-  content: "\e918";
-}
-.icon-quote-left:before {
-  content: "\e919";
-}
 .icon-search:before {
-  content: "\e91a";
+  content: "\e915";
+  color: #4c505b;
 }
 .icon-send:before {
-  content: "\e91b";
+  content: "\e916";
 }
-.icon-star:before {
-  content: "\e91c";
+.icon-sort-down:before {
+  content: "\e917";
 }
