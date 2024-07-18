@@ -87,6 +87,19 @@ if ( class_exists( 'CSF' ) ) {
 		)
 	) );
 
+    // Banner top
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_general_section',
+        'title'  => esc_html__( 'Banner Top', 'clinic' ),
+        'fields' => array(
+            array(
+                'id'    => 'opt_general_banner_top',
+                'type'  => 'media',
+                'title' => esc_html__( 'Banner Top ( hiển thị trên mobile )', 'clinic' ),
+            ),
+        )
+    ) );
+
     // Slider
     CSF::createSection( $clinic_prefix, array(
         'parent' => 'opt_general_section',

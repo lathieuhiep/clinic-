@@ -1,9 +1,16 @@
 <?php
+$banner_top = clinic_get_option( 'opt_general_banner_top' );
 $logo_mobile = clinic_get_option( 'opt_general_logo_mobile' );
 $hotline = clinic_get_opt_hotline();
 ?>
 <div class="top-nav-mobile d-lg-none">
     <div class="container h-100">
+        <?php if ( $banner_top ) : ?>
+        <div class="banner-top">
+            <?php echo wp_get_attachment_image( $banner_top['id'], 'full' ); ?>
+        </div>
+        <?php endif; ?>
+
         <div class="grid-warp h-100">
             <div class="item hamburger">
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
