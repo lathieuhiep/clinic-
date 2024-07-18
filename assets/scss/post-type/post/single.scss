@@ -86,12 +86,24 @@
           font-size: 1.8rem;
         }
 
+        span {
+          display: inline-block;
+        }
+
         &.phone {
           background-color: var(--clinic-theme-quaternary-color);
+
+          span {
+            animation: colorChange1 0.4s infinite alternate;
+          }
         }
 
         &.link {
           background-color: #2e8f56;
+
+          span {
+            animation: colorChange2 0.4s infinite alternate;
+          }
         }
       }
     }
@@ -345,5 +357,23 @@
       font-weight: 400;
       line-height: 2rem;
     }
+  }
+}
+
+@keyframes colorChange1 {
+  0% {
+    color: white;
+  }
+  100% {
+    color: yellow;
+  }
+}
+
+@keyframes colorChange2 {
+  0% {
+    color: yellow;
+  }
+  100% {
+    color: white;
   }
 }
