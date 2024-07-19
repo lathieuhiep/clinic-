@@ -580,21 +580,62 @@ if ( class_exists( 'CSF' ) ) {
         )
     ) );
 
-	// add javascript
-	CSF::createSection( $clinic_prefix, array(
-		'parent' => 'opt_footer_section',
-		'title'  => esc_html__( 'Thêm mã javascript', 'clinic' ),
-		'fields' => array(
-			array(
-				'id'       => 'opt_footer_add_javascript',
-				'type'     => 'code_editor',
-				'title'    => esc_html__('Code', 'clinic'),
-				'sanitize' => false,
-				'settings' => array(
-					'theme'  => 'monokai',
-					'mode'   => 'javascript',
-				),
-			),
-		)
-	) );
+    //
+    // -> Create a section add code
+    CSF::createSection( $clinic_prefix, array(
+        'id'    => 'opt_add_code_section',
+        'icon'  => 'fas fa-stream',
+        'title' => esc_html__( 'Thêm code', 'newshealth' ),
+    ) );
+
+    // add code header
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_add_code_section',
+        'title'  => esc_html__( 'Thêm vào header', 'newshealth' ),
+        'fields' => array(
+            array(
+                'id'       => 'opt_add_code_header',
+                'type'     => 'code_editor',
+                'title'    => esc_html__('Header', 'newshealth'),
+                'sanitize' => false,
+                'settings' => array(
+                    'theme'  => 'monokai'
+                ),
+            ),
+        )
+    ) );
+
+    // add code body
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_add_code_section',
+        'title'  => esc_html__( 'Thêm vào body', 'newshealth' ),
+        'fields' => array(
+            array(
+                'id'       => 'opt_add_code_body',
+                'type'     => 'code_editor',
+                'title'    => esc_html__('Body', 'newshealth'),
+                'sanitize' => false,
+                'settings' => array(
+                    'theme'  => 'monokai'
+                ),
+            ),
+        )
+    ) );
+
+    // add code footer
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_add_code_section',
+        'title'  => esc_html__( 'Thêm vào footer', 'newshealth' ),
+        'fields' => array(
+            array(
+                'id'       => 'opt_add_code_footer',
+                'type'     => 'code_editor',
+                'title'    => esc_html__('Footer', 'newshealth'),
+                'sanitize' => false,
+                'settings' => array(
+                    'theme'  => 'monokai'
+                ),
+            ),
+        )
+    ) );
 }
