@@ -17,30 +17,6 @@ function clinic_title_has_icon ($args): false|string {
 	return $content;
 }
 
-/*
- * short code image overlay
- * */
-
-// Add button to the editor
-add_action('media_buttons', 'clinic_button_add_image_overlay');
-function clinic_button_add_image_overlay(): void {
-	echo '<a href="#" id="btn-add-image-overlay" class="button">'. esc_html__('Thêm Ảnh Làm Mờ', 'clinic') .'</a>';
-}
-
-// shortcode image overlay
-add_shortcode('image_overlay', 'clinic_image_overlay_shortcode');
-function clinic_image_overlay_shortcode ($args): false|string {
-	ob_start();
-?>
-    <div class="image-overlay-box">
-        <!-- Your image editor content goes here -->
-    </div>
-<?php
-	$content = ob_get_contents();
-	ob_end_clean();
-	return $content;
-}
-
 // short code contact us
 add_shortcode('single_contact_us' , 'clinic_shortcode_contactus');
 function clinic_shortcode_contactus(): bool|string {
@@ -51,4 +27,26 @@ function clinic_shortcode_contactus(): bool|string {
 	$content = ob_get_contents();
 	ob_end_clean();
 	return $content;
+}
+
+// Hook to add buttons to TinyMCE
+add_action('admin_init', 'clinic_custom_tinymce_buttons');
+
+function clinic_custom_tinymce_buttons(): void
+{
+    add_filter("mce_external_plugins", "clinic_add_tinymce_plugins");
+    add_filter('mce_buttons', 'clinic_register_tinymce_buttons');
+}
+
+function clinic_add_tinymce_plugins($plugin_array) {
+    $plugin_array['custom_button_title'] = get_theme_file_uri( '/assets/admin/admin.js' );
+    $plugin_array['custom_button_contact'] = get_theme_file_uri( '/assets/admin/admin.js' );
+    return $plugin_array;
+}
+
+function clinic_register_tinymce_buttons($buttons) {
+    $buttons[] = "custom_button_title";
+    $buttons[] = "custom_button_contact";
+
+    return $buttons;
 }
