@@ -145,6 +145,16 @@ function clinic_add_code_header(): void {
     }
 }
 
+// add code body
+add_action('wp_body_open', 'clinic_add_code_body');
+function clinic_add_code_body(): void {
+    $add_code = clinic_get_option( 'opt_add_code_body' );
+
+    if ( $add_code ) {
+        echo $add_code;
+    }
+}
+
 // add code footer
 add_action('wp_footer', 'clinic_add_code_footer');
 function clinic_add_code_footer(): void {
