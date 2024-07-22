@@ -7,11 +7,11 @@
     z-index: 10;
   }
 
-  .top-nav {
+  .contact-info {
     padding: 1.2rem 0;
-    box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
+    border-bottom: .1rem solid #ccc;
 
-    .grid-layout {
+    .grid {
       display: grid;
       grid-column-gap: 2.4rem;
       grid-template-columns: 1fr max-content;
