@@ -1,8 +1,6 @@
 <?php
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
@@ -216,84 +214,6 @@ class Clinic_Elementor_Category_List extends Widget_Base
                     ],
                 ],
                 'title_field' => '{{{ list_title }}}',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // style box list
-        $this->start_controls_section(
-            'style_box_list_section',
-            [
-                'label' => esc_html__('Hộp chưa danh sách', 'clinic'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'box_list_padding',
-            [
-                'label' => esc_html__( 'Padding', 'clinic' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => true,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .element-category-list__grid .item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'box_list_background_color',
-            [
-                'label' => esc_html__('Màu nền', 'clinic'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-category-list__grid .item' => 'background-color: {{VALUE}};'
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'box_list_border',
-                'selector' => '{{WRAPPER}} .element-category-list__grid .item',
-            ]
-        );
-
-        $this->add_control(
-            'list_border_radius',
-            [
-                'label' => esc_html__( 'Border radius', 'clinic' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => true,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .element-category-list__grid .item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'box_list_box_shadow',
-                'selector' => '{{WRAPPER}} .element-category-list__grid .item',
             ]
         );
 

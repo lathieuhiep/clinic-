@@ -51,22 +51,23 @@
             slider.each(function () {
                 const thisSlider = $(this)
                 const options = {
-                    dots: false,
-                    nav: true,
-                    margin: 25,
-                    stagePadding: 20,
+                    dots: true,
+                    nav: false,
+                    margin: 24,
+                    stagePadding: 12,
                     responsive:{
                         0: {
                             items: 1,
+                            margin: 12,
+                            stagePadding: 5,
                         },
                         480: {
                             items: 2,
+                            margin: 16,
+                            stagePadding: 8,
                         },
                         768: {
                             items: 3,
-                        },
-                        1024: {
-                            items: 4,
                         }
                     }
                 }

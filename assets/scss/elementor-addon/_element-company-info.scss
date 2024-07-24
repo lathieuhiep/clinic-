@@ -1,0 +1,123 @@
+.element-company-info {
+  &__warp {
+    display: grid;
+
+    @media (min-width: 992px) {
+      grid-gap: 2.4rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 991px) {
+      grid-gap: 2.4rem;
+    }
+
+    .item-gallery {
+      display: grid;
+
+      @media (min-width: 576px) {
+        grid-gap: .8rem 2rem;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 575px) {
+        grid-gap: 1.2rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .thumbnail {
+        border-radius: .5rem;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .item-info {
+      display: grid;
+      grid-gap: 2.6rem;
+
+      @media (min-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .info-box {
+        border-radius: .5rem;
+        overflow: hidden;
+        background-color: var(--color-white);
+        box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          margin: 0;
+          padding: 1.7rem 1.2rem 1.6rem;
+          font-weight: 500;
+          color: var(--color-white);
+          background-color: var(--clinic-theme-primary-color);
+
+          @media (min-width: 1200px) {
+            font-size: 1.8rem;
+          }
+
+          @media (max-width: 1199px) {
+            font-size: 1.5rem;
+          }
+        }
+
+        .desc {
+          padding: 2.1rem 1.2rem 1.8rem;
+        }
+
+        .working {
+          padding: 2.6rem 1.2rem;
+          font-weight: 700;
+          color: var(--clinic-theme-secondary-color);
+          font-size: 2rem;
+          background-color: #F1F1F1;
+
+          &.phone {
+            display: flex;
+            gap: .8rem;
+            align-items: center;
+            justify-content: center;
+
+            .icon {
+              color: #666666;
+              font-size: 3rem;
+              display: flex;
+              align-items: center;
+            }
+
+            .list-phone {
+              a {
+                display: block;
+                color: var(--clinic-theme-secondary-color);
+
+                &:hover {
+                  color: var(--color-cadmium-green);
+                }
+              }
+            }
+          }
+        }
+
+        .note {
+          padding: 4rem 1.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 1;
+
+          i {
+            color: #666666;
+            margin-right: .7rem;
+          }
+        }
+      }
+    }
+  }
+}

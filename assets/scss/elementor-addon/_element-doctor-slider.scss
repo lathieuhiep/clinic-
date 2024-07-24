@@ -1,11 +1,12 @@
 .element-doctor-slider {
   &__warp {
     .item {
-      border: .1rem solid #A2A2A2;
+      padding: 1rem 1.7rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 1.2rem rgba(102, 102, 102, 0.2);
       background-color: var(--color-white);
       display: flex;
       flex-direction: column;
-      flex: 1;
 
       img {
         width: auto;
@@ -16,7 +17,7 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        overflow: hidden;
+        border-radius: .5rem;
         display: flex;
         align-items: flex-end;
         justify-content: center;
@@ -27,27 +28,19 @@
       }
 
       &__body {
+        padding-top: 2.5rem;
         display: flex;
         flex-direction: column;
         flex: 1;
 
-        @media (min-width: 1200px) {
-          padding: 2.6rem 2.8rem;
-        }
-
-        @media (max-width: 1199px) {
-          padding: 2.4rem 1.2rem;
-        }
-
         .title {
-          margin-bottom: 1.2rem;
+          margin-bottom: 0;
           font-size: 1.8rem;
-          color: #FF0000;
           font-family: var(--body-font-family);
+          color: var(--clinic-theme-tertiary-color);
         }
 
         .meta {
-          flex: 1;
           margin-bottom: 1.6rem;
           line-height: 1.4;
           font-family: var(--heading-font-family);
@@ -56,46 +49,31 @@
         .content {
           margin-bottom: 1.4rem;
           text-align: justify;
+          flex: 1;
+        }
+      }
+
+      .action-box {
+        text-align: center;
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @media (max-width: 991px) {
+          flex-direction: column;
         }
 
-        .action-box {
-          @media (min-width: 576px) {
-            display: grid;
-            grid-gap: 1rem;
-            grid-template-columns: repeat(2, 1fr);
-          }
+        a {
+          padding: 1rem;
+          border-radius: .5rem;
+          text-align: center;
+          color: var(--color-white);
+          background-color: var(--clinic-theme-secondary-color);
+          flex: 1;
 
-          @media (max-width: 575px) {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-          }
-
-          a {
-            padding: .6rem 1.2rem;
-            border-radius: .5rem;
-            font-size: 1.5rem;
-            font-weight: 500;
-            text-align: center;
-            color: var(--color-white);
-          }
-
-          &__booking {
-            background-color: #2E8F56;
-
-            &:hover {
-              background-color: var(--clinic-theme-secondary-color);
-            }
-          }
-
-          &__chat {
-            background-color: #FF639B;
-
-            &:hover {
-              background-color: var(--clinic-theme-seven-color);
-            }
+          &:hover {
+            background-color: var(--clinic-theme-color-hover);
           }
         }
       }
@@ -104,17 +82,6 @@
     &.owl-carousel {
       .owl-stage-outer {
         padding: 1rem 0;
-        display: flex;
-        flex-direction: column;
-
-        .owl-stage {
-          display: flex;
-
-          .owl-item {
-            display: flex;
-            flex-direction: column;
-          }
-        }
       }
 
       .owl-nav {
