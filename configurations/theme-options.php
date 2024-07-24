@@ -144,13 +144,6 @@ if (class_exists('CSF')) {
             ),
 
             array(
-                'id' => 'opt_general_link_map',
-                'type' => 'text',
-                'title' => esc_html__('Link địa chỉ map', 'clinic'),
-                'default' => '#'
-            ),
-
-            array(
                 'id' => 'opt_general_cf',
                 'type' => 'select',
                 'title' => esc_html__('Form liên hệ', 'clinic'),
@@ -234,25 +227,6 @@ if (class_exists('CSF')) {
                 'title' => esc_html__('QR code ZaLo', 'clinic'),
                 'library' => 'image',
                 'url' => false
-            ),
-        )
-    ));
-
-    // search category
-    CSF::createSection($clinic_prefix, array(
-        'parent' => 'opt_general_section',
-        'title' => esc_html__('Tìm kiếm', 'clinic'),
-        'fields' => array(
-            array(
-                'id' => 'opt_add_search_categories',
-                'type' => 'select',
-                'title' => esc_html__('Thêm danh mục tìm kiếm', 'clinic'),
-                'placeholder' => esc_html__('Chọn danh mục bài viết', 'clinic'),
-                'desc' => esc_html__('Thêm danh mục kết hợp tìm kiếm trong form', 'clinic'),
-                'chosen' => true,
-                'multiple' => true,
-                'sortable' => true,
-                'options' => 'categories',
             ),
         )
     ));

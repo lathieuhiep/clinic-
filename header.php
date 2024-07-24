@@ -12,6 +12,8 @@
 <?php
 if ( !is_404() ) :
 	get_template_part('components/inc','header');
+
+    get_template_part('components/header/inc','menu');
 endif;
 ?>
 

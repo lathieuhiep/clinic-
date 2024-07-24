@@ -56,6 +56,11 @@ form {
           padding: .4rem 1.2rem;
           color: var(--body-color);
           background-color: var(--color-white);
+
+          &::placeholder {
+            color: inherit;
+            opacity: 1;
+          }
         }
 
         textarea {

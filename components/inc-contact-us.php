@@ -2,7 +2,6 @@
 $phone = clinic_get_opt_hotline();
 $medical_appointment_form = clinic_get_opt_medical_appointment();
 $link_chat = clinic_get_opt_link_chat_doctor();
-$link_map = clinic_get_opt_link_map();
 ?>
 
 <div class="contact-us-group d-none d-lg-block">
@@ -52,21 +51,6 @@ $link_map = clinic_get_opt_link_map();
                     </div>
                 </div>
             <?php endif;?>
-
-            <?php if ( $link_map ) : ?>
-                <div class="item chat">
-                    <a class="link" href="<?php echo esc_url( $link_map ); ?>" target="_blank"></a>
-
-                    <div class="item__icon">
-                        <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/ho-tro/dia-chi.png') ) ?>" alt="">
-                    </div>
-
-                    <div class="item__content">
-                        <span class="txt-top"><?php esc_html_e('HỖ TRỢ', 'clinic'); ?></span>
-                        <span class="txt-sub"><?php esc_html_e('CHỈ DẪN ĐƯỜNG', 'clinic'); ?></span>
-                    </div>
-                </div>
-            <?php endif; ?>
         </div>
     </div>
 </div>

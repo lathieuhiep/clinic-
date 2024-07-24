@@ -1,23 +1,10 @@
 <?php
-$logo = clinic_get_option( 'opt_general_logo' );
+$sticky_menu = clinic_get_option( 'opt_menu_sticky', '1' );
 ?>
-<nav class="navbar-main d-none d-lg-block">
+
+<nav class="navbar-main d-none d-lg-block <?php echo esc_attr( $sticky_menu == '1' ? 'active-sticky-nav' : '' ); ?>">
     <div class="container">
-        <div class="grid-layout h-100">
-            <div class="logo">
-                <a class="d-block" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
-                    <?php
-                    if ( ! empty( $logo['id'] ) ) :
-                        echo wp_get_attachment_image( $logo['id'], 'full' );
-                    else :
-                        ?>
-
-                        <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/logo.png' ) ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>" width="64" height="64"/>
-
-                    <?php endif; ?>
-                </a>
-            </div>
-
+        <div class="grid-layout">
             <div id="primary-menu" class="primary-menu">
                 <?php
                 if ( has_nav_menu( 'primary' ) ) :
