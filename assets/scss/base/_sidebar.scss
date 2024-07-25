@@ -286,8 +286,6 @@ section {
 
     &.working-time-widget {
       .widget-warp {
-        background: linear-gradient(180deg, #97CACA 0, #22B1B1 100%);
-
         .work-box {
           display: flex;
           gap: .5rem;
@@ -337,8 +335,9 @@ section {
               padding: .6rem .9rem;
               text-align: center;
               font-weight: 500;
+              color: var(--color-white);
               border-radius: .6rem;
-              background-color: var(--color-white);
+              background-color: var(--clinic-theme-secondary-color);
 
               @media (min-width: 1200px) {
                 font-size: 3rem;
@@ -353,10 +352,6 @@ section {
               }
             }
           }
-        }
-
-        .note {
-          color: var(--color-white);
         }
       }
     }

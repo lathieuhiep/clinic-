@@ -564,6 +564,7 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
             [
                 'name' => 'submit_background',
                 'types' => ['classic', 'gradient'],
+                'exclude' => [ 'image' ],
                 'selector' => '{{WRAPPER}} .element-contact-form-7 form.wpcf7-form .wpcf7-submit',
             ]
         );

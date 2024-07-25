@@ -29,7 +29,7 @@
 
   &__column {
     padding: 4rem 0 2rem;
-    background: linear-gradient(180deg, #FF97BD 0, #ED256E 100%);
+    background: var(--clinic-theme-primary-color);
   }
 }
 
@@ -37,7 +37,7 @@
   padding: 1.8rem 0;
   text-align: start;
   border-top: .5rem solid #74FBB1;
-  background-color: #D62866;
+  background-color: var(--clinic-theme-secondary-color);
 
   .grid-layout {
     min-height: 6rem;

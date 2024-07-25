@@ -1,19 +1,11 @@
 .element-contact-form-7 {
   .heading {
-    margin-bottom: 1.8rem;
-    color: #FF0000;
-    line-height: 1.2;
-
     span {
       &.has-gradient {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
-  }
-
-  .sub-heading {
-    margin-bottom: 2.6rem;
   }
 
   form {
