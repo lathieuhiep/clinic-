@@ -5,6 +5,9 @@ function clinic_register_back_end_scripts(): void
 {
 	/* Start Get CSS Admin */
 	wp_enqueue_style( 'admin', get_theme_file_uri( '/assets/admin/admin.css' ) );
+
+    // load admin file js custom
+    wp_enqueue_script('admin', get_theme_file_uri( '/assets/admin/admin.js' ), array(), "1.0", true);
 }
 
 // Remove jquery migrate

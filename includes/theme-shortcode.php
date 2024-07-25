@@ -28,3 +28,25 @@ function clinic_shortcode_contactus(): bool|string {
 	ob_end_clean();
 	return $content;
 }
+
+// Hook to add buttons to TinyMCE
+add_action('admin_init', 'clinic_custom_tinymce_buttons');
+
+function clinic_custom_tinymce_buttons(): void
+{
+    add_filter("mce_external_plugins", "clinic_add_tinymce_plugins");
+    add_filter('mce_buttons', 'clinic_register_tinymce_buttons');
+}
+
+function clinic_add_tinymce_plugins($plugin_array) {
+    $plugin_array['custom_button_title'] = get_theme_file_uri( '/assets/admin/admin.js' );
+    $plugin_array['custom_button_contact'] = get_theme_file_uri( '/assets/admin/admin.js' );
+    return $plugin_array;
+}
+
+function clinic_register_tinymce_buttons($buttons) {
+    $buttons[] = "custom_button_title";
+    $buttons[] = "custom_button_contact";
+
+    return $buttons;
+}
