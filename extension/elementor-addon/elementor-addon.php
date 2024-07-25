@@ -36,13 +36,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/album-gallery.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image-between-line.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/safety-principles.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/title-number-list.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-content-number.php' );
-
-
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_About_Us() );
     $widgets_manager->register( new \Clinic_Elementor_Banner() );
@@ -57,15 +50,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Slider_Carousel() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
     $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
-
-
-//    $widgets_manager->register( new \Clinic_Elementor_Album_Gallery() );
-//    $widgets_manager->register( new \Clinic_Elementor_Image_Between_Line() );
-//    $widgets_manager->register( new \Clinic_Elementor_Safety_Principles() );
-//    $widgets_manager->register( new \Clinic_Elementor_Title_Number_List() );
-//    $widgets_manager->register( new \Clinic_Elementor_List_Content_Number() );
-
-
 }
 
 // Register scripts
