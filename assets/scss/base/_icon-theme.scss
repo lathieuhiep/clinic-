@@ -24,6 +24,46 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-chat:before {
+  content: "\e916";
+}
+.icon-phone-light:before {
+  content: "\e915";
+}
+.icon-globe:before {
+  content: "\e914";
+}
+.icon-search:before {
+  content: "\e913";
+  color: #4c505b;
+}
+.icon-sort-down:before {
+  content: "\e912";
+}
+.icon-hours-support:before {
+  content: "\e911";
+}
+.icon-send:before {
+  content: "\e910";
+}
+.icon-menu:before {
+  content: "\e90f";
+}
+.icon-close:before {
+  content: "\e90e";
+}
+.icon-facebook-messenger-circle:before {
+  content: "\e90d";
+}
+.icon-check:before {
+  content: "\e90c";
+}
+.icon-zalo:before {
+  content: "\e90b";
+}
+.icon-phone-volume:before {
+  content: "\e90a";
+}
 .icon-angle-left:before {
   content: "\e900";
   color: #09244b;
@@ -38,7 +78,7 @@
 .icon-envelope:before {
   content: "\e903";
 }
-.icon-facebook:before {
+.icon-square-facebook:before {
   content: "\e904";
 }
 .icon-facebook-messenger:before {
@@ -55,4 +95,28 @@
 }
 .icon-phone-circle:before {
   content: "\e909";
+}
+.icon-phone:before {
+  content: "\e942";
+}
+.icon-location-dot:before {
+  content: "\e947";
+}
+.icon-calendar:before {
+  content: "\e953";
+}
+.icon-user:before {
+  content: "\e971";
+}
+.icon-sphere:before {
+  content: "\e9c9";
+}
+.icon-star-full:before {
+  content: "\e9d9";
+}
+.icon-facebook-f:before {
+  content: "\ea90";
+}
+.icon-youtube:before {
+  content: "\ea9d";
 }
