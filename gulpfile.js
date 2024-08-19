@@ -4,14 +4,9 @@ const { src, dest, watch } = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync')
-const concat = require('gulp-concat')
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
-const concatCss = require('gulp-concat-css')
 const rename = require("gulp-rename")
-const babel = require('gulp-babel');
-const webpack = require('webpack-stream')
-const TerserPlugin = require('terser-webpack-plugin')
 
 const pathAssets = './assets'
 const pathNodeModule = './node_modules'
@@ -19,7 +14,8 @@ const pathNodeModule = './node_modules'
 // server
 function server() {
     browserSync.init({
-        proxy: "localhost/benhvien199",
+        proxy: "https://dakhoaquoctedanang.com.local",
+        https: true,
         open: false,
         cors: true,
         ghostMode: false
