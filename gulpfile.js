@@ -113,8 +113,7 @@ function buildStylesElementor() {
 
 function buildJSElementor() {
     return src([
-        './extension/elementor-addon/js/*.js',
-        '!./extension/elementor-addon/js/*.min.js'
+        `${pathSrc}/js/elementor-addon/*.js`
     ], {allowEmpty: true})
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
@@ -141,8 +140,7 @@ function buildStylesCustomPostType() {
 // buildJSTheme
 function buildJSTheme() {
     return src([
-        `${pathSrc}/js/*.js`,
-        `!${pathSrc}/js/*.min.js`
+        `${pathSrc}/js/*.js`
     ], {allowEmpty: true})
         .pipe(uglify())
         .pipe(rename( {suffix: '.min'} ))
@@ -196,11 +194,10 @@ function watchTask() {
         `${pathSrc}/scss/post-type/*/**.scss`
     ], buildStylesCustomPostType)
 
-    watch([`${pathSrc}/js/*.js`, `!${pathSrc}/js/*.min.js`], buildJSTheme)
+    watch([`${pathSrc}/js/*.js`], buildJSTheme)
 
     watch([
-        './extension/elementor-addon/js/*.js',
-        '!./extension/elementor-addon/js/*.min.js'
+        `${pathSrc}/js/elementor-addon/*.js`
     ], buildJSElementor)
 
     watch([

@@ -1,4 +1,5 @@
 @import "../../variables-site/variables";
+$path-image: '../../../images';
 
 .single-post-warp {
   padding-top: 2.3rem;
@@ -39,7 +40,7 @@
           top: -2rem;
           width: 10.5rem;
           height: 7.6rem;
-          background: url("../../../images/icon-title.png") no-repeat center center;
+          background: url('#{$path-image}/icon-title.png') no-repeat center center;
         }
       }
     }
@@ -145,7 +146,7 @@
 
 .single-contact-us {
   padding: 1.2rem 1.6rem;
-  background-image: url("../../../images/bk-support-single.jpg");
+  background-image: url('#{$path-image}/bk-support-single.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

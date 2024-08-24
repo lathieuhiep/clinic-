@@ -75,6 +75,41 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+        // Options section
+		$this->start_controls_section(
+			'content_section',
+			[
+				'label' => esc_html__( 'Cài đặt thêm', 'clinic' ),
+				'tab' => Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'show_title',
+			[
+				'label' => esc_html__( 'Hiển thị tên bác sĩ', 'clinic' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Hiện', 'clinic' ),
+				'label_off' => esc_html__( 'Ẩn', 'clinic' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+
+		$this->add_control(
+			'show_position',
+			[
+				'label' => esc_html__( 'Hiển thị chức vụ', 'clinic' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Hiện', 'clinic' ),
+				'label_off' => esc_html__( 'Ẩn', 'clinic' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+
+		$this->end_controls_section();
 	}
 
 	protected function render(): void {
@@ -82,9 +117,27 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 		$medical_appointment_form = clinic_get_opt_medical_appointment();
 
 		$owl_options = [
-			'items' => 1,
 			'dots' => false,
-            'autoHeight' => true
+			'margin' => 24,
+			'responsive' => [
+				'0' => array(
+					'items'  => 1,
+					'margin' => 12
+				),
+
+				'576' => array(
+					'items'  => 2,
+					'margin' => 12
+				),
+
+				'768' => array(
+					'items' => 3
+				),
+
+				'992' => array(
+					'items' => 4
+				)
+			],
 		];
 
 		$limit_post     =   $settings['limit'];
@@ -103,125 +156,57 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 		$query = new WP_Query( $args );
 
 		if ( $query->have_posts() ) :
-			$avatars = [];
-			?>
-            <div class="element-doctor-slider">
-                <div class="element-doctor-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
-					<?php
-					while ( $query->have_posts() ) :
-						$query->the_post();
+    ?>
+        <div class="element-doctor-slider">
+            <div class="element-doctor-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+                <?php
+                while ( $query->have_posts() ) :
+                    $query->the_post();
 
-						$position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
-						$specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
-						$treatment_of = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_treatment_of', true);
-
-						$avatars[] = [
-                            'title' => get_the_title(),
-                            'idImg' => get_post_thumbnail_id()
-                        ];
-                    ?>
-
-                        <div class="item">
-                            <div class="item__thumbnail">
-								<?php the_post_thumbnail('large'); ?>
-
-                                <div class="info text-center">
-                                    <h3 class="name">
-                                        <?php the_title(); ?>
-                                    </h3>
-
-                                    <h4 class="position m-0">
-                                        <?php echo esc_html( $position ); ?>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="item__body">
-                                <div class="content">
-                                    <div class="content__item">
-                                        <div class="top">
-                                            <div class="top__img">
-                                                <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/introducing.png' ) ) ?>" alt="" width="28" height="30"/>
-                                            </div>
-
-                                            <h5 class="top__title">
-                                                <?php esc_html_e('Giới thiệu', 'clinic'); ?>
-                                            </h5>
-                                        </div>
-
-                                        <div class="desc">
-                                            <?php the_content(); ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="content__item">
-                                        <div class="top">
-                                            <div class="top__img">
-                                                <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/specialist.png' ) ) ?>" alt="" width="28" height="30"/>
-                                            </div>
-
-                                            <h5 class="top__title">
-                                                <?php esc_html_e('Chuyên khoa', 'clinic'); ?>
-                                            </h5>
-                                        </div>
-
-                                        <div class="desc">
-                                            <?php echo esc_html( $specialist ); ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="content__item">
-                                        <div class="top">
-                                            <div class="top__img">
-                                                <img class="logo-default" src="<?php echo esc_url( get_theme_file_uri( '/extension/elementor-addon/images/treatment-of.png' ) ) ?>" alt="" width="28" height="30"/>
-                                            </div>
-
-                                            <h5 class="top__title">
-                                                <?php esc_html_e('Khám và điều trị các bệnh', 'clinic'); ?>
-                                            </h5>
-                                        </div>
-
-                                        <div class="desc">
-                                            <?php echo esc_html( $treatment_of ); ?>
-                                        </div>
-                                    </div>
-                                </div>
-
-								<?php if ( $medical_appointment_form ) : ?>
-                                    <div class="action-box">
-                                        <button type="button" class="btn action-box__booking" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                            <?php esc_html_e('Đặt lịch khám với bác sĩ', 'clinic'); ?>
-                                        </button>
-                                    </div>
-								<?php endif; ?>
-                            </div>
+                    $position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
+                    $specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
+                    $treatment_of = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_treatment_of', true);
+                ?>
+                    <div class="item">
+                        <div class="item__thumbnail">
+                            <?php the_post_thumbnail('large'); ?>
                         </div>
 
-					<?php
-					endwhile;
-					wp_reset_postdata();
-					?>
-                </div>
+                        <?php if ( $settings['show_title'] == 'yes' || $settings['show_position'] == 'yes' ) : ?>
+                            <div class="item__info">
+		                        <?php if ( $settings['show_title'] == 'yes' ) : ?>
+                                    <h3 class="name">
+				                        <?php the_title(); ?>
+                                    </h3>
+		                        <?php endif; ?>
 
-				<?php if ( !empty( $avatars ) ) : ?>
-                    <div class="element-doctor-avatar">
-                        <div class="element-doctor-avatar__slider owl-carousel owl-theme">
-							<?php foreach ($avatars as $avatar) : ?>
-                                <div class="item">
-                                    <div class="item__thumbnail">
-                                        <?php echo wp_get_attachment_image( $avatar['idImg'], 'full' ); ?>
-                                    </div>
+		                        <?php if ( $settings['show_position'] == 'yes' ) : ?>
+                                    <p class="position">
+				                        <?php echo esc_html( $position ); ?>
+                                    </p>
+		                        <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
 
-                                    <h4 class="title text-center">
-                                        <?php echo esc_html( $avatar['title'] ); ?>
-                                    </h4>
-                                </div>
-							<?php endforeach; ?>
+                        <div class="item__action">
+	                        <?php if ( $medical_appointment_form ) : ?>
+                                <button class="btn btn-contact" type="button" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                                    <?php esc_html_e('Tư vấn', 'clinic'); ?>
+                                </button>
+	                        <?php endif; ?>
+
+                            <button class="btn btn-doctor-detail" type="button" data-id="<?php echo esc_attr( get_the_ID() ); ?>">
+	                            <?php esc_html_e('Xem thêm', 'clinic'); ?>
+                            </button>
                         </div>
                     </div>
-				<?php endif; ?>
+                <?php
+                endwhile;
+                wp_reset_postdata();
+                ?>
             </div>
-		<?php
+        </div>
+    <?php
 		endif;
 	}
 }

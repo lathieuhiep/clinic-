@@ -85,6 +85,96 @@ class Clinic_Elementor_About_Us extends Widget_Base
      */
     protected function register_controls(): void
     {
+	    // layout section
+	    $this->start_controls_section(
+		    'layout_section',
+		    [
+			    'label' => esc_html__( 'Layout', 'clinic' ),
+			    'tab' => Controls_Manager::TAB_CONTENT,
+		    ]
+	    );
+
+	    $this->add_responsive_control(
+		    'columns_grid',
+		    [
+			    'label' => esc_html__( 'Cột', 'clinic' ),
+			    'type' => Controls_Manager::SLIDER,
+			    'range' => [
+				    'fr' => [
+					    'min' => 1,
+					    'max' => 12,
+					    'step' => 1,
+				    ],
+			    ],
+			    'size_units' => [ 'fr', 'custom' ],
+			    'unit_selectors_dictionary' => [
+				    'custom' => 'grid-template-columns: {{SIZE}}',
+			    ],
+			    'default' => [
+				    'unit' => 'fr',
+				    'size' => 2,
+			    ],
+			    'mobile_default' => [
+				    'unit' => 'fr',
+				    'size' => 1,
+			    ],
+			    'selectors' => [
+				    '{{WRAPPER}} .element-about-us__warp' => 'grid-template-columns: repeat({{SIZE}}, 1fr)',
+			    ],
+			    'responsive' => true,
+			    'editor_available' => true,
+		    ]
+	    );
+
+	    $this->add_responsive_control(
+		    'grid_column_gap',
+		    [
+			    'label' => esc_html__( 'Grid column gap', 'clinic' ),
+			    'type' => Controls_Manager::SLIDER,
+			    'size_units' => [ 'px', 'custom' ],
+			    'range' => [
+				    'px' => [
+					    'min' => 0,
+					    'max' => 1000,
+					    'step' => 1,
+				    ],
+			    ],
+			    'default' => [
+				    'unit' => 'px',
+				    'size' => 30,
+			    ],
+			    'selectors' => [
+				    '{{WRAPPER}} .element-about-us__warp' => 'grid-column-gap: {{SIZE}}{{UNIT}};',
+			    ],
+		    ]
+	    );
+
+	    $this->add_responsive_control(
+		    'grid_row_gap',
+		    [
+			    'label' => esc_html__( 'Grid row gap', 'clinic' ),
+			    'type' => Controls_Manager::SLIDER,
+			    'size_units' => [ 'px', 'custom' ],
+			    'range' => [
+				    'px' => [
+					    'min' => 0,
+					    'max' => 1000,
+					    'step' => 1,
+				    ],
+			    ],
+			    'default' => [
+				    'unit' => 'px',
+				    'size' => 30,
+			    ],
+			    'selectors' => [
+				    '{{WRAPPER}} .element-about-us__warp' => 'grid-row-gap: {{SIZE}}{{UNIT}};',
+			    ],
+		    ]
+	    );
+
+	    $this->end_controls_section();
+
+        // image
         $this->start_controls_section(
             'image_section',
             [

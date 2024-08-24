@@ -1,16 +1,6 @@
 .element-about-us {
   &__warp {
     display: grid;
-    grid-gap: 2.4rem;
-    align-items: center;
-
-    @media (min-width: 1200px) {
-      grid-template-columns: 50.7rem 1fr;
-    }
-
-    @media (min-width: 992px) and (max-width: 1199px){
-      grid-template-columns: 40rem 1fr;
-    }
 
     .item {
       &__heading {
