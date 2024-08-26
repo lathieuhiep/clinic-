@@ -30,7 +30,7 @@
           color: #ffffff;
           text-transform: uppercase;
           border-radius: .7rem;
-          flex: 1;
+          flex: 0 0 auto;
           @include transition();
 
           &.btn-contact {
