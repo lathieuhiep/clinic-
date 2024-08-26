@@ -164,8 +164,6 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                     $query->the_post();
 
                     $position = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_position', true);
-                    $specialist = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_specialist', true);
-                    $treatment_of = get_post_meta(get_the_ID(), 'clinic_cmb_doctor_treatment_of', true);
                 ?>
                     <div class="item">
                         <div class="item__thumbnail">
@@ -196,7 +194,8 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 	                        <?php endif; ?>
 
                             <button class="btn btn-doctor-detail" type="button" data-id="<?php echo esc_attr( get_the_ID() ); ?>">
-	                            <?php esc_html_e('Xem thêm', 'clinic'); ?>
+	                            <span class="txt"><?php esc_html_e('Xem thêm', 'clinic'); ?></span>
+                                <i class="icon icon-setting"></i>
                             </button>
                         </div>
                     </div>
@@ -204,6 +203,29 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                 endwhile;
                 wp_reset_postdata();
                 ?>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade modal-doctor-detail" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title"></h3>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body"></div>
+
+                        <div class="modal-footer">
+		                    <?php if ( $medical_appointment_form ) : ?>
+                                <button class="btn btn-contact-modal" type="button" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+				                    <?php esc_html_e('Đăng ký khám', 'clinic'); ?>
+                                </button>
+		                    <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     <?php

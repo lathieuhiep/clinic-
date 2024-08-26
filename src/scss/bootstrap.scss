@@ -4,6 +4,7 @@
 @import "../../node_modules/bootstrap/scss/functions";
 
 // Include any default variable overrides here
+$enable-rfs: false;
 
 // body
 $body-bg: $background-body;
@@ -60,6 +61,9 @@ $nav-link-font-weight: 400;
 $container-max-widths: (
         xl: 1224px
 ) !default;
+
+// Modal
+$modal-md: 64rem;
 
 // Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";

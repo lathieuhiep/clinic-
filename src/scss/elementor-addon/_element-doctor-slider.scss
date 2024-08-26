@@ -3,6 +3,8 @@
     .item {
       padding-bottom: 3rem;
       background-color: #ffffff;
+      display: grid;
+      grid-gap: 3rem;
 
       &__info {
         padding: 1.2rem 1.2rem 0;
@@ -14,7 +16,7 @@
       }
 
       &__action {
-        padding: 1.2rem 1.2rem 0;
+        padding: 0 1.2rem;
         text-align: center;
         display: flex;
         gap: 1.6rem;
@@ -40,14 +42,137 @@
           }
 
           &.btn-doctor-detail {
+            position: relative;
             background-color: #D14343;
 
             &:hover {
               background-color: #ff5555;
             }
+
+            .icon {
+              display: none;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              font-size: 1.6rem;
+              transform: translate(-50%, -50%) rotate(0deg);
+              animation: spin 2s linear infinite;
+            }
           }
         }
       }
     }
+  }
+
+  .modal-doctor-detail {
+    .modal-content {
+      @media (min-width: 768px) {
+        padding: 2.4rem;
+      }
+
+      @media (max-width: 767px) {
+        padding: 2.4rem 1.2rem;
+      }
+
+      > div {
+        &:not(:last-child) {
+          margin-bottom: 3rem
+        }
+      }
+
+      .modal-header {
+        position: relative;
+        padding: 0 1.6rem;
+        border: 0;
+        min-height: 4rem;
+        justify-content: center;
+
+        .modal-title {
+          color: #346980;
+
+          @media (min-width: 768px) {
+            font-size: 2.7rem;
+          }
+
+          @media (max-width: 767px) {
+            font-size: 2rem;
+          }
+        }
+
+        .btn-close {
+          padding: 0;
+          position: absolute;
+          right: .5rem;
+          top: 50%;
+          color: #000;
+          opacity: 1;
+          transform: translateY(-50%);
+        }
+      }
+
+      .modal-body {
+        margin: 0 auto;
+        padding: 0;
+        max-width: 48rem;
+
+        &__list {
+          display: grid;
+          grid-gap: 2.4rem;
+
+          .item {
+            &__top {
+              margin-bottom: 2.4rem;
+              display: grid;
+              grid-gap: 2.4rem;
+              grid-template-columns: 3rem 1fr;
+              align-items: flex-end;
+
+              .heading {
+                margin: 0;
+              }
+            }
+
+            &__body {
+              position: relative;
+              padding-left: 1rem;
+
+              &:before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: .3rem;
+                background-color: #4A9047;
+              }
+            }
+          }
+        }
+      }
+
+      .modal-footer {
+        padding: 0;
+        border-top: 0;
+        justify-content: center;
+
+        .btn {
+          margin: 0;
+          padding: .8rem 2.4rem;
+          color: #ffffff;
+          border-radius: .3rem;
+          border: 0;
+          background-color: #336C3B
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
