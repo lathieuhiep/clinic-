@@ -6,10 +6,6 @@ function clinic_register_back_end_scripts(): void
 	/* Start Get CSS Admin */
 	wp_enqueue_style( 'admin', get_theme_file_uri( '/assets/admin/admin.css' ) );
 
-	if ( ! did_action( 'wp_enqueue_media' ) ) {
-		wp_enqueue_media();
-	}
-
 	wp_enqueue_script('admin-custom', get_theme_file_uri( '/assets/admin/admin.js' ), array(), "1.0", true);
 }
 
@@ -40,13 +36,13 @@ function clinic_register_front_end(): void
 	/** Load css **/
 
 	// font google
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Anton&family=Arimo:wght@400;700&family=Beau+Rivage&family=Roboto:wght@400;500;700;800;900&display=swap', array(), null );
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap', array(), null );
 
 	// bootstrap css
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/libs/bootstrap/bootstrap.min.css' ), array(), '5.3.2' );
 
 	// style theme
-	wp_enqueue_style( 'clinic-style', get_stylesheet_uri(), array(), clinic_get_version_theme() );
+	wp_enqueue_style( 'clinic-style', get_theme_file_uri( '/assets/css/style-theme.min.css' ), array(), clinic_get_version_theme() );
 
 	// style post
 	if ( clinic_is_blog() ) {
@@ -74,4 +70,8 @@ function clinic_register_front_end(): void
 
 	// custom js
 	wp_enqueue_script( 'clinic-custom', get_theme_file_uri( '/assets/js/custom.min.js' ), array('jquery'), clinic_get_version_theme(), true );
+
+	if (is_singular('post')) {
+		wp_enqueue_script( 'single-post', get_theme_file_uri( '/assets/js/single-post.min.js' ), array('jquery'), clinic_get_version_theme(), true );
+	}
 }

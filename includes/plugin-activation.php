@@ -53,13 +53,6 @@ function clinic_register_required_plugins() {
 			'slug'      =>  'contact-form-7',
 			'required'  =>  true,
 		),
-
-		// This is an example of how to include a plugin from the WordPress Plugin Repository
-		array(
-			'name'      =>  'Categories Images',
-			'slug'      =>  'categories-images',
-			'required'  =>  true,
-		),
 	);
 
 	/**

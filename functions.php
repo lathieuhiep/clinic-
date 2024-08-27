@@ -67,14 +67,14 @@ foreach ( glob( get_parent_theme_file_path( '/extension/widgets/*.php' ) ) as $f
 	require $file_widgets;
 }
 
-// Required: theme term meta banner category
-require get_parent_theme_file_path( '/includes/theme-term-meta-banner-category.php' );
-
 // Required: theme add_action
 require get_parent_theme_file_path( '/includes/theme-add-action.php' );
 
 // Required: theme shortcode
 require get_parent_theme_file_path( '/includes/theme-shortcode.php' );
+
+// Required: post type doctors
+require get_parent_theme_file_path( '/extension/post-type/doctors.php' );
 
 // Required: CMB2
 if ( !class_exists('CMB2') ) {
@@ -85,9 +85,6 @@ if ( !class_exists('CMB2') ) {
 if ( did_action( 'elementor/loaded' ) ) :
     require get_parent_theme_file_path( '/extension/elementor-addon/elementor-addon.php' );
 endif;
-
-// Require custom post type
-require get_parent_theme_file_path( '/extension/post-type/doctors.php' );
 
 // Require Register Sidebar
 require get_parent_theme_file_path( '/includes/register-sidebar.php' );

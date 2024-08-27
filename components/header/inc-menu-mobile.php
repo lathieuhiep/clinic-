@@ -4,7 +4,9 @@
             <?php esc_html_e('Danh mục', 'clinic'); ?>
         </h5>
 
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="icon icon-close"></i>
+        </button>
     </div>
 
     <div class="offcanvas-body">

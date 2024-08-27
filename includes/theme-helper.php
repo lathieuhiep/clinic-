@@ -13,11 +13,12 @@ function clinic_get_version_theme(): string {
 
 // check is blog
 function clinic_is_blog (): bool {
-	return ( is_archive() || is_category() || is_tag() || is_author() || is_home() );
+	return ( is_archive() || is_category() || is_tag() || is_author() || is_home() || is_search() );
 }
 
 // Callback Comment List
-function clinic_comments( $clinic_comment, $clinic_comment_args, $clinic_comment_depth ) {
+function clinic_comments( $clinic_comment, $clinic_comment_args, $clinic_comment_depth ): void
+{
 	if ( $clinic_comment_args['style'] == 'div' ) :
 		$clinic_comment_tag       = 'div';
 		$clinic_comment_add_below = 'comment';
@@ -148,7 +149,7 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 			$class_position_sidebar = ' order-1';
 		endif;
 
-		$class_col_content = 'col-12 col-md-8' . $class_position_sidebar;
+		$class_col_content = 'col-12 col-md-8 col-lg-9' . $class_position_sidebar;
 	else:
 		$class_col_content = 'col-md-12';
 	endif;
@@ -158,7 +159,7 @@ function clinic_col_use_sidebar( $option_sidebar, $active_sidebar ): string
 
 function clinic_col_sidebar(): string
 {
-	return 'col-12 col-md-4';
+	return 'col-12 col-md-4 col-lg-3';
 }
 
 // Post Meta

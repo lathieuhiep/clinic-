@@ -11,60 +11,23 @@
     let timer_clear;
 
     $( document ).ready( function () {
-
-        // handle click back to top
-        $('#back-top').on( 'click', function (e) {
-            e.preventDefault()
-            $('html').scrollTop(0)
-        } )
-
         // handle click show submenu on mobile
         handleClickShowSubmenuOnMobile()
 
         // handle dropdown category widget
         handleDropdownCategoryWidget()
 
-        // handle dropdown category widget
-        handleAddCategoryImageContentPost()
+        // handle slider manin
+        handleSliderMain()
+
+        // handle click zalo
+        handleZaLoClick()
     })
 
     // loading
     $( window ).on( "load", function() {
         // handle remove loading page after loaded successfully
         handleRemoveLoadingPage()
-    })
-
-    // scroll event
-    $( window ).scroll( function() {
-        if ( timer_clear ) clearTimeout(timer_clear)
-
-        timer_clear = setTimeout( function() {
-            /* Start scroll back top */
-            const $scrollTop = $(this).scrollTop();
-
-            if ( $scrollTop > 200 ) {
-                $('#back-top').addClass('active_top')
-            } else {
-                $('#back-top').removeClass('active_top')
-            }
-            /* End scroll back top */
-
-            // scroll show or hide phone header on mobile
-            const topNavMobile = $('.top-nav-mobile')
-
-            if ( topNavMobile.length ) {
-                const heightHeaderOnMobile = topNavMobile.closest('.global-header').innerHeight()
-
-                if ( $scrollTop >= heightHeaderOnMobile ) {
-                    topNavMobile.find('.item .logo__image').addClass('scroll-hidden-logo')
-                    topNavMobile.find('.item .hotline-on-mobile').addClass('scroll-show-phone')
-                } else {
-                    topNavMobile.find('.item .logo__image').removeClass('scroll-hidden-logo')
-                    topNavMobile.find('.item .hotline-on-mobile').removeClass('scroll-show-phone')
-                }
-            }
-        }, 100 );
-
     })
 
     /*
@@ -133,16 +96,56 @@
         }
     }
 
-    // handle add category image content post
-    const handleAddCategoryImageContentPost = () => {
-        const singlePostContentDetail = $('.single-post-content__detail')
+    // handle slider main
+    const handleSliderMain = () => {
+        const sliderMain = $('.slider-main__warp')
 
-        if ( singlePostContentDetail.length ) {
-            const urlImageCate = singlePostContentDetail.data('url-image-cate')
-
-            // insert before image cate
-            $(`<div class="image-cate-box text-center mb-4"><img src="${urlImageCate}" alt=""></div>`).insertBefore(".title-has-icon:first");
+        if ( sliderMain.length ) {
+            sliderMain.each(function () {
+                $(this).owlCarousel({
+                    items: 1,
+                    loop: true,
+                    dots: false,
+                    autoplay: true,
+                    autoplaySpeed: 800,
+                    dragEndSpeed: 800
+                })
+            })
         }
     }
 
+    // handle check mobile device
+    const isMobileDevice = () => {
+        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    }
+
+    // handle click zalo
+    const handleZaLoClick = () => {
+        const chatWithUsZalo = $('.chat-with-us__zalo')
+
+        if ( chatWithUsZalo.length ) {
+            chatWithUsZalo.on('click', function (e) {
+                e.preventDefault()
+
+                let link;
+                const phone = $(this).data('phone')
+                const qrCode = $(this).data('qr-code')
+
+                if ( isMobileDevice() ) {
+                    if (navigator.userAgent.includes('Android')) {
+                        // android
+                        link = `https://zaloapp.com/qr/p/${qrCode}`;
+                    } else {
+                        // ios
+                        link = `zalo://qr/p/${qrCode}`;
+                    }
+                } else {
+                    // pc
+                    link = `zalo://conversation?phone=${phone}`
+                }
+
+                window.open(link, '_parent');
+            })
+        }
+    }
 } )( jQuery );

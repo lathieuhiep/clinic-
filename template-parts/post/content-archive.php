@@ -1,40 +1,16 @@
 <?php
-get_template_part( 'components/inc', 'breadcrumbs' );
-
 $sidebar = clinic_get_option('opt_post_cat_sidebar_position', 'right');
 $class_col_content = clinic_col_use_sidebar($sidebar, 'sidebar-main');
-
-$term_image_url = '';
-if ( is_archive() || is_category() ) {
-	$category = get_queried_object();
-    $category_parent_id = $category->category_parent;
-
-	if ( $category_parent_id != 0 ) {
-		$term_id = $category_parent_id;
-	} else {
-		$term_id = $category->term_id;
-	}
-
-	$term_image_url = get_term_meta( $term_id, 'term_banner_image', true );
-}
 ?>
-
-<?php if ( $term_image_url ) : ?>
-    <div class="banner-cate">
-        <div class="container">
-            <div class="image-warp">
-                <img src="<?php echo esc_url( $term_image_url ); ?>" width="1920" height="500" alt="">
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
 
 <div class="site-container archive-post-warp">
     <div class="container">
         <div class="row">
             <div class="<?php echo esc_attr( $class_col_content ); ?>">
+                <?php get_template_part( 'components/inc', 'breadcrumbs' ); ?>
+
                 <?php if ( have_posts() ) : ?>
-                    <div class="content-archive-post">
+                    <div class="content-archive-post mt-4">
 		                <?php
 		                while ( have_posts() ) :
 			                the_post();

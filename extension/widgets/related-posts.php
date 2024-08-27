@@ -49,6 +49,7 @@ class clinic_related_posts_widget extends WP_Widget {
 			'posts_per_page'      => $limit,
 			'orderby'             => $instance['order_by'],
 			'order'               => $instance['order'],
+			'post__not_in'        => array( get_the_ID() ),
 			'ignore_sticky_posts' => 1,
 		);
 

@@ -1,17 +1,39 @@
 <?php
 $call_phone = clinic_get_opt_hotline();
+$chat_zalo = clinic_get_opt_chat_zalo();
+$link_messenger = clinic_get_opt_link_chat_messenger()
 ?>
 
-<div class="chat-with-us d-lg-none">
-    <?php if ( $call_phone ) : ?>
-        <a class="chat-with-us__link chat-with-us__phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($call_phone)); ?>">
-            <svg class="icon alo-circle-anim" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.35888 0.205162L3.24417 0.0281045C3.85929 -0.0949189 4.4834 0.193694 4.78804 0.742052L6.29826 3.46046C6.61104 4.02346 6.5127 4.72559 6.05729 5.181L5.04056 6.19773C4.5726 6.66625 4.48374 7.39321 4.82549 7.9604C5.399 8.91392 6.0666 9.77154 6.8283 10.5332C7.59001 11.2949 8.44701 11.9619 9.39933 12.5342C9.9666 12.8745 10.6926 12.7852 11.1606 12.3177L12.1773 11.301C12.6327 10.8456 13.3348 10.7473 13.8978 11.06L16.6162 12.5703C17.1646 12.8749 17.4532 13.499 17.3302 14.1141L17.1531 14.9994C17.0685 15.4222 16.7992 15.785 16.4184 15.9872C12.8454 17.8917 8.9682 16.7531 4.78668 12.5716C0.605155 8.3901 -0.533362 4.51287 1.37113 0.93995C1.5733 0.559101 1.93609 0.289794 2.35888 0.205162Z" fill="#04916F"/>
-            </svg>
+<div class="chat-with-us">
+	<?php
+	if ( !empty( $chat_zalo ) ) :
+        $zalo_selcet = $chat_zalo['select_zalo'];
+
+        if ( $zalo_selcet == 'phone_qr' ) :
+            $zalo_phone = $chat_zalo['phone'];
+            $zalo_qr_code = $chat_zalo['qr_code'];
+    ?>
+        <a class="link chat-with-us__zalo" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
+            <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-icon-contact.png' ) ) ?>" width="50" height="" />
+        </a>
+    <?php else: ?>
+        <a class="link" href="<?php echo esc_url( $chat_zalo['link'] ); ?>" target="_blank">
+            <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-icon-contact.png' ) ) ?>" width="50" height="" />
+        </a>
+	<?php
+        endif;
+    endif;
+    ?>
+
+	<?php if ( $link_messenger ) : ?>
+        <a class="link chat-with-us__messenger" href="<?php echo esc_url($link_messenger); ?>" target="_blank">
+            <img alt="facebook" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/mess-facebook-contact.png' ) ) ?>" width="50" height="" />
         </a>
 	<?php endif; ?>
-</div>
 
-<div class="chat-link-box">
-
+	<?php if ($call_phone) : ?>
+        <a class="link chat-with-us__phone alo-circle-anim" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($call_phone)); ?>">
+            <img alt="phone" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/phone-icon-contact.png' ) ) ?>" width="50" height="" />
+        </a>
+	<?php endif; ?>
 </div>

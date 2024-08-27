@@ -33,16 +33,16 @@
 
   &__column {
     padding: 4rem 0 2rem;
-    background: linear-gradient(180deg, #1E944B 0%, #137260 100%);
+    background-image: url("../images/bk-footer.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
 }
 
 .contact-us-group {
-  position: sticky;
-  bottom: 0;
   text-align: start;
-  background-color: #00644A;
-  z-index: 999;
+  background-color: #137597;
 
   .grid-layout {
     min-height: 6rem;
@@ -68,10 +68,8 @@
       &__icon {
         flex: 0 0 auto;
 
-        @media (max-width: 992px) {
-          svg {
-            width: 3rem;
-          }
+        svg {
+          width: 3rem;
         }
 
         @media (min-width: 376px) {
@@ -86,7 +84,15 @@
       &__content {
         a {
           color: var(--color-white);
-          font-size: 1.5rem;
+          font-weight: 700;
+
+          @media (min-width: 1200px) {
+            font-size: 2rem;
+          }
+
+          @media (max-width: 1199px) {
+            font-size: 1.5rem;
+          }
 
           &:hover {
             color: var(--color-cadmium-yellow);
