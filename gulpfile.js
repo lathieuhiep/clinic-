@@ -7,6 +7,7 @@ const browserSync = require('browser-sync')
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
 const rename = require("gulp-rename")
+const cached = require('gulp-cached')
 
 const pathSrc = './src'
 const pathDest = './assets'
@@ -124,6 +125,7 @@ function buildJSElementor() {
 // Task build style custom post type
 function buildStylesCustomPostType() {
     return src(`${pathSrc}/scss/post-type/*/**.scss`)
+        .pipe(cached('style-post-type'))
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
@@ -142,6 +144,7 @@ function buildJSTheme() {
     return src([
         `${pathSrc}/js/*.js`
     ], {allowEmpty: true})
+        .pipe(cached('scripts'))
         .pipe(uglify())
         .pipe(rename( {suffix: '.min'} ))
         .pipe(dest(`${pathDest}/js/`))
