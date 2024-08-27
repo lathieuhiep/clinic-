@@ -1,0 +1,48 @@
+.element-cate-list-slider {
+  &__warp {
+    .item {
+      &__image {
+        @include square(22.5rem, 50%);
+        margin: 0 auto 3rem;
+        border: 1.6rem solid #8BBBE0;
+        background-color: var(--color-white);
+        @include flex-center();
+
+        img {
+          width: auto;
+        }
+      }
+
+      &__title {
+        font-size: 1.8rem;
+
+        a {
+          display: inline-block;
+          font-size: inherit;
+          color: inherit;
+        }
+      }
+    }
+
+    &.owl-carousel {
+      .owl-nav {
+        margin: 0;
+
+        button {
+          position: absolute;
+          top: 50%;
+          font-size: 2rem;
+          transform: translateY(-50%);
+
+          &.owl-prev {
+            left: 0;
+          }
+
+          &.owl-next {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}
