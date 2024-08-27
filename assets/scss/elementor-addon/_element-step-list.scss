@@ -1,0 +1,36 @@
+.element-step-list {
+  display: grid;
+
+  .item {
+    padding: .9rem 2.4rem;
+    display: grid;
+    grid-gap: 3rem 2.4rem;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    background: linear-gradient(180deg, #F4F4F4 0, #F5F5F5 100%);
+
+    .number {
+      color: var(--clinic-theme-primary-color);
+      font-family: var(--heading-font-family);
+      font-size: 8rem;
+      font-weight: 700;
+      line-height: 1;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: 1px;
+      stroke-width: 1px;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #000000;
+      font-weight: 500;
+      font-family: var(--body-font-family);
+
+      + .content {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
