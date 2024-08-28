@@ -1,0 +1,18 @@
+.elementor-widget-text-editor {
+  blockquote {
+    position: relative;
+    margin: 0;
+    padding: 5rem 0 0;
+    border: 0;
+
+    &:before {
+      position: absolute;
+      content: "\e919";
+      top: 0;
+      left: 0;
+      font-family: "icomoon", serif;
+      font-size: 3rem;
+      line-height: normal;
+    }
+  }
+}
