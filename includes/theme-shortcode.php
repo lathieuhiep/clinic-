@@ -44,6 +44,33 @@ function clinic_shortcode_phone($args, $content = null): bool|string {
     return $content;
 }
 
+// short code blur image
+add_shortcode('blur_image', 'clinic_shortcode_blur_image');
+function clinic_shortcode_blur_image($atts): bool|string {
+    ob_start();
+
+    $atts = shortcode_atts(
+        array(
+            'src' => '',
+            'alt' => '',
+        ),
+        $atts,
+        'blur_image'
+    );
+    ?>
+    <div class="blur-image">
+        <div class="blur-image__box">
+            <img src="<?php echo esc_url( $atts['src'] ); ?>" alt="<?php echo esc_attr($atts['alt']); ?>">
+
+            <p class="txt"><?php esc_html_e('Chạm vào để xem ảnh', 'clinic'); ?></p>
+        </div>
+    </div>
+    <?php
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
+}
+
 //----------
 // Hook to add buttons to TinyMCE
 add_action('admin_init', 'clinic_custom_tinymce_buttons');
@@ -58,6 +85,7 @@ function clinic_add_tinymce_plugins($plugin_array) {
     $plugin_array['custom_button_title'] = get_theme_file_uri( '/assets/admin/admin.js' );
     $plugin_array['custom_button_contact'] = get_theme_file_uri( '/assets/admin/admin.js' );
     $plugin_array['custom_button_phone'] = get_theme_file_uri( '/assets/admin/admin.js' );
+    $plugin_array['custom_button_blur_image'] = get_theme_file_uri( '/assets/admin/admin.js' );
 
     return $plugin_array;
 }
@@ -66,6 +94,7 @@ function clinic_register_tinymce_buttons($buttons) {
     $buttons[] = "custom_button_title";
     $buttons[] = "custom_button_contact";
     $buttons[] = "custom_button_phone";
+    $buttons[] = "custom_button_blur_image";
 
     return $buttons;
 }
