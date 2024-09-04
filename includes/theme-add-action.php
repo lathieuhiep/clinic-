@@ -76,7 +76,8 @@ function clinic_include_custom_post_types_in_search_results( $query ): void {
 
 //Disable emojis in WordPress
 add_action( 'init', 'clinic_disable_emojis' );
-function clinic_disable_emojis() {
+function clinic_disable_emojis(): void
+{
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 	remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -87,7 +88,8 @@ function clinic_disable_emojis() {
 	add_filter( 'tiny_mce_plugins', 'clinic_disable_emojis_tinymce' );
 }
 
-function clinic_disable_emojis_tinymce( $plugins ) {
+function clinic_disable_emojis_tinymce( $plugins ): array
+{
 	if ( is_array( $plugins ) ) {
 		return array_diff( $plugins, array( 'wpemoji' ) );
 	} else {
@@ -95,10 +97,20 @@ function clinic_disable_emojis_tinymce( $plugins ) {
 	}
 }
 
+// add code header
+add_action('wp_head', 'clinic_add_code_header');
+function clinic_add_code_header(): void {
+    $add_code = clinic_get_option( 'opt_add_code_header' );
+
+    if ( $add_code ) {
+        echo $add_code;
+    }
+}
+
 // javascript footer
 add_action('wp_footer', 'clinic_add_script_footer');
 function clinic_add_script_footer(): void {
-	$add_script = clinic_get_option( 'opt_footer_add_javascript' );
+	$add_script = clinic_get_option( 'opt_add_code_footer' );
 
     if ( $add_script ) {
 	    echo $add_script;
