@@ -1,13 +1,12 @@
 'use strict';
 
-const { src, dest, watch, series } = require('gulp')
+const { src, dest, watch } = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync')
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
 const rename = require("gulp-rename")
-const cached = require('gulp-cached')
 
 const pathSrc = './src'
 const pathDist  = './assets'
@@ -41,9 +40,8 @@ const buildStyleLib = (rootPath, distPath) => {
 }
 
 // function build style has map
-const buildStyleHasMap = (rootPath, distPath, nameCached) => {
+const buildStyleHasMap = (rootPath, distPath) => {
     return src( rootPath )
-        .pipe(cached( nameCached ))
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
@@ -96,12 +94,23 @@ const buildJsOwlCarouse = () => {
 
 // Task build style
 const buildStylesTheme = () => {
-    buildStyleHasMap(`${pathSrc}/scss/style-theme.scss`, `${pathDist}/css/`, 'style-theme' )
+    return src( `${pathSrc}/scss/style-theme.scss` )
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
+        .pipe(dest( `${pathDist}/css/` ))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 // Task build style elementor
 const buildStylesElementor = () => {
-    buildStyleHasMap(`${pathSrc}/scss/elementor-addon/elementor-addon.scss`, './extension/elementor-addon/css/', 'style-elementor-addon' )
+    buildStyleHasMap(`${pathSrc}/scss/elementor-addon/elementor-addon.scss`, './extension/elementor-addon/css/' )
 }
 
 const buildJSElementor = () => {
@@ -110,12 +119,12 @@ const buildJSElementor = () => {
 
 // Task build style custom post type
 const buildStylesCustomPostType = () => {
-    buildStyleHasMap(`${pathSrc}/scss/post-type/*/**.scss`, `${pathDist}/css/post-type/`, 'style-post-type' )
+    buildStyleHasMap(`${pathSrc}/scss/post-type/*/**.scss`, `${pathDist}/css/post-type/` )
 }
 
 // Task build style page templates
 const buildStylesPageTemplate = () => {
-    buildStyleHasMap(`${pathSrc}/scss/page-templates/**.scss`, `${pathDist}/css/page-templates/`, 'style-page-templates' )
+    buildStyleHasMap(`${pathSrc}/scss/page-templates/**.scss`, `${pathDist}/css/page-templates/` )
 }
 
 // buildJSTheme
@@ -153,27 +162,22 @@ const watchTask = () => {
 
     watch([
         `${pathSrc}/scss/variables-site/*.scss`,
-    ], series(
-        buildStylesBootstrap,
-        buildStylesTheme,
-        buildStylesElementor,
-        buildStylesCustomPostType
-    ))
-
-    watch([
         `${pathSrc}/scss/bootstrap.scss`
     ], buildStylesBootstrap)
 
     watch([
+        `${pathSrc}/scss/variables-site/*.scss`,
         `${pathSrc}/scss/base/*.scss`,
         `${pathSrc}/scss/style-theme.scss`,
     ], buildStylesTheme)
 
     watch([
+        `${pathSrc}/scss/variables-site/*.scss`,
         `${pathSrc}/scss/elementor-addon/*.scss`
     ], buildStylesElementor)
 
     watch([
+        `${pathSrc}/scss/variables-site/*.scss`,
         `${pathSrc}/scss/post-type/*/**.scss`
     ], buildStylesCustomPostType)
 

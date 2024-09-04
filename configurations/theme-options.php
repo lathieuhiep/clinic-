@@ -38,14 +38,13 @@ if ( class_exists( 'CSF' ) ) {
 		'parent' => 'opt_general_section',
 		'title'  => esc_html__( 'Toàn cục', 'clinic' ),
 		'fields' => array(
-			// favicon
-			array(
-				'id'      => 'opt_general_favicon',
-				'type'    => 'media',
-				'title'   => esc_html__( 'Favicon', 'clinic' ),
-				'library' => 'image',
-				'url'     => false
-			),
+            // slogan
+            array(
+                'id'      => 'opt_general_slogan',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Slogan', 'clinic' ),
+                'default' => esc_html__( 'PHÒNG KHÁM ĐA KHOA QUỐC TẾ CẦN THƠ - Y ĐỨC HÀNG ĐẦU - VƯƠN TẦM THẾ GIỚI', 'clinic' )
+            ),
 
 			// logo
 			array(

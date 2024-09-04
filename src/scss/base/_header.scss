@@ -1,3 +1,19 @@
+$path-image: '../images';
+
+.slogan-warp {
+  .box {
+    padding: 0 3rem;
+    min-height: 5rem;
+    color: #ffffff;
+    font-weight: 700;
+    background-image: url('#{$path-image}/bk-sologan.webp');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 100%;
+    @include flex-center();
+  }
+}
+
 .global-header {
   background-color: var(--color-white);
 
