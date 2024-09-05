@@ -8,7 +8,7 @@ $address = clinic_get_opt_general_address();
 <div class="top-nav d-none d-lg-block">
     <div class="container">
         <div class="grid-layout">
-            <div class="logo">
+            <div class="logo d-flex align-items-center">
                 <a class="d-block" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
                     <?php
                     if ( ! empty( $logo['id'] ) ) :
@@ -22,45 +22,40 @@ $address = clinic_get_opt_general_address();
                 </a>
             </div>
 
-            <div class="info">
-                <div class="item">
-                    <div class="item__icon alo-circle-anim">
-                        <i class="icon-phone-light"></i>
-                    </div>
-
-                    <div class="item__content">
-                        <p class="txt"><?php esc_html_e('Hotline tư vấn', 'clinic'); ?></p>
-
-                        <a class="phone fw-bold value" href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
-                            <?php echo esc_html( $hotline ); ?>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item__icon">
-                        <i class="icon-clock"></i>
-                    </div>
-
-                    <div class="item__content">
-                        <p class="txt"><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
-
-                        <strong class="value"><?php echo esc_html( $working_time ); ?></strong>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item__icon">
-                        <i class="icon-location"></i>
-                    </div>
-
-                    <div class="item__content">
-                        <p class="txt"><?php esc_html_e('Địa chỉ', 'clinic'); ?></p>
-
-                        <strong class="value"><?php echo esc_html( $address ); ?></strong>
-                    </div>
-                </div>
+            <div id="primary-menu" class="primary-menu">
+                <?php
+                if ( has_nav_menu( 'primary' ) ) :
+                    wp_nav_menu( array(
+                        'theme_location' => 'primary',
+                        'menu_class' => 'd-lg-flex reset-list',
+                        'container' => false,
+                    ) );
+                else:
+                    ?>
+                    <ul class="main-menu">
+                        <li>
+                            <a href="<?php echo get_admin_url() . '/nav-menus.php'; ?>">
+                                <?php esc_html_e( 'ADD TO MENU', 'clinic' ); ?>
+                            </a>
+                        </li>
+                    </ul>
+                <?php endif; ?>
             </div>
+
+            <div class="search-warp d-flex align-items-center">
+                <button type="button" class="btn btn-search" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="icon-search"></i>
+                </button>
+            </div>
+
+            <?php if ( $hotline ) : ?>
+                <div class="hotline-warp d-flex align-items-center">
+                    <a href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $hotline ) ); ?>">
+                        <i class="icon-phone-light d-inline-block alo-circle-anim"></i>
+                        <span class="tel"><?php echo esc_html( $hotline ) ?></span>
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

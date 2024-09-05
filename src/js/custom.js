@@ -30,6 +30,17 @@
         handleRemoveLoadingPage()
     })
 
+    $(window).scroll(function () {
+        // scroll menu
+        const menu = $('.global-header');
+
+        if ($(this).scrollTop() > menu.outerHeight()) {
+            menu.addClass('scrolled');
+        } else {
+            menu.removeClass('scrolled');
+        }
+    })
+
     /*
     ** Function
     * */

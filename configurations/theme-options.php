@@ -46,6 +46,15 @@ if ( class_exists( 'CSF' ) ) {
                 'default' => esc_html__( 'PHÒNG KHÁM ĐA KHOA QUỐC TẾ CẦN THƠ - Y ĐỨC HÀNG ĐẦU - VƯƠN TẦM THẾ GIỚI', 'clinic' )
             ),
 
+            // banner mobile
+            array(
+                'id'      => 'opt_general_banner_mobile',
+                'type'    => 'media',
+                'title'   => esc_html__( 'Banner mobile', 'clinic' ),
+                'library' => 'image',
+                'url'     => false
+            ),
+
 			// logo
 			array(
 				'id'      => 'opt_general_logo',

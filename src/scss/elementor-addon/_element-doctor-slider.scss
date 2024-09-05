@@ -1,3 +1,5 @@
+$path-image: '../images';
+
 .element-doctor-slider {
   &__warp {
     .item {
@@ -11,7 +13,7 @@
       }
 
       &__thumbnail {
-        background-image: url("../images/bk-avatar-doi-ngu-bac-si.png");
+        background-image: url('#{$path-image}/bk-avatar-doi-ngu-bac-si.png');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -123,15 +125,37 @@
           position: absolute;
           margin: 0;
           top: 50%;
-          font-size: 2rem;
+          font-size: 1.6rem;
+          line-height: 100%;
+          color: #ff5555;
+          border: .1rem solid #ff5555;
+          @include square(3.2rem, 50%);
+          background-color: #ffffff;
           transform: translateY(-50%);
 
           &.owl-prev {
-            left: 0;
+            @media (min-width: 992px) {
+              left: -1.6rem;
+            }
+
+            @media (max-width: 991px) {
+              left: 1rem;
+            }
           }
 
           &.owl-next {
-            right: 0;
+            @media (min-width: 992px) {
+              right: -1.6rem;
+            }
+
+            @media (max-width: 991px) {
+              right: 1rem;
+            }
+          }
+
+          &:hover {
+            color: #ffffff;
+            background-color: #ff5555;
           }
         }
       }

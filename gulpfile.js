@@ -6,7 +6,8 @@ const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync')
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
-const rename = require("gulp-rename")
+const rename = require('gulp-rename')
+const cached = require('gulp-cached')
 
 const pathSrc = './src'
 const pathDist  = './assets'
@@ -25,57 +26,31 @@ function server() {
     })
 }
 
-// function build style
-const buildStyleLib = (rootPath, distPath) => {
-    return src( rootPath )
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }, '').on('error', sass.logError))
-        .pipe(minifyCss({
-            level: {1: {specialComments: 0}}
-        }))
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest( distPath ))
-        .pipe(browserSync.stream({ match: '**/*.css' }));
-}
-
-// function build style has map
-const buildStyleHasMap = (rootPath, distPath) => {
-    return src( rootPath )
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }, '').on('error', sass.logError))
-        .pipe(minifyCss({
-            level: {1: {specialComments: 0}}
-        }))
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(sourcemaps.write())
-        .pipe(dest( distPath ))
-        .pipe(browserSync.stream({ match: '**/*.css' }))
-}
-
-// function build js
-const buildJsLib = (rootPath, distPath) => {
-    return src( rootPath, {allowEmpty: true} )
-        .pipe(uglify())
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest( distPath ))
-        .pipe(browserSync.stream())
-}
-
 /*
 Task build Bootstrap
 * */
 
 // Task build style bootstrap
 const buildStylesBootstrap = () => {
-    buildStyleLib( `${pathSrc}/scss/bootstrap.scss`, `${pathDist}/libs/bootstrap/` )
+    return src(`${pathSrc}/scss/bootstrap.scss`)
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/libs/bootstrap/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 // Task build js bootstrap
 const buildLibsBootstrapJS = () => {
-    buildJsLib( `${pathNodeModule}/bootstrap/dist/js/bootstrap.bundle.js`, `${pathDist}/libs/bootstrap/` )
+    return src( `${pathNodeModule}/bootstrap/dist/js/bootstrap.bundle.js`, {allowEmpty: true} )
+        .pipe(uglify())
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/libs/bootstrap/`))
+        .pipe(browserSync.stream())
 }
 
 /*
@@ -84,12 +59,25 @@ Task build owl carousel
 
 // Task build style owl carousel
 const buildStylesOwlCarousel = () => {
-    buildStyleLib( `${pathNodeModule}/owl.carousel/dist/assets/owl.carousel.css`, `${pathDist}/libs/owl.carousel/` )
+    return src(`${pathNodeModule}/owl.carousel/dist/assets/owl.carousel.css`)
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/libs/owl.carousel/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 // Task build js owl carousel
 const buildJsOwlCarouse = () => {
-    buildJsLib( `${pathNodeModule}/owl.carousel/dist/owl.carousel.js`, `${pathDist}/libs/owl.carousel/` )
+    return src(`${pathNodeModule}/owl.carousel/dist/owl.carousel.js`, {allowEmpty: true})
+        .pipe(uglify())
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/libs/owl.carousel/`))
+        .pipe(browserSync.stream())
 }
 
 // Task build style
@@ -110,26 +98,69 @@ const buildStylesTheme = () => {
 
 // Task build style elementor
 const buildStylesElementor = () => {
-    buildStyleHasMap(`${pathSrc}/scss/elementor-addon/elementor-addon.scss`, './extension/elementor-addon/css/' )
+    return src(`${pathSrc}/scss/elementor-addon/elementor-addon.scss`)
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
+        .pipe(dest('./extension/elementor-addon/css/'))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 const buildJSElementor = () => {
-    buildJsLib( `${pathSrc}/js/elementor-addon/*.js`, './extension/elementor-addon/js/' )
+    return src(`${pathSrc}/js/elementor-addon/*.js`, {allowEmpty: true})
+        .pipe(uglify())
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest('./extension/elementor-addon/js/'))
+        .pipe(browserSync.stream())
 }
 
 // Task build style custom post type
 const buildStylesCustomPostType = () => {
-    buildStyleHasMap(`${pathSrc}/scss/post-type/*/**.scss`, `${pathDist}/css/post-type/` )
+    return src(`${pathSrc}/scss/post-type/*/**.scss`)
+        .pipe(cached('buildStylesCustomPostType'))
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`${pathDist}/css/post-type/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 // Task build style page templates
 const buildStylesPageTemplate = () => {
-    buildStyleHasMap(`${pathSrc}/scss/page-templates/**.scss`, `${pathDist}/css/page-templates/` )
+    return src(`${pathSrc}/scss/page-templates/**.scss`)
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`${pathDist}/css/page-templates/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 // buildJSTheme
 const buildJSTheme = () => {
-    buildJsLib( `${pathSrc}/js/*.js`, `${pathDist}/js/` )
+    return src(`${pathSrc}/js/*.js`, {allowEmpty: true})
+        .pipe(cached('buildJSTheme'))
+        .pipe(uglify())
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/js/`))
+        .pipe(browserSync.stream())
 }
 
 /*

@@ -56,6 +56,56 @@ class Clinic_Elementor_Slider extends Widget_Base {
         );
 
         $this->end_controls_section();
+
+        // carousel options
+        $this->start_controls_section(
+            'options_section',
+            [
+                'label' => esc_html__( 'Tùy chọn bổ sung', 'clinic' ),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'loop',
+            [
+                'type'          =>  Controls_Manager::SWITCHER,
+                'label'         =>  esc_html__('Lặp lại vô hạn', 'clinic'),
+                'label_off'     =>  esc_html__('Không', 'clinic'),
+                'label_on'      =>  esc_html__('Có', 'clinic'),
+                'return_value'  =>  'yes',
+                'default'       =>  'yes',
+            ]
+        );
+
+        $this->add_control(
+            'autoplay',
+            [
+                'label'         =>  esc_html__('Tự động chạy', 'clinic'),
+                'type'          =>  Controls_Manager::SWITCHER,
+                'label_off'     =>  esc_html__('Không', 'clinic'),
+                'label_on'      =>  esc_html__('Có', 'clinic'),
+                'return_value'  =>  'yes',
+                'default'       =>  'no',
+            ]
+        );
+
+        $this->add_control(
+            'navigation',
+            [
+                'label' => esc_html__( 'Thanh điều hướng', 'clinic' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'arrows',
+                'options' => [
+                    'both'  => esc_html__( 'Mũi tên và Dấu chấm', 'clinic' ),
+                    'arrows'  => esc_html__( 'Mũi tên', 'clinic' ),
+                    'dots'  => esc_html__( 'Dấu chấm', 'clinic' ),
+                    'none' => esc_html__( 'Không', 'clinic' ),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render(): void {
@@ -63,7 +113,11 @@ class Clinic_Elementor_Slider extends Widget_Base {
         $gallery_ids = clinic_get_general_slider();
 
 	    $owl_options = [
-		    'items' => 1
+		    'items' => 1,
+            'loop' => ('yes' === $settings['loop']),
+            'nav' => $settings['navigation'] == 'both' || $settings['navigation'] == 'arrows',
+            'dots' => $settings['navigation'] == 'both' || $settings['navigation'] == 'dots',
+            'autoplay' => ('yes' === $settings['autoplay'])
 	    ];
     ?>
 

@@ -1,0 +1,10 @@
+.element-slider-carousel {
+  .item {
+    &:hover {
+      .item__thumbnail {
+        transform: rotateX(360deg);
+        @include transition();
+      }
+    }
+  }
+}

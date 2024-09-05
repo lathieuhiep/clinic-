@@ -61,28 +61,10 @@
     const elementDoctorSlider = ($scope, $) => {
         const slider = $scope.find('.element-doctor-slider__warp')
 
-        if ( slider.length ) {
+        if (slider.length) {
             slider.each(function () {
                 const thisSlider = $(this)
-                const options = {
-                    dots: false,
-                    nav: true,
-                    margin: 32,
-                    responsive:{
-                        0: {
-                            items: 1,
-                        },
-                        480: {
-                            items: 2,
-                        },
-                        768: {
-                            items: 3,
-                        },
-                        1024: {
-                            items: 4,
-                        }
-                    }
-                }
+                const options = slider.data('owl-options')
 
                 thisSlider.owlCarousel(owlCarouselElementorOptions(options))
             })

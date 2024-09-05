@@ -1,0 +1,31 @@
+.element-slider {
+  .owl-carousel {
+    .owl-nav {
+      margin: 0;
+
+      button {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        font-size: 2.6rem;
+        transform: translateY(-50%);
+
+        &.owl-prev {
+          left: 2rem
+        }
+
+        &.owl-next {
+          right: 2rem
+        }
+      }
+    }
+
+    .owl-dots {
+      margin: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2rem;
+    }
+  }
+}

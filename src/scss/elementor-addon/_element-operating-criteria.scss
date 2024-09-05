@@ -1,0 +1,46 @@
+.element-operating-criteria {
+  &__warp {
+    display: grid;
+    align-items: center;
+
+    @media (min-width: 1200px) {
+      grid-template-columns: 1fr 50rem 1fr;
+    }
+
+    .item-group {
+      .repeater-item {
+        position: relative;
+        min-height: 6.6rem;
+        color: #ffffff;
+        border: 2px solid #049468;
+        border-radius: 4rem;
+        background: linear-gradient(to right, #029265, #2CB68C);
+        display: flex;
+        align-items: center;
+
+        ~ .repeater-item {
+          margin-top: 8rem;
+        }
+
+        .thumbnail-box {
+          position: absolute;
+          top: 50%;
+          overflow: hidden;
+          @include square(10rem, 50%);
+          transform: translateY(-50%);
+        }
+      }
+
+      &.item-left {
+        .repeater-item {
+          padding-left: 1.6rem;
+          padding-right: 10.8rem;
+
+          .thumbnail-box {
+            right: -0.3rem;
+          }
+        }
+      }
+    }
+  }
+}
