@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class Paint_Elementor_Slider_Carousel extends Widget_Base
+class Clinic_Elementor_Slider_Carousel extends Widget_Base
 {
 
     /**
@@ -409,6 +409,18 @@ class Paint_Elementor_Slider_Carousel extends Widget_Base
             [
                 'label' => esc_html__( 'Hộp chứa', 'paint' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'box_style_hover_rotate_image',
+            [
+                'type'          =>  Controls_Manager::SWITCHER,
+                'label'         =>  esc_html__('Hover Xoay ảnh', 'clinic'),
+                'label_off'     =>  esc_html__('Không', 'clinic'),
+                'label_on'      =>  esc_html__('Có', 'clinic'),
+                'return_value'  =>  'yes',
+                'default'       =>  'no',
             ]
         );
 
@@ -953,12 +965,12 @@ class Paint_Elementor_Slider_Carousel extends Widget_Base
         ];
     ?>
         <div class="element-slider-carousel">
-            <div class="element-slider-carousel__warp custom-owl-carousel owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+            <div class="element-slider-carousel__warp custom-owl-carousel owl-carousel owl-theme custom-owl-nav" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
                 ?>
-                    <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
+                    <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); echo esc_attr( $settings['box_style_hover_rotate_image'] == 'yes' ? ' hover-image' : '' ) ?>">
                         <?php if ( $imageId ) : ?>
                             <div class="item__thumbnail">
                                 <?php echo wp_get_attachment_image( $imageId, 'large' ); ?>

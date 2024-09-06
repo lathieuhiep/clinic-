@@ -1,96 +1,68 @@
 .element-about-us {
   &__warp {
     display: grid;
+    grid-gap: 1.6rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .item {
-      order: 1;
+      &.item-thumbnail {
+        img {
+          width: 100%;
+        }
+      }
 
       .heading {
+        margin-bottom: 4.6rem;
+        font-size: 3.5rem;
         font-family: var(--body-font-family);
       }
+    }
 
-      .sub-heading {
-        font-size: 3.6rem;
+    .item-thumbnail {
+      @media (min-width: 768px) {
+        order: 2;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .item-content {
+      position: relative;
+      border-radius: .5rem;
+      background-color: #00A878;
+      color: var(--color-white);
+
+      @media (min-width: 768px) {
+        padding: 4.8rem;
       }
 
-      .dividing-line {
-        margin-bottom: 1.2rem;
-        height: .3rem;
-        background-color: #FFAC4B;
+      @media (max-width: 767px) {
+        padding: 2.4rem;
+      }
+
+      &:before {
+        position: absolute;
+        content: "";
+        top: .8rem;
+        right: .8rem;
+        bottom: .8rem;
+        left: .8rem;
+        border: .2rem dashed var(--color-white);
+        border-radius: .5rem;
       }
 
       .desc {
-        ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-
-          li {
-            position: relative;
-            padding-left: 3.5rem;
-
-            &:before {
-              position: absolute;
-              content: "";
-              top: .6rem;
-              left: 0;
-              @include square(1.2rem, 50%);
-              background-color: #E6171F;
-            }
-
-            ~ li {
-              margin-top: 1.2rem;
-            }
-          }
-        }
-      }
-
-      .action-box {
-        margin-top: 2.4rem;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-
-        @media (max-width: 479px) {
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-
-        a {
-          padding: 1.3rem 2.4rem;
-          font-size: 1.7rem;
-          font-weight: 500;
-          color: #FAFF00;
-          border-radius: .7rem;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-
-          @media (min-width: 1200px) {
-            min-width: 24.2rem;
-          }
-
-          @media (max-width: 1199px) {
-            flex: 0 0 auto;
-          }
-
-          @media (max-width: 480px) {
-            width: 100%;
-          }
-
-          .icon {
-            font-size: 2.8rem;
-            margin-right: 1.1rem;
-          }
-        }
-
-        &__booking {
-          background: linear-gradient(180deg, #2FC86E 0, #18994E 100%);
-        }
-
-        &__chat {
-          background: linear-gradient(180deg, #FF0000 0, #990000 100%);
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100%;
       }
     }
   }

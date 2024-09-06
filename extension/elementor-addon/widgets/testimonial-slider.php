@@ -27,32 +27,11 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
     protected function register_controls(): void {
 
-        // content global
+        // Content testimonial
         $this->start_controls_section(
-            'content_global_section',
+            'content_section',
             [
-                'label' => esc_html__( 'Thông tin chung', 'clinic' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'content_global',
-            [
-                'label' => esc_html__( 'Mô tả', 'clinic' ),
-                'type' => Controls_Manager::WYSIWYG,
-                'rows' => 10,
-                'default' => esc_html__( 'Mô tả', 'clinic' ),
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // list testimonial
-        $this->start_controls_section(
-            'list_section',
-            [
-                'label' => esc_html__( 'Danh sách', 'clinic' ),
+                'label' => esc_html__( 'Content', 'clinic' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -62,7 +41,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $repeater->add_control(
             'list_image',
             [
-                'label' => esc_html__( 'Ảnh', 'clinic' ),
+                'label' => esc_html__( 'Choose Image', 'clinic' ),
                 'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
@@ -81,9 +60,9 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
         $repeater->add_control(
             'list_info', [
-                'label' => esc_html__( 'Thông tin thêm', 'clinic' ),
+                'label' => esc_html__( 'Thông tin', 'clinic' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => esc_html__( 'Cái Răng, Cần Thơ' , 'clinic' ),
+                'default' => esc_html__( 'Nhân viên văn phòng' , 'clinic' ),
                 'label_block' => true,
             ]
         );
@@ -91,17 +70,18 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $repeater->add_control(
             'list_description',
             [
-                'label' => esc_html__( 'Mô tả', 'clinic' ),
+                'label' => esc_html__( 'Description', 'clinic' ),
                 'type' => Controls_Manager::TEXTAREA,
                 'rows' => 10,
-                'default' => esc_html__( 'Mô tả', 'clinic' ),
+                'default' => esc_html__( 'GEMs are robotics algorithm for modules that built & optimized for NVIDIA AGX Data should underlie every business decision. Data should underlie every business Yet too often some very down the certain routes.', 'clinic' ),
+                'placeholder' => esc_html__( 'Type your description here', 'clinic' ),
             ]
         );
 
         $this->add_control(
             'list',
             [
-                'label' => esc_html__( 'Danh sách', 'clinic' ),
+                'label' => esc_html__( 'List', 'clinic' ),
                 'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
@@ -122,7 +102,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $this->start_controls_section(
             'options_section',
             [
-                'label' => esc_html__( 'Tùy chọn bổ sung', 'clinic' ),
+                'label' => esc_html__( 'Tùy chọn bổ sung', 'paint' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -131,9 +111,9 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
             'loop',
             [
                 'type'          =>  Controls_Manager::SWITCHER,
-                'label'         =>  esc_html__('Lặp lại vô hạn', 'clinic'),
-                'label_off'     =>  esc_html__('Không', 'clinic'),
-                'label_on'      =>  esc_html__('Có', 'clinic'),
+                'label'         =>  esc_html__('Lặp lại vô hạn', 'paint'),
+                'label_off'     =>  esc_html__('Không', 'paint'),
+                'label_on'      =>  esc_html__('Có', 'paint'),
                 'return_value'  =>  'yes',
                 'default'       =>  'yes',
             ]
@@ -142,10 +122,10 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $this->add_control(
             'autoplay',
             [
-                'label'         =>  esc_html__('Tự động chạy', 'clinic'),
+                'label'         =>  esc_html__('Tự động chạy', 'paint'),
                 'type'          =>  Controls_Manager::SWITCHER,
-                'label_off'     =>  esc_html__('Không', 'clinic'),
-                'label_on'      =>  esc_html__('Có', 'clinic'),
+                'label_off'     =>  esc_html__('Không', 'paint'),
+                'label_on'      =>  esc_html__('Có', 'paint'),
                 'return_value'  =>  'yes',
                 'default'       =>  'no',
             ]
@@ -154,14 +134,14 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $this->add_control(
             'navigation',
             [
-                'label' => esc_html__( 'Thanh điều hướng', 'clinic' ),
+                'label' => esc_html__( 'Thanh điều hướng', 'paint' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'arrows',
                 'options' => [
-                    'both'  => esc_html__( 'Mũi tên và Dấu chấm', 'clinic' ),
-                    'arrows'  => esc_html__( 'Mũi tên', 'clinic' ),
-                    'dots'  => esc_html__( 'Dấu chấm', 'clinic' ),
-                    'none' => esc_html__( 'Không', 'clinic' ),
+                    'both'  => esc_html__( 'Mũi tên và Dấu chấm', 'paint' ),
+                    'arrows'  => esc_html__( 'Mũi tên', 'paint' ),
+                    'dots'  => esc_html__( 'Dấu chấm', 'paint' ),
+                    'none' => esc_html__( 'Không', 'paint' ),
                 ],
             ]
         );
@@ -172,178 +152,262 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $this->start_controls_section(
             'responsive_section',
             [
-                'label' => esc_html__( 'Responsive', 'clinic' ),
+                'label' => esc_html__( 'Responsive', 'paint' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        // min width 1200
+        $this->add_control(
+            'margin_item',
+            [
+                'label'     =>  esc_html__( 'Khoảng cách', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  24,
+                'min'       =>  0,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        // greater 1200px
         $this->add_control(
             'min_width_1200',
             [
-                'label'     => esc_html__( 'Min Width 1200px', 'clinic' ),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label'     =>  esc_html__( 'Độ rộng lớn hơn 1200px', 'paint' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
             ]
         );
 
         $this->add_control(
-            'item_1200',
+            'item',
             [
-                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 4,
-                'min'     => 1,
-                'max'     => 100,
-                'step'    => 1,
+                'label'     =>  esc_html__( 'Số lượng hiển thị', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  2,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
             ]
         );
 
-        $this->add_control(
-            'margin_item_1200',
-            [
-                'label'   => esc_html__( 'Khoảng cách', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 24,
-                'min'     => 0,
-                'max'     => 100,
-                'step'    => 1,
-            ]
-        );
-
-        // min width 992
+        // greater 992px
         $this->add_control(
             'min_width_992',
             [
-                'label'     => esc_html__( 'Min Width 992px', 'clinic' ),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label'     =>  esc_html__( 'Độ rộng lớn hơn 992px', 'paint' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
             ]
         );
 
         $this->add_control(
             'item_992',
             [
-                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 2,
-                'min'     => 1,
-                'max'     => 100,
-                'step'    => 1,
+                'label'     =>  esc_html__( 'Số lượng hiển thị', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  2,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
             ]
         );
 
-        $this->add_control(
-            'margin_item_992',
-            [
-                'label'   => esc_html__( 'Khoảng cách', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 24,
-                'min'     => 0,
-                'max'     => 100,
-                'step'    => 1,
-            ]
-        );
-
-        // min width 768
+        // greater 768px
         $this->add_control(
             'min_width_768',
             [
-                'label'     => esc_html__( 'Min Width 768px', 'clinic' ),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label'     =>  esc_html__( 'Độ rộng lớn hơn 768px', 'paint' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
+            ]
+        );
+
+        $this->add_control(
+            'margin_item_greater_768',
+            [
+                'label'     =>  esc_html__( 'Khoảng cách', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  24,
+                'min'       =>  0,
+                'max'       =>  100,
+                'step'      =>  1,
             ]
         );
 
         $this->add_control(
             'item_768',
             [
-                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 2,
-                'min'     => 1,
-                'max'     => 10,
-                'step'    => 1,
+                'label'     =>  esc_html__( 'Số lượng hiển thị', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  2,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        // greater 576px
+        $this->add_control(
+            'width_greater_576',
+            [
+                'label'     =>  esc_html__( 'Độ rộng lớn hơn 576px', 'paint' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
             ]
         );
 
         $this->add_control(
-            'margin_item_768',
+            'item_greater_576',
             [
-                'label'   => esc_html__( 'Khoảng cách', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 12,
-                'min'     => 0,
-                'max'     => 100,
-                'step'    => 1,
-            ]
-        );
-
-        // min width 576
-        $this->add_control(
-            'min_width_576',
-            [
-                'label'     => esc_html__( 'Min Width 576px', 'clinic' ),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label'     =>  esc_html__( 'Số lượng hiển thị', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  2,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
             ]
         );
 
         $this->add_control(
-            'item_576',
+            'margin_item_greater_576',
             [
-                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 2,
-                'min'     => 1,
-                'max'     => 10,
-                'step'    => 1,
+                'label'     =>  esc_html__( 'Khoảng cách', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  12,
+                'min'       =>  0,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        // greater 480px
+        $this->add_control(
+            'width_greater_480',
+            [
+                'label'     =>  esc_html__( 'Độ rộng lớn hơn 480px', 'paint' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
             ]
         );
 
         $this->add_control(
-            'margin_item_576',
+            'item_greater_480',
             [
-                'label'   => esc_html__( 'Space Between Item', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 12,
-                'min'     => 0,
-                'max'     => 10,
-                'step'    => 1,
-            ]
-        );
-
-        // max width 575
-        $this->add_control(
-            'max_width_575',
-            [
-                'label'     => esc_html__( 'Max Width 575px', 'clinic' ),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label'     =>  esc_html__( 'Số lượng hiển thị', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  2,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
             ]
         );
 
         $this->add_control(
-            'item_575',
+            'margin_item_greater_480',
             [
-                'label'   => esc_html__( 'Số lượng hiển thị', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 1,
-                'min'     => 1,
-                'max'     => 10,
-                'step'    => 1,
+                'label'     =>  esc_html__( 'Khoảng cách', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  12,
+                'min'       =>  0,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        // less 480px
+        $this->add_control(
+            'max_width_item_less_480',
+            [
+                'label'     =>  esc_html__( 'Nhỏ hơn 480px', 'paint' ),
+                'type'      =>  Controls_Manager::HEADING,
+                'separator' =>  'before',
             ]
         );
 
         $this->add_control(
-            'margin_item_575',
+            'item_less_480',
             [
-                'label'   => esc_html__( 'Khoảng cách', 'clinic' ),
-                'type'    => Controls_Manager::NUMBER,
-                'default' => 12,
-                'min'     => 0,
-                'max'     => 100,
-                'step'    => 1,
+                'label'     =>  esc_html__( 'Số lượng hiển thị', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  1,
+                'min'       =>  1,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->add_control(
+            'margin_item_less_480',
+            [
+                'label'     =>  esc_html__( 'Khoảng cách', 'paint' ),
+                'type'      =>  Controls_Manager::NUMBER,
+                'default'   =>  12,
+                'min'       =>  0,
+                'max'       =>  100,
+                'step'      =>  1,
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // style name
+        $this->start_controls_section(
+            'style_name',
+            [
+                'label' => esc_html__( 'Tên', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'name_color',
+            [
+                'label'     =>  esc_html__( 'Màu chữ', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-testimonial-slider .item__warp .name' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'name_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-testimonial-slider .item__warp .name',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // style info
+        $this->start_controls_section(
+            'style_info',
+            [
+                'label' => esc_html__( 'Thông tin', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'info_color',
+            [
+                'label'     =>  esc_html__( 'Màu chữ', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-testimonial-slider .item__warp .info' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'info_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-testimonial-slider .item__warp .info',
             ]
         );
 
@@ -353,18 +417,30 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $this->start_controls_section(
             'style_description',
             [
-                'label' => esc_html__( 'Description', 'clinic' ),
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'desc_background_color',
+            [
+                'label'     =>  esc_html__( 'Màu nền', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-testimonial-slider .item__desc' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .element-testimonial-slider .item__desc:after' => 'border-top-color: {{VALUE}}',
+                ],
             ]
         );
 
         $this->add_control(
             'desc_color',
             [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'label'     =>  esc_html__( 'Màu chữ', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
-                    '{{WRAPPER}} .element-testimonial-slider .item .desc' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-testimonial-slider .item__desc' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -374,96 +450,87 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
             [
                 'name' => 'desc_typography',
                 'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-testimonial-slider .item .desc',
+                'selector' => '{{WRAPPER}} .element-testimonial-slider .item__desc',
             ]
         );
 
         $this->end_controls_section();
-
     }
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
 
+        // owl options
         $owl_options = [
-            'loop'       => ( 'yes' === $settings['loop'] ),
-            'nav'        => $settings['navigation'] == 'both' || $settings['navigation'] == 'arrows',
-            'dots'       => $settings['navigation'] == 'both' || $settings['navigation'] == 'dots',
-            'autoplay'   => ( 'yes' === $settings['autoplay'] ),
+            'loop' => ('yes' === $settings['loop']),
+            'nav' => $settings['navigation'] == 'both' || $settings['navigation'] == 'arrows',
+            'dots' => $settings['navigation'] == 'both' || $settings['navigation'] == 'dots',
+            'autoplay' => ('yes' === $settings['autoplay']),
+            'margin' => $settings['margin_item'],
             'responsive' => [
                 '0' => array(
-                    'items'  => $settings['item_575'],
-                    'margin' => $settings['margin_item_575']
+                    'items' => $settings['item_less_480'],
+                    'margin' => $settings['margin_item_less_480']
                 ),
-
+                '480' => array(
+                    'items' => $settings['item_greater_480'],
+                    'margin' => $settings['margin_item_greater_480']
+                ),
                 '576' => array(
-                    'items'  => $settings['item_576'],
-                    'margin' => $settings['margin_item_576']
+                    'items' => $settings['item_greater_576'],
+                    'margin' => $settings['margin_item_greater_576']
                 ),
-
                 '768' => array(
                     'items' => $settings['item_768'],
-                    'margin' => $settings['margin_item_768'],
+                    'margin' => $settings['margin_item_greater_768']
                 ),
-
                 '992' => array(
-                    'items' => $settings['item_992'],
-                    'margin' => $settings['margin_item_992'],
+                    'items' => $settings['item_992']
                 ),
-
                 '1200' => array(
-                    'items' => $settings['item_1200'],
-                    'margin' => $settings['margin_item_1200'],
+                    'items' => $settings['item']
                 ),
             ],
         ];
         ?>
 
         <div class="element-testimonial-slider">
-            <div class="element-testimonial-slider__warp owl-carousel owl-theme custom-equal-height-owl" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+            <div class="element-testimonial-slider__warp custom-equal-height-owl owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
                     ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <?php if ( $settings['content_global'] ) : ?>
-                            <div class="item__top-box">
-                                <?php echo wpautop( $settings['content_global'] ); ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="item__desc">
+                            <?php echo wp_kses_post( $item['list_description'] ) ?>
+                        </div>
 
-                        <div class="item__body">
-                            <div class="profile">
-                                <div class="avatar">
-                                    <?php
-                                    if ( $imageId ) :
-                                        echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
-                                    else:
-                                        ?>
-                                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
-                                    <?php endif; ?>
+                        <div class="item__warp">
+                            <div class="image">
+                                <?php
+                                if ( $imageId ) :
+                                    echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
+                                else:
+                                    ?>
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="content">
+                                <h4 class="name">
+                                    <?php echo esc_html( $item['list_title'] ); ?>
+                                </h4>
+
+                                <p class="info">
+                                    <?php echo esc_html( $item['list_info'] ); ?>
+                                </p>
+
+                                <div class="star">
+                                    <?php for ( $i = 1; $i <= 5; $i++) : ?>
+                                        <i class="icon-star-full"></i>
+                                    <?php endfor; ?>
                                 </div>
-
-                                <div class="meta">
-                                    <p class="name">
-                                        <?php echo esc_html( $item['list_title'] ); ?>
-                                    </p>
-
-                                    <p class="info">
-                                        <?php echo esc_html( $item['list_info'] ); ?>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="vote">
-                                <?php for ($i = 0; $i < 5; $i++) : ?>
-                                    <i class="icon icon-star"></i>
-                                <?php endfor; ?>
-                            </div>
-
-                            <div class="desc text-justify">
-                                <?php echo wp_kses_post( $item['list_description'] ) ?>
                             </div>
                         </div>
                     </div>

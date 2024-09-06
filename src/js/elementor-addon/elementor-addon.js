@@ -71,6 +71,20 @@
         }
     }
 
+    // element post carousel
+    const elementPostCarousel = ($scope, $) => {
+        const slider = $scope.find('.element-post-carousel__warp')
+
+        if (slider.length) {
+            slider.each(function () {
+                const thisSlider = $(this)
+                const options = slider.data('owl-options')
+
+                thisSlider.owlCarousel(owlCarouselElementorOptions(options))
+            })
+        }
+    }
+
     $(window).on('elementor/frontend/init', function () {
         /* Element slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-slider.default', elementSlider);
@@ -83,5 +97,8 @@
 
         /* Element doctor slider */
         elementorFrontend.hooks.addAction('frontend/element_ready/clinic-doctor-slider.default', elementDoctorSlider);
+
+        // element post carousel
+        elementorFrontend.hooks.addAction('frontend/element_ready/clinic-post-carousel.default', elementPostCarousel);
     });
 })(jQuery);

@@ -1,7 +1,6 @@
 .element-gallery-grid-box {
   &__warp {
     display: grid;
-    grid-auto-rows: min-content;
 
     .item {
       display: flex;
@@ -16,27 +15,23 @@
         }
       }
 
-      &__body {
-        flex: 1;
+      &__title {
+        margin-bottom: .6rem;
+        color: #000000;
+        font-size: 2rem;
 
-        .title {
-          margin-bottom: .6rem;
-          color: #000000;
-          font-size: 1.7rem;
-          font-weight: 500;
-          font-family: var(--body-font-family);
-
-          @media (max-width: 1199px) {
-            font-size: 1.6rem;
-          }
+        @media (max-width: 1199px) {
+          font-size: 1.6rem;
         }
+      }
 
-        .content {
-          line-height: 1.5;
+      &__content {
+        font-size: 1.8rem;
+        flex: 2;
+        line-height: 1.5;
 
-          a {
-            color: var(--color-sunset-orange);
-          }
+        a {
+          color: var(--color-sunset-orange);
         }
       }
     }

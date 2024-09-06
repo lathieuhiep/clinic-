@@ -386,7 +386,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
 		if ( $query->have_posts() ) :
         ?>
             <div class="element-doctor-slider">
-                <div class="element-doctor-slider__warp owl-carousel owl-theme" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
+                <div class="element-doctor-slider__warp owl-carousel owl-theme custom-owl-nav" data-owl-options='<?php echo wp_json_encode( $owl_options ); ?>'>
 					<?php
 					while ( $query->have_posts() ) :
 						$query->the_post();

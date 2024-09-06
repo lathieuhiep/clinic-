@@ -287,7 +287,7 @@ pre {
 .chat-with-us {
   position: fixed;
   right: 1.6rem;
-  bottom: 18rem;
+  bottom: 20rem;
   z-index: 99;
   display: grid;
   grid-row-gap: 1.2rem;
@@ -296,7 +296,7 @@ pre {
 }
 
 #LRMINIBar {
-  bottom: 2rem !important;
+  bottom: 10rem !important;
 }
 
 #us_chat_content {
@@ -319,20 +319,28 @@ pre {
 /* owl carousel navigation */
 .owl-carousel {
   .owl-nav {
-    text-align: center;
-    margin-top: 15px;
+    margin: 0;
 
     button {
       &.owl-prev,
       &.owl-next {
-        margin: 0 6px;
-        color: var(--color-salem);
-        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        font-size: 2.2rem;
         line-height: normal;
         @include transition();
+        transform: translateY(-50%);
+
+        &.owl-prev {
+          left: .6rem;
+        }
+
+        &.owl-next {
+          right: .6rem;
+        }
 
         &:hover {
-          color: $color-hover;
+          color: #00A878;
         }
       }
     }
@@ -374,6 +382,44 @@ pre {
           &:before {
             background-color: #f55;
           }
+        }
+      }
+    }
+  }
+
+  &.custom-owl-nav {
+    .owl-nav {
+      button {
+        font-size: 1.6rem;
+        line-height: 100%;
+        color: #ff5555;
+        border: .1rem solid #ff5555;
+        @include square(3.2rem, 50%);
+        background-color: #ffffff;
+
+        &.owl-prev {
+          @media (min-width: 992px) {
+            left: -1.6rem;
+          }
+
+          @media (max-width: 991px) {
+            left: 1rem;
+          }
+        }
+
+        &.owl-next {
+          @media (min-width: 992px) {
+            right: -1.6rem;
+          }
+
+          @media (max-width: 991px) {
+            right: 1rem;
+          }
+        }
+
+        &:hover {
+          color: #ffffff;
+          background-color: #ff5555;
         }
       }
     }

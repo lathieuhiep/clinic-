@@ -33,15 +33,18 @@
 
   &__column {
     padding: 4rem 0 2rem;
-    background-color: #00667B;
+    background-color: #28884f;
   }
 }
 
 .contact-us-group {
-  padding: 1.8rem 0;
+  padding: 1.2rem 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
   text-align: start;
-  border-top: .5rem solid #3cbece;
-  background-color: var(--clinic-theme-six-color);
+  border-top: .5rem solid #28884F;
+  background-color: #00a878;
 
   .grid-layout {
     min-height: 6rem;
@@ -120,14 +123,7 @@
 
           &.txt-sub {
             color: #FFF4C3;
-
-            @media (min-width: 1200px) {
-              font-size: 2rem;
-            }
-
-            @media (min-width: 992px) and (max-width: 1199px) {
-              font-size: 1.6rem;
-            }
+            font-size: 1.6rem;
           }
         }
       }

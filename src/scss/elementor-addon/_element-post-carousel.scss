@@ -1,0 +1,33 @@
+.element-post-carousel {
+  .item-post {
+    &__content {
+      padding: 1.2rem 0;
+      border: 1px solid #F2F2F2;
+
+      .title {
+        padding: 0 1.2rem;
+        font-size: 1.8rem;
+      }
+
+      .desc {
+        padding: 0 1.2rem;
+      }
+
+      .list-cate {
+        margin-top: 1.2rem;
+        padding: 1.2rem 1.2rem 0;
+        border-top: 1px solid #F2F2F2;
+
+        a {
+          font-size: 1.4rem;
+          color: #00ad7c;
+          font-style: italic;
+
+          &:hover {
+            color: #333333;
+          }
+        }
+      }
+    }
+  }
+}

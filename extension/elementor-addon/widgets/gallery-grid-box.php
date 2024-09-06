@@ -50,7 +50,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
      * @access public
      * @return string Widget icon.
      */
-    public function get_icon(): string
+    public function get_icon()
     {
         return 'eicon-gallery-grid';
     }
@@ -114,7 +114,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'grid_column_gap',
+            'grid-column-gap',
             [
                 'label' => esc_html__( 'Grid column gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -137,7 +137,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'grid_row_gap',
+            'grid-row-gap',
             [
                 'label' => esc_html__( 'Grid row gap', 'clinic' ),
                 'type' => Controls_Manager::SLIDER,
@@ -161,7 +161,6 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 
         $this->end_controls_section();
 
-        // content section
         $this->start_controls_section(
             'content_section',
             [
@@ -197,36 +196,6 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                 'type' => Controls_Manager::WYSIWYG,
                 'default' => esc_html__( 'Nội dung' , 'clinic' ),
                 'show_label' => false,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_item_background_color', [
-                'label' => esc_html__( 'Màu nền', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}}.item' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'list_title_color', [
-                'label' => esc_html__( 'Màu tiêu đề', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}} .item__body .title' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'list_content_color', [
-                'label' => esc_html__( 'Màu nội dung', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp {{CURRENT_ITEM}} .item__body .content ' => 'color: {{VALUE}}',
-                ],
             ]
         );
 
@@ -484,164 +453,12 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 
         $this->end_controls_section();
 
-        // body content style
-        $this->start_controls_section(
-            'body_style_section',
-            [
-                'label' => esc_html__( 'Hộp chứa nội dung', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'body_min_height',
-            [
-                'label' => esc_html__( 'Chiều cao tối thiểu', 'clinic' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => '',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body' => 'min-height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'body_margin',
-            [
-                'label' => esc_html__( 'Margin', 'clinic' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => true,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'body_padding',
-            [
-                'label' => esc_html__( 'Padding', 'clinic' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => true,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'body_background_color',
-            [
-                'label'     =>  esc_html__( 'Background Color', 'clinic' ),
-                'type'      =>  Controls_Manager::COLOR,
-                'selectors' =>  [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body' => 'background-color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'body_border',
-                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__body',
-            ]
-        );
-
-        $this->add_control(
-            'body_border_radius',
-            [
-                'label' => esc_html__( 'Border radius', 'clinic' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => true,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'body_box_shadow',
-                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__body',
-            ]
-        );
-
-        $this->end_controls_section();
-
         // title style
         $this->start_controls_section(
             'title_style_section',
             [
                 'label' => esc_html__( 'Tiêu đề', 'clinic' ),
                 'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'title_min_height',
-            [
-                'label' => esc_html__( 'Chiều cao tiêu đề', 'clinic' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => '',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title' => 'min-height: {{SIZE}}{{UNIT}};',
-                ],
             ]
         );
 
@@ -660,7 +477,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -680,7 +497,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -718,10 +535,10 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label'     =>  esc_html__( 'Màu chữ', 'clinic' ),
+                'label'     =>  esc_html__( 'Color', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -731,7 +548,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
             [
                 'name' => 'title_typography',
                 'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title',
+                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__title',
             ]
         );
 
@@ -739,7 +556,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'title_border',
-                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .title',
+                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__title',
             ]
         );
 
@@ -769,7 +586,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -810,7 +627,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
                 'label'     =>  esc_html__( 'Color', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
-                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .content' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .element-gallery-grid-box__warp .item__content' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -820,7 +637,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
             [
                 'name' => 'content_typography',
                 'label' => esc_html__( 'Typography', 'clinic' ),
-                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__body .content',
+                'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item__content',
             ]
         );
 
@@ -842,25 +659,24 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
             <div class="element-gallery-grid-box__warp">
                 <?php foreach ( $settings['list'] as $item ) : ?>
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <?php if ( !empty( $item['list_image']['id'] ) ) : ?>
+                        <?php if ( $item['list_image'] ) : ?>
                             <div class="item__thumbnail <?php echo esc_attr( $settings['image_align'] ); ?>">
                                 <?php echo wp_get_attachment_image( $item['list_image']['id'], 'large' ); ?>
                             </div>
                         <?php endif; ?>
 
-                        <div class="item__body">
-                            <?php if ( $item['list_title'] ) : ?>
-                                <h3 class="title <?php echo esc_attr( $settings['title_align'] ); ?>">
-                                    <?php echo esc_html( $item['list_title'] ); ?>
-                                </h3>
-                            <?php endif; ?>
+                        <?php if ( $item['list_title'] ) : ?>
+                            <h3 class="item__title <?php echo esc_attr( $settings['title_align'] ); ?>">
+                                <?php echo esc_html( $item['list_title'] ); ?>
+                            </h3>
+                        <?php endif; ?>
 
-                            <?php if ( $item['list_content'] ) : ?>
-                                <div class="content <?php echo esc_attr( $settings['content_align'] ); ?>">
-                                    <?php echo wpautop( $item['list_content'] ); ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+
+                        <?php if ( $item['list_content'] ) : ?>
+                            <div class="item__content <?php echo esc_attr( $settings['content_align'] ); ?>">
+                                <?php echo wpautop( $item['list_content'] ); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>

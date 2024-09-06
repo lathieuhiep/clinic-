@@ -117,48 +117,6 @@ $path-image: '../images';
           }
         }
       }
-
-      .owl-nav {
-        margin: 0;
-
-        button {
-          position: absolute;
-          margin: 0;
-          top: 50%;
-          font-size: 1.6rem;
-          line-height: 100%;
-          color: #ff5555;
-          border: .1rem solid #ff5555;
-          @include square(3.2rem, 50%);
-          background-color: #ffffff;
-          transform: translateY(-50%);
-
-          &.owl-prev {
-            @media (min-width: 992px) {
-              left: -1.6rem;
-            }
-
-            @media (max-width: 991px) {
-              left: 1rem;
-            }
-          }
-
-          &.owl-next {
-            @media (min-width: 992px) {
-              right: -1.6rem;
-            }
-
-            @media (max-width: 991px) {
-              right: 1rem;
-            }
-          }
-
-          &:hover {
-            color: #ffffff;
-            background-color: #ff5555;
-          }
-        }
-      }
     }
   }
 }
