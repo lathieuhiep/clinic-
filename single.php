@@ -7,6 +7,8 @@ $class_col_content = clinic_col_use_sidebar( $sidebar, 'sidebar-post' );
 
 <div class="site-container single-post-warp">
     <div class="container">
+        <?php get_template_part( 'components/inc','banner' ); ?>
+
         <div class="row post-row">
             <div class="<?php echo esc_attr( $class_col_content ); ?>">
                 <?php

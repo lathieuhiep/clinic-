@@ -305,6 +305,28 @@ pre {
   align-items: center;
 }
 
+.banner-warp {
+  margin-bottom: 2rem;
+
+  &:has(.banner-mobile) {
+    .banner-pc {
+      @media (max-width: 576px) {
+        display: none;
+      }
+    }
+  }
+
+  .banner-mobile {
+    @media (min-width: 576px) {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
 #LRMINIBar {
   bottom: 10rem !important;
 }
