@@ -49,24 +49,33 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
 }
 
+// Register lib scripts
+add_action( 'wp_enqueue_scripts', 'clinic_elementor_lib_scripts', 10 );
+function clinic_elementor_lib_scripts(): void {
+    $clinic_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
+
+    if ( $clinic_check_elementor == 'builder' ) {
+        wp_enqueue_style( 'owl.carousel.min', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ), array(), '2.3.4' );
+
+        wp_enqueue_script( 'owl.carousel.min', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
+    }
+}
+
 // Register scripts
 add_action( 'wp_enqueue_scripts', 'clinic_elementor_scripts', 11 );
 function clinic_elementor_scripts(): void {
-	$clinic_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
+    $clinic_check_elementor = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 
-	if ( $clinic_check_elementor == 'builder' ) {
-		// style
-		wp_enqueue_style( 'owl.carousel.min', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.css' ), array(), '2.3.4' );
-
+    if ( $clinic_check_elementor == 'builder' ) {
+        // style
         wp_enqueue_style( 'clinic-elementor-style', get_theme_file_uri( '/extension/elementor-addon/css/elementor-addon.min.css' ), array(), clinic_get_version_theme() );
 
-		// script
-		wp_enqueue_script( 'owl.carousel.min', get_theme_file_uri( '/assets/libs/owl.carousel/owl.carousel.min.js' ), array( 'jquery' ), '2.3.4', true );
-
-		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery' ), '1.0.0', true );
-	}
+        // script
+        wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery' ), '1.0.0', true );
+    }
 }
 
+// add zero before number
 function addZeroBeforeNumber(int $number): int|string {
 	if ( $number < 10 ) {
 		return '0' . $number;

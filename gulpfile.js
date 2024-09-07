@@ -6,15 +6,18 @@ const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync')
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
-const rename = require("gulp-rename")
+const rename = require('gulp-rename')
+const cached = require('gulp-cached')
 
-const pathAssets = './assets'
+const pathSrc = './src'
+const pathDist  = './assets'
 const pathNodeModule = './node_modules'
 
 // server
+const proxy = "localhost/seowebmoi"
 function server() {
     browserSync.init({
-        proxy: "localhost/chuabenhtri.com.vn",
+        proxy: proxy,
         open: false,
         cors: true,
         ghostMode: false,
@@ -28,142 +31,142 @@ Task build Bootstrap
 * */
 
 // Task build style bootstrap
-function buildStylesBootstrap() {
-    return src(`${pathAssets}/scss/bootstrap.scss`)
+const buildStylesBootstrap = () => {
+    return src(`${pathSrc}/scss/bootstrap.scss`)
         .pipe(sass({
             outputStyle: 'expanded'
-        }).on('error', sass.logError))
+        }, '').on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`${pathAssets}/libs/bootstrap/`))
-        .pipe(browserSync.stream({ match: '**/*.css' }));
+        .pipe(dest(`${pathDist}/libs/bootstrap/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 // Task build js bootstrap
-function buildLibsBootstrapJS() {
-    return src([
-        `${pathNodeModule}/bootstrap/dist/js/bootstrap.bundle.js`
-    ], {allowEmpty: true})
+const buildLibsBootstrapJS = () => {
+    return src( `${pathNodeModule}/bootstrap/dist/js/bootstrap.bundle.js`, {allowEmpty: true} )
         .pipe(uglify())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(dest(`${pathAssets}/libs/bootstrap/`))
-        .pipe(browserSync.stream());
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/libs/bootstrap/`))
+        .pipe(browserSync.stream())
 }
-
-exports.buildLibsBootstrapJS = buildLibsBootstrapJS
 
 /*
 Task build owl carousel
 * */
-function buildStylesOwlCarousel() {
+
+// Task build style owl carousel
+const buildStylesOwlCarousel = () => {
     return src(`${pathNodeModule}/owl.carousel/dist/assets/owl.carousel.css`)
         .pipe(sass({
             outputStyle: 'expanded'
-        }).on('error', sass.logError))
+        }, '').on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(dest(`${pathAssets}/libs/owl.carousel/`))
-        .pipe(browserSync.stream({ match: '**/*.css' }));
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/libs/owl.carousel/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
-function buildJsOwlCarouse() {
-    return src([
-        `${pathNodeModule}/owl.carousel/dist/owl.carousel.js`
-    ], {allowEmpty: true})
+// Task build js owl carousel
+const buildJsOwlCarouse = () => {
+    return src(`${pathNodeModule}/owl.carousel/dist/owl.carousel.js`, {allowEmpty: true})
         .pipe(uglify())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(dest(`${pathAssets}/libs/owl.carousel/`))
-        .pipe(browserSync.stream());
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/libs/owl.carousel/`))
+        .pipe(browserSync.stream())
 }
 
 // Task build style
-function buildStylesTheme() {
-    return src(`${pathAssets}/scss/style-theme.scss`)
+const buildStylesTheme = () => {
+    return src( `${pathSrc}/scss/style-theme.scss` )
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
-        }).on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/css/`))
-        .pipe(sourcemaps.init())
+        }, '').on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
         .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/css/`))
-        .pipe(browserSync.stream({ match: '**/*.css' }));
+        .pipe(dest( `${pathDist}/css/` ))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 // Task build style elementor
-function buildStylesElementor() {
-    return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'}
-        ).on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`./extension/elementor-addon/css/`))
-        .pipe(sourcemaps.init())
-        .pipe(minifyCss({
-            level: {1: {specialComments: 0}}
-        }))
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`./extension/elementor-addon/css/`))
-        .pipe(browserSync.stream({ match: '**/*.css' }));
-}
-
-function buildJSElementor() {
-    return src([
-        './extension/elementor-addon/js/*.js',
-        '!./extension/elementor-addon/js/*.min.js'
-    ], {allowEmpty: true})
-        .pipe(uglify())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(dest('./extension/elementor-addon/js/'))
-        .pipe(browserSync.stream());
-}
-
-// Task build style custom post type
-function buildStylesCustomPostType() {
-    return src(`${pathAssets}/scss/post-type/*/**.scss`)
+const buildStylesElementor = () => {
+    return src(`${pathSrc}/scss/elementor-addon/elementor-addon.scss`)
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
-        }).on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/css/post-type/`))
-        .pipe(sourcemaps.init())
+        }, '').on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
         .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/css/post-type/`))
-        .pipe(browserSync.stream({ match: '**/*.css' }));
+        .pipe(dest('./extension/elementor-addon/css/'))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
+}
+
+const buildJSElementor = () => {
+    return src(`${pathSrc}/js/elementor-addon/*.js`, {allowEmpty: true})
+        .pipe(uglify())
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest('./extension/elementor-addon/js/'))
+        .pipe(browserSync.stream())
+}
+
+// Task build style custom post type
+const buildStylesCustomPostType = () => {
+    return src(`${pathSrc}/scss/post-type/*/**.scss`)
+        .pipe(cached('buildStylesCustomPostType'))
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`${pathDist}/css/post-type/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
+}
+
+// Task build style page templates
+const buildStylesPageTemplate = () => {
+    return src(`${pathSrc}/scss/page-templates/**.scss`)
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(sourcemaps.write())
+        .pipe(dest(`${pathDist}/css/page-templates/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
 
 // buildJSTheme
-function buildJSTheme() {
-    return src([
-        `${pathAssets}/js/*.js`,
-        `!${pathAssets}/js/*.min.js`
-    ], {allowEmpty: true})
+const buildJSTheme = () => {
+    return src(`${pathSrc}/js/*.js`, {allowEmpty: true})
+        .pipe(cached('buildJSTheme'))
         .pipe(uglify())
         .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`${pathAssets}/js/`))
-        .pipe(browserSync.stream());
+        .pipe(dest(`${pathDist}/js/`))
+        .pipe(browserSync.stream())
 }
 
 /*
 Task build project
 * */
-async function buildProject() {
+const buildProject = async () => {
     await buildStylesBootstrap()
     await buildLibsBootstrapJS()
 
@@ -174,6 +177,7 @@ async function buildProject() {
     await buildJSTheme()
 
     await buildStylesCustomPostType()
+    await buildStylesPageTemplate()
 
     await buildStylesElementor()
     await buildJSElementor()
@@ -184,40 +188,43 @@ exports.buildProject = buildProject
 
 
 // Task watch
-function watchTask() {
+const watchTask = () => {
     server()
 
     watch([
-        `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/bootstrap.scss`
+        `${pathSrc}/scss/variables-site/*.scss`,
+        `${pathSrc}/scss/bootstrap.scss`
     ], buildStylesBootstrap)
 
     watch([
-        `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/base/*.scss`,
-        `${pathAssets}/scss/style.scss`,
+        `${pathSrc}/scss/variables-site/*.scss`,
+        `${pathSrc}/scss/base/*.scss`,
+        `${pathSrc}/scss/style-theme.scss`,
     ], buildStylesTheme)
 
     watch([
-        `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/elementor-addon/*.scss`
+        `${pathSrc}/scss/variables-site/*.scss`,
+        `${pathSrc}/scss/elementor-addon/*.scss`
     ], buildStylesElementor)
 
     watch([
-        `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/post-type/*/**.scss`
+        `${pathSrc}/scss/variables-site/*.scss`,
+        `${pathSrc}/scss/post-type/*/**.scss`
     ], buildStylesCustomPostType)
 
-    watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
+    watch([
+        `${pathSrc}/js/*.js`
+    ], buildJSTheme)
 
     watch([
-        './extension/elementor-addon/js/*.js',
-        '!./extension/elementor-addon/js/*.min.js'
+        `${pathSrc}/js/elementor-addon/*.js`
     ], buildJSElementor)
 
     watch([
         './*.php',
-        './**/*.php'
+        './**/*.php',
+        `${pathDist}/images/*`,
+        `${pathDist}/images/**/*`
     ]).on('change', browserSync.reload);
 }
 exports.watchTask = watchTask
