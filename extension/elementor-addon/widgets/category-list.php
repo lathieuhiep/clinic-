@@ -190,12 +190,45 @@ class Clinic_Elementor_Category_List extends Widget_Base
         );
 
         $repeater->add_control(
+            'list_custom_link',
+            [
+                'label' => esc_html__( 'Link mở rộng', 'clinic' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Có', 'clinic' ),
+                'label_off' => esc_html__( 'Không', 'clinic' ),
+                'return_value' => 'yes',
+                'default' => '',
+            ]
+        );
+
+        $repeater->add_control(
             'list_category',
             [
                 'label' => esc_html__( 'Danh mục', 'clinic' ),
                 'type' => Controls_Manager::SELECT2,
                 'label_block' => true,
                 'options' => clinic_check_get_cat('category'),
+                'condition' => [
+                    'list_custom_link' => '',
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'list_link',
+            [
+                'label' => esc_html__( 'Link', 'elementor' ),
+                'type' => Controls_Manager::URL,
+                'options' => [ 'url', 'is_external', 'nofollow' ],
+                'default' => [
+                    'url' => '',
+                    'is_external' => true,
+                    'nofollow' => true,
+                ],
+                'label_block' => true,
+                'condition' => [
+                    'list_custom_link' => 'yes',
+                ],
             ]
         );
 
@@ -276,14 +309,24 @@ class Clinic_Elementor_Category_List extends Widget_Base
         <div class="element-category-list">
             <?php if ( $settings['list'] ) : ?>
                 <div class="element-category-list__grid">
-                    <?php
-                    foreach ( $settings['list'] as $item) :
-                        $category_link = get_category_link( $item['list_category'] );
-
-                        if ( $category_link ) :
-                    ?>
+                    <?php foreach ( $settings['list'] as $index => $item) : ?>
                         <div class="item">
-                            <a class="item__link" href="<?php echo esc_url( $category_link ); ?>"></a>
+                            <?php
+                            if ( $item['list_custom_link'] !== 'yes' ) :
+                                $link = get_category_link( $item['list_category'] );
+                            ?>
+                                <a class="item__link" href="<?php echo esc_url( $link ); ?>"></a>
+                            <?php
+                            else :
+                                if ( !empty( $item['list_link']['url'] ) ) :
+                                    $link_key = 'link_' . $index;
+                                    $this->add_link_attributes( $link_key, $item['list_link'] );
+                            ?>
+                                    <a class="item__link" <?php $this->print_render_attribute_string( $link_key ); ?>></a>
+                            <?php
+                                endif;
+                            endif;
+                            ?>
 
                             <div class="item__image">
                                 <?php echo wp_get_attachment_image( $item['list_image']['id'], 'medium_large'); ?>
@@ -300,7 +343,7 @@ class Clinic_Elementor_Category_List extends Widget_Base
                             </div>
                         </div>
                     <?php
-                        endif;
+
                     endforeach;
                     ?>
                 </div>
