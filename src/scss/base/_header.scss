@@ -145,8 +145,10 @@ $path-image: '../images';
           margin-left: .6rem;
           font-size: 1.2rem;
           transform: translateY(.2rem);
+          cursor: pointer;
 
-          &:after {
+          i {
+            display: inline-block;
             @include transition();
           }
         }
@@ -172,11 +174,6 @@ $path-image: '../images';
           }
         }
       }
-    }
-
-    .sub-menu-toggle {
-      font-size: 14px;
-      cursor: pointer;
     }
 
     @media (min-width: 992px) and (max-width: 1400px) {
@@ -255,13 +252,13 @@ $path-image: '../images';
 
               .sub-menu {
                 left: 90%;
-                top: -1px;
+                top: 0;
               }
 
               &:hover {
                 background-color: #ffffff;
 
-                a {
+                 > a {
                   color: #333333;
                 }
 
@@ -270,7 +267,7 @@ $path-image: '../images';
                 }
 
                 > .sub-menu-toggle {
-                  &:after {
+                  i {
                     transform: rotate(-90deg);
                   }
                 }
@@ -327,12 +324,6 @@ $path-image: '../images';
             top: 15px;
             width: 12px;
             height: 20px;
-
-            &.active {
-              &:after {
-                transform: rotate(180deg);
-              }
-            }
           }
 
           .sub-menu {
