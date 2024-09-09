@@ -51,7 +51,9 @@ class clinic_info_company_widget extends WP_Widget {
                     </div>
 
                     <div class="item__content">
-			            <?php echo esc_html( $instance['hotline'] ); ?>
+                        <a href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number( $instance['hotline'] ) ) ?>">
+                            <?php echo esc_html( $instance['hotline'] ); ?>
+                        </a>
                     </div>
                 </div>
             <?php endif; ?>
@@ -63,7 +65,9 @@ class clinic_info_company_widget extends WP_Widget {
                     </div>
 
                     <div class="item__content">
-			            <?php echo esc_html( $instance['facebook'] ); ?>
+                        <a href="<?php echo esc_url( $instance['facebook'] ) ?>" target="_blank">
+                            <?php echo esc_html( $instance['facebook'] ); ?>
+                        </a>
                     </div>
                 </div>
             <?php endif; ?>

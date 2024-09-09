@@ -236,6 +236,10 @@ section {
         grid-gap: 1.5rem;
         grid-template-columns: 2.4rem 1fr;
 
+        a {
+          color: inherit;
+        }
+
         @media (min-width: 992px) {
           font-size: 1.6rem;
         }
