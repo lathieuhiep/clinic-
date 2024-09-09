@@ -1,3 +1,19 @@
+.header-warp {
+  border-top: 1rem solid var(--clinic-theme-primary-color);
+
+  .grid {
+    display: grid;
+    grid-column-gap: 3rem;
+    grid-template-columns: 1fr 38rem 1fr;
+
+    .logo {
+      text-align: center;
+      background-color: var(--clinic-theme-primary-color);
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    }
+  }
+}
+
 .global-header {
   background-color: var(--color-white);
 
@@ -468,50 +484,6 @@
       }
     }
 
-    .logo {
-      padding: .3rem 0;
-      position: relative;
-      height: 100%;
-
-      > a {
-        height: inherit;
-        @include flex-center();
-      }
-
-      &__image {
-        &.scroll-hidden-logo {
-          opacity: 0;
-          visibility: hidden;
-        }
-      }
-
-      .hotline-on-mobile {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        opacity: 0;
-        visibility: hidden;
-        font-weight: 700;
-        color: var(--color-white);
-        text-align: center;
-
-        @media (min-width: 576px) {
-          font-size: 2.8rem;
-        }
-
-        @media (max-width: 575px) {
-          font-size: 2.2rem;
-        }
-
-        &.scroll-show-phone {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
-    }
-
     .contact {
       a {
         @include square(3.8rem, 50%);
@@ -530,7 +502,6 @@
 .alo-circle-anim {
   -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
   -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
-  -ms-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
   -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
   animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
 }
