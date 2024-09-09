@@ -479,6 +479,7 @@ pre {
     position: relative;
     max-width: 64rem;
     margin: 0 auto;
+    overflow: hidden;
   }
 
   .item {
@@ -488,17 +489,17 @@ pre {
 
     &.chat {
       left: 0;
-      width: 38%;
+      width: 55%;
     }
 
     &.phone {
-      left: 38%;
-      width: 35%;
+      left: 55%;
+      width: 17%;
     }
 
     &.zalo {
       right: 0;
-      width: 27%;
+      width: 28%;
     }
   }
 }
