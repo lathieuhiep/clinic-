@@ -3,6 +3,8 @@
     display: grid;
 
     .item {
+      overflow: hidden;
+
       img {
         width: 100%;
       }

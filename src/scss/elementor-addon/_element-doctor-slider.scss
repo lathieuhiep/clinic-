@@ -1,6 +1,15 @@
+$path-image: '../images';
+
 .element-doctor-slider {
   &__warp {
+    @media (min-width: 992px) {
+      padding: 0 3.4rem;
+    }
+
     .item {
+      padding: .9rem 1.4rem 1.6rem;
+      border-radius: 1rem;
+      box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
       background-color: var(--color-white);
       display: flex;
       flex-direction: column;
@@ -11,7 +20,8 @@
       }
 
       &__thumbnail {
-        background-image: url("../images/bk-avatar-doi-ngu-bac-si.png");
+        margin-bottom: 2rem;
+        background-image: url('#{$path-image}/bk-avatar-doi-ngu-bac-si.png');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -31,58 +41,41 @@
         flex-direction: column;
         flex: 1;
 
-        @media (min-width: 1200px) {
-          padding: 2.6rem 2.8rem;
-        }
-
-        @media (max-width: 1199px) {
-          padding: 2.4rem 1.2rem;
-        }
-
         .title {
-          margin-bottom: 1.2rem;
+          margin-bottom: .2rem;
           font-size: 1.8rem;
           font-family: var(--body-font-family);
         }
 
         .meta {
-          flex: 1;
-          margin-bottom: 1.6rem;
+          margin-bottom: 1rem;
           line-height: 1.4;
           font-family: var(--heading-font-family);
         }
 
         .content {
-          margin-bottom: 1.4rem;
+          flex: 1;
+          margin-bottom: 3.4rem;
           text-align: justify;
         }
 
         .action-box {
-          @media (min-width: 576px) {
-            display: grid;
-            grid-gap: 1rem;
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          @media (max-width: 575px) {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-          }
+          text-align: center;
 
           a {
-            padding: .5rem 1.6rem;
-            border-radius: .5rem;
-            font-size: 1.5rem;
-            font-weight: 500;
+            padding: 1.1rem 1.6rem;
+            display: inline-block;
+            max-width: 19.5rem;
+            width: 100%;
+            border-radius: 5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
             text-align: center;
             color: var(--color-white);
           }
 
           &__booking {
-            background-color: var(--clinic-theme-tertiary-color);
+            background-color: var(--clinic-theme-eighth-color);
 
             &:hover {
               background-color: var(--clinic-theme-secondary-color);
@@ -112,26 +105,6 @@
           .owl-item {
             display: flex;
             flex-direction: column;
-          }
-        }
-      }
-
-      .owl-nav {
-        margin: 0;
-
-        button {
-          position: absolute;
-          margin: 0;
-          top: 50%;
-          font-size: 2rem;
-          transform: translateY(-50%);
-
-          &.owl-prev {
-            left: 0;
-          }
-
-          &.owl-next {
-            right: 0;
           }
         }
       }
