@@ -358,31 +358,15 @@ pre {
       span {
         position: relative;
         display: block;
-        @include square(1.6rem);
-        background-color: transparent;
+        @include square(1.2rem);
+        background-color: #DDDDDD;
         border-radius: 50%;
-        border: .1rem solid transparent;
-        @include transition(all 0.2s ease-in-out);
-
-        &:before {
-          position: absolute;
-          content: "";
-          top: 50%;
-          left: 50%;
-          @include square(.8rem, 50%);
-          background-color: #B3B3B3;
-          transform: translate(-50%, -50%);
-        }
       }
 
       &.active,
       &:hover {
         span {
-          border-color: #f55;
-
-          &:before {
-            background-color: #f55;
-          }
+          background-color: #E6171F;
         }
       }
     }

@@ -50,7 +50,7 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
             [
                 'label' => esc_html__('Number of Posts', 'clinic'),
                 'type' => Controls_Manager::NUMBER,
-                'default' => 3,
+                'default' => 5,
                 'min' => 1,
                 'max' => 100,
                 'step' => 1,
@@ -230,7 +230,9 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
         $query = new WP_Query($args);
 
         if ($query->have_posts()) :
-        ?>
+
+            ?>
+
             <div class="element-post-grid">
                 <div class="element-post-grid__warp">
                     <?php while ($query->have_posts()): $query->the_post(); ?>
@@ -255,7 +257,7 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
                                     </a>
                                 </h3>
 
-                                <?php if ($settings['show_excerpt'] == 'show') : ?>
+                                <?php if ( $settings['show_excerpt'] == 'show' ) : ?>
                                     <div class="content">
                                         <p>
                                             <?php
@@ -268,19 +270,17 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
                                         </p>
                                     </div>
                                 <?php endif; ?>
-
-                                <div class="action-box">
-                                    <a class="link" href="<?php the_permalink(); ?>">
-                                        <?php esc_html_e('Xem chi tiết >>' , 'clinic'); ?>
-                                    </a>
-                                </div>
                             </div>
                         </div>
-                    <?php endwhile;
-                    wp_reset_postdata(); ?>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                    ?>
                 </div>
             </div>
+
         <?php
+
         endif;
     }
 

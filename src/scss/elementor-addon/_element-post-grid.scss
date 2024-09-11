@@ -1,22 +1,28 @@
 .element-post-grid {
   &__warp {
     display: grid;
-    grid-gap: 2.4rem;
+    grid-gap: 1.8rem;
 
-    @media (min-width: 992px) {
-      grid-template-columns: repeat(3, 1fr);
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    @media (min-width: 576px) and (max-width: 991px) {
+    @media (min-width: 576px) and (max-width: 767px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
     .item {
+      &:first-child {
+        @media (min-width: 768px) {
+          grid-column: 1 / span 2;
+          grid-row: 1 / span 2;
+        }
+      }
+
       &__thumbnail {
-        margin-bottom: 1.7rem;
+        margin-bottom: 1.2rem;
+        border-radius: 1rem;
         overflow: hidden;
-        border-radius: 1.5rem;
-        border: .1rem solid var(--clinic-theme-primary-color);
 
         img {
           width: 100%;
@@ -25,20 +31,18 @@
 
       &__box {
         .title {
-          margin-bottom: 1rem;
-          font-size: 1.6rem;
-          font-weight: 500;
-          line-height: 2.2rem;
+          margin-bottom: 0;
+          font-size: 2rem;
+          font-weight: 700;
           font-family: var(--body-font-family);
-          text-transform: uppercase;
 
           a {
             display: inline-block;
-            color: #030303;
+            color: #094D72;
+          }
 
-            &:hover {
-              color: var(--clinic-theme-primary-color);
-            }
+          + .content {
+            margin-top: .6rem;
           }
         }
 
@@ -47,22 +51,12 @@
           font-size: 1.5rem;
           text-align: justify;
         }
+      }
 
-        .action-box {
-          margin-top: 2rem;
-          text-align: right;
-
-          a {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            color: var(--clinic-theme-eighth-color);
-            font-weight: 700;
-            border-radius: 5rem;
-            background: linear-gradient(90deg, #FFFFFF 0, #D5E0FF 100%);
-
-            &:hover {
-              color: #000000;
-            }
+      &:not(:first-child) {
+        .content {
+          @media (min-width: 768px) {
+            display: none;
           }
         }
       }

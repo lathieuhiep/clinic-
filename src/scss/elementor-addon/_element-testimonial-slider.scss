@@ -1,6 +1,8 @@
 .element-testimonial-slider {
   .item {
     padding: 3rem 3.4rem;
+    border: .1rem solid #28884F;
+    border-bottom-width: .7rem;
     background-color: var(--color-white);
 
     &__top-box {
@@ -42,19 +44,6 @@
 
           .info {
             color: #2C904F;
-          }
-        }
-      }
-    }
-  }
-
-  .owl-carousel {
-    .owl-dots {
-      .owl-dot {
-        &.active,
-        &:hover {
-          span {
-            background-color: #F5EE3E;
           }
         }
       }

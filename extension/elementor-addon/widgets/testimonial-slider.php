@@ -434,6 +434,16 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                         <?php endif; ?>
 
                         <div class="item__body">
+                            <div class="desc text-justify">
+                                <?php echo wp_kses_post( $item['list_description'] ) ?>
+                            </div>
+
+                            <div class="vote">
+                                <?php for ($i = 0; $i < 5; $i++) : ?>
+                                    <i class="icon icon-star"></i>
+                                <?php endfor; ?>
+                            </div>
+
                             <div class="profile">
                                 <div class="avatar">
                                     <?php
@@ -454,16 +464,6 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                                         <?php echo esc_html( $item['list_info'] ); ?>
                                     </p>
                                 </div>
-                            </div>
-
-                            <div class="vote">
-                                <?php for ($i = 0; $i < 5; $i++) : ?>
-                                    <i class="icon icon-star"></i>
-                                <?php endfor; ?>
-                            </div>
-
-                            <div class="desc text-justify">
-                                <?php echo wp_kses_post( $item['list_description'] ) ?>
                             </div>
                         </div>
                     </div>
