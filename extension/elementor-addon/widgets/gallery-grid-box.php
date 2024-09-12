@@ -284,6 +284,7 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
             [
                 'name' => 'list_background',
                 'types' => [ 'classic', 'gradient' ],
+                'exclude' => ['image'],
                 'selector' => '{{WRAPPER}} .element-gallery-grid-box__warp .item',
             ]
         );

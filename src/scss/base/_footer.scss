@@ -1,3 +1,5 @@
+$path-image: '../images';
+
 .global-footer {
   section {
     &.widget {
@@ -33,7 +35,10 @@
 
   &__column {
     padding: 4rem 0 2rem;
-    background-color: #00667B;
+    background-image: url('#{$path-image}/nen-chan-trang.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 }
 

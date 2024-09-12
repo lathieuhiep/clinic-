@@ -60,6 +60,7 @@ body {
 a {
   font-family: inherit;
   line-height: inherit;
+  color: inherit;
   @include transition();
 }
 
@@ -287,7 +288,7 @@ pre {
 .chat-with-us {
   position: fixed;
   right: 1.6rem;
-  bottom: 18rem;
+  bottom: 20rem;
   z-index: 99;
   display: grid;
   grid-row-gap: 1.2rem;
@@ -296,7 +297,7 @@ pre {
 }
 
 #LRMINIBar {
-  bottom: 2rem !important;
+  bottom: 8rem !important;
 }
 
 #us_chat_content {
