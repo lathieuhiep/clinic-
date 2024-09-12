@@ -1,8 +1,17 @@
 <?php
 $phone = clinic_get_opt_hotline();
 $medical_appointment_form = clinic_get_opt_medical_appointment();
-$link_chat = clinic_get_opt_link_chat_doctor();
+$link_chat_doctor = clinic_get_opt_link_chat_doctor();
+$link_chat_messenger = clinic_get_opt_link_chat_messenger();
 $link_map = clinic_get_opt_link_map();
+
+if ( $link_chat_doctor ) {
+    $link_chat = $link_chat_doctor;
+} elseif ( $link_chat_messenger ) {
+    $link_chat = $link_chat_messenger;
+} else {
+    $link_chat = '';
+}
 ?>
 
     <div class="contact-us-group d-none d-lg-block">

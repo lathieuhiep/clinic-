@@ -1,13 +1,13 @@
 <?php
 $show_related = clinic_get_option('opt_post_single_related', '1');
+
+get_template_part('components/inc', 'breadcrumbs');
 ?>
 
 <div id="post-<?php the_ID() ?>" class="single-post-content">
-    <h1 class="single-post-content__title f-family-body mt-5">
+    <h1 class="single-post-content__title f-family-body">
 		<?php the_title(); ?>
     </h1>
-
-	<?php clinic_post_meta(); ?>
 
     <div class="single-post-content__detail">
 		<?php the_content(); ?>
