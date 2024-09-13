@@ -1,59 +1,29 @@
-/**
-* Table of Contents:
-*
-# Icon Theme
-# General
-# WordPress Core
-# Header
-# Comment Form
-# Page
-# Sidebar
-# Contact Form 7
-# Footer
-* -----------------------------------------------------------------------------
-*/
-
 @import "variables-site/variables";
 
-/* Icon theme
+/* base
 -------------------------------------------------------------- */
 @import "base/icon-theme";
-
-/**
-# General
------------------------------------------------------------------------------*/
 @import "base/general";
-
-/* WordPress Core
--------------------------------------------------------------- */
 @import "base/wp-core";
 
-/**
-# Header
------------------------------------------------------------------------------*/
-@import "base/header";
+/* header
+-------------------------------------------------------------- */
+@import "layout/header";
+
+/* components
+-------------------------------------------------------------- */
+@import "components/breadcrumbs";
+@import "components/comment-form";
+@import "components/owl-carousel";
+@import "components/cf7";
+@import "components/shortcode";
+
+/* sidebar
+-------------------------------------------------------------- */
+@import "layout/sidebar";
+
 
 /**
-# Comment Form
+# footer
 -----------------------------------------------------------------------------*/
-@import "base/comment-form";
-
-/**
-# Page
------------------------------------------------------------------------------*/
-@import "base/page";
-
-/**
-# Sidebar
------------------------------------------------------------------------------*/
-@import "base/sidebar";
-
-/**
-# Contact Form 7
------------------------------------------------------------------------------*/
-@import "base/cf7";
-
-/**
-# Footer
------------------------------------------------------------------------------*/
-@import "base/footer";
+@import "layout/footer";

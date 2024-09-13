@@ -60,41 +60,6 @@
         }
       }
     }
-
-    .post-contact-us {
-      margin: 2rem 0;
-      display: flex;
-      gap: 2.4rem;
-      align-items: center;
-      justify-content: center;
-
-      @media (max-width: 479px) {
-        flex-direction: column;
-      }
-
-      .item {
-        padding: 1rem 1.6rem;
-        color: var(--color-white);
-        font-size: 1.8rem;
-        font-weight: 700;
-        border-radius: 2rem;
-        display: inline-flex;
-        align-items: center;
-
-        .icon {
-          margin-right: 1rem;
-          font-size: 1.8rem;
-        }
-
-        &.phone {
-          background-color: var(--clinic-theme-quaternary-color);
-        }
-
-        &.link {
-          background-color: #2e8f56;
-        }
-      }
-    }
   }
 
   &__image,

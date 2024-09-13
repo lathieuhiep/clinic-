@@ -26,6 +26,7 @@
   --clinic-theme-seven-color: #{$theme-seven-color};
   --clinic-theme-eighth-color: #{$theme-eighth-color};
 
+  --clinic-theme-color-hover: #{$color-hover};
   --color-white: #{$color-white};
   --color-salem: #{$color-salem};
   --color-cadmium-yellow: #{$color-cadmium-yellow};
@@ -43,18 +44,6 @@ body {
   overflow-x: hidden;
   word-break: break-word;
   @include flex-column;
-
-  .lSSlideOuter {
-    .lSPager {
-      &.lSpg {
-        > li {
-          a {
-            @include square(1rem, 50%);
-          }
-        }
-      }
-    }
-  }
 }
 
 a {
@@ -84,7 +73,7 @@ iframe {
 }
 
 blockquote {
-  border-left: 1px solid $color-hover;
+  border-left: 1px solid var(--clinic-theme-color-hover);
   padding-left: 30px;
 }
 
@@ -159,6 +148,25 @@ pre {
   margin-bottom: 2.4rem;
 }
 
+/* Page default */
+.site-container {
+  padding: 2.4rem 0 4.2rem;
+
+  &.site-container-elementor {
+    padding: 0;
+  }
+}
+
+.site-page-content {
+  p {
+    &:after {
+      display: table;
+      clear: both;
+      content: '';
+    }
+  }
+}
+
 /* Social network */
 .social-network-item {
   display: inline-block;
@@ -173,17 +181,6 @@ pre {
   }
 }
 
-/* Breadcrumbs */
-.breadcrumbs {
-  margin-bottom: 1.6rem;
-  padding: 1.2rem 2.4rem;
-  color: #000000;
-  background-color: #EDEDED;
-
-  a {
-    color: var(--clinic-theme-primary-color);
-  }
-}
 
 /* Pagination */
 .pagination {
@@ -260,32 +257,6 @@ pre {
   }
 }
 
-.title-has-icon {
-  display: grid;
-  grid-gap: 1.2rem;
-  grid-template-columns: 2.3rem 1fr;
-  align-items: center;
-
-  + p {
-    margin-top: 1.5rem;
-  }
-
-  &__text {
-    margin: 0;
-    line-height: 3rem;
-    color: #135CAA;
-    text-transform: uppercase;
-
-    @media (min-width: 992px) {
-      font-size: 2.4rem;
-    }
-
-    @media (max-width: 991px) {
-      font-size: 1.8rem;
-    }
-  }
-}
-
 .chat-with-us {
   position: fixed;
   right: 1.6rem;
@@ -315,112 +286,6 @@ pre {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-}
-
-/* owl carousel navigation */
-.owl-carousel {
-  .owl-nav {
-    margin: 0;
-
-    button {
-      &.owl-prev,
-      &.owl-next {
-        position: absolute;
-        top: 50%;
-        font-size: 3rem;
-        line-height: normal;
-        color: #167D78;
-        @include transition();
-        transform: translateY(-50%);
-
-        &.owl-prev {
-          left: .6rem;
-        }
-
-        &.owl-next {
-          right: .6rem;
-        }
-
-        &:hover {
-          color: #00A878;
-        }
-      }
-    }
-  }
-
-  .owl-dots {
-    margin-top: 1.8rem;
-    @include flex-center;
-
-    .owl-dot {
-      display: inline-block;
-      margin: 0 5px;
-
-      span {
-        position: relative;
-        display: block;
-        @include square(1.2rem);
-        background-color: #DDDDDD;
-        border-radius: 50%;
-      }
-
-      &.active,
-      &:hover {
-        span {
-          background-color: #E6171F;
-        }
-      }
-    }
-  }
-
-  &.custom-owl-nav {
-    .owl-nav {
-      button {
-        font-size: 1.6rem;
-        line-height: 100%;
-        color: #ff5555;
-        border: .1rem solid #ff5555;
-        @include square(3.2rem, 50%);
-        background-color: #ffffff;
-
-        &.owl-prev {
-          @media (min-width: 992px) {
-            left: -1.6rem;
-          }
-
-          @media (max-width: 991px) {
-            left: 1rem;
-          }
-        }
-
-        &.owl-next {
-          @media (min-width: 992px) {
-            right: -1.6rem;
-          }
-
-          @media (max-width: 991px) {
-            right: 1rem;
-          }
-        }
-
-        &:hover {
-          color: #ffffff;
-          background-color: #ff5555;
-        }
-      }
-    }
-  }
-}
-
-.custom-equal-height-owl {
-  .owl-stage {
-    display: flex;
-
-    .owl-item {
-      display: flex;
-      flex: 1 0 auto;
-    }
   }
 }
 
@@ -486,50 +351,6 @@ pre {
     &.zalo {
       right: 0;
       width: 27%;
-    }
-  }
-}
-
-.blur-image {
-  margin-bottom: 1.2rem;
-  text-align: center;
-
-  &__box {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    &:before {
-      position: absolute;
-      content: "";
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgb(0,0,0);
-      @include transition();
-    }
-
-    .txt {
-      padding: 1rem;
-      position: absolute;
-      left: 0;
-      right: 0;
-      color: #ffffff;
-      @include transition();
-    }
-
-    &:hover {
-      &:before {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .txt {
-        opacity: 0;
-        visibility: hidden;
-      }
     }
   }
 }
