@@ -676,9 +676,15 @@
 }
 
 #mega-menu-wrap-primary {
+  height: inherit;
+
   #mega-menu-primary {
+    height: inherit;
+
     > li {
       &.mega-menu-item {
+        height: inherit;
+
         &:not(:last-child) {
           @media (min-width: 1200px) {
             margin-right: 6rem;
@@ -688,34 +694,12 @@
             margin-right: 3rem;
           }
         }
-      }
 
-      &.mega-menu-megamenu > {
-        ul {
-          &.mega-sub-menu {
-            li {
-              &.mega-menu-column {
-                > ul.mega-sub-menu {
-                  > li {
-                    &.mega-menu-item {
-                      li {
-                        &.mega-menu-item {
-                          > a {
-                            &.mega-menu-link {
-                              font-weight: 500;
-                            }
-
-                            &:hover {
-                              font-weight: 500 !important;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+        > a {
+          &.mega-menu-link {
+            display: inline-flex;
+            align-items: center;
+            height: inherit;
           }
         }
       }
@@ -750,10 +734,6 @@
             > li {
               &.mega-menu-row {
                 .mega-menu-column {
-                  ~ .mega-menu-column {
-                    border-left: 1px solid #CDCCCC;
-                  }
-
                   > ul {
                     &.mega-sub-menu {
                       > li {
@@ -782,25 +762,6 @@
               }
 
               &.mega-menu-item {
-                &.mega-menu-columns-4-of-12 {
-                  @media (min-width: 992px) {
-                    &:nth-child(3n+2),
-                    &:nth-child(3n+3) {
-                      border-left: 1px solid #CDCCCC;
-                    }
-
-                    &:nth-child(n+4) {
-                      > a {
-                        &.mega-menu-link {
-                          margin-top: .8rem;
-                          padding-top: 1.6rem;
-                          border-top: 1px solid #CDCCCC;
-                        }
-                      }
-                    }
-                  }
-                }
-
                 li {
                   &.mega-menu-item {
                     > a {
