@@ -141,7 +141,7 @@
                     }
                 } else {
                     // pc
-                    link = `https://zalo.me/${phone}`
+                    link = `zalo://conversation?phone=${phone}`
                 }
 
                 window.open(link, '_parent');

@@ -175,18 +175,16 @@ if ( class_exists( 'CSF' ) ) {
                         'title'   => esc_html__( 'Kiểu liên hệ', 'clinic' ),
                         'options' => array(
                             'phone_qr' => esc_html__('Số điện thoại + QR code', 'clinic'),
-                            'link' =>  esc_html__('Zalo OA', 'clinic'),
+                            'link' =>  esc_html__('Số điện thoại + Link Zalo OA', 'clinic'),
                         ),
                         'default' => 'phone_qr'
                     ),
 
-                    // phone + qrcode
                     array(
                         'id'    => 'phone',
                         'type'  => 'text',
                         'title' => esc_html__( 'Số điện thoại', 'clinic' ),
                         'default' => '0888.888.115',
-                        'dependency' => array( 'select_zalo', '==', 'phone_qr' )
                     ),
 
                     array(
@@ -198,7 +196,6 @@ if ( class_exists( 'CSF' ) ) {
                         'dependency' => array( 'select_zalo', '==', 'phone_qr' )
                     ),
 
-                    // link
                     array(
                         'id'    => 'link',
                         'type'  => 'text',

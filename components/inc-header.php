@@ -3,7 +3,24 @@ $sticky_menu = clinic_get_option( 'opt_menu_sticky', '1' );
 $logo = clinic_get_option( 'opt_general_logo' );
 $working_time = clinic_get_option('opt_general_working_time');
 $hotline = clinic_get_opt_hotline();
-$zalo = clinic_get_opt_chat_zalo();
+$chat_zalo = clinic_get_opt_chat_zalo();
+
+if( !empty( $chat_zalo ) ) {
+    $zalo_select = $chat_zalo['select_zalo'];
+    $zalo_phone = $chat_zalo['phone'];
+    
+    if ( $zalo_select == 'phone_qr' ) :
+        $zalo_class = ' chat-with-us__zalo';
+        $target = '_self';
+        $zalo_qr_code = $chat_zalo['qr_code'];
+        $zalo_link = 'https://zalo.me/' . clinic_preg_replace_ony_number($zalo_phone);
+    else:
+        $zalo_class = '';
+        $target = '_blank';
+        $zalo_qr_code = '';
+        $zalo_link = $chat_zalo['link'];
+    endif;
+}
 ?>
 
 <header class="header-warp d-none d-lg-block">
@@ -50,7 +67,7 @@ $zalo = clinic_get_opt_chat_zalo();
                     </div>
                 </div>
 
-                <?php if ( !empty( $zalo ) && !empty( $zalo['phone']) ) : ?>
+                <?php if ( !empty( $chat_zalo ) ) : ?>
                     <div class="item">
                         <div class="item__icon">
                             <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/info/info-zalo.webp' ) ) ?>" alt=""/>
@@ -59,8 +76,8 @@ $zalo = clinic_get_opt_chat_zalo();
                         <div class="item__content">
                             <span class="txt"><?php esc_html_e('Click tư vấn', 'clinic'); ?></span>
 
-                            <a class="phone fw-bold value" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number( $zalo['phone'] ) ); ?>" target="_blank">
-                                <?php echo esc_html( $zalo['phone'] ); ?>
+                            <a class="phone fw-bold value<?php echo esc_attr( $zalo_class ); ?>" href="<?php echo esc_url( $zalo_link ) ?>" data-phone="<?php echo esc_attr( $zalo_phone ); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <?php echo esc_html( $zalo_phone ); ?>
                             </a>
                         </div>
                     </div>
