@@ -14,7 +14,7 @@ const pathDist  = './assets'
 const pathNodeModule = './node_modules'
 
 // server
-const proxy = "localhost/seowebmoi"
+const proxy = "localhost/chuanamkhoact.com"
 function server() {
     browserSync.init({
         proxy: proxy,
