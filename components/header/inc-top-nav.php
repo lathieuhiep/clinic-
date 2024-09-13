@@ -1,8 +1,8 @@
 <?php
 $logo = clinic_get_option( 'opt_general_logo' );
-$address =clinic_get_opt_general_address();
 $working_time = clinic_get_option('opt_general_working_time');
 $hotline = clinic_get_opt_hotline();
+$chat_zalo = clinic_get_opt_chat_zalo();
 ?>
 
 <div class="top-nav d-none d-lg-block">
@@ -37,6 +37,26 @@ $hotline = clinic_get_opt_hotline();
                     </div>
                 </div>
 
+                <div class="item item-zalo">
+                    <div class="item__icon">
+                        <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-logo.png' ) ) ?>" />
+                    </div>
+
+                    <div class="item__content">
+                        <p><?php esc_html_e('Click tư vấn', 'clinic'); ?></p>
+
+                        <?php
+                        if (  !empty( $chat_zalo ) ) :
+	                        $zalo_phone = $chat_zalo['phone'];
+	                        $zalo_qr_code = $chat_zalo['qr_code'];
+                        ?>
+                            <a class="zalo fw-bold chat-with-us__zalo" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
+		                        <?php esc_html_e( 'Miễn phí qua zalo', 'clinic' ); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
                 <div class="item">
                     <div class="item__icon">
                         <i class="icon-clock"></i>
@@ -45,20 +65,6 @@ $hotline = clinic_get_opt_hotline();
                     <div class="item__content">
                         <p><?php esc_html_e('Thời gian làm việc', 'clinic'); ?></p>
                         <strong><?php echo esc_html( $working_time ); ?></strong>
-                    </div>
-                </div>
-
-                <div class="item address">
-                    <div class="item__icon">
-                        <i class="icon-location"></i>
-                    </div>
-
-                    <div class="item__content">
-                        <?php if ( !empty( $address ) ) : ?>
-                            <p><?php esc_html_e( 'Địa chỉ', 'clinic' ); ?></p>
-
-                            <strong class="text-uppercase"><?php echo esc_html( $address ); ?></strong>
-                        <?php endif; ?>
                     </div>
                 </div>
             </div>
