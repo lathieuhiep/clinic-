@@ -1,6 +1,6 @@
 'use strict';
 
-const { src, dest, watch } = require('gulp')
+const { src, dest, watch, series } = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync')
@@ -32,7 +32,7 @@ Task build Bootstrap
 
 // Task build style bootstrap
 const buildStylesBootstrap = () => {
-    return src(`${pathSrc}/scss/bootstrap.scss`)
+    return src(`${pathSrc}/scss/vendors/bootstrap.scss`)
         .pipe(sass({
             outputStyle: 'expanded'
         }, '').on('error', sass.logError))
@@ -192,25 +192,37 @@ const watchTask = () => {
     server()
 
     watch([
-        `${pathSrc}/scss/variables-site/*.scss`,
-        `${pathSrc}/scss/bootstrap.scss`
+        `${pathSrc}/scss/utils/*.scss`,
+    ], series(
+        buildStylesBootstrap,
+        buildStylesTheme,
+        buildStylesElementor,
+        buildStylesCustomPostType,
+        buildStylesPageTemplate
+    ))
+
+    watch([
+        `${pathSrc}/scss/vendors/bootstrap.scss`
     ], buildStylesBootstrap)
 
     watch([
-        `${pathSrc}/scss/variables-site/*.scss`,
         `${pathSrc}/scss/base/*.scss`,
+        `${pathSrc}/scss/components/*.scss`,
+        `${pathSrc}/scss/layout/*.scss`,
         `${pathSrc}/scss/style-theme.scss`,
     ], buildStylesTheme)
 
     watch([
-        `${pathSrc}/scss/variables-site/*.scss`,
         `${pathSrc}/scss/elementor-addon/*.scss`
     ], buildStylesElementor)
 
     watch([
-        `${pathSrc}/scss/variables-site/*.scss`,
         `${pathSrc}/scss/post-type/*/**.scss`
     ], buildStylesCustomPostType)
+
+    watch([
+        `${pathSrc}/scss/page-templates/**.scss`
+    ], buildStylesPageTemplate)
 
     watch([
         `${pathSrc}/js/*.js`

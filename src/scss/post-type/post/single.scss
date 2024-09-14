@@ -1,4 +1,6 @@
-@import "../../variables-site/variables";
+@import "../../utils/utils";
+
+$path-image: '../../../images';
 
 .single-post-warp {
   padding-top: 2.3rem;
@@ -107,7 +109,7 @@
 
 .single-contact-us {
   padding: 1.2rem 1.6rem;
-  background-image: url("../../../images/bk-support-single.png");
+  background-image: url('#{$path-image}/bk-support-single.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

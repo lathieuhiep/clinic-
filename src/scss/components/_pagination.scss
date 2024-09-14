@@ -1,0 +1,36 @@
+.pagination {
+  display: block;
+  float: none;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.page-numbers {
+  @include reset-list();
+
+  li {
+    display: inline-block;
+
+    ~ li {
+      margin-left: .6rem;
+    }
+
+    span,
+    a {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      border: .1rem solid #ddd;
+      padding: .5rem 1.2rem;
+      font-weight: 700;
+      border-radius: .2rem;
+    }
+
+    span.current,
+    a:hover {
+      background: #60AD80;
+      border-color: #60AD80;
+      color: #ffffff;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-@import "variables-site/variables";
+@import "utils/utils";
 
 /* base
 -------------------------------------------------------------- */
@@ -13,15 +13,17 @@
 /* components
 -------------------------------------------------------------- */
 @import "components/breadcrumbs";
-@import "components/comment-form";
-@import "components/owl-carousel";
 @import "components/cf7";
+@import "components/chat-with-us";
+@import "components/comment-form";
+@import "components/contact-us-mobile";
+@import "components/owl-carousel";
+@import "components/pagination";
 @import "components/shortcode";
 
 /* sidebar
 -------------------------------------------------------------- */
 @import "layout/sidebar";
-
 
 /**
 # footer

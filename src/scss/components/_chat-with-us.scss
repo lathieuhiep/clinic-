@@ -1,0 +1,14 @@
+.chat-with-us {
+  position: fixed;
+  right: 1.6rem;
+  bottom: 20rem;
+  z-index: 99;
+  display: grid;
+  grid-row-gap: 1.2rem;
+  grid-template-columns: 5rem;
+  align-items: center;
+}
+
+#LRMINIBar {
+  bottom: 8rem !important;
+}
