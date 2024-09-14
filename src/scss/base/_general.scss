@@ -139,12 +139,68 @@ pre {
 }
 
 .modal-appointment-form {
+  .modal-dialog {
+    .modal-content {
+      border: 0;
+
+      .modal-header {
+        padding: 2.4rem 2rem 1.8rem;
+        position: relative;
+        border: 0;
+        background-color: #2e8f56;
+        align-items: center;
+        justify-content: center;
+
+        .modal-title {
+          color: #ffffff;
+          text-transform: uppercase;
+        }
+
+        .btn-close-modal {
+          padding: 0;
+          position: absolute;
+          top: .5rem;
+          right: 1rem;
+          height: 2.5rem;
+          font-size: 2.4rem;
+          color: #ffffff;
+          line-height: inherit;
+          border: 0;
+          background-color: transparent;
+          @include flex-center();
+          @include transition();
+
+          &:hover {
+            color: #000000;
+          }
+        }
+      }
+
+      .modal-body {
+        padding: 2rem;
+      }
+    }
+  }
+
   .wpcf7-form {
     .wpcf7-form-control-wrap {
       input,
       textarea {
-        color: #000;
-        background-color: #e6e6e6;
+        padding: .7rem 1rem;
+        color: #555;
+        font-size: 1.5rem;
+        border: .1rem solid #ccc;
+        border-radius: .4rem;
+        background-color: #ffffff;
+      }
+    }
+
+    .wpcf7-submit {
+      padding: 1rem 2rem;
+      border-radius: .4rem;
+
+      &:hover {
+        background-color: #2e8f56;
       }
     }
   }
@@ -166,5 +222,109 @@ pre {
 @keyframes text-clip {
   to {
     background-position: 200% center;
+  }
+}
+
+// animation ring
+.alo-circle-anim {
+  -webkit-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+  -moz-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+  -o-animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+  animation: coccoc-alo-circle-img-anim 1s infinite ease-in-out;
+}
+
+@-moz-keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+}
+
+@-webkit-keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+}
+
+@-o-keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+}
+
+@keyframes coccoc-alo-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg)
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg)
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg)
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg)
   }
 }

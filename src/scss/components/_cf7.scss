@@ -66,11 +66,12 @@ form {
 
     .wpcf7-submit {
       color: #fff;
-      padding: 5px 25px;
+      padding: .5rem 2.5rem;
       border: none;
       cursor: pointer;
       text-transform: uppercase;
       background: var(--color-sunset-orange);
+      @include transition();
     }
 
     .wpcf7-spinner {

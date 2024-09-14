@@ -1,29 +1,20 @@
 <?php
+$chat_zalo = clinic_get_chat_zalo();
+$link_messenger = clinic_get_opt_link_chat_messenger();
 $call_phone = clinic_get_opt_hotline();
-$chat_zalo = clinic_get_opt_chat_zalo();
-$link_messenger = clinic_get_opt_link_chat_messenger()
 ?>
 
 <div class="chat-with-us">
-	<?php
-	if ( !empty( $chat_zalo ) ) :
-        $zalo_selcet = $chat_zalo['select_zalo'];
-
-        if ( $zalo_selcet == 'phone_qr' ) :
-            $zalo_phone = $chat_zalo['phone'];
-            $zalo_qr_code = $chat_zalo['qr_code'];
-    ?>
-        <a class="link zalo chat-with-us__zalo" href="https://zalo.me/<?php echo esc_attr( clinic_preg_replace_ony_number($zalo_phone) ) ?>" data-phone="<?php echo esc_attr($zalo_phone); ?>" data-qr-code="<?php echo esc_attr($zalo_qr_code); ?>">
+	<?php if ( !empty( $chat_zalo['phone'] ) ) : ?>
+        <a class="link zalo<?php echo esc_attr( $chat_zalo['class'] ); ?>"
+           href="<?php echo esc_url( $chat_zalo['link'] ) ?>"
+           data-phone="<?php echo esc_attr( clinic_preg_replace_ony_number( $chat_zalo['phone'] ) ); ?>"
+           data-qr-code="<?php echo esc_attr( $chat_zalo['qr_code'] ); ?>"
+           target="<?php echo esc_attr( $chat_zalo['target'] ); ?>"
+        >
             <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-icon-contact.png' ) ) ?>" width="50" height="" />
         </a>
-    <?php else: ?>
-        <a class="link zalo" href="<?php echo esc_url( $chat_zalo['link'] ); ?>" target="_blank">
-            <img alt="zalo" src="<?php echo esc_url( get_theme_file_uri( '/assets/images/zalo-icon-contact.png' ) ) ?>" width="50" height="" />
-        </a>
-	<?php
-        endif;
-    endif;
-    ?>
+	<?php endif; ?>
 
     <?php if ( $link_messenger ) : ?>
         <a class="link chat-with-us__messenger" href="<?php echo esc_url($link_messenger); ?>" target="_blank">

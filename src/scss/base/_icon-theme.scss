@@ -30,6 +30,12 @@ $url-font-svg: '#{$url-fonts}/icomoon.svg';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow-right:before {
+  content: "\e920";
+}
+.icon-arrow-left:before {
+  content: "\e921";
+}
 .icon-setting:before {
   content: "\e91f";
 }

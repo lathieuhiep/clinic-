@@ -1,6 +1,7 @@
 .element-album-gallery {
   &__warp {
     display: grid;
+    grid-auto-rows: min-content;
 
     .item {
       overflow: hidden;

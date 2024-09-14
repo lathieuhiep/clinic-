@@ -62,6 +62,10 @@ $container-max-widths: (
         xl: 1224px
 ) !default;
 
+// Modals
+// scss-docs-start modal-variables
+$modal-content-border-radius: 1rem;
+
 // Include remainder of required Bootstrap stylesheets
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/variables-dark";

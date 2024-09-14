@@ -8,6 +8,18 @@
   padding: 9px 10px;
   border-radius: 3px;
   box-shadow: none;
+
+  &::placeholder {
+    color: inherit;
+  }
+
+  &::-webkit-input-placeholder {
+    color: inherit;
+  }
+
+  &::-moz-placeholder {
+    color: inherit;
+  }
 }
 
 .search-submit {

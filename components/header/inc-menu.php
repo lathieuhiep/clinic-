@@ -1,6 +1,10 @@
+<?php $medical_appointment_form = clinic_get_opt_medical_appointment(); ?>
+
 <nav class="navbar-main d-none d-lg-block">
     <div class="container">
-        <div class="grid-layout h-100">
+        <div class="grid-layout">
+            <?php get_template_part('components/inc','logo-main'); ?>
+
             <div id="primary-menu" class="primary-menu">
                 <?php
                 if ( has_nav_menu( 'primary' ) ) :
@@ -21,9 +25,14 @@
                 <?php endif; ?>
             </div>
 
-            <div class="search-box d-flex align-items-center">
-                <?php get_search_form() ?>
+            <?php if ( $medical_appointment_form ) :?>
+            <div class="book d-flex align-items-center">
+                <a class="link d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
+                    <span class="txt"><?php esc_html_e('Đặt hẹn khám', 'clinic'); ?></span>
+                    <i class="icon-arrow-right"></i>
+                </a>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </nav>

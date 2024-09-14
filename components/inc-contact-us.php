@@ -91,7 +91,9 @@ if ( $link_chat_doctor ) {
                         <?php esc_html_e('Đặt hẹn khám', 'clinic'); ?>
                     </h3>
 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
                 </div>
 
                 <div class="modal-body">
