@@ -8,7 +8,7 @@
   }
 
   .wpcf7-form {
-    display: grid;
+    display: flex;
 
     p {
       margin: 0;
@@ -26,7 +26,7 @@
 
     .wpcf7-form-control-wrap {
       .wpcf7-form-control {
-        height: 6rem;
+        height: auto;
       }
     }
 

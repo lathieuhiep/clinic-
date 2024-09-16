@@ -1,0 +1,121 @@
+.element-step-image-box {
+  &__grid {
+    display: grid;
+    grid-gap: 2.4rem;
+    
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media (min-width: 576px) and (max-width: 991px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item {
+      border-radius: 1.5rem;
+      background:var(--color-white);
+      overflow: hidden;
+
+      &__step {
+        position: relative;
+        margin-bottom: 6rem;
+        padding: 3rem 1.2rem 1.2rem;
+        min-height: 15rem;
+        background-color: var(--color-salem);
+
+        .txt {
+          font-size: 1.8rem;
+          color: var(--color-white);
+          font-weight: 400;
+          text-transform: uppercase;
+        }
+
+        .thumbnail {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          height: 12.9rem;
+          transform: translateY(-50%);
+
+          img {
+            @include square(12.9rem, 50%);
+            object-fit: cover;
+          }
+        }
+      }
+
+      &__content {
+        padding: 2rem 1rem 2rem;
+
+        .title {
+          position: relative;
+          margin-bottom: 2rem;
+          font-size: 1.8rem;
+          font-weight: 400;
+          color: #000000;
+        }
+
+        .desc {
+          font-size: 1.4rem;
+
+          ul {
+            list-style: none;
+            padding: 0;
+            display: inline-block;
+
+            li {
+              position: relative;
+              padding-left: 2.8rem;
+              text-align: left;
+              font-weight: 700;
+              font-size: 1.5rem;
+
+              ~ li {
+                margin-top: 1rem;
+              }
+
+              &:before {
+                position: absolute;
+                content: "\e922";
+                top: -0.3rem;
+                left: 0;
+                font-family: $font-icon;
+                color: #F4AD3E;
+                width: 2.4rem;
+                font-size: 2rem;
+              }
+            }
+          }
+        }
+      }
+
+      &__action {
+        padding-bottom: 1.2rem;
+
+        .link {
+          padding: 1rem 2rem;
+          color: #ffffff;
+          font-weight: 700;
+          font-size: 1.4rem;
+          border-radius: 3rem;
+          background-color: #2e8f56;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          i {
+            display: inline-block;
+            margin-left: .5rem;
+            font-size: 1.6rem;
+            transform: translateY(-0.1rem);
+          }
+
+          &:hover {
+            background-color: #000000;
+          }
+        }
+      }
+    }
+  }
+}

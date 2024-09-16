@@ -23,15 +23,19 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	// include add on
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/album-gallery.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/category-list.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-and-sub.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider.php' );
+    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
 
 
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-us.php' );
 
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-us.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
+
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/doctor-slider.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/gallery-grid-box.php' );
 //    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-between-line.php' );
@@ -48,14 +52,18 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Album_Gallery() );
     $widgets_manager->register( new \Clinic_Elementor_Category_List() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
+    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
+    $widgets_manager->register( new \Clinic_Elementor_Heading_And_Sub() );
+    $widgets_manager->register( new \Clinic_Elementor_Image() );
     $widgets_manager->register( new \Clinic_Elementor_Slider() );
+    $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
 
 
 //    $widgets_manager->register( new \Clinic_Elementor_About_Us() );
 
 //    $widgets_manager->register( new \Clinic_Elementor_Contact_Us() );
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7() );
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
+
 //    $widgets_manager->register( new \Clinic_Elementor_Doctor_Slider() );
 //    $widgets_manager->register( new \Clinic_Elementor_Gallery_Grid_Box() );
 //    $widgets_manager->register( new \Clinic_Elementor_Heading_Between_Line() );
