@@ -299,8 +299,6 @@ section {
 
     &.working-time-widget {
       .widget-warp {
-        background: linear-gradient(180deg, #97CACA 0, #22B1B1 100%);
-
         .work-box {
           display: flex;
           gap: .5rem;
@@ -340,6 +338,8 @@ section {
 
             span {
               display: inline-block;
+              color: #fff;
+              background-color: #333333;
             }
 
             .character {
@@ -366,10 +366,6 @@ section {
               }
             }
           }
-        }
-
-        .note {
-          color: var(--color-white);
         }
       }
     }

@@ -1,0 +1,109 @@
+$path-image: '../images';
+
+.element-working-time {
+  .time-warp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+
+    .hour {
+      display: flex;
+      gap: .8rem;
+
+      .time {
+        padding: .2rem .6rem;
+        color: #B1DCC3;
+        font-weight: 700;
+        line-height: 1.2;
+        border: .2rem solid #111111;
+        border-radius: .5rem;
+        @include flex-center();
+        background-color: #252525;
+
+        @media (min-width: 576px) {
+          font-size: 5rem;
+          min-width: 5rem;
+        }
+
+        @media (max-width: 575px) {
+          font-size: 3.5rem;
+          min-width: 3.5rem;
+        }
+      }
+    }
+
+    .line {
+      width: 2.5rem;
+      height: 1rem;
+      border: .2rem solid #111111;
+      border-radius: 3rem;
+      background-color: #252525;
+    }
+  }
+
+  .hotline-box {
+    margin-top: 3rem;
+    display: grid;
+    grid-gap: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+
+    .title {
+      margin: 0;
+      padding: 0 1rem;
+      position: relative;
+      font-size: 2.4rem;
+      color: #e3c798;
+      width: max-content;
+
+      &:before ,
+      &:after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        height: 2rem;
+        transform: translateY(-50%);
+        background-image: url('#{$path-image}/line-title.webp');
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @media (min-width: 576px) {
+          width: 17rem;
+        }
+
+        @media (max-width: 575px) {
+          width: 9rem;
+        }
+      }
+
+      &:before {
+        @media (min-width: 576px) {
+          left: -17rem;
+        }
+
+        @media (max-width: 575px) {
+          left: -9rem;
+        }
+      }
+
+      &:after {
+        @media (min-width: 576px) {
+          right: -17rem;
+        }
+
+        @media (max-width: 575px) {
+          right: -9rem;
+        }
+      }
+    }
+
+    .phone {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+  }
+}

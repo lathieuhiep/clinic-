@@ -47,7 +47,7 @@
       &.active,
       &:hover {
         span {
-          background-color: #E6171F;
+          background-color: var(--clinic-theme-primary-color);
         }
       }
     }

@@ -1,50 +1,54 @@
 .element-testimonial-slider {
-  .item {
-    padding: 3rem 3.4rem;
-    border: .1rem solid #28884F;
-    border-bottom-width: .7rem;
-    background-color: var(--color-white);
+  &__warp {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-    &__top-box {
-      margin-bottom: 1.8rem;
-      font-weight: 700;
-      font-family: var(--heading-font-family);
+  .item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    &__desc {
+      position: relative;
+      padding: 2.4rem 1.2rem;
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      border-radius: 3rem;
+      background-color: var(--color-white);
+      flex: 1;
+
+      &:after {
+        position: absolute;
+        content: "";
+        bottom: -66px;
+        left: 35%;
+        border-top: 80px solid var(--color-white);
+        border-right: 42px solid transparent;
+        transform: translateX(-50%) rotate(25deg);
+      }
     }
 
-    &__body {
-      > div {
-        &:not(:last-child) {
-          margin-bottom: 1.6rem;
-        }
+    &__warp {
+      padding-top: 6.5rem;
+      display: grid;
+      grid-gap: 2.4rem;
+      grid-template-columns: 9rem 1fr;
+
+      .image {
+        @include square(9rem, 50%);
+        overflow: hidden;
+        border: .3rem solid var(--color-white);
       }
 
-      .vote {
-        color: #FFC226;
+      .name {
+        margin-bottom: .5rem;
+        font-size: 2.2rem;
       }
 
-      .profile {
-        display: grid;
-        grid-gap: 1.7rem;
-        grid-template-columns: 8rem 1fr;
-        align-items: center;
-
-        .avatar {
-          img {
-            width: auto;
-          }
-        }
-
-        .meta {
-          font-weight: 700;
-          font-family: var(--heading-font-family);
-
-          p {
-            margin: 0;
-          }
-
-          .info {
-            color: #2C904F;
-          }
+      .star {
+        i {
+          color: var(--color-cadmium-yellow);
         }
       }
     }

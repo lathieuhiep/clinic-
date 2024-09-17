@@ -27,27 +27,6 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
     protected function register_controls(): void {
 
-        // content global
-        $this->start_controls_section(
-            'content_global_section',
-            [
-                'label' => esc_html__( 'Thông tin chung', 'clinic' ),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'content_global',
-            [
-                'label' => esc_html__( 'Mô tả', 'clinic' ),
-                'type' => Controls_Manager::WYSIWYG,
-                'rows' => 10,
-                'default' => esc_html__( 'Mô tả', 'clinic' ),
-            ]
-        );
-
-        $this->end_controls_section();
-
         // list testimonial
         $this->start_controls_section(
             'list_section',
@@ -349,6 +328,68 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
 
         $this->end_controls_section();
 
+        // style title
+        $this->start_controls_section(
+            'style_title',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label'     =>  esc_html__( 'Màu', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-testimonial-slider .item__warp .name' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-testimonial-slider .item__warp .name',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // style info
+        $this->start_controls_section(
+            'style_info',
+            [
+                'label' => esc_html__( 'Thông tin', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'info_color',
+            [
+                'label'     =>  esc_html__( 'Màu', 'clinic' ),
+                'type'      =>  Controls_Manager::COLOR,
+                'selectors' =>  [
+                    '{{WRAPPER}} .element-testimonial-slider .item__warp .info' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'info_typography',
+                'label' => esc_html__( 'Typography', 'clinic' ),
+                'selector' => '{{WRAPPER}} .element-testimonial-slider .item__warp .info',
+            ]
+        );
+
+        $this->end_controls_section();
+
         // style description
         $this->start_controls_section(
             'style_description',
@@ -361,7 +402,7 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
         $this->add_control(
             'desc_color',
             [
-                'label'     =>  esc_html__( 'Color', 'clinic' ),
+                'label'     =>  esc_html__( 'Màu', 'clinic' ),
                 'type'      =>  Controls_Manager::COLOR,
                 'selectors' =>  [
                     '{{WRAPPER}} .element-testimonial-slider .item .desc' => 'color: {{VALUE}}',
@@ -424,45 +465,37 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                 <?php
                 foreach ( $settings['list'] as $item ) :
                     $imageId = $item['list_image']['id'];
-                    ?>
+                ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <?php if ( $settings['content_global'] ) : ?>
-                            <div class="item__top-box">
-                                <?php echo wpautop( $settings['content_global'] ); ?>
-                            </div>
-                        <?php endif; ?>
+                        <div class="item__desc">
+                            <?php echo wp_kses_post( $item['list_description'] ) ?>
+                        </div>
 
-                        <div class="item__body">
-                            <div class="desc text-justify">
-                                <?php echo wp_kses_post( $item['list_description'] ) ?>
-                            </div>
-
-                            <div class="vote">
-                                <?php for ($i = 0; $i < 5; $i++) : ?>
-                                    <i class="icon icon-star"></i>
-                                <?php endfor; ?>
+                        <div class="item__warp">
+                            <div class="image">
+                                <?php
+                                if ( $imageId ) :
+                                    echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
+                                else:
+                                    ?>
+                                    <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
+                                <?php endif; ?>
                             </div>
 
-                            <div class="profile">
-                                <div class="avatar">
-                                    <?php
-                                    if ( $imageId ) :
-                                        echo wp_get_attachment_image( $item['list_image']['id'], 'full' );
-                                    else:
-                                        ?>
-                                        <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/user-avatar.png' ) ) ?>" alt="<?php echo esc_attr( $item['list_title'] ); ?>" />
-                                    <?php endif; ?>
-                                </div>
+                            <div class="content">
+                                <h4 class="name">
+                                    <?php echo esc_html( $item['list_title'] ); ?>
+                                </h4>
 
-                                <div class="meta">
-                                    <p class="name">
-                                        <?php echo esc_html( $item['list_title'] ); ?>
-                                    </p>
+                                <p class="info">
+                                    <?php echo esc_html( $item['list_info'] ); ?>
+                                </p>
 
-                                    <p class="info">
-                                        <?php echo esc_html( $item['list_info'] ); ?>
-                                    </p>
+                                <div class="star">
+                                    <?php for ( $i = 1; $i <= 5; $i++) : ?>
+                                        <i class="icon-star"></i>
+                                    <?php endfor; ?>
                                 </div>
                             </div>
                         </div>

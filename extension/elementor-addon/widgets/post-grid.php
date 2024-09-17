@@ -235,7 +235,13 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
 
             <div class="element-post-grid">
                 <div class="element-post-grid__warp">
-                    <?php while ($query->have_posts()): $query->the_post(); ?>
+                    <?php
+                    $stt = 1;
+                    while ( $query->have_posts() ):
+                        $query->the_post();
+
+                        $categories = get_the_category();
+                    ?>
                         <div class="item">
                             <div class="item__thumbnail">
                                 <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
@@ -270,9 +276,31 @@ class Clinic_Elementor_Post_Grid extends Widget_Base
                                         </p>
                                     </div>
                                 <?php endif; ?>
+
+                                <?php if ( $stt == 1 && $categories ) : ?>
+                                    <div class="list-category">
+                                        <?php foreach ( $categories as $key => $category ) : ?>
+                                            <?php if ( $key > 0 ) : ?>
+                                            <span>,</span>
+                                            <?php endif; ?>
+
+                                            <a href="<?php echo esc_url( get_category_link( $category->term_id ) ); ?>">
+                                                <?php echo esc_html( $category->name ); ?>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $stt == 1 ) : ?>
+                                    <a class="link-post" href="<?php the_permalink(); ?>">
+                                        <span><?php esc_html_e('Chi tiết', 'clinic'); ?></span>
+                                        <i class="icon-angle-right"></i>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
-                        <?php
+                    <?php
+                    $stt++;
                     endwhile;
                     wp_reset_postdata();
                     ?>

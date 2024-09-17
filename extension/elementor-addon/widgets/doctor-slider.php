@@ -339,6 +339,7 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
             'dots' => $settings['navigation'] == 'both' || $settings['navigation'] == 'dots',
             'autoplay' => ('yes' === $settings['autoplay']),
             'margin' => $settings['margin_item'],
+            'stagePadding' => 1,
             'responsive' => [
                 '0' => array(
                     'items' => $settings['item_less_480'],
@@ -408,16 +409,16 @@ class Clinic_Elementor_Doctor_Slider extends Widget_Base {
                                     </p>
                                 </div>
 
-                                <div class="content">
-                                    <?php the_content(); ?>
-                                </div>
-
                                 <div class="action-box">
                                     <?php if ( $medical_appointment_form ) : ?>
                                         <a class="action-box__booking text-uppercase d-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#modal-appointment-form">
-                                            <?php esc_html_e('Đăng ký khám', "clinic"); ?>
+                                            <?php esc_html_e('Đặt lịch hẹn', 'clinic'); ?>
                                         </a>
                                     <?php endif; ?>
+                                </div>
+
+                                <div class="content">
+                                    <?php the_content(); ?>
                                 </div>
                             </div>
                         </div>

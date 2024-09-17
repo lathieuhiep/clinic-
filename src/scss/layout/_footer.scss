@@ -35,18 +35,15 @@ $path-image: '../images';
 
   &__column {
     padding: 4rem 0 2rem;
-    background-image: url('#{$path-image}/nen-chan-trang.webp');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-color: #333333;
   }
 }
 
 .contact-us-group {
   padding: 1.8rem 0;
   text-align: start;
-  border-top: .5rem solid #74FBB1;
-  background-color: var(--clinic-theme-six-color);
+  border-top: .5rem solid #60ad80;
+  background-color: #2e8f56;
 
   .grid-layout {
     min-height: 6rem;
@@ -103,6 +100,7 @@ $path-image: '../images';
         font-family: var(--heading-font-family);
         font-weight: 700;
         line-height: 1.2;
+        color: #ffffff;
 
         span {
           display: block;
@@ -112,8 +110,6 @@ $path-image: '../images';
           }
 
           &.txt-top {
-            color: var(--color-white);
-
             @media (min-width: 1200px) {
               font-size: 1.6rem;
             }
@@ -124,8 +120,6 @@ $path-image: '../images';
           }
 
           &.txt-sub {
-            color: #FFF4C3;
-
             @media (min-width: 1200px) {
               font-size: 2rem;
             }
