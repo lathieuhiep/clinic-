@@ -38,17 +38,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/working-time.php' );
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/about-us.php' );
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-between-line.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/list-title.php' );
-
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider-carousel.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/support.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/system-grid.php' );
-
-
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Album_Gallery() );
     $widgets_manager->register( new \Clinic_Elementor_Box_Content_Line() );
@@ -66,17 +55,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
     $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
     $widgets_manager->register( new \Clinic_Elementor_Working_Time() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_About_Us() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Heading_Between_Line() );
-//    $widgets_manager->register( new \Clinic_Elementor_List_Title() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Image() );
-//    $widgets_manager->register( new \Clinic_Elementor_Slider_Carousel() );
-//    $widgets_manager->register( new \Clinic_Elementor_Support() );
-//    $widgets_manager->register( new \Clinic_Elementor_System_Grid() );
-
 }
 
 // Register lib scripts
