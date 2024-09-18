@@ -94,11 +94,7 @@ $path-image: '../images';
         left: 0;
       }
 
-      &__icon {}
-
       &__content {
-        font-family: var(--heading-font-family);
-        font-weight: 700;
         line-height: 1.2;
         color: #ffffff;
 
@@ -120,6 +116,8 @@ $path-image: '../images';
           }
 
           &.txt-sub {
+            font-family: var(--heading-font-family);
+
             @media (min-width: 1200px) {
               font-size: 2rem;
             }
