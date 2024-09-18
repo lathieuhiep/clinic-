@@ -237,7 +237,7 @@ function clinic_preg_replace_ony_number($string): string|null
     return $number;
 }
 
-//
+// get chat zalo
 function clinic_get_chat_zalo(): array
 {
     $chat_zalo = clinic_get_opt_chat_zalo();

@@ -255,7 +255,6 @@
         }
 
         > a {
-          font-weight: 700;
           font-size: 1.5rem;
           color: #000000;
           text-transform: uppercase;
@@ -294,7 +293,7 @@
         a {
           text-shadow: none;
           display: block;
-          font-family: var(--heading-font-family);
+          font-weight: 700;
 
           &:hover {
             background-color: transparent;

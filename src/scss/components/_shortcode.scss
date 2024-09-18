@@ -1,27 +1,9 @@
-.title-has-icon {
-  display: grid;
-  grid-gap: 1.2rem;
-  grid-template-columns: 2.3rem 1fr;
-  align-items: center;
-
-  + p {
-    margin-top: 1.5rem;
-  }
-
-  &__text {
-    margin: 0;
-    line-height: 3rem;
-    color: #135CAA;
-    text-transform: uppercase;
-
-    @media (min-width: 992px) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: 991px) {
-      font-size: 1.8rem;
-    }
-  }
+.title-custom {
+  padding: .5rem 1.5rem;
+  color: #ffffff;
+  border-left: .4rem solid var(--clinic-theme-eighth-color);
+  border-radius: .5rem;
+  background-color: #009647;
 }
 
 .post-contact-us {

@@ -2,6 +2,71 @@
 
 $path-image: '../../../images';
 
+h1, h2, h3, h4, h5, h6 {
+  color: #222222;
+  line-height: 1.4;
+}
+
+h1 {
+  @media (min-width: 992px) {
+    font-size: 2.8rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 2.4rem;
+  }
+}
+
+h2 {
+  @media (min-width: 992px) {
+    font-size: 2.4rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  @media (min-width: 992px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.8rem;
+  }
+}
+
+h4 {
+  @media (min-width: 992px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.6rem;
+  }
+}
+
+h5 {
+  @media (min-width: 992px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.4rem;
+  }
+}
+
+h6 {
+  @media (min-width: 992px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.2rem;
+  }
+}
+
 .single-post-warp {
   padding-top: 2.3rem;
   padding-bottom: 2.7rem;
@@ -12,10 +77,6 @@ $path-image: '../../../images';
   font-size: 1.6rem;
 
   &__detail {
-    h2 {
-      text-transform: uppercase;
-    }
-
     p, span, a, ul li, ul ol {
       @media (max-width: 767px) {
         word-spacing: 0.05rem;
@@ -67,14 +128,6 @@ $path-image: '../../../images';
   &__image,
   .page-links {
     margin-bottom: 30px;
-  }
-
-  &__title {
-    margin-bottom: 1.6rem;
-    line-height: 3rem;
-    text-transform: uppercase;
-    color: #FC0000;
-    font-size: 2.4rem;
   }
 
   &__tax {

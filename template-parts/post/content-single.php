@@ -5,7 +5,7 @@ get_template_part('components/inc', 'breadcrumbs');
 ?>
 
 <div id="post-<?php the_ID() ?>" class="single-post-content">
-    <h1 class="single-post-content__title f-family-body">
+    <h1 class="single-post-content__title">
 		<?php the_title(); ?>
     </h1>
 

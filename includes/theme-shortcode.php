@@ -4,13 +4,9 @@ add_shortcode('title_has_icon' , 'clinic_title_has_icon');
 function clinic_title_has_icon ($args): false|string {
 	ob_start();
 	?>
-    <div class="title-has-icon">
-        <div class="title-has-icon__image">
-            <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/icon-title.webp' ) ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>" width="40" height="40"/>
-        </div>
-
-        <h2 class="title-has-icon__text"><?php echo esc_html( $args['title'] ); ?></h2>
-    </div>
+    <h2 class="title-custom">
+        <?php echo esc_html( $args['title'] ); ?>
+    </h2>
 	<?php
 	$content = ob_get_contents();
 	ob_end_clean();

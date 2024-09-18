@@ -1,3 +1,14 @@
+$url-fonts: '../fonts/UTMHelvetIns';
+
+@font-face {
+  font-family: 'UTM HelvetIns';
+  src: url('#{$url-fonts}/UTMHelvetIns.woff2') format('woff2'),
+  url('#{$url-fonts}/UTMHelvetIns.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   outline: none !important;
 }
