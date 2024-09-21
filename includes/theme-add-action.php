@@ -139,12 +139,22 @@ if ( function_exists('wpcf7') ) {
 	}
 }
 
+// add code header
+add_action('wp_head', 'clinic_add_code_header');
+function clinic_add_code_header(): void {
+	$add_code = clinic_get_option( 'opt_add_code_header' );
+
+	if ( $add_code ) {
+		echo $add_code;
+	}
+}
+
 // javascript footer
 add_action('wp_footer', 'clinic_add_script_footer');
 function clinic_add_script_footer(): void {
-	$add_script = clinic_get_option( 'opt_footer_add_javascript' );
+	$add_script = clinic_get_option( 'opt_add_code_footer' );
 
-    if ( $add_script ) {
-	    echo $add_script;
-    }
+	if ( $add_script ) {
+		echo $add_script;
+	}
 }
