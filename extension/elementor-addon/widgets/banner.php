@@ -62,21 +62,13 @@ class Clinic_Elementor_Banner extends Widget_Base {
         $banner_pc = clinic_get_option('opt_general_banner_pc');
         $banner_mobile = clinic_get_option('opt_general_banner_mobile');
     ?>
-
         <div class="element-banner">
-            <?php if ( !empty( $banner_pc ) ) : ?>
-                <div class="banner-pc">
-                    <?php echo wp_get_attachment_image( $banner_pc['id'], 'full' ); ?>
-                </div>
-            <?php endif; ?>
+            <picture>
+                <source media="(max-width: 767px)" srcset="<?php echo wp_get_attachment_image_url($banner_mobile['id'], 'mobile-size'); ?>">
 
-            <?php if ( !empty( $banner_mobile ) ) : ?>
-                <div class="banner-mobile">
-                    <?php echo wp_get_attachment_image( $banner_mobile['id'], 'full' ); ?>
-                </div>
-            <?php endif; ?>
+	            <?php echo wp_get_attachment_image( $banner_pc['id'], 'full' ); ?>
+            </picture>
         </div>
-
     <?php
     }
 }

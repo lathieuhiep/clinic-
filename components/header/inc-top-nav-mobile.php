@@ -17,7 +17,7 @@ $hotline = clinic_get_opt_hotline();
                 <a class="logo__image" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
                     <?php
                     if ( ! empty( $logo_mobile['id'] ) ) :
-                        echo wp_get_attachment_image( $logo_mobile['id'], 'full' );
+                        echo wp_get_attachment_image( $logo_mobile['id'], 'medium_large' );
                     else :
                     ?>
 
