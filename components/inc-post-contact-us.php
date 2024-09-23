@@ -5,7 +5,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
 <div class="post-contact-us">
 	<?php if ( $phone ) : ?>
 		<a class="item phone" href="tel:<?php echo esc_attr(clinic_preg_replace_ony_number($phone)); ?>">
-			<i class="icon icon-phone-light"></i>
+			<i class="icon icon-phone-light alo-circle-anim d-inline-block"></i>
             <span><?php echo esc_html( $phone ); ?></span>
 		</a>
 	<?php endif; ?>
