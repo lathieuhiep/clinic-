@@ -531,21 +531,45 @@ if ( class_exists( 'CSF' ) ) {
         )
     ) );
 
-	// add javascript
-	CSF::createSection( $clinic_prefix, array(
-		'parent' => 'opt_footer_section',
-		'title'  => esc_html__( 'Thêm mã javascript', 'clinic' ),
-		'fields' => array(
-			array(
-				'id'       => 'opt_footer_add_javascript',
-				'type'     => 'code_editor',
-				'title'    => esc_html__('Code', 'clinic'),
-				'sanitize' => false,
-				'settings' => array(
-					'theme'  => 'monokai',
-					'mode'   => 'javascript',
-				),
-			),
-		)
-	) );
+    //
+    // -> Create a section add code
+    CSF::createSection( $clinic_prefix, array(
+        'id'    => 'opt_add_code_section',
+        'icon'  => 'fas fa-stream',
+        'title' => esc_html__( 'Thêm code', 'clinic' ),
+    ) );
+
+    // add code header
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_add_code_section',
+        'title'  => esc_html__( 'Thêm vào header', 'clinic' ),
+        'fields' => array(
+            array(
+                'id'       => 'opt_add_code_header',
+                'type'     => 'code_editor',
+                'title'    => esc_html__('Header', 'clinic'),
+                'sanitize' => false,
+                'settings' => array(
+                    'theme'  => 'monokai'
+                ),
+            ),
+        )
+    ) );
+
+    // add code footer
+    CSF::createSection( $clinic_prefix, array(
+        'parent' => 'opt_add_code_section',
+        'title'  => esc_html__( 'Thêm vào footer', 'clinic' ),
+        'fields' => array(
+            array(
+                'id'       => 'opt_add_code_footer',
+                'type'     => 'code_editor',
+                'title'    => esc_html__('Footer', 'clinic'),
+                'sanitize' => false,
+                'settings' => array(
+                    'theme'  => 'monokai'
+                ),
+            ),
+        )
+    ) );
 }
