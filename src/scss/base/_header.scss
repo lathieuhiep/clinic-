@@ -1,3 +1,5 @@
+$path-image: '../images';
+
 .global-header {
   background-color: var(--color-white);
   box-shadow: 0 0 1rem 0 rgba(0,0,0,0.5);
@@ -213,7 +215,7 @@
           &:not(.current-menu-item, .mega-current-menu-item) {
             a {
               &:before {
-                background-image: url("assets/images/home-icon.png") !important;
+                background-image: url("#{$path-image}/home-icon.png") !important;
               }
             }
           }
@@ -222,7 +224,7 @@
           &.mega-current-menu-item, {
             a {
               &:before {
-                background-image: url("assets/images/home-icon-active.png") !important;
+                background-image: url("#{$path-image}/home-icon-active.png") !important;
               }
             }
           }

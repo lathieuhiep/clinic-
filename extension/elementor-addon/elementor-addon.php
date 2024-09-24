@@ -66,6 +66,6 @@ function clinic_elementor_scripts(): void {
 		// script
 		wp_enqueue_script( 'lightslider.min', get_theme_file_uri( '/assets/libs/lightslider/js/lightslider.min.js' ), array( 'jquery' ), '1.1.3', true );
 
-		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.js' ), array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'clinic-elementor-script', get_theme_file_uri( '/extension/elementor-addon/js/elementor-addon.min.js' ), array( 'jquery' ), '1.0.0', true );
 	}
 }

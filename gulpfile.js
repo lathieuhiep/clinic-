@@ -4,19 +4,20 @@ const { src, dest, watch, series } = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const sourcemaps = require('gulp-sourcemaps')
 const browserSync = require('browser-sync')
-const concat = require('gulp-concat')
 const uglify = require('gulp-uglify')
 const minifyCss = require('gulp-clean-css')
-const concatCss = require('gulp-concat-css')
 const rename = require("gulp-rename")
+const cached = require('gulp-cached')
 
-const pathAssets = './assets'
+const pathSrc = './src'
+const pathDist  = './assets'
 const pathNodeModule = './node_modules'
 
 // server
+const proxy = "localhost/namkhoa199"
 function server() {
     browserSync.init({
-        proxy: "localhost/namkhoa199/",
+        proxy: proxy,
         open: 'local',
         cors: true,
         ghostMode: false
@@ -28,147 +29,208 @@ Task build Bootstrap
 * */
 
 // Task build style bootstrap
-function buildStylesBootstrap() {
-    return src(`${pathAssets}/scss/bootstrap.scss`)
-        .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+const buildStylesBootstrap = () => {
+    return src(`${pathSrc}/scss/vendors/bootstrap.scss`)
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
         .pipe(minifyCss({
-            compatibility: 'ie8',
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename( {suffix: '.min'} ))
-        .pipe(sourcemaps.write())
-        .pipe(dest(`${pathAssets}/libs/bootstrap/`))
-        .pipe(browserSync.stream());
+        .pipe(dest(`${pathDist}/libs/bootstrap/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
-exports.buildStylesBootstrap = buildStylesBootstrap;
 
 // Task build js bootstrap
-function buildLibsBootstrapJS() {
-    return src([
-        `${pathNodeModule}/bootstrap/dist/js/bootstrap.bundle.js`
-    ], {allowEmpty: true})
+const buildLibsBootstrapJS = () => {
+    return src( `${pathNodeModule}/bootstrap/dist/js/bootstrap.bundle.js`, {allowEmpty: true} )
         .pipe(uglify())
         .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`${pathAssets}/libs/bootstrap/`))
-        .pipe(browserSync.stream());
+        .pipe(dest(`${pathDist}/libs/bootstrap/`))
+        .pipe(browserSync.stream())
 }
-exports.buildLibsBootstrapJS = buildLibsBootstrapJS
-
-// Task build style
-function buildStyles() {
-    return src(`${pathAssets}/scss/style.scss`)
-        .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        .pipe(dest('./'))
-        .pipe(browserSync.stream());
-}
-exports.buildStyles = buildStyles;
-
-// Task build style elementor
-function buildStylesElementor() {
-    return src(`${pathAssets}/scss/elementor-addon/elementor-addon.scss`)
-        .pipe(sass().on('error', sass.logError))
-        .pipe(minifyCss({
-            level: {1: {specialComments: 0}}
-        }))
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`./extension/elementor-addon/css/`))
-        .pipe(browserSync.stream());
-}
-exports.buildStylesElementor = buildStylesElementor;
-
-// Task build style custom post type
-function buildStylesCustomPostType() {
-    return src(`${pathAssets}/scss/post-type/*/**.scss`)
-        .pipe(sass().on('error', sass.logError))
-        .pipe(minifyCss({
-            level: {1: {specialComments: 0}}
-        }))
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`${pathAssets}/css/post-type/`))
-        .pipe(browserSync.stream());
-}
-exports.buildStylesCustomPostType = buildStylesCustomPostType;
-
-// buildJSTheme
-function buildJSTheme() {
-    return src([
-        `${pathAssets}/js/*.js`,
-        `!${pathAssets}/js/*.min.js`
-    ], {allowEmpty: true})
-        .pipe(uglify())
-        .pipe(rename( {suffix: '.min'} ))
-        .pipe(dest(`${pathAssets}/js/`))
-        .pipe(browserSync.stream());
-}
-exports.buildJSTheme = buildJSTheme
 
 // Task build fontawesome
 function buildFontawesomeStyle() {
-    return src([
-        './node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss',
-        './node_modules/@fortawesome/fontawesome-free/scss/brands.scss',
-        './node_modules/@fortawesome/fontawesome-free/scss/solid.scss',
-    ])
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(concatCss('fontawesome.css'))
+    return src(`${pathSrc}/scss/vendors/fontawesome.scss`)
+        .pipe(sass({
+            outputStyle: 'expanded',
+            includePaths: ['node_modules']
+        }, '').on('error', sass.logError))
         .pipe(minifyCss({
             level: {1: {specialComments: 0}}
         }))
         .pipe(rename({suffix: '.min'}))
-        .pipe(dest(`${pathAssets}/libs/fontawesome/css`))
+        .pipe(dest(`${pathDist}/libs/fontawesome/css`))
         .pipe(browserSync.stream())
 }
 
-function buildFontawesomeWebFonts() {
+function copyWebFonts() {
     return src([
         './node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf',
         './node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2',
         './node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf',
         './node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2'
-    ])
-        .pipe(dest(`${pathAssets}/libs/fontawesome/webfonts`))
-        .pipe(browserSync.stream());
+    ], {encoding: false})
+        .pipe(dest(`${pathDist}/libs/fontawesome/webfonts`))
+        .pipe(browserSync.stream())
 }
 
-async function buildFontAwesome() {
-    await buildFontawesomeStyle()
-    await buildFontawesomeWebFonts()
+// Task build style
+const buildStylesTheme = () => {
+    return src( `${pathSrc}/scss/style-theme.scss` )
+        // .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        // .pipe(sourcemaps.write())
+        .pipe(dest( `${pathDist}/css/` ))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
 }
-exports.buildFontAwesome = buildFontAwesome
+
+// Task build style elementor
+const buildStylesElementor = () => {
+    return src(`${pathSrc}/scss/elementor-addon/elementor-addon.scss`)
+        // .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        // .pipe(sourcemaps.write())
+        .pipe(dest('./extension/elementor-addon/css/'))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
+}
+
+const buildJSElementor = () => {
+    return src(`${pathSrc}/js/elementor-addon/*.js`, {allowEmpty: true})
+        .pipe(uglify())
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest('./extension/elementor-addon/js/'))
+        .pipe(browserSync.stream())
+}
+
+// Task build style custom post type
+const buildStylesCustomPostType = () => {
+    return src(`${pathSrc}/scss/post-type/*/**.scss`)
+        .pipe(cached('buildStylesCustomPostType'))
+        // .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        // .pipe(sourcemaps.write())
+        .pipe(dest(`${pathDist}/css/post-type/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
+}
+
+// Task build style page templates
+const buildStylesPageTemplate = () => {
+    return src(`${pathSrc}/scss/page-templates/**.scss`)
+        // .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }, '').on('error', sass.logError))
+        .pipe(minifyCss({
+            level: {1: {specialComments: 0}}
+        }))
+        .pipe(rename( {suffix: '.min'} ))
+        // .pipe(sourcemaps.write())
+        .pipe(dest(`${pathDist}/css/page-templates/`))
+        .pipe(browserSync.stream({ match: '**/*.css' }))
+}
+
+// buildJSTheme
+const buildJSTheme = () => {
+    return src(`${pathSrc}/js/*.js`, {allowEmpty: true})
+        .pipe(cached('buildJSTheme'))
+        .pipe(uglify())
+        .pipe(rename( {suffix: '.min'} ))
+        .pipe(dest(`${pathDist}/js/`))
+        .pipe(browserSync.stream())
+}
+
+/*
+Task build project
+* */
+const buildProject = async () => {
+    await buildStylesBootstrap()
+    await buildLibsBootstrapJS()
+
+    await buildFontawesomeStyle()
+    await copyWebFonts()
+
+    await buildStylesTheme()
+    await buildJSTheme()
+
+    await buildStylesCustomPostType()
+    await buildStylesPageTemplate()
+
+    await buildStylesElementor()
+    await buildJSElementor()
+
+    browserSync.reload()
+}
+exports.buildProject = buildProject
 
 // Task watch
-function watchTask() {
+const watchTask = () => {
     server()
 
     watch([
-        `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/bootstrap.scss`
+        `${pathSrc}/scss/variables-site/*.scss`,
+    ], series(
+        buildStylesBootstrap,
+        buildStylesTheme,
+        buildStylesElementor,
+        buildStylesCustomPostType,
+        buildStylesPageTemplate
+    ))
+
+    watch([
+        `${pathSrc}/scss/vendors/bootstrap.scss`
     ], buildStylesBootstrap)
 
     watch([
-        `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/base/*.scss`,
-        `${pathAssets}/scss/style.scss`,
-    ], buildStyles)
+        `${pathSrc}/scss/base/*.scss`,
+        `${pathSrc}/scss/style-theme.scss`
+    ], buildStylesTheme)
 
     watch([
-        `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/elementor-addon/*.scss`
+        `${pathSrc}/scss/elementor-addon/*.scss`
     ], buildStylesElementor)
 
     watch([
-        `${pathAssets}/scss/variables-site/*.scss`,
-        `${pathAssets}/scss/post-type/*/**.scss`
+        `${pathSrc}/scss/post-type/*/**.scss`
     ], buildStylesCustomPostType)
 
-    watch([`${pathAssets}/js/*.js`, `!${pathAssets}/js/*.min.js`], buildJSTheme)
+    watch([
+        `${pathSrc}/scss/page-templates/**.scss`
+    ], buildStylesPageTemplate)
 
     watch([
+        `${pathSrc}/js/*.js`
+    ], buildJSTheme)
+
+    watch([
+        `${pathSrc}/js/elementor-addon/*.js`
+    ], buildJSElementor)
+
+    watch([
+        './*.php',
         './**/*.php',
-        './assets/images/*.{png,jpg,jpeg,gif}'
-    ], browserSync.reload);
+        `${pathDist}/images/*`,
+        `${pathDist}/images/**/*`
+    ]).on('change', browserSync.reload);
 }
 exports.watchTask = watchTask

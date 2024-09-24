@@ -173,32 +173,53 @@ if ( class_exists( 'CSF' ) ) {
         'title'  => esc_html__( 'Chat với chúng tôi', 'clinic' ),
         'fields' => array(
             array(
+                'id'      => 'opt_general_chat_messenger',
+                'type'    => 'text',
+                'title'   => esc_html__( 'Link messenger', 'clinic' ),
+                'default' => '#',
+            ),
+
+            array(
                 'id'     => 'opt_general_chat_zalo',
                 'type'   => 'fieldset',
                 'title'  => esc_html__('ZaLo', 'clinic'),
                 'fields' => array(
+                    // select zalo
+                    array(
+                        'id'      => 'select_zalo',
+                        'type'    => 'select',
+                        'title'   => esc_html__( 'Kiểu liên hệ', 'clinic' ),
+                        'options' => array(
+                            'phone_qr' => esc_html__('Số điện thoại + QR code', 'clinic'),
+                            'link' =>  esc_html__('Số điện thoại + Link Zalo OA', 'clinic'),
+                        ),
+                        'default' => 'phone_qr'
+                    ),
+
                     array(
                         'id'    => 'phone',
                         'type'  => 'text',
                         'title' => esc_html__( 'Số điện thoại', 'clinic' ),
-                        'default' => '0827750966',
+                        'default' => '0888.888.115',
                     ),
 
                     array(
                         'id'    => 'qr_code',
                         'type'  => 'text',
                         'title' => esc_html__( 'Mã QR', 'clinic' ),
-                        'default' => '19hirfvi9y5ep',
-                        'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/'
+                        'default' => 'i44981jfbz1g',
+                        'desc' => esc_html__('Link quét lấy mã:', 'clinic') . ' https://pageloot.com/vi/quet-ma-qr/',
+                        'dependency' => array( 'select_zalo', '==', 'phone_qr' )
+                    ),
+
+                    array(
+                        'id'    => 'link',
+                        'type'  => 'text',
+                        'title' => esc_html__( 'Link', 'clinic' ),
+                        'default' => 'https://zalo.me/4019565536704794124',
+                        'dependency' => array( 'select_zalo', '==', 'link' ),
                     ),
                 ),
-            ),
-
-            array(
-                'id'      => 'opt_general_chat_messenger',
-                'type'    => 'text',
-                'title'   => esc_html__( 'Link messenger', 'clinic' ),
-                'default' => '#',
             ),
         )
     ) );
