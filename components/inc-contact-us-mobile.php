@@ -4,7 +4,7 @@ $link_chat = clinic_get_opt_link_chat_doctor();
 $chat_zalo = clinic_get_chat_zalo();
 ?>
 
-<div class="contact-us-mobile d-lg-none">
+<div class="contact-us-mobile">
     <div class="warp">
         <img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/chan-trang-lien-he.jpg' ) ) ?>" alt="">
 

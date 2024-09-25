@@ -4,15 +4,20 @@
 get_template_part('components/inc','loading');
 
 if ( !is_404() ) :
-    get_template_part('components/inc','contact-us');
+    if ( !wp_is_mobile() ) {
+        get_template_part('components/inc','contact-us');
+    }
+
+    get_template_part('components/inc','chat-with-us');
+    get_template_part('components/inc','modal-appointment');
 ?>
     <footer class="global-footer">
-        <?php get_template_part( 'components/footer/inc','column' ); ?>
+        <?php get_template_part( 'template-parts/footer/inc','column' ); ?>
     </footer>
 <?php
-	get_template_part('components/header/inc','menu-mobile');
-	get_template_part('components/inc','chat-with-us');
-    get_template_part('components/inc','contact-us-mobile');
+    if ( wp_is_mobile() ) {
+        get_template_part('components/inc','contact-us-mobile');
+    }
 endif;
 
 wp_footer();

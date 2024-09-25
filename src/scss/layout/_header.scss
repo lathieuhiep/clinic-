@@ -1,3 +1,17 @@
+.active-sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.admin-bar {
+  .active-sticky-nav {
+    @media (min-width: 992px) {
+      top: 3.2rem;
+    }
+  }
+}
+
 .header-warp {
   background-color: #1d1c1d;
 
@@ -100,124 +114,16 @@
   }
 }
 
-.global-header {
+.header-menu {
+  min-height: 8.8rem;
   box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, .25);
   background-color: var(--color-white);
-
-  &.active-sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
-  .top-nav {
-    padding: 1.2rem 0;
-
-    .grid-layout {
-      display: grid;
-
-      @media (min-width: 1200px) {
-        grid-column-gap: 6rem;
-        grid-template-columns: 37.6rem 1fr;
-      }
-
-      @media (min-width: 992px) and (max-width: 1199px) {
-        grid-column-gap: 3rem;
-        grid-template-columns: 30rem 1fr;
-      }
-    }
-
-    .info {
-      display: grid;
-      grid-gap: 2.4rem;
-      grid-template-columns: repeat(3, auto);
-
-      p {
-        margin: 0;
-      }
-
-      .item {
-        font-family: var(--heading-font-family);
-        text-align: initial;
-        display: grid;
-        grid-column-gap: 1rem;
-        grid-template-columns: 4rem 1fr;
-        align-items: center;
-
-        &__content {
-          .txt {
-            font-size: 1.4rem;
-          }
-
-          .value {
-            font-size: 1.5rem;
-            color: var(--clinic-theme-eighth-color);
-          }
-        }
-
-        i {
-          font-size: 4rem;
-          color: var(--clinic-theme-primary-color);
-        }
-      }
-    }
-  }
-
-  .contact-mobile {
-    padding: .8rem 1.2rem;
-    box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
-    background-color: var(--color-white);
-
-    .wpcf7-form {
-      display: grid;
-      grid-gap: 1.2rem;
-      grid-template-columns: 1fr auto;
-
-      p {
-        margin: 0;
-      }
-
-      .wpcf7-form-control-wrap {
-        height: 100%;
-
-        .wpcf7-not-valid-tip {
-          font-size: 1.5rem;
-        }
-      }
-
-      .wpcf7-form-control {
-        padding: .8rem 1.2rem;
-        font-size: 1.2rem;
-        color: rgba(0, 0, 0, 0.30);
-        background-color: #E6E6E6;
-
-        &.wpcf7-submit {
-          min-width: 8rem;
-          font-size: 1.2rem;
-          font-weight: 500;
-          color: var(--color-white);
-          border-radius: .5rem;
-          background-color: var(--clinic-theme-primary-color);
-        }
-      }
-
-      .wpcf7-response-output {
-        margin: 0;
-      }
-    }
-  }
-}
-
-.navbar-main {
-  position: relative;
-  min-height: 8.8rem;
-  background-color: #ffffff;
 
   > div {
     min-height: inherit;
   }
 
-  .grid-layout {
+  .grid {
     display: grid;
     min-height: inherit;
 
@@ -226,10 +132,44 @@
       grid-template-columns: 34rem 1fr max-content;
     }
 
-    @media (min-width: 992px) and (max-width: 1199px) {
+    @media (max-width: 1199px) {
       grid-gap: 2.4rem;
       grid-template-columns: 30rem 1fr max-content;
     }
+  }
+
+  .book {
+    .link {
+      padding: 1rem 2rem;
+      display: inline-block;
+      color: #ffffff;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      border-radius: 3rem;
+      background-color: var(--clinic-theme-primary-color);
+
+      i {
+        display: inline-block;
+        margin-left: .5rem;
+        font-size: 1.6rem;
+        transform: translateY(-0.1rem);
+      }
+
+      &:hover {
+        background-color: #000000;
+      }
+    }
+  }
+}
+
+.navbar-main {
+  position: relative;
+  min-height: inherit;
+  background-color: #ffffff;
+
+  > div {
+    min-height: inherit;
   }
 
   .primary-menu {
@@ -237,8 +177,12 @@
     min-height: inherit;
 
     > ul {
+      min-height: inherit;
+
       > li {
         min-height: inherit;
+        display: inline-flex;
+        align-items: center;
 
         ~ li {
           @media (min-width: 1400px) {
@@ -249,7 +193,7 @@
             margin-left: 6rem;
           }
 
-          @media (min-width: 992px) and (max-width: 1199px) {
+          @media (max-width: 1199px) {
             margin-left: 2rem;
           }
         }
@@ -295,9 +239,61 @@
           display: block;
           font-weight: 700;
 
+          @media (max-width: 1199px) {
+            padding: 0 7px;
+          }
+
           &:hover {
             background-color: transparent;
             color: var(--clinic-theme-primary-color);
+          }
+        }
+
+        .sub-menu {
+          display: block !important;
+          min-width: 160px;
+          background-color: #ffffff;
+          position: absolute;
+          top: 120%;
+          left: 0;
+          z-index: -1;
+          visibility: hidden;
+          opacity: 0;
+          box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, 0.175);
+          @include transition();
+
+          li {
+            padding: 6px 8px;
+            display: flex;
+            @include transition();
+
+            a {
+              white-space: nowrap;
+              flex: 1;
+            }
+
+            .sub-menu {
+              left: 90%;
+              top: 0;
+            }
+
+            &:hover {
+              background-color: var(--clinic-theme-tertiary-color);
+
+              a {
+                color: #000000;
+              }
+
+              > .sub-menu {
+                left: 100%;
+              }
+
+              > .sub-menu-toggle {
+                i {
+                  transform: rotate(-90deg);
+                }
+              }
+            }
           }
         }
 
@@ -331,6 +327,37 @@
             }
           }
         }
+
+        &:hover {
+          > .sub-menu {
+            top: 100%;
+            z-index: 999;
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        &:nth-last-child(1),
+        &:nth-last-child(2) {
+          .sub-menu {
+            left: auto;
+            right: 0;
+
+            li {
+              .sub-menu {
+                left: auto;
+                right: 90%;
+              }
+
+              &:hover {
+                > .sub-menu {
+                  left: auto;
+                  right: 100%;
+                }
+              }
+            }
+          }
+        }
       }
     }
 
@@ -338,250 +365,88 @@
       font-size: 14px;
       cursor: pointer;
     }
-
-    @media (min-width: 992px) and (max-width: 1400px) {
-      ul {
-        li {
-          &:nth-last-child(1),
-          &:nth-last-child(2) {
-            .sub-menu {
-              left: auto;
-              right: 0;
-
-              li {
-                .sub-menu {
-                  left: auto;
-                  right: 90%;
-                }
-
-                &:hover {
-                  > .sub-menu {
-                    left: auto;
-                    right: 100%;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    @media (min-width: 992px) and (max-width: 1200px) {
-      ul {
-        li {
-          a {
-            padding: 0 7px;
-          }
-        }
-      }
-    }
-
-    @media (min-width: 992px) {
-      > ul {
-        height: 100%;
-
-        > li {
-          display: inline-flex;
-          height: 100%;
-          align-items: center;
-        }
-      }
-
-      ul {
-        li {
-          .sub-menu {
-            display: block !important;
-            min-width: 160px;
-            background-color: #ffffff;
-            position: absolute;
-            top: 120%;
-            left: 0;
-            z-index: -1;
-            visibility: hidden;
-            opacity: 0;
-            box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, 0.175);
-            @include transition();
-
-            li {
-              padding: 6px 8px;
-              display: flex;
-              @include transition();
-
-              a {
-                white-space: nowrap;
-                flex: 1;
-              }
-
-              .sub-menu {
-                left: 90%;
-                top: 0;
-              }
-
-              &:hover {
-                background-color: var(--clinic-theme-tertiary-color);
-
-                a {
-                  color: #000000;
-                }
-
-                > .sub-menu {
-                  left: 100%;
-                }
-
-                > .sub-menu-toggle {
-                  i {
-                    transform: rotate(-90deg);
-                  }
-                }
-              }
-            }
-          }
-
-          &:hover {
-            > .sub-menu {
-              top: 100%;
-              z-index: 999;
-              opacity: 1;
-              visibility: visible;
-            }
-          }
-        }
-      }
-    }
-
-    @media (max-width: 991px) {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: #eeeeee;
-      z-index: 99;
-
-      .collapse {
-        display: none !important;
-
-        &.in {
-          display: block !important;
-        }
-      }
-
-      ul {
-        li {
-          display: block;
-          padding: 0 15px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-          &:last-child {
-            border-bottom: 0;
-          }
-
-          a {
-            display: inline-block;
-            padding: 15px 0;
-          }
-
-          .sub-menu-toggle {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            width: 12px;
-            height: 20px;
-
-            &.active {
-              &:after {
-                transform: rotate(180deg);
-              }
-            }
-          }
-
-          .sub-menu {
-            display: none;
-            border-top: 0;
-            background-color: transparent;
-
-            li {
-              border-bottom: 0;
-              padding: 0;
-
-              a {
-                padding: 8px 0;
-              }
-
-              .sub-menu-toggle {
-                top: 5px;
-                right: 0;
-              }
-
-              .sub-menu {
-                padding-left: 20px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .book {
-    .link {
-      padding: 1rem 2rem;
-      display: inline-block;
-      color: #ffffff;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 1.4rem;
-      border-radius: 3rem;
-      background-color: var(--clinic-theme-primary-color);
-
-      i {
-        display: inline-block;
-        margin-left: .5rem;
-        font-size: 1.6rem;
-        transform: translateY(-0.1rem);
-      }
-
-      &:hover {
-        background-color: #000000;
-      }
-    }
   }
 }
 
-.top-nav-mobile {
-  background-color: var(--clinic-theme-primary-color);
+.header-mobile {
+  .top-mobile {
+    background-color: var(--clinic-theme-primary-color);
 
-  .container {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .grid-warp {
-    padding-right: 2rem;
-    display: grid;
-    grid-gap: 1.2rem;
-    grid-template-columns: 5rem 1fr 4.2rem;
-    align-items: center;
-    min-height: 7.2rem;
-
-    .hamburger {
-      height: inherit;
-
-      .btn {
-        border: none;
-        height: 100%;
-        width: 100%;
-        font-size: 2rem;
-        background-color: var(--color-cadmium-yellow);
-      }
+    .container {
+      padding-left: 0;
+      padding-right: 0;
     }
 
-    .contact {
-      a {
-        @include square(4.2rem, 50%);
-        @include flex-center();
-        border: .3rem solid #5AE0DA ;
-        background-color: var(--color-white);
+    .grid-warp {
+      padding-right: 2rem;
+      display: grid;
+      grid-gap: 1.2rem;
+      grid-template-columns: 5rem 1fr 4.2rem;
+      align-items: center;
+      min-height: 7.2rem;
+
+      .hamburger {
+        height: inherit;
+
+        .btn {
+          border: none;
+          height: 100%;
+          width: 100%;
+          font-size: 2rem;
+          background-color: var(--color-cadmium-yellow);
+        }
+      }
+
+      .contact {
+        a {
+          @include square(4.2rem, 50%);
+          @include flex-center();
+          border: .3rem solid #5AE0DA ;
+          background-color: var(--color-white);
+        }
+      }
+    }
+  }
+
+  .contact-mobile {
+    padding: .8rem 1.2rem;
+    background-color: var(--color-white);
+
+    .wpcf7-form {
+      display: grid;
+      grid-gap: 1.2rem;
+      grid-template-columns: 1fr auto;
+
+      p {
+        margin: 0;
+      }
+
+      .wpcf7-form-control-wrap {
+        height: 100%;
+
+        .wpcf7-not-valid-tip {
+          font-size: 1.5rem;
+        }
+      }
+
+      .wpcf7-form-control {
+        padding: .8rem 1.2rem;
+        font-size: 1.2rem;
+        color: rgba(0, 0, 0, 0.30);
+        background-color: #E6E6E6;
+
+        &.wpcf7-submit {
+          min-width: 8rem;
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: var(--color-white);
+          border-radius: .5rem;
+          background-color: var(--clinic-theme-primary-color);
+        }
+      }
+
+      .wpcf7-response-output {
+        margin: 0;
       }
     }
   }
@@ -593,7 +458,7 @@
 
   .offcanvas-header {
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-white);
+    border-bottom: .1rem solid var(--color-white);
 
     .btn-close {
       color: #fff;
@@ -681,7 +546,7 @@
         ~ li {
           margin-top: 1rem;
           padding-top: 1rem;
-          border-top: 1px solid #333333;
+          border-top: .1rem solid #333333;
         }
 
         > .sub-menu-toggle {
@@ -692,12 +557,3 @@
     }
   }
 }
-
-.admin-bar {
-  .active-sticky-nav {
-    @media (min-width: 992px) {
-      top: 3.2rem;
-    }
-  }
-}
-

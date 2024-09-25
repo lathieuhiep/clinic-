@@ -1,7 +1,7 @@
 <?php
 $id_cf = clinic_get_option( 'opt_general_cf' );
 ?>
-<div class="contact-mobile d-lg-none">
+<div class="contact-mobile">
     <div class="warp-cf">
         <?php
         if ( $id_cf ) :

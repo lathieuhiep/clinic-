@@ -45,19 +45,15 @@
 
     // handle click show submenu on mobile
     const handleClickShowSubmenuOnMobile = () => {
-        const subMenuToggle = $('.sub-menu-toggle')
+        const subMenuToggle = $('.sub-menu-toggle.mobile')
 
         if ( subMenuToggle.length ) {
             subMenuToggle.each(function () {
                 $(this).on( 'click', function () {
-                    const widthScreen = $(window).width()
-
-                    if ( widthScreen < 992 ) {
-                        $(this).toggleClass('active')
-                        $(this).closest( '.menu-item-has-children' ).siblings().find( subMenuToggle ).removeClass( 'active' )
-                        $(this).parent().children( '.sub-menu' ).slideToggle()
-                        $(this).parents( '.menu-item-has-children' ).siblings().find( '.sub-menu' ).slideUp()
-                    }
+                    $(this).toggleClass('active')
+                    $(this).closest( '.menu-item-has-children' ).siblings().find( subMenuToggle ).removeClass( 'active' )
+                    $(this).parent().children( '.sub-menu' ).slideToggle()
+                    $(this).parents( '.menu-item-has-children' ).siblings().find( '.sub-menu' ).slideUp()
                 } )
             })
         }

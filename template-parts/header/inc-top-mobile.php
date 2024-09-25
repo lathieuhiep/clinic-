@@ -2,7 +2,7 @@
 $logo_mobile = clinic_get_option( 'opt_general_logo_mobile' );
 $hotline = clinic_get_opt_hotline();
 ?>
-<div class="top-nav-mobile d-lg-none">
+<div class="top-mobile">
     <div class="container h-100">
         <div class="grid-warp h-100">
             <div class="item hamburger">
@@ -18,11 +18,9 @@ $hotline = clinic_get_opt_hotline();
                         echo wp_get_attachment_image( $logo_mobile['id'], 'full' );
                     else :
                     ?>
-
                         <img class="logo-default"
                              src="<?php echo esc_url( get_theme_file_uri( '/assets/images/logo.png' ) ) ?>"
                              alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>" width="64" height="64"/>
-
                     <?php endif; ?>
                 </a>
             </div>
