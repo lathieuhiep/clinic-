@@ -63,9 +63,11 @@ function clinic_custom_tinymce_buttons(): void
 }
 
 function clinic_add_tinymce_plugins($plugin_array) {
-    $plugin_array['custom_button_title'] = get_theme_file_uri( '/assets/admin/admin.js' );
-    $plugin_array['custom_button_contact'] = get_theme_file_uri( '/assets/admin/admin.js' );
-    $plugin_array['custom_button_blur_image'] = get_theme_file_uri( '/assets/admin/admin.js' );
+    $url_admin_scrip = '/assets/admin/js/admin.js';
+
+    $plugin_array['custom_button_title'] = get_theme_file_uri( $url_admin_scrip );
+    $plugin_array['custom_button_contact'] = get_theme_file_uri( $url_admin_scrip );
+    $plugin_array['custom_button_blur_image'] = get_theme_file_uri( $url_admin_scrip );
 
     return $plugin_array;
 }
