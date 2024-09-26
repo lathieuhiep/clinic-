@@ -4,7 +4,7 @@
     <a class="d-block" href="<?php echo esc_url( get_home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
         <?php
         if ( ! empty( $logo['id'] ) ) :
-            echo wp_get_attachment_image( $logo['id'], 'full' );
+            echo wp_get_attachment_image( $logo['id'], 'medium_large' );
         else :
             ?>
 

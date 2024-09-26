@@ -13,21 +13,20 @@
 }
 
 .header-warp {
-  background-color: #1d1c1d;
+  padding: 1.2rem 0;
 
   .grid {
-    padding: 1.6rem 0;
     display: grid;
     align-items: center;
 
     @media (min-width: 1200px) {
       grid-column-gap: 3rem;
-      grid-template-columns: 1fr 24.6rem;
+      grid-template-columns: 25.2rem 1fr;
     }
 
     @media (min-width: 992px) and (max-width: 1199px) {
       grid-column-gap: 2rem;
-      grid-template-columns: 1fr 20rem;
+      grid-template-columns: 20rem 1fr;
     }
   }
 
@@ -52,16 +51,30 @@
       grid-template-columns: max-content 1fr;
 
       &__icon {
-        color: #ffffff;
-        font-size: 2.8rem;
+        font-size: 4rem;
+        color: var(--clinic-theme-primary-color);
       }
 
       &__content {
         display: grid;
+        font-family: var(--heading-font-family);
+
+        .desc {
+          margin-bottom: 0;
+          font-size: 1.4rem;
+        }
 
         .txt {
-          font-size: 1.5rem;
-          color: var(--clinic-theme-primary-color);
+          color: var(--clinic-theme-eighth-color);
+          font-weight: 700;
+
+          @media (min-width: 1200px) {
+            font-size: 1.8rem;
+          }
+
+          @media (max-width: 1199px) {
+            font-size: 1.5rem;
+          }
         }
 
         .value {
@@ -78,46 +91,11 @@
       }
     }
   }
-
-  .search-box {
-    .search-form {
-      position: relative;
-      width: 100%;
-      height: 4.2rem;
-      display: flex;
-
-      .search-field {
-        padding: 0 5rem 0 1.2rem;
-        width: 100%;
-        height: 100%;
-        flex: 1;
-        font-size: 1.5rem;
-        color: #ffffff;
-        border: .1rem solid #ccc;
-        border-radius: .5rem;
-        background-color: transparent;
-      }
-
-      .search-submit {
-        padding: 0;
-        position: absolute;
-        top: 0;
-        right: 1.8rem;
-        bottom: 0;
-        width: 2rem;
-        color: #ffffff;
-        font-size: 2rem;
-        border-radius: 0;
-        background: transparent;
-      }
-    }
-  }
 }
 
 .header-menu {
-  min-height: 8.8rem;
-  box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, .25);
-  background-color: var(--color-white);
+  min-height: 6.8rem;
+  background-color: var(--clinic-theme-secondary-color);
 
   > div {
     min-height: inherit;
@@ -129,35 +107,46 @@
 
     @media (min-width: 1200px) {
       grid-gap: 2.4rem;
-      grid-template-columns: 34rem 1fr max-content;
+      grid-template-columns: 1fr 36.9rem;
     }
 
     @media (max-width: 1199px) {
       grid-gap: 2.4rem;
-      grid-template-columns: 30rem 1fr max-content;
+      grid-template-columns: 1fr 30rem;
     }
   }
 
-  .book {
-    .link {
-      padding: 1rem 2rem;
-      display: inline-block;
-      color: #ffffff;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 1.4rem;
-      border-radius: 3rem;
-      background-color: var(--clinic-theme-primary-color);
+  .search-box {
+    .search-form {
+      position: relative;
+      width: 100%;
+      height: 4.2rem;
+      display: flex;
 
-      i {
-        display: inline-block;
-        margin-left: .5rem;
-        font-size: 1.6rem;
-        transform: translateY(-0.1rem);
+      .search-field {
+        padding: 0 5rem 0 2.5rem;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        font-size: 1.8rem;
+        font-family: var(--heading-font-family);
+        color: #9E9E9E;
+        border: 0;
+        border-radius: 5rem;
+        background-color: var(--color-white);
       }
 
-      &:hover {
-        background-color: #000000;
+      .search-submit {
+        padding: 0;
+        position: absolute;
+        top: 0;
+        right: 1.8rem;
+        bottom: 0;
+        width: 2rem;
+        color: #4C505B;
+        font-size: 2rem;
+        border-radius: 0;
+        background: transparent;
       }
     }
   }
@@ -166,7 +155,6 @@
 .navbar-main {
   position: relative;
   min-height: inherit;
-  background-color: #ffffff;
 
   > div {
     min-height: inherit;
@@ -186,11 +174,11 @@
 
         ~ li {
           @media (min-width: 1400px) {
-            margin-left: 2.4rem;
+            margin-left: 6rem;
           }
 
           @media (min-width: 1200px) and (max-width: 1399px) {
-            margin-left: 6rem;
+            margin-left: 2.4rem;
           }
 
           @media (max-width: 1199px) {
@@ -199,15 +187,18 @@
         }
 
         > a {
-          font-size: 1.5rem;
-          color: #000000;
+          font-size: 1.4rem;
+          color: var(--color-white);
+          font-weight: 700;
           text-transform: uppercase;
           background-image: linear-gradient(0deg, currentColor, currentColor);
           background-repeat: no-repeat;
           background-size: 0 .1rem;
           background-position: 50% 100%;
+        }
 
-          &:hover {
+        &:hover {
+          > a {
             background-size: 50% .1rem;
           }
         }
@@ -230,28 +221,26 @@
 
           a {
             margin-left: .5rem;
-            font-family: $heading-font-family;
           }
         }
 
         a {
           text-shadow: none;
           display: block;
-          font-weight: 700;
+          font-family: var(--heading-font-family);
 
           @media (max-width: 1199px) {
-            padding: 0 7px;
+            padding: 0 .6rem;
           }
 
           &:hover {
             background-color: transparent;
-            color: var(--clinic-theme-primary-color);
           }
         }
 
         .sub-menu {
           display: block !important;
-          min-width: 160px;
+          min-width: 22rem;
           background-color: #ffffff;
           position: absolute;
           top: 120%;
@@ -278,10 +267,10 @@
             }
 
             &:hover {
-              background-color: var(--clinic-theme-tertiary-color);
+              background-color: var(--clinic-theme-secondary-color);
 
               a {
-                color: #000000;
+                color: var(--color-white);
               }
 
               > .sub-menu {
@@ -309,7 +298,7 @@
         &.current-menu-item,
         &.current-menu-parent {
           > a {
-            color: var(--clinic-theme-primary-color);
+            color: var(--clinic-theme-fifth-color);
             background-size: 50% .1rem;
           }
         }
@@ -336,34 +325,13 @@
             visibility: visible;
           }
         }
-
-        &:nth-last-child(1),
-        &:nth-last-child(2) {
-          .sub-menu {
-            left: auto;
-            right: 0;
-
-            li {
-              .sub-menu {
-                left: auto;
-                right: 90%;
-              }
-
-              &:hover {
-                > .sub-menu {
-                  left: auto;
-                  right: 100%;
-                }
-              }
-            }
-          }
-        }
       }
     }
 
     .sub-menu-toggle {
       font-size: 14px;
       cursor: pointer;
+      color: var(--color-white);
     }
   }
 }
@@ -383,7 +351,7 @@
       grid-gap: 1.2rem;
       grid-template-columns: 5rem 1fr 4.2rem;
       align-items: center;
-      min-height: 7.2rem;
+      min-height: 4.4rem;
 
       .hamburger {
         height: inherit;
@@ -399,8 +367,9 @@
 
       .contact {
         a {
-          @include square(4.2rem, 50%);
+          @include square(3.5rem, 50%);
           @include flex-center();
+          color: var(--clinic-theme-eighth-color);
           border: .3rem solid #5AE0DA ;
           background-color: var(--color-white);
         }
@@ -410,11 +379,11 @@
 
   .contact-mobile {
     padding: .8rem 1.2rem;
+    box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
     background-color: var(--color-white);
 
     .wpcf7-form {
       display: grid;
-      grid-gap: 1.2rem;
       grid-template-columns: 1fr auto;
 
       p {
@@ -430,23 +399,28 @@
       }
 
       .wpcf7-form-control {
-        padding: .8rem 1.2rem;
-        font-size: 1.2rem;
-        color: rgba(0, 0, 0, 0.30);
+        padding: 0 1.2rem;
+        height: 3.7rem;
+        font-size: 1.5rem;
+        font-family: var(--heading-font-family);
+        color: #464646;
+        border-radius: 0;
         background-color: #E6E6E6;
 
         &.wpcf7-submit {
-          min-width: 8rem;
-          font-size: 1.2rem;
-          font-weight: 500;
+          height: 3.7rem;
+          font-size: 1.5rem;
+          font-weight: 700;
           color: var(--color-white);
-          border-radius: .5rem;
-          background-color: var(--clinic-theme-primary-color);
+          font-family: var(--heading-font-family);
+          border-radius: 0;
+          background-color: var(--clinic-theme-eighth-color);
         }
       }
 
       .wpcf7-response-output {
-        margin: 0;
+        margin: .6rem 0 0 0;
+        grid-column: 1 / -1;
       }
     }
   }

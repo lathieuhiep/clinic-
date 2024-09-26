@@ -28,7 +28,7 @@ $hotline = clinic_get_opt_hotline();
             <?php if ( $hotline ) : ?>
                 <div class="item contact">
                     <a href="tel:<?php echo esc_attr( clinic_preg_replace_ony_number($hotline) ); ?>">
-                        <i class="icon icon-phone-light alo-circle-anim"></i>
+                        <i class="icon icon-phone alo-circle-anim"></i>
                     </a>
                 </div>
             <?php endif; ?>

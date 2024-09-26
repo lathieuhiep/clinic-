@@ -31,9 +31,9 @@ if ( !is_404() ) :
             <div class="container">
                 <div class="grid">
                     <?php
-                    get_template_part('template-parts/header/inc','info');
+                    get_template_part('template-parts/header/inc','logo');
 
-                    get_template_part('template-parts/header/inc','search');
+                    get_template_part('template-parts/header/inc','info');
                     ?>
                 </div>
             </div>
@@ -43,9 +43,9 @@ if ( !is_404() ) :
             <div class="container">
                 <div class="grid">
                     <?php
-                    get_template_part('template-parts/header/inc','logo');
                     get_template_part('template-parts/header/inc','main-navigation');
-                    get_template_part('template-parts/header/inc','appointment');
+
+                    get_template_part('template-parts/header/inc','search');
                     ?>
                 </div>
             </div>
