@@ -1,7 +1,13 @@
 <?php
 $sidebar = clinic_get_option('opt_post_cat_sidebar_position', 'right');
 $class_col_content = clinic_col_use_sidebar($sidebar, 'sidebar-main');
+
+// grid post
 $layout_grid = clinic_get_option('opt_post_cat_grid');
+$col_sm = $layout_grid['sm'] ?? 6;
+$col_md = $layout_grid['md'] ?? 6;
+$col_lg = $layout_grid['lg'] ?? 4;
+$col_xl = $layout_grid['xl'] ?? 4;
 ?>
 
 <div class="site-container archive-post-warp">
@@ -15,7 +21,7 @@ $layout_grid = clinic_get_option('opt_post_cat_grid');
                         <div class="row">
                             <?php while ( have_posts() ) : the_post(); ?>
 
-                                <div class="col-12 col-sm-<?php echo esc_attr( $layout_grid['sm'] ); ?> col-md-<?php echo esc_attr( $layout_grid['md'] ); ?> col-lg-<?php echo esc_attr( $layout_grid['lg'] ); ?> col-xl-<?php echo esc_attr( $layout_grid['xl'] ); ?>">
+                                <div class="col-12 col-sm-<?php echo esc_attr( $col_sm ); ?> col-md-<?php echo esc_attr( $col_md ); ?> col-lg-<?php echo esc_attr( $col_lg ); ?> col-xl-<?php echo esc_attr( $col_xl ); ?>">
                                     <div class="item">
                                         <div class="post-thumbnail">
                                             <?php the_post_thumbnail('large'); ?>
