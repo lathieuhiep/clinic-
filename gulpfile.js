@@ -14,7 +14,7 @@ const pathDist  = './assets'
 const pathNodeModule = './node_modules'
 
 // server
-const proxy = "localhost/chuanamkhoact.com"
+const proxy = "localhost/ngoaikhoadanang"
 function server() {
     browserSync.init({
         proxy: proxy,
