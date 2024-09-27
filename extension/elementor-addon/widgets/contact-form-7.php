@@ -6,6 +6,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Text_Stroke;
 use Elementor\Group_Control_Typography;
+use Elementor\Utils;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
@@ -41,6 +42,15 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
         );
 
         $this->add_control(
+            'heading_options',
+            [
+                'label' => esc_html__( 'Tiêu đề chính', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
             'heading',
             [
                 'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
@@ -51,12 +61,39 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
         );
 
         $this->add_control(
+            'heading_image', [
+                'label' => esc_html__( 'Chọn ảnh', 'clinic' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'sub_options',
+            [
+                'label' => esc_html__( 'Tiêu đề phụ', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
             'sub_heading',
             [
-                'label'       => esc_html__( 'Tiêu đề dưới', 'clinic' ),
+                'label'       => esc_html__( 'Tiêu đề', 'clinic' ),
                 'type'        => Controls_Manager::TEXT,
                 'default'     => esc_html__( 'Bảo  mật thông tin tuyệt đối', 'clinic' ),
                 'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'form_options',
+            [
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -82,8 +119,18 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
             ]
         );
 
+        // options heading box
+        $this->add_control(
+            'heading_box_options',
+            [
+                'label' => esc_html__( 'Vùng chứa', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $this->add_responsive_control(
-            'heading_margin',
+            'heading_box_margin',
             [
                 'label' => esc_html__( 'Margin', 'clinic' ),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -97,13 +144,13 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-contact-form-7 .heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .element-contact-form-7 .heading-top' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
         $this->add_responsive_control(
-            'heading_padding',
+            'heading_box_padding',
             [
                 'label' => esc_html__( 'Padding', 'clinic' ),
                 'type' => Controls_Manager::DIMENSIONS,
@@ -117,8 +164,65 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .element-contact-form-7 .heading' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .element-contact-form-7 .heading-top' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'heading_box_background color',
+            [
+                'label' => esc_html__( 'Màu nền', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 .heading-top' => 'background-color: {{VALUE}}'
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'heading_box_border',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 .heading-top',
+            ]
+        );
+
+        $this->add_control(
+            'heading_box_border_radius',
+            [
+                'label' => esc_html__( 'Border radius', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-form-7 .heading-top' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'heading_box_box_shadow',
+                'selector' => '{{WRAPPER}} .element-contact-form-7 .heading-top',
+            ]
+        );
+
+        // options heading
+        $this->add_control(
+            'heading_options_style',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -129,17 +233,6 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .element-contact-form-7 .heading span' => 'color: {{VALUE}}'
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'heading_background color',
-            [
-                'label' => esc_html__( 'Màu nền', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-contact-form-7 .heading' => 'background-color: {{VALUE}}'
                 ],
             ]
         );
@@ -639,11 +732,20 @@ class Clinic_Elementor_Contact_Form_7 extends Widget_Base {
             ?>
 
             <div class="element-contact-form-7">
-                <?php if ( $settings['heading'] ) : ?>
-                    <h3 class="heading text-center">
-                        <span class="d-inline-block<?php echo esc_attr( $settings['show_gradient'] == 'yes' ? ' has-gradient' : '' ); ?>"><?php echo esc_html( $settings['heading'] ); ?></span>
-                    </h3>
-                <?php endif; ?>
+                <div class="heading-top">
+                    <?php if ( !empty( $settings['heading_image']['url'] ) ) : ?>
+                        <div class="image-heading">
+                            <?php echo wp_get_attachment_image( $settings['heading_image']['id'] ); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ( $settings['heading'] ) : ?>
+                        <h3 class="heading">
+                            <span class="d-inline-block<?php echo esc_attr( $settings['show_gradient'] == 'yes' ? ' has-gradient' : '' ); ?>"><?php echo esc_html( $settings['heading'] ); ?></span>
+                        </h3>
+                    <?php endif; ?>
+                </div>
+
 
                 <?php if ( $settings['sub_heading'] ) : ?>
                     <div class="sub-heading text-center">

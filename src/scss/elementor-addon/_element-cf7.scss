@@ -1,8 +1,14 @@
 .element-contact-form-7 {
+  .heading-top {
+    @include flex-center();
+
+    .image-heading {
+      margin-right: 1.2rem;
+    }
+  }
+
   .heading {
-    margin-bottom: 1.8rem;
-    color: #FF0000;
-    line-height: 1.2;
+    margin-bottom: 0;
 
     span {
       &.has-gradient {
@@ -10,10 +16,6 @@
         -webkit-text-fill-color: transparent;
       }
     }
-  }
-
-  .sub-heading {
-    margin-bottom: 2.6rem;
   }
 
   form {

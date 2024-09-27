@@ -8,48 +8,52 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    border-radius: 2rem;
+    border: .3rem dotted var(--clinic-theme-secondary-color);
+    background-color: #EAF6FA;
+
+    @media (min-width: 1200px) {
+      padding: 3.6rem 4.6rem;
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+      padding: 2.4rem 3.6rem;
+    }
+
+    @media (max-width: 767px) {
+      padding: 2.4rem;
+    }
 
     &__desc {
-      position: relative;
-      padding: 2.4rem 1.2rem;
-      font-size: 1.5rem;
-      line-height: 2.2rem;
-      border-radius: 3rem;
-      background-color: var(--color-white);
       flex: 1;
-
-      &:after {
-        position: absolute;
-        content: "";
-        bottom: -66px;
-        left: 35%;
-        border-top: 80px solid var(--color-white);
-        border-right: 42px solid transparent;
-        transform: translateX(-50%) rotate(25deg);
-      }
+      text-align: justify;
     }
 
     &__warp {
-      padding-top: 6.5rem;
+      margin-bottom: 1.5rem;
       display: grid;
-      grid-gap: 2.4rem;
-      grid-template-columns: 9rem 1fr;
+      grid-gap: 2rem;
+      grid-template-columns: 7.9rem 1fr;
+      align-items: center;
 
       .image {
-        @include square(9rem, 50%);
+        padding: .6rem;
+        @include square(7.9rem, 50%);
         overflow: hidden;
-        border: .3rem solid var(--color-white);
+        border: .1rem solid #85BEFB;
+        background-color: var(--color-white);
       }
 
       .name {
-        margin-bottom: .5rem;
-        font-size: 2.2rem;
+        margin-bottom: 0;
+        font-size: 1.6rem;
+        color: #000000;
       }
 
-      .star {
-        i {
-          color: var(--color-cadmium-yellow);
-        }
+      .info {
+        font-weight: 700;
+        color: var(--clinic-theme-secondary-color);
+        font-family: var(--heading-font-family);
       }
     }
   }

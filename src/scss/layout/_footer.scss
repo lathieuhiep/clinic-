@@ -3,7 +3,11 @@ $path-image: '../images';
 .global-footer {
   section {
     &.widget {
-      margin-bottom: 2.3rem;
+      margin-bottom: 0;
+
+      + .widget {
+        margin-top: 2rem;
+      }
 
       .textwidget {
         iframe {
@@ -16,10 +20,6 @@ $path-image: '../images';
       }
 
       .open-hours-widget {
-        @media (min-width: 992px) {
-          padding: 0 3rem;
-        }
-
         &__warp {
           border-color: var(--color-white);
         }
@@ -35,55 +35,46 @@ $path-image: '../images';
 
   &__column {
     padding: 4rem 0 2rem;
-    background-color: #333333;
+    background-image: url('#{$path-image}/nen-chan-trang.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    .row {
+      grid-row-gap: 2rem;
+    }
   }
 }
 
 .contact-us-group {
-  padding: 1.8rem 0;
+  padding: .6rem 0;
   text-align: start;
-  border-top: .5rem solid #60ad80;
-  background-color: #2e8f56;
+  background-color: #137597;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
 
   .grid-layout {
     min-height: 6rem;
     display: flex;
-    flex-wrap: wrap;
-
-    @media (min-width: 1200px) {
-      gap: 3rem 6rem;
-    }
-
-    @media (min-width: 992px) and (max-width: 1199px) {
-      gap: 3rem 5rem;
-    }
 
     .item {
       position: relative;
       padding: 0 .5rem;
-      display: grid;
-      grid-gap: 1rem;
+      color: var(--color-white);
+      flex: 1;
+      display: flex;
       align-items: center;
-      flex: auto;
+      justify-content: center;
+      @include transition();
 
-      @media (min-width: 1200px) {
-        grid-template-columns: auto 1fr;
+      &:hover {
+        color: var(--clinic-theme-fifth-color);
       }
 
-      @media (min-width: 992px) and (max-width: 1199px) {
-        grid-template-columns: 3.2rem 1fr;
-      }
-
-      ~ .item {
-        &:after {
-          position: absolute;
-          content: "";
-          top: 0;
-          left: -2.5rem;
-          bottom: 0;
-          width: .6rem;
-          background-color: var(--color-white);
-        }
+      &:not(:last-child) {
+        border-right: .2rem solid var(--color-white);
       }
 
       .link {
@@ -94,38 +85,35 @@ $path-image: '../images';
         left: 0;
       }
 
+      &.phone {
+        @media (max-width: 992px) {
+          display: none;
+        }
+      }
+
+      &__icon {
+        font-size: 3rem;
+        display: flex;
+        flex: 0 0 auto;
+
+        @media (min-width: 376px) {
+          margin-right: 1.2rem;
+        }
+
+        @media (max-width: 375px) {
+          margin-right: 1rem;
+        }
+      }
+
       &__content {
-        line-height: 1.2;
-        color: #ffffff;
+        font-weight: 700;
 
-        span {
-          display: block;
+        @media (min-width: 1200px) {
+          font-size: 2rem;
+        }
 
-          ~ span {
-            margin-top: .2rem;
-          }
-
-          &.txt-top {
-            @media (min-width: 1200px) {
-              font-size: 1.6rem;
-            }
-
-            @media (min-width: 992px) and (max-width: 1199px) {
-              font-size: 1.4rem;
-            }
-          }
-
-          &.txt-sub {
-            font-family: var(--heading-font-family);
-
-            @media (min-width: 1200px) {
-              font-size: 2rem;
-            }
-
-            @media (min-width: 992px) and (max-width: 1199px) {
-              font-size: 1.6rem;
-            }
-          }
+        @media (max-width: 1199px) {
+          font-size: 1.5rem;
         }
       }
     }

@@ -5,15 +5,12 @@
 
     .item {
       display: flex;
-      flex-direction: column;
 
       &__thumbnail {
         margin-bottom: 2rem;
         overflow: hidden;
-
-        img {
-          object-fit: cover;
-        }
+        display: flex;
+        flex-direction: column;
       }
 
       &__body {

@@ -447,6 +447,14 @@ class Clinic_Elementor_List_image_Content extends Widget_Base
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'item_box_shadow',
+                'selector' => '{{WRAPPER}} .element-list-image-content .item',
+            ]
+        );
+
         $this->end_controls_section();
 
         // box image

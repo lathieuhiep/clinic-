@@ -468,10 +468,6 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                 ?>
 
                     <div class="item elementor-repeater-item-<?php echo esc_attr( $item['_id'] ); ?>">
-                        <div class="item__desc">
-                            <?php echo wp_kses_post( $item['list_description'] ) ?>
-                        </div>
-
                         <div class="item__warp">
                             <div class="image">
                                 <?php
@@ -491,13 +487,11 @@ class Clinic_Elementor_Testimonial_Slider extends Widget_Base {
                                 <p class="info">
                                     <?php echo esc_html( $item['list_info'] ); ?>
                                 </p>
-
-                                <div class="star">
-                                    <?php for ( $i = 1; $i <= 5; $i++) : ?>
-                                        <i class="icon-star"></i>
-                                    <?php endfor; ?>
-                                </div>
                             </div>
+                        </div>
+
+                        <div class="item__desc">
+                            <?php echo wp_kses_post( $item['list_description'] ) ?>
                         </div>
                     </div>
 

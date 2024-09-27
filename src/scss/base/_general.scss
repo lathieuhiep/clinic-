@@ -196,8 +196,9 @@ pre {
     }
 
     .wpcf7-submit {
-      padding: 1rem 2rem;
-      border-radius: .4rem;
+      padding: .8rem 2rem .5rem;
+      border-radius: .5rem;
+      font-weight: 700;
 
       &:hover {
         background-color: #2e8f56;

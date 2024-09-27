@@ -15,6 +15,10 @@
 .header-warp {
   padding: 1.2rem 0;
 
+  @media (max-width: 991px) {
+    display: none;
+  }
+
   .grid {
     display: grid;
     align-items: center;
@@ -57,6 +61,7 @@
 
       &__content {
         display: grid;
+        line-height: 1.4;
         font-family: var(--heading-font-family);
 
         .desc {
@@ -96,6 +101,10 @@
 .header-menu {
   min-height: 6.8rem;
   background-color: var(--clinic-theme-secondary-color);
+
+  @media (max-width: 991px) {
+    display: none;
+  }
 
   > div {
     min-height: inherit;

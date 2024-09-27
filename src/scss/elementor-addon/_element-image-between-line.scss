@@ -1,0 +1,21 @@
+.element-image-between-line {
+  &__grid {
+    display: grid;
+    grid-gap: 2rem;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 33.1rem minmax(max-content, auto) 33.1rem;
+    }
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr minmax(max-content, auto) 1fr;
+    }
+
+    .line {
+      height: .1rem;
+      background-color: var(--heading-color);
+    }
+  }
+}
