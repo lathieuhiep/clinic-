@@ -278,50 +278,6 @@ if ( class_exists( 'CSF' ) ) {
 				),
 				'default' => 'right'
 			),
-
-            // layout
-            array(
-                'id'        => 'opt_post_cat_grid',
-                'type'      => 'fieldset',
-                'title'     => esc_html__( 'Grid', 'clinic' ),
-                'fields'    => array(
-                    array(
-                        'id'         => 'sm',
-                        'type'       => 'slider',
-                        'title'      => esc_html__( 'sm: ≥576px', 'clinic' ),
-                        'default'    => 12,
-                        'min'        => 1,
-                        'max'        => 12,
-                    ),
-
-                    array(
-                        'id'         => 'md',
-                        'type'       => 'slider',
-                        'title'      => esc_html__( 'md: ≥768px', 'clinic' ),
-                        'default'    => 6,
-                        'min'        => 1,
-                        'max'        => 12,
-                    ),
-
-                    array(
-                        'id'         => 'lg',
-                        'type'       => 'slider',
-                        'title'      => esc_html__( 'lg: ≥992px', 'clinic' ),
-                        'default'    => 4,
-                        'min'        => 1,
-                        'max'        => 12,
-                    ),
-
-                    array(
-                        'id'         => 'xl',
-                        'type'       => 'slider',
-                        'title'      => esc_html__( 'xl: ≥1200px', 'clinic' ),
-                        'default'    => 4,
-                        'min'        => 1,
-                        'max'        => 12,
-                    ),
-                ),
-            ),
 		)
 	) );
 

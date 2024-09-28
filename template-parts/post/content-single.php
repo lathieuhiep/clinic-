@@ -1,7 +1,5 @@
 <?php
 $show_related = clinic_get_option('opt_post_single_related', '1');
-
-get_template_part('components/inc', 'breadcrumbs');
 ?>
 
 <div id="post-<?php the_ID() ?>" class="single-post-content">

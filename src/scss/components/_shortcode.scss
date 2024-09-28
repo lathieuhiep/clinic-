@@ -1,9 +1,17 @@
-.title-custom {
-  padding: .5rem 1.5rem;
-  color: #ffffff;
-  border-left: .4rem solid var(--clinic-theme-eighth-color);
-  border-radius: .5rem;
-  background-color: #009647;
+.title-has-icon {
+  display: grid;
+  grid-gap: 1.2rem;
+  grid-template-columns: 2.3rem 1fr;
+  align-items: center;
+
+  + p {
+    margin-top: 1.5rem;
+  }
+
+  &__text {
+    margin: 0;
+    color: var(--color-salem);
+  }
 }
 
 .post-contact-us {
@@ -32,7 +40,7 @@
     }
 
     &.phone {
-      background-color: var(--clinic-theme-quaternary-color);
+      background-color: #1D93E3;
     }
 
     &.link {

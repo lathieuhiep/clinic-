@@ -30,6 +30,9 @@ $url-font-svg: '#{$url-fonts}/icomoon.svg';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tags:before {
+  content: "\e924";
+}
 .icon-hours-support:before {
   content: "\e900";
 }

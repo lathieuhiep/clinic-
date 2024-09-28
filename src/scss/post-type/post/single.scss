@@ -3,7 +3,6 @@
 $path-image: '../../../images';
 
 h1, h2, h3, h4, h5, h6 {
-  color: #222222;
   line-height: 1.4;
 }
 
@@ -75,6 +74,10 @@ h6 {
 .single-post-content {
   margin-bottom: 15px;
   font-size: 1.6rem;
+
+  &__title {
+    color: var(--clinic-theme-eighth-color);
+  }
 
   &__detail {
     p, span, a, ul li, ul ol {
