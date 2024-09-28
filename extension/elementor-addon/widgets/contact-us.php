@@ -172,16 +172,6 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
 
         $repeater = new Repeater();
 
-        $repeater->add_group_control(
-            Group_Control_Background::get_type(),
-            [
-                'name' => 'list_background_item',
-                'types' => [ 'classic', 'gradient' ],
-                'exclude' => ['image'],
-                'selector' => '{{WRAPPER}} .element-contact-us__list {{CURRENT_ITEM}}.item',
-            ]
-        );
-
         $repeater->add_control(
             'list_title', [
                 'label' => esc_html__('Tiêu đề', 'clinic'),
@@ -192,13 +182,52 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
         );
 
         $repeater->add_control(
-            'list_title_color',
+            'list_image',
             [
-                'label' => esc_html__( 'Màu tiêu đề', 'clinic' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .element-contact-us__list {{CURRENT_ITEM}} .item__body .title' => 'color: {{VALUE}}',
+                'label' => esc_html__('Chọn ảnh', 'clinic'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
                 ],
+            ]
+        );
+
+        $repeater->add_control(
+            'list_content', [
+                'label' => esc_html__('Nội dung', 'clinic'),
+                'type' => Controls_Manager::WYSIWYG,
+                'default' => esc_html__('List Content', 'clinic'),
+                'show_label' => false,
+            ]
+        );
+
+        // options item box
+        $repeater->add_control(
+            'list_box_item_options',
+            [
+                'label' => esc_html__( 'Vùng chứa', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $repeater->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'list_background_item',
+                'types' => [ 'classic', 'gradient' ],
+                'exclude' => ['image'],
+                'selector' => '{{WRAPPER}} .element-contact-us__list {{CURRENT_ITEM}}.item',
+            ]
+        );
+
+        // option item title
+        $repeater->add_control(
+            'list_item_title_options',
+            [
+                'label' => esc_html__( 'Tiêu đề', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -223,22 +252,23 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
         );
 
         $repeater->add_control(
-            'list_image',
+            'list_title_color',
             [
-                'label' => esc_html__('Chọn ảnh', 'clinic'),
-                'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
+                'label' => esc_html__( 'Màu tiêu đề', 'clinic' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-us__list {{CURRENT_ITEM}} .item__body .title' => 'color: {{VALUE}}',
                 ],
             ]
         );
 
+        // option item content
         $repeater->add_control(
-            'list_content', [
-                'label' => esc_html__('Nội dung', 'clinic'),
-                'type' => Controls_Manager::WYSIWYG,
-                'default' => esc_html__('List Content', 'clinic'),
-                'show_label' => false,
+            'list_item_content_options',
+            [
+                'label' => esc_html__( 'Nội dung', 'clinic' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -342,6 +372,169 @@ class Clinic_Elementor_Contact_Us extends Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .element-contact-us__list .item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // box image style
+        $this->start_controls_section(
+            'box_image_style_section',
+            [
+                'label' => esc_html__( 'Vùng chứa ảnh', 'clinic' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_image_margin',
+            [
+                'label' => esc_html__( 'Margin', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-us__list .item__image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_image_padding',
+            [
+                'label' => esc_html__( 'Padding', 'clinic' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'default' => [
+                    'top' => '',
+                    'right' => '',
+                    'bottom' => '',
+                    'left' => '',
+                    'unit' => 'px',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-us__list .item__image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_image_width',
+            [
+                'label' => esc_html__( 'Chiều rộng', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-us__list .item__image' => 'min-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_image_height',
+            [
+                'label' => esc_html__( 'Chiều cao', 'clinic' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => '',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-us__list .item__image' => 'min-height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_image_vertical_position',
+            [
+                'label' => esc_html__( 'Căn chỉnh các mục', 'paint' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'start' => [
+                        'title' => esc_html__( 'Bắt đầu', 'paint' ),
+                        'icon' => 'eicon-align-start-v',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Giữa', 'paint' ),
+                        'icon' => 'eicon-align-center-v',
+                    ],
+                    'end' => [
+                        'title' => esc_html__( 'Kết thúc', 'paint' ),
+                        'icon' => 'eicon-align-end-v',
+                    ],
+                    'stretch' => [
+                        'title' => esc_html__( 'Nới rộng', 'paint' ),
+                        'icon' => 'eicon-align-stretch-v',
+                    ],
+                ],
+                'default' => 'center',
+                'toggle' => true,
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-us__list .item__image' => 'align-items: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_image_horizontal_position',
+            [
+                'label' => esc_html__( 'Căn chỉnh nội dung', 'paint' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'start' => [
+                        'title' => esc_html__( 'Bắt đầu', 'paint' ),
+                        'icon' => 'eicon-justify-start-h',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Giữa', 'paint' ),
+                        'icon' => 'eicon-justify-center-h',
+                    ],
+                    'end' => [
+                        'title' => esc_html__( 'Kết thúc', 'paint' ),
+                        'icon' => 'eicon-justify-end-h',
+                    ],
+                ],
+                'default' => 'center',
+                'toggle' => true,
+                'selectors' => [
+                    '{{WRAPPER}} .element-contact-us__list .item__image' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );

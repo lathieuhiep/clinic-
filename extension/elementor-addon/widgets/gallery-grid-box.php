@@ -591,17 +591,6 @@ class Clinic_Elementor_Gallery_Grid_Box extends Widget_Base
 
         $this->end_controls_section();
 
-        // image style
-        $this->start_controls_section(
-            'image_style_section',
-            [
-                'label' => esc_html__( 'Ảnh', 'clinic' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->end_controls_section();
-
         // body content style
         $this->start_controls_section(
             'body_style_section',
