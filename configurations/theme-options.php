@@ -103,19 +103,6 @@ if ( class_exists( 'CSF' ) ) {
         )
     ) );
 
-    // Slider
-    CSF::createSection( $clinic_prefix, array(
-        'parent' => 'opt_general_section',
-        'title'  => esc_html__( 'Slider', 'clinic' ),
-        'fields' => array(
-            array(
-                'id'    => 'opt_general_slider',
-                'type'  => 'gallery',
-                'title' => esc_html__( 'Slider', 'clinic' ),
-            ),
-        )
-    ) );
-
 	// Contact
 	CSF::createSection( $clinic_prefix, array(
 		'parent' => 'opt_general_section',

@@ -34,15 +34,6 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/procedure.php' );
     require get_parent_theme_file_path( '/extension/elementor-addon/widgets/testimonial-slider.php' );
 
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/box-content-line.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/contact-form-7-vertical.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/heading-and-sub.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/image.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/post-grid.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/slider.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/step-image-box.php' );
-//    require get_parent_theme_file_path( '/extension/elementor-addon/widgets/working-time.php' );
-
 	// register add on
     $widgets_manager->register( new \Clinic_Elementor_Album_Gallery() );
     $widgets_manager->register( new \Clinic_Elementor_Banner() );
@@ -55,21 +46,7 @@ function clinic_register_widget_elementor_addon( $widgets_manager ): void {
     $widgets_manager->register( new \Clinic_Elementor_Image_Between_Line() );
     $widgets_manager->register( new \Clinic_Elementor_List_image_Content() );
     $widgets_manager->register( new \Clinic_Elementor_Procedure() );
-    $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() )
-
-//    $widgets_manager->register( new \Clinic_Elementor_Box_Content_Line() );
-
-//    $widgets_manager->register( new \Clinic_Elementor_Contact_Form_7_Vertical() );
-
-
-
-//    $widgets_manager->register( new \Clinic_Elementor_Heading_And_Sub() );
-//    $widgets_manager->register( new \Clinic_Elementor_Image() );
-//    $widgets_manager->register( new \Clinic_Elementor_Post_Grid() );
-//    $widgets_manager->register( new \Clinic_Elementor_Slider() );
-//    $widgets_manager->register( new \Clinic_Elementor_Step_Image_Box() );
-;
-//    $widgets_manager->register( new \Clinic_Elementor_Working_Time() );
+    $widgets_manager->register( new \Clinic_Elementor_Testimonial_Slider() );
 }
 
 // Register lib scripts
