@@ -95,6 +95,50 @@ function clinic_disable_emojis_tinymce( $plugins ) {
 	}
 }
 
+// check spam contact form 7
+if ( function_exists('wpcf7') ) {
+	add_filter('wpcf7_form_elements', 'clinic_check_spam_form_cf7');
+	function clinic_check_spam_form_cf7($html): string {
+		ob_start();
+		?>
+        <div class="d-none">
+            <input class="wpcf7-form-control wpcf7-text" aria-invalid="false" value="" type="text" name="spam-email" aria-label="">
+        </div>
+		<?php
+		$content = ob_get_contents();
+		ob_end_clean();
+		return $html . $content;
+	}
+
+	// check field spam
+	add_action('wpcf7_posted_data', 'clinic_check_spam_form_cf7_valid');
+	function clinic_check_spam_form_cf7_valid($posted_data) {
+		$submission = WPCF7_Submission::get_instance();
+		$note_text = esc_html__('Đã có lỗi xảy ra', 'clinic');
+
+		if ( !empty($posted_data['spam-email']) || !isset($_POST['spam-email'])) {
+			$submission->set_status( 'spam' );
+			$submission->set_response( $note_text );
+		}
+		unset($posted_data['spam-email']);
+		return $posted_data;
+	}
+
+	// validate phone
+	add_filter('wpcf7_validate_tel', 'clinic_custom_validate_sdt', 10, 2);
+	add_filter('wpcf7_validate_tel*', 'clinic_custom_validate_sdt', 10, 2);
+	function clinic_custom_validate_sdt($result, $tag) {
+		$name = $tag->name;
+		if ($name === 'phone') {
+			$sdt = isset($_POST[$name]) ? wp_unslash($_POST[$name]) : '';
+			if (!preg_match('/^0([0-9]{9,10})+$/D', $sdt)) {
+				$result->invalidate($tag, 'Số điện thoại không hợp lệ.');
+			}
+		}
+		return $result;
+	}
+}
+
 // javascript footer
 add_action('wp_footer', 'clinic_add_script_footer');
 function clinic_add_script_footer(): void {
