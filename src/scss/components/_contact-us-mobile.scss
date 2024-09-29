@@ -2,12 +2,12 @@
   padding: 0 1.2rem;
   position: sticky;
   bottom: 0;
-  background: #E5E5E5;
+  background: var(--color-white);
   z-index: 999;
 
   .warp {
     position: relative;
-    max-width: 41.4rem;
+    max-width: 39rem;
     margin: 0 auto;
   }
 
@@ -16,19 +16,19 @@
     top: 0;
     height: 100%;
 
-    &.zalo {
+    &.chat {
       left: 0;
-      width: 23%;
+      width: 38%;
     }
 
     &.phone {
-      left: 23%;
-      width: 54%;
+      left: 38%;
+      width: 35.5%;
     }
 
-    &.chat {
+    &.zalo {
       right: 0;
-      width: 23%;
+      width: 26.5%;
     }
   }
 }
