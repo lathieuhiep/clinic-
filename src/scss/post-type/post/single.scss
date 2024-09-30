@@ -1,5 +1,69 @@
 @import "../../variables-site/variables";
 
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.4;
+}
+
+h1 {
+  @media (min-width: 992px) {
+    font-size: 2.8rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 2.4rem;
+  }
+}
+
+h2 {
+  @media (min-width: 992px) {
+    font-size: 2.4rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  @media (min-width: 992px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.8rem;
+  }
+}
+
+h4 {
+  @media (min-width: 992px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.6rem;
+  }
+}
+
+h5 {
+  @media (min-width: 992px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.4rem;
+  }
+}
+
+h6 {
+  @media (min-width: 992px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.2rem;
+  }
+}
+
 .single-post-warp {
   padding-top: 2.3rem;
   padding-bottom: 2.7rem;
