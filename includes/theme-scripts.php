@@ -1,16 +1,20 @@
 <?php
+// custom style admin login
+add_action('login_head', 'clinic_custom_login_admin', 1);
+function clinic_custom_login_admin(): void
+{
+	wp_enqueue_style( 'admin-login', get_theme_file_uri( '/assets/admin/css/login.css' ) );
+}
+
 // Register Back-End script
 add_action('admin_enqueue_scripts', 'clinic_register_back_end_scripts');
 function clinic_register_back_end_scripts(): void
 {
-	/* Start Get CSS Admin */
-	wp_enqueue_style( 'admin', get_theme_file_uri( '/assets/admin/admin.css' ) );
+	// get css
+	wp_enqueue_style( 'admin', get_theme_file_uri( '/assets/admin/css/admin.css' ) );
 
-	if ( ! did_action( 'wp_enqueue_media' ) ) {
-		wp_enqueue_media();
-	}
-
-	wp_enqueue_script('admin-custom', get_theme_file_uri( '/assets/admin/admin.js' ), array(), "1.0", true);
+	// get js
+	wp_enqueue_script('admin-custom', get_theme_file_uri( '/assets/admin/js/admin.js' ), array(), "1.0", true);
 }
 
 // Remove jquery migrate

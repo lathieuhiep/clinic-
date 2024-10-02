@@ -1,0 +1,125 @@
+:root {
+    --background: #1a1a2e;
+    --color: #ffffff;
+    --primary-color: #0f3460;
+}
+
+body.login {
+    background: var(--background);
+    color: var(--color);
+}
+
+.login #backtoblog a,
+.login #nav a {
+    color: var(--color);
+
+    &:hover {
+        color: #60ad80;
+        transition: all 0.4s ease-in-out;
+    }
+}
+
+.login #backtoblog a:focus,
+.login #nav a:focus,
+.login h1 a:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#login h1 a {
+    background: url("../images/logo.png") no-repeat;
+}
+
+.login form {
+    border: 1px solid hsla(0, 0%, 65%, 0.158);
+    box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    background: transparent;
+}
+
+.login label {
+    margin-bottom: 6px;
+}
+
+.login form .dashicons:before {
+    color: var(--color);
+}
+
+.login form .input {
+    color: var(--color);
+    background: #9191911f;
+    border: none;
+    border-radius: 5px;
+    backdrop-filter: blur(15px);
+}
+
+.login form input[name="wp-submit"] {
+    border: 0;
+    border-radius: 5px;
+    background: var(--primary-color);
+    transition: all 0.4s ease-in-out;
+}
+
+.login form .forgetmenot {
+    position: relative;
+}
+
+.login form .forgetmenot input[type=checkbox] {
+    display: none;
+}
+
+.login form .forgetmenot input[type=checkbox] + label {
+    margin: 0;
+    cursor: pointer;
+}
+
+.login form .forgetmenot input[type=checkbox] + label:before {
+    content:'';
+    border: 1px solid hsla(0, 0%, 65%, 0.158);
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-right: 6px;
+    transform: translateY(6px);
+}
+
+.login form .forgetmenot input[type=checkbox]:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 6px;
+    height: 14px;
+    border: solid #0079bf;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+#language-switcher select {
+    color: var(--color);
+    background: #9191911f;
+    border: none;
+    border-radius: 5px;
+    backdrop-filter: blur(15px);
+}
+
+#language-switcher select option {
+    color: #000;
+}
+
+.language-switcher input.button {
+    color: var(--color);
+    border: 0;
+    border-radius: 5px;
+    background: var(--primary-color);
+    transition: all 0.4s ease-in-out;
+}
+
+.login .notice-error,
+.login .message, .login .notice, .login .success {
+    background: #9191911f;
+}
