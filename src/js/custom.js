@@ -139,11 +139,6 @@
         }
     }
 
-    // handle check mobile device
-    const isMobileDevice = () => {
-        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-    }
-
     // handle click zalo
     const handleZaLoClick = () => {
         const chatWithUsZalo = $('.chat-with-us__zalo')
@@ -156,8 +151,12 @@
                 const phone = $(this).data('phone')
                 const qrCode = $(this).data('qr-code')
 
-                if ( isMobileDevice() ) {
-                    if (navigator.userAgent.includes('Android')) {
+                // check Device
+                const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                const isAndroid = /Android/i.test(navigator.userAgent);
+
+                if (isMobileDevice ) {
+                    if ( isAndroid ) {
                         // android
                         link = `https://zaloapp.com/qr/p/${qrCode}`;
                     } else {
@@ -166,10 +165,10 @@
                     }
                 } else {
                     // pc
-                    link = `zalo://conversation?phone=${phone}`
+                    link = `https://zalo.me/${phone}`;
                 }
 
-                window.open(link, '_parent');
+                window.open(link, '_blank');
             })
         }
     }
