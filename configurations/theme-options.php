@@ -38,15 +38,6 @@ if ( class_exists( 'CSF' ) ) {
 		'parent' => 'opt_general_section',
 		'title'  => esc_html__( 'Toàn cục', 'clinic' ),
 		'fields' => array(
-			// favicon
-			array(
-				'id'      => 'opt_general_favicon',
-				'type'    => 'media',
-				'title'   => esc_html__( 'Favicon', 'clinic' ),
-				'library' => 'image',
-				'url'     => false
-			),
-
 			// logo
 			array(
 				'id'      => 'opt_general_logo',
