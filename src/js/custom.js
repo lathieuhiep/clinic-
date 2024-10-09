@@ -18,9 +18,6 @@
             $('html').scrollTop(0)
         } )
 
-        // handle click show submenu on mobile
-        handleClickShowSubmenuOnMobile()
-
         // handle dropdown category widget
         handleDropdownCategoryWidget()
 
@@ -65,26 +62,6 @@
 
         if ( siteLoading.length ) {
             siteLoading.remove()
-        }
-    }
-
-    // handle click show submenu on mobile
-    const handleClickShowSubmenuOnMobile = () => {
-        const subMenuToggle = $('.sub-menu-toggle')
-
-        if ( subMenuToggle.length ) {
-            subMenuToggle.each(function () {
-                $(this).on( 'click', function () {
-                    const widthScreen = $(window).width()
-
-                    if ( widthScreen < 992 ) {
-                        $(this).toggleClass('active')
-                        $(this).closest( '.menu-item-has-children' ).siblings().find( subMenuToggle ).removeClass( 'active' )
-                        $(this).parent().children( '.sub-menu' ).slideToggle()
-                        $(this).parents( '.menu-item-has-children' ).siblings().find( '.sub-menu' ).slideUp()
-                    }
-                } )
-            })
         }
     }
 
